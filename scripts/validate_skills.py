@@ -29,12 +29,19 @@ def parse_frontmatter(content: str) -> dict:
     if end_idx == -1:
         return {}
 
+    current_key = None
     for line in lines[1:end_idx]:
-        if ":" in line:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if ":" in line and not line.startswith(" ") and not line.startswith("\t"):
             key, val = line.split(":", 1)
             key = key.strip()
             val = val.strip().strip('"\'')
             frontmatter[key] = val
+            current_key = key
+        elif current_key and (line.startswith(" ") or line.startswith("\t")):
+            frontmatter[current_key] += " " + stripped.strip('"\'')
 
     return frontmatter
 
@@ -86,6 +93,10 @@ def validate_skills() -> bool:
                 has_error = True
             elif name != folder_name:
                 print(f"❌ [{folder_name}] 'name' 字段 ({name}) 与文件夹名称 ({folder_name}) 不一致")
+                has_error = True
+
+            if not desc:
+                print(f"❌ [{folder_name}] YAML Frontmatter 缺失 'description' 字段")
                 has_error = True
 
             # 绝对路径检查 (De-hardcoding / Zero-Leakage)

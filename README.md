@@ -48,7 +48,7 @@ python3 scripts/create_skill.py <skill-name> -d "<Skill功能描述>"
 python3 scripts/create_skill.py git-workflow-helper -d "自动化管理分支和 Git 提交规范的 Skill"
 ```
 
-该命令将自动在 `skills/git-workflow-helper/` 目录下生成包含标准 YAML Frontmatter 的 `SKILL.md`，并创建 `scripts/` 与 `references/` 子目录。
+该命令将自动在 `skills/git-workflow-helper/` 目录下生成包含标准 YAML Frontmatter 的 `SKILL.md`，并创建 `scripts/`、`references/` 与 `assets/` 子目录。
 
 ---
 

@@ -25,7 +25,7 @@ description: "{{SKILL_DESCRIPTION}}"
 
 ## 红线与禁忌 (Guardrails & Anti-Patterns)
 > [!IMPORTANT]
-> - **环境脱敏 (De-hardcoding)**: 严禁硬编码绝对个人路径（如 `/Users/...` 或 `/home/...`）。
+> - **环境脱敏 (De-hardcoding)**: 严禁硬编码绝对个人路径（如 `~/Project/...` 或 `<appDataDir>/...`）。
 > - **绝对真实 (Exhaustive Truth)**: 拒绝 `pass`、`...` 或占位符敷衍，代码需可运行。
 
 ## 示例 (Examples)

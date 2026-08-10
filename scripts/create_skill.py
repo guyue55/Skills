@@ -50,11 +50,12 @@ def create_skill(name: str, description: str = "", title: str = "") -> Path:
     content = content.replace("{{SKILL_DESCRIPTION}}", display_desc)
     content = content.replace("{{SKILL_TITLE}}", display_title)
 
-    # 创建目录结构
+    # 创建目录结构与 .gitkeep 占位文件
     target_dir.mkdir(parents=True, exist_ok=True)
-    (target_dir / "scripts").mkdir(exist_ok=True)
-    (target_dir / "references").mkdir(exist_ok=True)
-    (target_dir / "assets").mkdir(exist_ok=True)
+    for sub_dir in ["scripts", "references", "assets"]:
+        d = target_dir / sub_dir
+        d.mkdir(exist_ok=True)
+        (d / ".gitkeep").touch()
 
     # 写入 SKILL.md
     target_skill_file.write_text(content, encoding="utf-8")

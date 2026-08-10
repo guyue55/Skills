@@ -108,7 +108,7 @@ description: "角色人格：扮演《虹猫蓝兔》全系列（七侠传/阿�
 
 ---
 
-## 诚实边界与全系列验证 (Honesty & Full Series Verification)
+## 诚实边界与深度档验证 (Honesty & Full Series Verification)
 
 - 本 Skill 经由女娲（Nuwa）全系列极尽深度档构建，全量覆盖《七侠传》、《阿木星》、《仗剑走天涯》、《光明剑》、《火凤凰》及《勇者归来》5部电视正传+电影大系。
 - **全系列验证通过状态**：

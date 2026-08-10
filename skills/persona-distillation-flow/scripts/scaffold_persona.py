@@ -14,6 +14,7 @@ scaffold_persona.py
 import sys
 import os
 import argparse
+import json
 
 def main():
     parser = argparse.ArgumentParser(description="一键生成通用 7 层深度人格 Skill 脚手架")
@@ -71,6 +72,7 @@ def main():
 
     # 4. 生成 SKILL.md 模板 (从 SKILL_template.md 读取或构建)
     template_file = os.path.join(script_dir, "../assets/SKILL_template.md")
+    char_displayName = skill_name.replace("persona-", "").replace("-", " ").title()
     if os.path.exists(template_file):
         with open(template_file, "r", encoding="utf-8") as f:
             template_content = f.read()
@@ -79,7 +81,7 @@ def main():
             SKILL_NAME=skill_name,
             IP_NAME=f"相关作品/背景({category})",
             CHARACTER_TITLE="核心",
-            CHARACTER_NAME=skill_name.replace("persona-", "").title(),
+            CHARACTER_NAME=char_displayName,
             MOTTO_PRIMARY="核心格言/座右铭 1",
             MOTTO_SECONDARY="核心格言/座右铭 2",
             CORE_DESIRE="追求核心目标与渴望",
@@ -115,21 +117,49 @@ description: "{description}"
     with open(skill_md_path, "w", encoding="utf-8") as f:
         f.write(skill_content)
 
-    # 5. 生成 assets/character_card.json
+    # 5. 生成 assets/character_card.json (官方 chara_card_v2 2.0 规格)
+    card_template_file = os.path.join(script_dir, "../assets/character_card_template.json")
     card_path = os.path.join(target_dir, "assets/character_card.json")
-    card_content = f"""{{
-  "name": "{skill_name}",
-  "description": "{description}",
-  "personality": "角色核心性格描述",
-  "scenario": "角色扮演对话、决策模拟",
-  "first_mes": "你好，我是{skill_name}。",
-  "mes_example": "<user>: 你好\\n<char>: 你好，请问有什么可以交流的？",
-  "metadata": {{
-    "category": "{category}",
-    "version": "7.0-deep-persona"
-  }}
-}}
-"""
+    if os.path.exists(card_template_file):
+        with open(card_template_file, "r", encoding="utf-8") as f:
+            card_template_str = f.read()
+        card_content = card_template_str.format(
+            CHARACTER_NAME=char_displayName,
+            IP_NAME=f"相关背景({category})",
+            CHARACTER_TITLE="核心角色",
+            CORE_DESIRE="核心目标与渴望",
+            CORE_FEAR="回避最深的恐惧",
+            PERSONALITY_SUMMARY=description,
+            PERSONALITY_DETAILED=f"{char_displayName} 核心性格特征，遵从 7 层深度人设架构。",
+            category=category
+        )
+    else:
+        card_data = {
+            "spec": "chara_card_v2",
+            "spec_version": "2.0",
+            "data": {
+                "name": char_displayName,
+                "description": description,
+                "personality": "角色核心性格描述",
+                "scenario": "角色扮演对话、决策模拟",
+                "first_mes": f"你好，我是{char_displayName}。",
+                "mes_example": f"<START>\n<user>: 你好\n<char>: 你好，我是{char_displayName}，请问有什么可以交流的？",
+                "system_prompt": f"你现在扮演{char_displayName}。遵循 7 层深度人设架构，保持性格连贯与表达 DNA。",
+                "post_history_instructions": "保持符合角色的情绪状态机。",
+                "alternate_greetings": [],
+                "tags": [category, "deep-persona", "nuwa"],
+                "creator": "女娲 · Skill造人术 (persona-distillation-flow)",
+                "character_version": "2.0",
+                "creator_notes": "基于工业级 7 层深度人设架构编译。",
+                "character_book": None,
+                "extensions": {
+                    "nuwa_version": "7.0-deep-persona",
+                    "category": category
+                }
+            }
+        }
+        card_content = json.dumps(card_data, ensure_ascii=False, indent=2)
+
     with open(card_path, "w", encoding="utf-8") as f:
         f.write(card_content)
 
@@ -177,7 +207,7 @@ if __name__ == '__main__':
 
     os.chmod(qc_path, 0o755)
 
-    print(f"🎉 成功生成【{category}】通用 7 层深度人格 Skill: {target_dir}")
+    print(f"🎉 成功生成【{category}】通用 7 层深度人格 Skill (chara_card_v2 规格): {target_dir}")
     print(f"👉 下一步: 结合 research 工具补充 {target_dir}/references/research/ 中的考据，并编辑 SKILL.md 精提炼！")
 
 if __name__ == '__main__':

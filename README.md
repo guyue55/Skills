@@ -47,6 +47,7 @@ Skills/
 | `example-skill` | 示例 Skill：展示如何在本仓库中规范定义与组织 Skill 模块 | [`skills/example-skill/SKILL.md`](skills/example-skill/SKILL.md) |
 | `persona-hongmao` | 角色人格：扮演《虹猫蓝兔》全系列中的七剑之首虹猫，包含其心智模型、豪侠表达风格与长虹剑法 | [`skills/persona-hongmao/SKILL.md`](skills/persona-hongmao/SKILL.md) |
 | `persona-lantu` | 角色人格：扮演《虹猫蓝兔》全系列中的冰魄剑主、玉蟾宫宫主蓝兔，包含其温婉睿智、外柔内刚与冰魄剑法 | [`skills/persona-lantu/SKILL.md`](skills/persona-lantu/SKILL.md) |
+| `persona-distillation-flow` | 工作流 SOP：工业级七层深度人格蒸馏工作流（含一键脚手架工具、13维研判库与跨平台角色卡生成） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

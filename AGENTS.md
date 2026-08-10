@@ -86,6 +86,9 @@ When the user asks to "create a skill", "build a skill", "make a new skill", or 
    | `<skill-name>` | `<description>` | [`skills/<skill-name>/SKILL.md`](skills/<skill-name>/SKILL.md) |
    ```
 
+6. **Prompt Git Commit**:
+   Stage and commit changes using the required format: `type(scope): 中文描述` (e.g., `feat(skill): 新增 <skill-name> 技能`).
+
 ---
 
 ### Task 2: Importing or Migrating an Existing Skill
@@ -99,6 +102,7 @@ When the user provides an existing skill or raw prompt语料 to import:
 5. Remove any `README.md` if present inside `skills/<skill-name>/`.
 6. Run `./scripts/validate_skills.py` to confirm clean validation.
 7. Update the catalog table in `README.md`.
+8. Stage and commit changes using `feat(skill): 导入 <skill-name> 技能`.
 
 ---
 
@@ -114,6 +118,7 @@ When asked to "check", "audit", "validate", or "review" skills:
    - Placeholders (`TODO:`, `FIXME:`, `pass`, `...`).
    - Extraneous `README.md` files inside skill folders.
 3. Fix any identified errors and re-run `./scripts/validate_skills.py` until 100% clean.
+4. Stage and commit fixes using `fix(audit): 修复 Skill 校验问题`.
 
 ---
 
@@ -133,3 +138,10 @@ When asked to "check", "audit", "validate", or "review" skills:
 
 5. **Traceability (日志明文透明)**:
    Output clear diagnostic trace logs (e.g., `[Trace: Skills/Workflow] ...`) when performing multi-step operations.
+
+6. **Prompt Git Commit & Standard Format (及时 Git 提交与规范格式)**:
+   AI Agents MUST promptly commit changes to Git upon completing a task or bug fix.
+   **Commit Message Format**: MUST strictly follow `type(scope): 中文描述` (e.g., `feat(skill): 新增 git-workflow 技能`, `refactor(script): 优化校验流程`).
+
+7. **Chinese Comments Requirement (中文注释)**:
+   All code, Python/Bash scripts, and instructions written or modified by AI Agents MUST contain detailed, high-quality Chinese comments (`中文注释`) to maintain readability and maintainability.

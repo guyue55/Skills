@@ -16,6 +16,7 @@
 | `scripts/validate_skills.py` | Compliance validator (`./scripts/validate_skills.py`) | MUST be executed after creating/editing any skill. |
 | `scripts/setup_hooks.sh` | Local Git pre-commit installer (`./scripts/setup_hooks.sh`) | Run once locally to attach validator to `git commit`. |
 | `.github/workflows/` | GitHub Actions CI workflow | Runs `./scripts/validate_skills.py` on PR and push to main. |
+| `skills/persona-distillation-flow/` | 工业级七层深度人格蒸馏工作流 SOP (含全大系探测与一键脚手架) | 当用户请求蒸馏/新建角色人格 Skill 时激活调用。 |
 | `README.md` | Repository catalog & index table | MUST be updated whenever a skill is added/removed. |
 ## Agent skills
 

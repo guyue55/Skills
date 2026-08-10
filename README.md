@@ -2,16 +2,16 @@
 
 本仓库为个人/团队的 **AI Agent Skills** 集中存储、制作与管理项目。用于沉淀各类可复用的 Agent 技能（Skills）、工作流模版以及自动化脚本。
 
+> [!IMPORTANT]
+> **AI Agent 强制遵照指令 (For All AI Tools & Agents)**:
+> 本仓库的所有 AI 工具与 Agent（如 Antigravity、Claude Code、Cursor、Windsurf、Copilot 等）在进入本项目后，**必须严格遵循 [`AGENTS.md`](AGENTS.md) 中定义的项目地图、操作 SOP 与刚性红线**。
+
 ---
 
-## 🤖 AI 工具自动识别入口与指南
+## 🤖 AI 工具指引与规范入口
 
-项目已配置跨 AI 工具通用的自动化识别入口，支持各类 AI 助手（如 Antigravity、Claude Code、Cursor、Windsurf、Copilot 等）自动载入规范与工作流：
-
-- 📘 **通用 AI 操作指南**：[`AGENTS.md`](AGENTS.md)（定义了完整地图、步骤 SOP 与刚性红线）
-- 🤖 **Claude Code 接入**：[`CLAUDE.md`](CLAUDE.md)
-- 🖱️ **Cursor IDE 规则**：[`.cursorrules`](.cursorrules)
-- 🤝 **贡献与邀请指南**：[`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 📘 **通用 AI 操作指南**：[`AGENTS.md`](AGENTS.md)（定义了完整的地图、步骤 SOP 与刚性红线，所有 AI 工具统一遵照）
+- 🤝 **贡献与邀请指南**：[`CONTRIBUTING.md`](CONTRIBUTING.md)（规范 Skill 的贡献、审核与邀请流程）
 
 ---
 
@@ -20,9 +20,7 @@
 ```
 Skills/
 ├── README.md                   # 本主文档（Skill 目录与概览）
-├── AGENTS.md                   # 通用 AI Agent 指南与操作地图
-├── CLAUDE.md                   # Claude Code 入口配置
-├── .cursorrules                # Cursor IDE 全局规则
+├── AGENTS.md                   # 通用 AI Agent 指南与操作地图（唯一真理源）
 ├── CONTRIBUTING.md             # 贡献、提交与邀请协作指南
 ├── .gitignore                  # Git 忽略配置
 ├── .template/                  # Skill 标准定义模板
@@ -101,4 +99,4 @@ description: "清晰说明此 Skill 的作用以及触发场景"
 - 是否存在未完成的 `TODO:` / `FIXME:` / `pass` 占位符
 - 子 Skill 目录下是否包含多余的 `README.md`
 
-详见 [`CONTRIBUTING.md`](CONTRIBUTING.md)。
+详见 [`CONTRIBUTING.md`](CONTRIBUTING.md) 及 [`AGENTS.md`](AGENTS.md)。

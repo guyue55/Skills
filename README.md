@@ -4,11 +4,26 @@
 
 ---
 
+## 🤖 AI 工具自动识别入口与指南
+
+项目已配置跨 AI 工具通用的自动化识别入口，支持各类 AI 助手（如 Antigravity、Claude Code、Cursor、Windsurf、Copilot 等）自动载入规范与工作流：
+
+- 📘 **通用 AI 操作指南**：[`AGENTS.md`](AGENTS.md)（定义了完整地图、步骤 SOP 与刚性红线）
+- 🤖 **Claude Code 接入**：[`CLAUDE.md`](CLAUDE.md)
+- 🖱️ **Cursor IDE 规则**：[`.cursorrules`](.cursorrules)
+- 🤝 **贡献与邀请指南**：[`CONTRIBUTING.md`](CONTRIBUTING.md)
+
+---
+
 ## 📂 仓库结构
 
 ```
 Skills/
-├── README.md                   # 本主文档（Skill 目录与制作指南）
+├── README.md                   # 本主文档（Skill 目录与概览）
+├── AGENTS.md                   # 通用 AI Agent 指南与操作地图
+├── CLAUDE.md                   # Claude Code 入口配置
+├── .cursorrules                # Cursor IDE 全局规则
+├── CONTRIBUTING.md             # 贡献、提交与邀请协作指南
 ├── .gitignore                  # Git 忽略配置
 ├── .template/                  # Skill 标准定义模板
 │   ├── SKILL.md                # 规范模板文件
@@ -16,7 +31,7 @@ Skills/
 ├── skills/                     # 所有 Skill 模块汇总存储目录
 │   └── example-skill/          # 示例 Skill 模块
 │       └── SKILL.md
-└── scripts/                    # 仓库维护与自动化脚手架
+└── scripts/                    # 仓库维护与自动化脚手架 (+x)
     ├── create_skill.py         # 脚手架：一键创建新 Skill 模版
     └── validate_skills.py      # 校验器：检查所有 Skill 格式与合规性
 ```
@@ -40,15 +55,15 @@ Skills/
 直接在根目录下运行 Python 脚手架脚本：
 
 ```bash
-python3 scripts/create_skill.py <skill-name> -d "<Skill功能描述>"
+./scripts/create_skill.py <skill-name> -d "<Skill功能描述与触发条件>"
 ```
 
 **示例：**
 ```bash
-python3 scripts/create_skill.py git-workflow-helper -d "自动化管理分支和 Git 提交规范的 Skill"
+./scripts/create_skill.py git-workflow-helper -d "自动化管理分支和 Git 提交规范的 Skill"
 ```
 
-该命令将自动在 `skills/git-workflow-helper/` 目录下生成包含标准 YAML Frontmatter 的 `SKILL.md`，并创建 `scripts/`、`references/` 与 `assets/` 子目录。
+该命令将自动在 `skills/git-workflow-helper/` 目录下生成包含标准 YAML Frontmatter 的 `SKILL.md`，并创建 `scripts/`、`references/` 与 `assets/` 子目录（均含 `.gitkeep`）。
 
 ---
 
@@ -74,7 +89,7 @@ description: "清晰说明此 Skill 的作用以及触发场景"
 在提交或 Push 到 GitHub 前，请运行校验脚本确保所有 Skill 均符合规范：
 
 ```bash
-python3 scripts/validate_skills.py
+./scripts/validate_skills.py
 ```
 
 校验内容包括：
@@ -82,11 +97,8 @@ python3 scripts/validate_skills.py
 - YAML Frontmatter 是否存在且格式正确
 - `name` 是否与文件夹名称完全一致
 - `description` 是否完整
+- 是否存在绝对路径硬编码（De-hardcoding）
+- 是否存在未完成的 `TODO:` / `FIXME:` / `pass` 占位符
+- 子 Skill 目录下是否包含多余的 `README.md`
 
----
-
-## 💡 Skill 编写规范提示
-
-- **单一职责**：每个 Skill 专注解决某一类特定问题或工作流。
-- **触发明确**：在 `SKILL.md` 的“触发条件”中清晰列出 Agent 何时应激活此 Skill。
-- **自包含**：若 Skill 包含辅助 Python/Bash 脚本或文档，请统一放在其子目录下的 `scripts/` 或 `references/` 中。
+详见 [`CONTRIBUTING.md`](CONTRIBUTING.md)。

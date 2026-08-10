@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 persona-distillation-flow 自动化质量与合规校验探针
-物理验证 SKILL.md 是否包含 SotA 动态认知操作系统 (Dynamic Cognitive OS) 标准
+物理验证 SKILL.md 是否包含泛领域通用规范 (Universal Special Categories)
 """
 
 import sys
@@ -24,12 +24,13 @@ def check_skill():
         print("❌ 错误: 缺失 YAML Frontmatter")
         return False
 
-    # 2. 检查全大系作品树探测、双门禁与 SotA 认知引擎章节
+    # 2. 检查全大系作品树探测、双门禁与 SotA 认知引擎及泛领域章节
     required_sections = [
         "## 🔍 前置协议：全大系作品树探测 (Franchise Universe Discovery)",
         "## 🛑 门禁一：全大系蒸馏策略简报 (Phase 0: Research Strategy Gate)",
         "## 🔄 核心蒸馏主干",
-        "## 🛠️ SotA 四大动态认知加固引擎 (Dynamic Cognitive Engines)"
+        "## 🛠️ SotA 四大动态认知加固引擎 (Dynamic Cognitive Engines)",
+        "## 🌐 泛领域特殊类别处理规范 (Universal Special Categories)"
     ]
 
     for section in required_sections:
@@ -37,7 +38,7 @@ def check_skill():
             print(f"❌ 错误: 缺失核心 Section: {section}")
             return False
 
-    print(f"🎉 [persona-distillation-flow] SotA 动态认知操作系统 SOP 校验 100% 物理 PASS！")
+    print(f"🎉 [persona-distillation-flow] 泛领域通用 SotA 认知操作系统 SOP 校验 100% 物理 PASS！")
     return True
 
 if __name__ == '__main__':

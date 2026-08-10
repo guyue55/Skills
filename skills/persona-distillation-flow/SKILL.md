@@ -1,6 +1,6 @@
 ---
 name: "persona-distillation-flow"
-description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动态认知操作系统 (Dynamic Cognitive OS) SOP。支持全大系作品树探测、双阶段质量门禁、SillyTavern V2/V3 角色卡与动态记忆/信任阶梯/Lorebook 加固。"
+description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动态认知操作系统 (Dynamic Cognitive OS) SOP。支持泛领域（动漫/游戏/文学/历史/真人/OC/主题）全大系作品树探测、双阶段质量门禁、SillyTavern V2/V3 角色卡与动态记忆/信任阶梯/Lorebook 加固。"
 ---
 
 # 动态认知人格蒸馏工作流 SOP (`persona-distillation-flow`)
@@ -27,7 +27,7 @@ description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动�
 【女娲造人请求 · {蒸馏对象} 全大系蒸馏策略简报】
 
 蒸馏对象：{作品名/IP宇宙} —— {角色全称或主题} ({身份/定位})
-题材分类：{anime / gaming / fiction / history / real_person / original_oc}
+题材分类：{general / anime / gaming / fiction / history / real_person / original_oc / topic_advisor}
 蒸馏档位：极尽深度档（必须结合 `mattpocock/skills@research` 及 `search_web` 进行全网深度抓取）
 
 全网探测到的官方全大系作品树 (Full Franchise Lore Tree)：
@@ -87,6 +87,21 @@ N. 《{官方作品N/剧场版}》 ({年份/集数/介质})：{核心定位/关�
    * 将神兵法宝、功法门派解耦为键值触发（Keyword-Triggered Entries）的 JSON Lorebook，按需注入 Context，极致节省 Token 并防设编造。
 5. **长对话人设防漂移与自修重构协议 (Anti-Drift Self-Correction Protocol)**：
    * 在 SKILL.md 中注入运行时自我纠偏指令，在 50+ 轮长对话后强制唤醒第一人称身份，防止退化为通用客服腔。
+
+---
+
+## 🌐 泛领域特殊类别处理规范 (Universal Special Categories)
+
+为保证 SOP 适用于任意领域，遇到以下特殊类别时按规范处理：
+
+1. **历史人物与哲学家 (`history`)**
+   - 必须多源交叉验证史料，剔除后世演义与民间传说，分析其历史局限性与时代背景。
+2. **在世真人与公众人物 (`real_person`)**
+   - 标注信息搜集截止日期；重点考察其**真实决策行为（如实际投资/产品发布）**而非仅听其公关口号。
+3. **蒸馏用户自己 / 原创 OC (`original_oc`)**
+   - 切换为**访谈与私有资料阅读模式**：引导用户上传个人博客、决策备忘录或问卷提纲。
+4. **主题/方法论顾问 (`topic_advisor`)**
+   - 目标非单人而是主题（如“价值投资”、“第一原理”）：去掉角色扮演规则，转化为**领域共识框架 + 多流派分歧对比 + 案例推演**。
 
 ---
 

@@ -145,3 +145,7 @@ When asked to "check", "audit", "validate", or "review" skills:
 
 7. **Chinese Comments Requirement (中文注释)**:
    All code, Python/Bash scripts, and instructions written or modified by AI Agents MUST contain detailed, high-quality Chinese comments (`中文注释`) to maintain readability and maintainability.
+
+8. **Zero-Leakage & Sensitive Credentials Ban (隐私与敏感信息防泄密红线)**:
+   NEVER commit private, sensitive, or confidential information (e.g., API keys `sk-`, `AIza`, `ghp_`, passwords, secrets, private keys, database credentials, tokens).
+   AI Agents MUST verify all code and markdown files with `./scripts/validate_skills.py` before committing to ensure no sensitive credentials leak into Git history.

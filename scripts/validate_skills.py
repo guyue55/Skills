@@ -9,6 +9,7 @@ Skill 合规性校验脚本
 4. name 必须与所在的文件夹名称完全一致
 """
 
+import re
 import sys
 from pathlib import Path
 
@@ -102,6 +103,18 @@ def validate_skills() -> bool:
             # 绝对路径检查 (De-hardcoding / Zero-Leakage)
             if "/Users/" in content or "/home/" in content:
                 print(f"⚠️  [{folder_name}] 警告: 发现可能硬编码的绝对个人路径 (/Users/ 或 /home/)，请使用相对路径或环境变量。")
+
+            # 敏感密钥与隐私信息防护检查 (Sensitive Credentials & Secrets Scanner)
+            sensitive_patterns = [
+                (r"sk-[a-zA-Z0-9_-]{20,}", "OpenAI/Anthropic API Key"),
+                (r"AIzaSy[a-zA-Z0-9_-]{33}", "Google API Key"),
+                (r"ghp_[a-zA-Z0-9]{36}", "GitHub Personal Access Token"),
+                (r"-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----", "Private Key 密钥"),
+            ]
+            for pattern, pattern_name in sensitive_patterns:
+                if re.search(pattern, content):
+                    print(f"❌ [{folder_name}] 敏感信息红线拦截: 发现明文敏感凭据 ({pattern_name})，绝对禁止提交！")
+                    has_error = True
 
             # AI 占位符与懒惰词检查
             if "TODO:" in content or "FIXME:" in content:

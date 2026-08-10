@@ -65,6 +65,10 @@ def validate_skills() -> bool:
             has_error = True
             continue
 
+        # skill-creator 规范: 单个 Skill 目录下不应包含 README.md 等冗余文档（以 SKILL.md 为唯一入口）
+        if (folder / "README.md").exists():
+            print(f"⚠️  [{folder_name}] 提示: 根据 skill-creator 规范，子 Skill 目录下不应包含 README.md，所有导引请整合至 SKILL.md 中。")
+
         try:
             content = skill_file.read_text(encoding="utf-8")
             metadata = parse_frontmatter(content)

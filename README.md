@@ -4,7 +4,7 @@
 
 > [!IMPORTANT]
 > **AI Agent 强制遵照指令 (For All AI Tools & Agents)**:
-> 本仓库的所有 AI 工具与 Agent（如 Antigravity、Claude Code、Cursor、Windsurf、Copilot 等）在进入本项目后，**必须严格遵循 [`AGENTS.md`](AGENTS.md) 中定义的项目地图、操作 SOP 与刚性红线**。
+> 本仓库的所有 AI 工具与 Agent（如 Antigravity、Codex、Claude Code、Cursor、Windsurf、Copilot 等）在进入本项目后，**必须严格遵循 [`AGENTS.md`](AGENTS.md) 中定义的项目地图、操作 SOP 与刚性红线**。
 
 ---
 

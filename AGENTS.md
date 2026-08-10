@@ -1,6 +1,6 @@
 # Universal AI Agent Instruction Manual (AGENTS.md)
 
-> **FOR ALL AI TOOLS & AGENTS** (Antigravity, Claude Code, Cursor, Windsurf, Copilot, ChatGPT, etc.):
+> **FOR ALL AI TOOLS & AGENTS** (Antigravity, Codex, Claude Code, Cursor, Windsurf, Copilot, ChatGPT, etc.):
 > This document is the primary instruction manual for AI agents operating in this repository (`Skills`).
 > You MUST follow the directory map, step-by-step SOPs, and guardrails defined below whenever you are asked to create, edit, audit, or import skills.
 

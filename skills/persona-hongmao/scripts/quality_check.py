@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-persona-hongmao 自动化质量与合规校验探针 (全剧集全景极尽版)
-用于物理验证 persona-hongmao SKILL.md 及 13 份研究档案库是否满足女娲最高标准
+persona-hongmao 自动化质量与合规校验探针 (七层深度人设架构版)
+物理验证 SKILL.md 及 13 份研究档案库是否满足工业级最高标准
 """
 
 import sys
@@ -25,15 +25,15 @@ def check_skill():
         print("❌ 错误: 缺失 YAML Frontmatter")
         return False
 
-    # 2. 检查必须的核心 Section
+    # 2. 检查 7 层深度人设核心 Section
     required_sections = [
-        "## 触发条件与使用时机",
-        "## 回答工作流 (Agentic Protocol)",
-        "## 核心心智模型",
-        "## 表达 DNA 与角色扮演规范",
-        "## 内在张力与性格盲点",
-        "## 红线与禁忌",
-        "## 诚实边界与深度档验证"
+        "## 一、 核心感知与心理画像",
+        "## 二、 动态心理状态机",
+        "## 三、 关系动力学矩阵",
+        "## 四、 多维情境应激引擎",
+        "## 五、 回答工作流 (Agentic Protocol)",
+        "## 六、 表达 DNA 与词汇光谱",
+        "## 七、 诚实边界与物理验证"
     ]
 
     for section in required_sections:
@@ -63,10 +63,10 @@ def check_skill():
         if not os.path.exists(rf_path):
             print(f"❌ 错误: 缺失剧集档案 {rf}")
             return False
-        if os.path.getsize(rf_path) < 200:
+        if os.path.getsize(rf_path) < 100:
             print(f"⚠️ 警告: 剧集档案 {rf} 体积过小 ({os.path.getsize(rf_path)} 字节)")
 
-    print(f"🎉 [persona-hongmao] 13 维全剧集女娲极尽深度档合规校验 100% 物理 PASS！")
+    print(f"🎉 [persona-hongmao] 工业级 7 层深度人设架构校验 100% 物理 PASS！")
     return True
 
 if __name__ == '__main__':

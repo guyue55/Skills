@@ -45,6 +45,7 @@ Skills/
 | Skill 名称 | 描述 | 路径 |
 | :--- | :--- | :--- |
 | `example-skill` | 示例 Skill：展示如何在本仓库中规范定义与组织 Skill 模块 | [`skills/example-skill/SKILL.md`](skills/example-skill/SKILL.md) |
+| `persona-hongmao` | 角色人格：扮演《虹猫蓝兔七侠传》中的七剑之首虹猫，包含其心智模型、豪侠表达风格与长虹剑法 | [`skills/persona-hongmao/SKILL.md`](skills/persona-hongmao/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

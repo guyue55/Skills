@@ -22,6 +22,9 @@ Skills/
 ├── README.md                   # 本主文档（Skill 目录与概览）
 ├── AGENTS.md                   # 通用 AI Agent 指南与操作地图（唯一真理源）
 ├── CONTRIBUTING.md             # 贡献、提交与邀请协作指南
+├── .github/                    # GitHub 自动化 CI 流水线
+│   └── workflows/
+│       └── skill-ci.yml       # PR / Push 自动校验工作流
 ├── .gitignore                  # Git 忽略配置
 ├── .template/                  # Skill 标准定义模板
 │   ├── SKILL.md                # 规范模板文件
@@ -31,7 +34,8 @@ Skills/
 │       └── SKILL.md
 └── scripts/                    # 仓库维护与自动化脚手架 (+x)
     ├── create_skill.py         # 脚手架：一键创建新 Skill 模版
-    └── validate_skills.py      # 校验器：检查所有 Skill 格式与合规性
+    ├── validate_skills.py      # 校验器：检查所有 Skill 格式、脱敏与红线
+    └── setup_hooks.sh          # Git Hook 挂载：一键配置本地 pre-commit 自动校验
 ```
 
 ---

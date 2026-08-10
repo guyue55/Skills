@@ -14,6 +14,8 @@
 | `.template/SKILL.md` | Standard Skill template | Reference when scaffolding or editing skills. |
 | `scripts/create_skill.py` | CLI scaffold tool (`./scripts/create_skill.py <name> -d "<desc>"`) | Use this script to create new skill directory structures. |
 | `scripts/validate_skills.py` | Compliance validator (`./scripts/validate_skills.py`) | MUST be executed after creating/editing any skill. |
+| `scripts/setup_hooks.sh` | Local Git pre-commit installer (`./scripts/setup_hooks.sh`) | Run once locally to attach validator to `git commit`. |
+| `.github/workflows/` | GitHub Actions CI workflow | Runs `./scripts/validate_skills.py` on PR and push to main. |
 | `README.md` | Repository catalog & index table | MUST be updated whenever a skill is added/removed. |
 | `CONTRIBUTING.md` | Human & AI contribution guidelines | Reference for PR and submission standards. |
 

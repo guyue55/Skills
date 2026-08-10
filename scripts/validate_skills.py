@@ -92,13 +92,25 @@ def validate_skills() -> bool:
             if not name:
                 print(f"❌ [{folder_name}] YAML Frontmatter 缺失 'name' 字段")
                 has_error = True
-            elif name != folder_name:
-                print(f"❌ [{folder_name}] 'name' 字段 ({name}) 与文件夹名称 ({folder_name}) 不一致")
-                has_error = True
+            else:
+                if len(name) > 64:
+                    print(f"❌ [{folder_name}] 'name' 字段过长 ({len(name)} 字符)，限制在 1-64 字符以内")
+                    has_error = True
+                if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", name):
+                    print(f"❌ [{folder_name}] 'name' 字段不符合标准格式（只能包含小写字母、数字和连字符）")
+                    has_error = True
+                if name != folder_name:
+                    print(f"❌ [{folder_name}] 'name' 字段 ({name}) 与文件夹名称 ({folder_name}) 不一致")
+                    has_error = True
 
             if not desc:
                 print(f"❌ [{folder_name}] YAML Frontmatter 缺失 'description' 字段")
                 has_error = True
+
+            # 渐进式披露检测 (Progressive Disclosure - 推荐 SKILL.md 行数控制在 500 行以内)
+            line_count = len(content.splitlines())
+            if line_count > 500:
+                print(f"⚠️  [{folder_name}] 渐进式披露建议: SKILL.md 行数较多 ({line_count} 行 > 500 行)，建议将长 Schema/文档剥离至 references/ 目录。")
 
             # 绝对路径检查 (De-hardcoding / Zero-Leakage)
             if "/Users/" in content or "/home/" in content:

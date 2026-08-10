@@ -1,77 +1,85 @@
 ---
 name: "persona-distillation-flow"
-description: "工作流：工业级七层深度人格蒸馏（7-Layer Deep Persona Architecture）工作流 SOP。当用户请求蒸馏、提炼、新建或升级任意动漫、游戏、影视、历史人物或原创 IP 角色的人格 Skill 时激活使用。"
+description: "通用工作流：工业级七层深度人格蒸馏（7-Layer Universal Persona Architecture）SOP。当用户请求蒸馏、提炼、新建或升级任意动漫、游戏、影视、历史人物、现实名人或原创 IP 角色的人格 Skill 时激活使用。"
 ---
 
-# 工业级七层深度人格蒸馏 SOP (`persona-distillation-flow`)
+# 通用七层深度人格蒸馏 SOP (`persona-distillation-flow`)
 
 > [!IMPORTANT]
-> 本 SOP 是在《虹猫蓝兔》全系列实战中沉淀的**工业级 7 层深度人格蒸馏工作流**。当用户要求“蒸馏某个角色”、“新建角色人设”、“打造高保真角色 Skill”时，AI Agent 必须严格遵循本 SOP 的 5 步流程进行。
+> 本 SOP 抽取自实战炼化经验，是一套**领域无关（Domain-Agnostic）、抽象且全面**的工业级 7 层深度人格蒸馏工作流。它不依赖于任何特定题材（无论是动漫、游戏、影视、历史人物、现实名人还是原创 IP），能确保 Agent 在新会话中自动、完整输出最高品质的深度人设。
 
 ---
 
-## 🛠️ 一键脚手架工具 (CLI Scaffolder)
+## ⚙️ 一、 核心能力模型 (Core Capabilities)
 
-在开始蒸馏新角色前，可优先使用脚手架自动生成标准目录与 13 维研判库：
+人格蒸馏不仅是收集台词，而是通过以下 6 维工程能力对角色进行逆向还原：
+
+1. **知识与考据搜集能力 (Lore Intelligence)**：全网检索并提炼角色的生平履历、重大转折与名场面事实。
+2. **心智与价值观逆向工程 (Mental Model & Values)**：提取其底层第一性原理、核心渴望、深层恐惧与防御机制。
+3. **动态心理状态机建模 (FSM Behavioral Engine)**：将角色复杂的行为抽象为 5 大动态心理状态及其迁移逻辑。
+4. **关系与交互矩阵建模 (Relational Dynamics Engine)**：定义角色面对知己、同伴、宿敌、生人时的态度差异。
+5. **表达 DNA & 词汇光谱 (Linguistic Spectrum)**：提取角色的口头禅、标点呼吸节奏、句式长短与绝对禁忌光谱 (Anti-OOC)。
+6. **跨平台导出与探针物理自检 (Export & Verification)**：导出 Tavern/OpenClaw JSON 角色卡并编写 Python 质量校验探针。
+
+---
+
+## 🏗️ 二、 通用七层深度人设结构 (Universal 7-Layer Architecture)
+
+蒸馏输出的 `SKILL.md` 必须严格包含以下 7 层的抽象结构：
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   通用 7 层深度人设架构 (7-Layer)                      │
+├────────────────────────────────────────────────────────────────────────┤
+│ 一、 核心感知与心理画像 (Identity Profile) ：核心渴望/恐惧/防御机制/价值观  │
+│ 二、 动态心理状态机 (FSM State Machine)  ：[基准态]➔[应激]➔[爆发]➔[决策]➔[重铸]│
+│ 三、 关系动力学矩阵 (Relational Matrix)  ：针对不同交互对象的策略与示例      │
+│ 四、 多维情境应激引擎 (Scenario Stress Engine)：绝境/重创/诱惑/低谷应对法则   │
+│ 五、 回答工作流 (Agentic Protocol)       ：事实类问题先检索搜集真相再回答   │
+│ 六、 表达 DNA 与词汇光谱 (Lexicon Spectrum)：高频专属词/呼吸节奏/防OOC禁忌词  │
+│ 七、 诚实边界与物理验证 (System Verification)：考据文件全量检查与状态机自检 │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📋 三、 标准 5 步蒸馏流程 (Step-by-Step SOP)
+
+### Step 1: 需求解析与脚手架初始化 (Scaffolding)
+运行通用 CLI 脚手架，选择题材分类（`anime` / `gaming` / `fiction` / `history` / `real_person` / `original_oc`）：
 ```bash
-./skills/persona-distillation-flow/scripts/scaffold_persona.py persona-<name> -d "<角色简短描述>"
+./skills/persona-distillation-flow/scripts/scaffold_persona.py persona-<name> -d "<角色描述>" -c <category>
 ```
 
----
+### Step 2: 双搜集引擎深度抓取 (Dual-Engine Research)
+**⚠️ 结合 `mattpocock/skills@research` 与 `search_web` 搜集原始语料与事实：**
+1. **01-writings-and-speech.md**：原生作品/现实中的直接演讲、对白与作品文本。
+2. **02-conversations.md**：与其他核心人物的高博弈对白样本。
+3. **03-expression-dna.md**：自称、口头禅、专业术语与句式长短习惯。
+4. **04-external-views.md**：外界对该角色的评价、认知盲区与偏见。
+5. **05-decisions.md**：生平重大转折抉择与悲剧/困境应对。
+6. **06-timeline.md**：跨卷次/年代的完整人生弧光时间线。
+7. **07-lore-and-world.md**：所处世界观规则、社会阶层与文化背景。
+8. **series_01_*.md ~ series_N_*.md**：按阶段/季数/卷次划分的专属考据。
 
-## 📋 5 步极尽蒸馏标准 Sop
+### Step 3: 7 层深度人设抽象与编译 (7-Layer Persona Compilation)
+将研究考据整理并提炼为符合通用 7 层架构的 `SKILL.md`，重点完成**动态心理状态机**与**关系矩阵**的建模。
 
-### Step 1: 物理脚手架搭建 (Scaffolding)
-建立符合 AGENTS.md 规范的标准角色目录：
-```text
-skills/persona-<name>/
-├── SKILL.md                          # [主入口] 包含 7 层深度人设架构
-├── scripts/
-│   └── quality_check.py              # [探针] 自动校验 7 层架构与档案完整性
-├── assets/
-│   └── character_card.json           # [跨平台] Tavern/OpenClaw JSON 角色卡
-└── references/research/              # [13维全景研判档案库]
-    ├── 01-writings.md ~ 07-franchise-lore.md
-    └── series_01_*.md ~ series_06_*.md (各部剧集/卷次专属档案)
-```
+### Step 4: 跨平台标准卡片导出 (Character Card Generation)
+在 `assets/character_card.json` 中导出标准 OpenClaw / Tavern 格式的跨平台 JSON 角色卡。
 
-### Step 2: 全网深度考据与 13 维建档 (Deep Research)
-**⚠️ 拒绝凭空想象！必须结合 `search_web` 与 `research` 获取真实事实：**
-1. **01-writings.md**：生平台词、心法招式与名言考据。
-2. **02-conversations.md**：原著经典对白与正邪博弈。
-3. **03-expression-dna.md**：自称、尊称、高频口头禅与禁忌词。
-4. **04-external-views.md**：他人视角评价与性格盲点/偏见。
-5. **05-decisions.md**：重大转折抉择与悲剧/绝境处理。
-6. **06-timeline.md**：角色全生平跨卷次时间线。
-7. **07-franchise-lore.md**：所属 IP 宇宙的世界观与角色定位。
-8. **series_01_*.md ~ series_N_*.md**：IP 每部作品/卷次中的专属高光档案。
-
-### Step 3: 7 层深度人设 Markdown 编译 (7-Layer Engine)
-将搜集到的事实，编译为符合 **工业级 7 层深度人设架构** 的 `SKILL.md`：
-1. **一、 核心感知与心理画像**（核心渴望、深层恐惧、心理防御机制、价值观）。
-2. **二、 动态心理状态机 (FSM)**（定义 5 大动态心理状态及其迁移触发条件）。
-3. **三、 关系动力学矩阵**（定义对待知己、手足、仇敌、生人/用户等不同对象的交互策略）。
-4. **四、 多维情境应激引擎**（定义绝境围攻、至亲受害、被诬陷离间、低谷失意等场景应激哲学）。
-5. **五、 回答工作流 (Agentic Protocol)**（定义“事实类问题先搜集案情真相再回答”的检索机制）。
-6. **六、 表达 DNA 与词汇光谱**（高频专属词、标点呼吸节奏与绝对禁忌光谱）。
-7. **七、 诚实边界与物理验证**（记录 13 维档案与状态机自检勾选项）。
-
-### Step 4: 跨平台 JSON 角色卡导出 (Character Card Export)
-在 `assets/character_card.json` 中导出标准 JSON 格式角色卡，方便导入 Tavern / SillyTavern / OpenClaw 等前端平台使用。
-
-### Step 5: 双重探针与 Git 提交 (Physical Verification & Git Commit)
+### Step 5: 物理自检与版本落盘 (Verification & Versioning)
 1. 运行角色专有探针：`python3 skills/persona-<name>/scripts/quality_check.py` 确保输出 `100% 物理 PASS`。
 2. 运行仓库合规校验：`./scripts/validate_skills.py` 确保全库校验通过。
-3. 更新根目录 `README.md` 的 Skill 索引表格。
-4. 执行 Git 提交：`git add . && git commit -m "feat(skill): 新增 persona-<name> 7层深度人格Skill"`。
+3. 在根目录 `README.md` 中增加角色索引，并执行 Git 提交。
 
 ---
 
-## 🎯 蒸馏防 OOC 红线 (Guardrails)
+## 🎯 四、 蒸馏通用原则与防 OOC 红线 (Universal Principles)
 
-1. **严禁抽象空话**：不能只写“性格温柔”，必须给出“外柔内刚”的具体事实证据与状态机规则。
-2. **严禁机械套用硬编码台词**：阶段反应路由必须解耦，依据角色的表达 DNA 动态演纳，不得全局复读同一句台词。
-3. **单入口原则**：角色目录下绝不得创建 `README.md`，唯一入口必须为 `SKILL.md`。
+1. **绝对中立原则**：蒸馏过程必须严守角色原有的领域背景，不得将某个领域的惯用套路（如武侠/科幻词汇）强加给其他题材的角色。
+2. **动态解耦原则**：角色应激反应必须基于情境动态演纳，严禁硬编码单一死板的复读台词。
+3. **单入口原则**：角色目录下绝不创建 `README.md`，唯一入口必须为 `SKILL.md`。
 
 ---
-> 本工作流由 [女娲 · Skill造人术](https://github.com/alchaincyf/nuwa-skill) 与 Guyue 联合提炼生成
+> 本工作流由 [女娲 · Skill造人术](https://github.com/alchaincyf/nuwa-skill) 抽象打磨生成

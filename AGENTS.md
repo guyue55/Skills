@@ -17,7 +17,19 @@
 | `scripts/setup_hooks.sh` | Local Git pre-commit installer (`./scripts/setup_hooks.sh`) | Run once locally to attach validator to `git commit`. |
 | `.github/workflows/` | GitHub Actions CI workflow | Runs `./scripts/validate_skills.py` on PR and push to main. |
 | `README.md` | Repository catalog & index table | MUST be updated whenever a skill is added/removed. |
-| `CONTRIBUTING.md` | Human & AI contribution guidelines | Reference for PR and submission standards. |
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues (`guyue55/Skills`). See [`docs/agents/issue-tracker.md`](docs/agents/issue-tracker.md).
+
+### Triage labels
+
+Canonical role mapping enabled (`needs-triage`, `ready-for-agent`, etc.). See [`docs/agents/triage-labels.md`](docs/agents/triage-labels.md).
+
+### Domain docs
+
+Single-context repository (`AGENTS.md` + `docs/`). See [`docs/agents/domain.md`](docs/agents/domain.md).
 
 ---
 

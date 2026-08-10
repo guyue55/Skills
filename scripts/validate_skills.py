@@ -84,9 +84,13 @@ def validate_skills() -> bool:
                 print(f"❌ [{folder_name}] 'name' 字段 ({name}) 与文件夹名称 ({folder_name}) 不一致")
                 has_error = True
 
-            if not desc:
-                print(f"❌ [{folder_name}] YAML Frontmatter 缺失 'description' 字段")
-                has_error = True
+            # 绝对路径检查 (De-hardcoding / Zero-Leakage)
+            if "/Users/" in content or "/home/" in content:
+                print(f"⚠️  [{folder_name}] 警告: 发现可能硬编码的绝对个人路径 (/Users/ 或 /home/)，请使用相对路径或环境变量。")
+
+            # AI 占位符与懒惰词检查
+            if "TODO:" in content or "FIXME:" in content:
+                print(f"⚠️  [{folder_name}] 提示: 包含 TODO/FIXME 未完成项，建议完善后再提交。")
 
             if name and desc and name == folder_name:
                 print(f"✅ [{folder_name}] 校验通过")

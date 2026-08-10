@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 persona-distillation-flow 自动化质量与合规校验探针
-物理验证 persona-distillation-flow SKILL.md 是否符合女娲 SOP 标准
+物理验证 persona-distillation-flow SKILL.md 是否包含提示词门禁 (Prompt Brief Gate)
 """
 
 import sys
@@ -24,12 +24,12 @@ def check_skill():
         print("❌ 错误: 缺失 YAML Frontmatter")
         return False
 
-    # 2. 检查核心女娲 SOP 章节
+    # 2. 检查核心女娲 SOP 与门禁章节
     required_sections = [
-        "核心蒸馏引擎：女娲造人术",
+        "## 🛑 门禁步骤：生成蒸馏简报并等待确认 (Phase 0: Prompt Brief Gate)",
+        "## 🔄 核心引擎",
         "## 🛠️ 辅助加固层 (Auxiliary Reinforcement Layers)",
-        "## 📋 5 步 SOP 执行流程",
-        "## 迭代与扩展指南 (Evolution & Refactoring)"
+        "## 📋 5 步 SOP 执行流程"
     ]
 
     for section in required_sections:
@@ -37,7 +37,7 @@ def check_skill():
             print(f"❌ 错误: 缺失核心 Section: {section}")
             return False
 
-    print(f"🎉 [persona-distillation-flow] 基于女娲的 SOP 工作流合规校验 100% 物理 PASS！")
+    print(f"🎉 [persona-distillation-flow] 门禁 SOP 工作流合规校验 100% 物理 PASS！")
     return True
 
 if __name__ == '__main__':

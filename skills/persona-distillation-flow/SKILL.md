@@ -22,11 +22,11 @@ description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动�
 
 ---
 
-## 🔍 前置协议：全大系作品树探测与百科核验 (Franchise Discovery & Baike Pre-Check)
+## 🔍 前置协议：全大系作品树探测与前置事实校对 (Franchise Discovery & Fact Check)
 
-在生成 Phase 0 简报之前，Agent **必须先执行前置权威百科检查与多源交叉校对**：
+在生成 Phase 0 简报之前，Agent **必须先执行前置事实校对、权威百科检查与多源交叉去噪**：
 
-1. **权威百科存在性检查 (Baike Check)**：
+1. **前置事实校对与百科存在性检查 (Baike & Fact Check)**：
    - 优先搜索：`search_web("\"<作品名>\" site:baike.baidu.com")`
    - **风险预警**：若发现该 IP 无官方百度百科/Wiki 词条（如小众/早年小说），**必须标记为“高风险/冷门作品”**，并在简报中警示搜索引擎垃圾词缝合风险！
 2. **多源交叉验证与去噪 (Anti-Hallucination & Anti-Pollution)**：
@@ -37,7 +37,7 @@ description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动�
 
 ---
 
-## 🛑 门禁一：三层自适应高密度蒸馏策略简报 (Phase 0: 3-Layer Adaptive Strategy Gate)
+## 🛑 门禁一：前置事实校对与三层高密度策略简报 (Phase 0: Fact Check & 3-Layer Strategy Gate)
 
 > [!CAUTION]
 > **绝对拒绝空壳简报**：无论网络检索数据是否稀缺，**绝对严禁输出只有“元声明/警告”而无实质角色人设内容的空白简报**！

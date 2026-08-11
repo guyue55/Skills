@@ -105,6 +105,17 @@ N. 《{官方作品N/剧场版}》 ({年份/集数/介质})：{核心定位/关�
 
 ---
 
+## 🛑 严禁未经物理验证声称完工 (Mandatory Script Verification Protocol)
+
+> [!CAUTION]
+> **绝对物理验证红线**：绝不允许编写/修改脚本后不经物理运行便假定可用！
+> 所有新创建或修改的 Helper 脚本（如 `scaffold_persona.py`, `build_lorebook.py`, `merge_research.py`, `quality_check.py`）：
+> 1. **必须在终端实际运行测试**（含语法编译 `py_compile` 与真实边界测试）。
+> 2. **必须采集真实的 stdout/stderr 输出证据**。
+> 3. 探针与校验器全量 100% PASS 后，方可声称完工或提交 Git。
+
+---
+
 ## 📋 完整 SOP 6 步执行规范
 
 1. **Step -1: 全大系作品树探测**：调用搜索工具厘清所有续集/衍生作品。
@@ -112,7 +123,8 @@ N. 《{官方作品N/剧场版}》 ({年份/集数/介质})：{核心定位/关�
 3. **Step 1: 建立物理脚手架**：运行 `scaffold_persona.py` 初始化目录（自动配置 chara_card_v2 模板）。
 4. **Step 2: 全大系 Swarm 抓取落盘** ➔ **【生成 Phase 1.5 报告并运行 `merge_research.py` 停下等待审查】**。
 5. **Step 3: 框架提炼与 SKILL.md 编译**：使用三重验证法，并加固 SotA 4 大认知引擎。
-6. **Step 4 & 5: 探针自检、导出 `chara_card_v2` 角色卡与 Git 规范提交**。
+6. **Step 4 & 5: 探针自检、运行 `build_lorebook.py` 导出 `chara_card_v2` 角色卡，物理验证无误后 Git 规范提交**。
 
 ---
 > 本工作流集成了全球顶尖动态认知 OS 架构，由 [女娲 · Skill造人术](huashu-nuwa) 与 Guyue 联合打磨生成
+

@@ -164,3 +164,7 @@ When asked to "check", "audit", "validate", or "review" skills:
 8. **Zero-Leakage & Sensitive Credentials Ban (隐私与敏感信息防泄密红线)**:
    NEVER commit private, sensitive, or confidential information (e.g., API keys `sk-`, `AIza`, `ghp_`, passwords, secrets, private keys, database credentials, tokens).
    AI Agents MUST verify all code and markdown files with `./scripts/validate_skills.py` before committing to ensure no sensitive credentials leak into Git history.
+
+9. **Mandatory Execution Verification (新增脚本与代码物理验证红线)**:
+   NEVER assume newly created/modified scripts, code, or workflows are functional without actual execution. AI Agents MUST physically execute and test all newly added or edited scripts (including running syntax checks, dry runs, and edge-case validations) and gather concrete runtime output evidence BEFORE claiming completion or committing to Git.
+

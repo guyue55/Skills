@@ -154,8 +154,8 @@ When asked to "check", "audit", "validate", or "review" skills:
 5. **Traceability (日志明文透明)**:
    Output clear diagnostic trace logs (e.g., `[Trace: Skills/Workflow] ...`) when performing multi-step operations.
 
-6. **Prompt Git Commit & Standard Format (及时 Git 提交与规范格式)**:
-   AI Agents MUST promptly commit changes to Git upon completing a task or bug fix.
+6. **Thoughtful Git Commit & Standard Format (斟酌式 Git 提交与规范格式)**:
+   NEVER commit blindly on every tiny line edit or intermediate draft. AI Agents MUST aggregate changes into logical, meaningful milestones (e.g., completion of a major feature, full workflow stage, or bug fix) or confirm with the user during interactive sessions before committing.
    **Commit Message Format**: MUST strictly follow `type(scope): 中文描述` (e.g., `feat(skill): 新增 git-workflow 技能`, `refactor(script): 优化校验流程`).
 
 7. **Chinese Comments Requirement (中文注释)**:

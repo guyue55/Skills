@@ -118,50 +118,33 @@ description: "{description}"
         f.write(skill_content)
 
     # 5. 生成 assets/character_card.json (官方 chara_card_v2 2.0 规格)
-    card_template_file = os.path.join(script_dir, "../assets/character_card_template.json")
     card_path = os.path.join(target_dir, "assets/character_card.json")
-    if os.path.exists(card_template_file):
-        with open(card_template_file, "r", encoding="utf-8") as f:
-            card_template_str = f.read()
-        card_content = card_template_str.format(
-            CHARACTER_NAME=char_displayName,
-            IP_NAME=f"相关背景({category})",
-            CHARACTER_TITLE="核心角色",
-            CORE_DESIRE="核心目标与渴望",
-            CORE_FEAR="回避最深的恐惧",
-            PERSONALITY_SUMMARY=description,
-            PERSONALITY_DETAILED=f"{char_displayName} 核心性格特征，遵从 7 层深度人设架构。",
-            category=category
-        )
-    else:
-        card_data = {
-            "spec": "chara_card_v2",
-            "spec_version": "2.0",
-            "data": {
-                "name": char_displayName,
-                "description": description,
-                "personality": "角色核心性格描述",
-                "scenario": "角色扮演对话、决策模拟",
-                "first_mes": f"你好，我是{char_displayName}。",
-                "mes_example": f"<START>\n<user>: 你好\n<char>: 你好，我是{char_displayName}，请问有什么可以交流的？",
-                "system_prompt": f"你现在扮演{char_displayName}。遵循 7 层深度人设架构，保持性格连贯与表达 DNA。",
-                "post_history_instructions": "保持符合角色的情绪状态机。",
-                "alternate_greetings": [],
-                "tags": [category, "deep-persona", "nuwa"],
-                "creator": "女娲 · Skill造人术 (persona-distillation-flow)",
-                "character_version": "2.0",
-                "creator_notes": "基于工业级 7 层深度人设架构编译。",
-                "character_book": None,
-                "extensions": {
-                    "nuwa_version": "7.0-deep-persona",
-                    "category": category
-                }
+    card_data = {
+        "spec": "chara_card_v2",
+        "spec_version": "2.0",
+        "data": {
+            "name": char_displayName,
+            "description": description,
+            "personality": f"{char_displayName} 核心性格特征，遵从 7 层深度人设架构。",
+            "scenario": f"角色扮演对话、背景({category})决策模拟。",
+            "first_mes": f"你好，我是{char_displayName}。",
+            "mes_example": f"<START>\n<user>: 你好\n<char>: 你好，我是{char_displayName}，请问有什么可以交流的？",
+            "system_prompt": f"你现在扮演{char_displayName}。遵循 7 层深度人设架构，保持性格连贯与表达 DNA。",
+            "post_history_instructions": "保持符合角色的动态状态机。",
+            "alternate_greetings": [],
+            "tags": [category, "deep-persona", "nuwa"],
+            "creator": "女娲 · Skill造人术 (persona-distillation-flow)",
+            "character_version": "2.0",
+            "creator_notes": "基于工业级 7 层深度人设架构编译。",
+            "character_book": None,
+            "extensions": {
+                "nuwa_version": "7.0-deep-persona",
+                "category": category
             }
         }
-        card_content = json.dumps(card_data, ensure_ascii=False, indent=2)
-
+    }
     with open(card_path, "w", encoding="utf-8") as f:
-        f.write(card_content)
+        json.dump(card_data, f, ensure_ascii=False, indent=2)
 
     # 6. 生成 scripts/quality_check.py 校验探针
     qc_path = os.path.join(target_dir, "scripts/quality_check.py")

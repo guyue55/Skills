@@ -168,3 +168,8 @@ When asked to "check", "audit", "validate", or "review" skills:
 9. **Mandatory Execution Verification (新增脚本与代码物理验证红线)**:
    NEVER assume newly created/modified scripts, code, or workflows are functional without actual execution. AI Agents MUST physically execute and test all newly added or edited scripts (including running syntax checks, dry runs, and edge-case validations) and gather concrete runtime output evidence BEFORE claiming completion or committing to Git.
 
+10. **Anti-Hallucination & Zero-Action Before Approval Gate (防搜索引擎杂质缝合幻觉与前置停下门禁红线)**:
+    When performing persona distillation or research, AI Agents MUST NEVER blindly trust secondary search engine summaries, pirated novel aggregator intro pages, or SEO content farms (Tier 3 sources).
+    Agents MUST perform Baidu Baike / Wikipedia pre-checks, classify information sources into Tier 1 (High Trust), Tier 2 (Medium Trust), and Tier 3 (Forbidden for Fact Assertions), and NEVER fill in gaps with generic xianxia/urban tropes.
+    Crucially, after generating the Phase 0 Research Strategy & Fact Verification Brief, the Agent MUST IMMEDIATELY STOP tool calls and wait for explicit user approval BEFORE creating any directories, running scaffold scripts, or writing research files.
+

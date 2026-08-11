@@ -26,8 +26,9 @@ def check_skill():
 
     # 2. 检查全大系作品树探测、双门禁与 SotA 认知引擎及泛领域章节
     required_sections = [
-        "## 🔍 前置协议：全大系作品树探测与事实防混淆",
-        "## 🛑 门禁一：前置事实校对与蒸馏策略简报",
+        "## 🛡️ 前置防幻觉红线：信息源分级与去噪机制 (Information Source Tiering)",
+        "## 🔍 前置协议：全大系作品树探测与百科核验 (Franchise Discovery & Baike Pre-Check)",
+        "## 🛑 门禁一：前置事实校对与蒸馏策略简报 (Phase 0: Strategy & Fact Verification Gate)",
         "## 🔄 核心蒸馏主干",
         "## 🛠️ SotA 四大动态认知加固引擎 (Dynamic Cognitive Engines)",
         "## 🌐 泛领域特殊类别处理规范 (Universal Special Categories)"

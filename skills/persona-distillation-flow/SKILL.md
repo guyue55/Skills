@@ -140,7 +140,7 @@ description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动�
 3. **Step 1: 建立物理脚手架**：收到用户确认指令后，运行 `scaffold_persona.py` 初始化目录。
 4. **Step 2: 全大系 Swarm 抓取落盘** ➔ **【生成 Phase 1.5 报告并运行 `merge_research.py` 停下等待审查】**。
 5. **Step 3: 框架提炼与 SKILL.md 编译**：使用三重验证法，并加固 SotA 4 大认知引擎。
-6. **Step 4 & 5: 运行探针自检与 `build_lorebook.py` 导出 `chara_card_v2` 角色卡，物理验证无误后 Git 规范提交**。
+6. **Step 4 & 5: 运行探针自检与 `build_lorebook.py` 导出 `chara_card_v2` 角色卡，更新 README.md（须包含【中文名称 / 角色与作品】四列格式），物理验证无误后 Git 规范提交**。
 
 ---
 > 本工作流集成了全球顶尖动态认知 OS 架构与防幻觉去噪机制，由 [女娲 · Skill造人术](huashu-nuwa) 与 Guyue 联合打磨生成

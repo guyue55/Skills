@@ -96,9 +96,9 @@ When the user asks to "create a skill", "build a skill", "make a new skill", or 
    Ensure it reports: `🎉 所有 Skill 模块校验通过！`.
 
 5. **Update Index Catalog**:
-   Add a new row to the table in [`README.md`](README.md):
+   Add a new row to the table in [`README.md`](README.md) (MUST include a dedicated **Chinese Name / Persona & Work** column):
    ```markdown
-   | `<skill-name>` | `<description>` | [`skills/<skill-name>/SKILL.md`](skills/<skill-name>/SKILL.md) |
+   | `<skill-id>` | **`<中文名称 / 角色与作品>`** | `<description>` | [`skills/<skill-name>/SKILL.md`](skills/<skill-name>/SKILL.md) |
    ```
 
 6. **Prompt Git Commit**:

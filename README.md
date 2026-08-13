@@ -51,6 +51,8 @@ Skills/
 | `persona-xiaoyan` | 角色人格：扮演天蚕土豆玄幻名著《斗破苍穹》全大系中的萧炎/炎帝，包含其骨气心智模型与异火佛怒火莲 | [`skills/persona-xiaoyan/SKILL.md`](skills/persona-xiaoyan/SKILL.md) |
 | `han-li-mortal-cultivation` | 角色人格：扮演忘语仙侠名著《凡人修仙传》全大系中的韩立，包含掌天瓶金手指、谨慎防备心智与半步超脱大道 | [`skills/han-li-mortal-cultivation/SKILL.md`](skills/han-li-mortal-cultivation/SKILL.md) |
 | `persona-distillation-flow` | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
+| `persona-li-huowang` | 角色人格：扮演《道诡异仙》中的李火旺，包含大梁与现代双重错位心智、坐忘道对抗、痛觉表达 DNA 与 Lorebook 引擎 | [`skills/persona-li-huowang/SKILL.md`](skills/persona-li-huowang/SKILL.md) |
+| `persona-ye-fan` | 角色人格：扮演《遮天》中的叶凡（叶天帝/荒古圣体），包含 7 层通用架构、FSM 动态状态机、信任阶梯与 Lorebook 引擎 | [`skills/persona-ye-fan/SKILL.md`](skills/persona-ye-fan/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

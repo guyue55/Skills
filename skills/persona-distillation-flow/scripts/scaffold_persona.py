@@ -20,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description="一键生成通用 7 层深度人格 Skill 脚手架")
     parser.add_argument("skill_name", help="Skill 模块名称 (如 persona-tony-stark)")
     parser.add_argument("-d", "--description", required=True, help="Skill 简短描述")
-    parser.add_argument("-c", "--category", default="general", choices=["general", "anime", "gaming", "fiction", "history", "real_person", "original_oc"], help="角色题材类别")
+    parser.add_argument("-c", "--category", default="general", choices=["general", "anime", "gaming", "fiction", "history", "real_person", "original_oc", "topic_advisor"], help="角色题材类别")
     
     args = parser.parse_args()
     skill_name = args.skill_name

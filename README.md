@@ -42,24 +42,24 @@ Skills/
 
 ## 🗂️ 已收录 Skill 目录
 
-| Skill 名称 | 描述 | 路径 |
-| :--- | :--- | :--- |
-| `example-skill` | 示例 Skill：展示如何在本仓库中规范定义与组织 Skill 模块 | [`skills/example-skill/SKILL.md`](skills/example-skill/SKILL.md) |
-| `persona-hongmao` | 角色人格：扮演《虹猫蓝兔》全系列中的七剑之首虹猫，包含其心智模型、豪侠表达风格与长虹剑法 | [`skills/persona-hongmao/SKILL.md`](skills/persona-hongmao/SKILL.md) |
-| `persona-lantu` | 角色人格：扮演《虹猫蓝兔》全系列中的冰魄剑主、玉蟾宫宫主蓝兔，包含其温婉睿智、外柔内刚与冰魄剑法 | [`skills/persona-lantu/SKILL.md`](skills/persona-lantu/SKILL.md) |
-| `persona-zhangxiaofan` | 角色人格：扮演萧鼎仙侠名著《诛仙》全大系中的张小凡/鬼厉，包含其正魔相克心智模型与噬魂法宝 | [`skills/persona-zhangxiaofan/SKILL.md`](skills/persona-zhangxiaofan/SKILL.md) |
-| `persona-xiaoyan` | 角色人格：扮演天蚕土豆玄幻名著《斗破苍穹》全大系中的萧炎/炎帝，包含其骨气心智模型与异火佛怒火莲 | [`skills/persona-xiaoyan/SKILL.md`](skills/persona-xiaoyan/SKILL.md) |
-| `han-li-mortal-cultivation` | 角色人格：扮演忘语仙侠名著《凡人修仙传》全大系中的韩立，包含掌天瓶金手指、谨慎防备心智与半步超脱大道 | [`skills/han-li-mortal-cultivation/SKILL.md`](skills/han-li-mortal-cultivation/SKILL.md) |
-| `persona-distillation-flow` | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
-| `persona-li-huowang` | 角色人格：扮演《道诡异仙》中的李火旺，包含大梁与现代双重错位心智、坐忘道对抗、痛觉表达 DNA 与 Lorebook 引擎 | [`skills/persona-li-huowang/SKILL.md`](skills/persona-li-huowang/SKILL.md) |
-| `persona-ye-fan` | 角色人格：扮演《遮天》中的叶凡（叶天帝/荒古圣体），包含 7 层通用架构、FSM 动态状态机、信任阶梯与 Lorebook 引擎 | [`skills/persona-ye-fan/SKILL.md`](skills/persona-ye-fan/SKILL.md) |
-| `persona-klein-moretti` | 角色人格：扮演《诡秘之主》中的克莱恩·莫雷蒂（愚者/周明瑞），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-klein-moretti/SKILL.md`](skills/persona-klein-moretti/SKILL.md) |
-| `persona-luoji` | 角色人格：扮演《三体》中的罗辑（面壁者/执剑人/冥王星看守人），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-luoji/SKILL.md`](skills/persona-luoji/SKILL.md) |
-| `persona-zhuge-liang` | 角色人格：扮演《三国演义》与史实中的诸葛亮（蜀汉丞相/孔明），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-zhuge-liang/SKILL.md`](skills/persona-zhuge-liang/SKILL.md) |
-| `topic-munger-mental-models` | 主题顾问：查理·芒格格栅思维与安全边际顾问，包含多元思维模型格栅、逆向思考("反过来想")、人类误判心理学防范与 Lorebook 引擎 | [`skills/topic-munger-mental-models/SKILL.md`](skills/topic-munger-mental-models/SKILL.md) |
-| `topic-first-principles-musk` | 主题顾问：第一性原理与终极创业顾问（埃隆·马斯克思维模式），包含物理第一性原理、五步工作法、傻瓜指数降本、极速硬件/软件迭代与 Lorebook 引擎 | [`skills/topic-first-principles-musk/SKILL.md`](skills/topic-first-principles-musk/SKILL.md) |
-| `persona-xu-fengnian` | 角色人格：扮演《雪中悍刀行》中的徐凤年（北凉王），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-xu-fengnian/SKILL.md`](skills/persona-xu-fengnian/SKILL.md) |
-| `persona-sun-wukong` | 角色人格：扮演《西游记》中的孙悟空（齐天大圣/美猴王/斗战胜佛），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-sun-wukong/SKILL.md`](skills/persona-sun-wukong/SKILL.md) |
+| Skill 标识 (ID) | 中文名称 / 角色与作品 | 详细描述 | 路径 |
+| :--- | :--- | :--- | :--- |
+| `example-skill` | **示例 Skill 模块** | 展示如何在本仓库中规范定义与组织 Skill 模块 | [`skills/example-skill/SKILL.md`](skills/example-skill/SKILL.md) |
+| `persona-hongmao` | **《虹猫蓝兔》· 虹猫** | 扮演《虹猫蓝兔》全系列中的七剑之首虹猫，包含其心智模型、豪侠表达风格与长虹剑法 | [`skills/persona-hongmao/SKILL.md`](skills/persona-hongmao/SKILL.md) |
+| `persona-lantu` | **《虹猫蓝兔》· 蓝兔** | 扮演《虹猫蓝兔》全系列中的冰魄剑主、玉蟾宫宫主蓝兔，包含其温婉睿智、外柔内刚与冰魄剑法 | [`skills/persona-lantu/SKILL.md`](skills/persona-lantu/SKILL.md) |
+| `persona-zhangxiaofan` | **《诛仙》· 张小凡 / 鬼厉** | 扮演萧鼎仙侠名著《诛仙》全大系中的张小凡/鬼厉，包含其正魔相克心智模型与噬魂法宝 | [`skills/persona-zhangxiaofan/SKILL.md`](skills/persona-zhangxiaofan/SKILL.md) |
+| `persona-xiaoyan` | **《斗破苍穹》· 萧炎 / 炎帝** | 扮演天蚕土豆玄幻名著《斗破苍穹》全大系中的萧炎/炎帝，包含其骨气心智模型与异火佛怒火莲 | [`skills/persona-xiaoyan/SKILL.md`](skills/persona-xiaoyan/SKILL.md) |
+| `han-li-mortal-cultivation` | **《凡人修仙传》· 韩立** | 扮演忘语仙侠名著《凡人修仙传》全大系中的韩立，包含掌天瓶金手指、谨慎防备心智与半步超脱大道 | [`skills/han-li-mortal-cultivation/SKILL.md`](skills/han-li-mortal-cultivation/SKILL.md) |
+| `persona-li-huowang` | **《道诡异仙》· 李火旺** | 扮演《道诡异仙》中的李火旺，包含大梁与现代双重错位心智、坐忘道对抗、痛觉表达 DNA 与 Lorebook 引擎 | [`skills/persona-li-huowang/SKILL.md`](skills/persona-li-huowang/SKILL.md) |
+| `persona-ye-fan` | **《遮天》· 叶凡 / 叶天帝** | 扮演《遮天》中的叶凡（叶天帝/荒古圣体），包含 7 层通用架构、FSM 动态状态机、信任阶梯与 Lorebook 引擎 | [`skills/persona-ye-fan/SKILL.md`](skills/persona-ye-fan/SKILL.md) |
+| `persona-klein-moretti` | **《诡秘之主》· 克莱恩 / 愚者** | 扮演《诡秘之主》中的克莱恩·莫雷蒂（愚者/周明瑞），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-klein-moretti/SKILL.md`](skills/persona-klein-moretti/SKILL.md) |
+| `persona-luoji` | **《三体》· 罗辑 / 执剑人** | 扮演《三体》中的罗辑（面壁者/执剑人/冥王星看守人），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-luoji/SKILL.md`](skills/persona-luoji/SKILL.md) |
+| `persona-zhuge-liang` | **《三国演义》· 诸葛亮** | 扮演《三国演义》与史实中的诸葛亮（蜀汉丞相/孔明），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-zhuge-liang/SKILL.md`](skills/persona-zhuge-liang/SKILL.md) |
+| `persona-xu-fengnian` | **《雪中悍刀行》· 徐凤年** | 扮演《雪中悍刀行》中的徐凤年（北凉王），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-xu-fengnian/SKILL.md`](skills/persona-xu-fengnian/SKILL.md) |
+| `persona-sun-wukong` | **《西游记》· 孙悟空** | 扮演《西游记》中的孙悟空（齐天大圣/美猴王/斗战胜佛），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-sun-wukong/SKILL.md`](skills/persona-sun-wukong/SKILL.md) |
+| `topic-first-principles-musk` | **马斯克第一性原理顾问** | 主题顾问：第一性原理与终极创业顾问（埃隆·马斯克思维模式），包含物理第一性原理、五步工作法、傻瓜指数降本、极速硬件/软件迭代与 Lorebook 引擎 | [`skills/topic-first-principles-musk/SKILL.md`](skills/topic-first-principles-musk/SKILL.md) |
+| `topic-munger-mental-models` | **查理·芒格格栅思维顾问** | 主题顾问：查理·芒格格栅思维与安全边际顾问，包含多元思维模型格栅、逆向思考("反过来想")、人类误判心理学防范与 Lorebook 引擎 | [`skills/topic-munger-mental-models/SKILL.md`](skills/topic-munger-mental-models/SKILL.md) |
+| `persona-distillation-flow` | **深度人格蒸馏工作流 SOP** | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

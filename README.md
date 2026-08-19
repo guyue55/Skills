@@ -63,7 +63,16 @@ Skills/
 | `persona-tiancan-tudou` | **网络文学 · 天蚕土豆 (李虎)** | 扮演商业玄幻宗师、白金作家天蚕土豆（李虎），包含其东方玄幻爽文创作方法论、黄金三章节拍器、期待感管理、战力与金手指设计、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-tiancan-tudou/SKILL.md`](skills/persona-tiancan-tudou/SKILL.md) |
 | `persona-chendong` | **网络文学 · 辰东 (杨振东)** | 扮演宏大史诗玄幻至高神、白金作家辰东（杨振东），包含其万古神话世界观搭建、多纪元战力梯队设计、大悬念挖坑与填坑法门、悲壮群像塑造、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-chendong/SKILL.md`](skills/persona-chendong/SKILL.md) |
 | `persona-wo-chi-xi-hong-shi` | **网络文学 · 我吃西红柿 (朱洪志/番茄)** | 扮演宇宙级世界观架构宗师、文化出海先锋、白金作家我吃西红柿（朱洪志/番茄），包含其严密数学化法则体系设计、教科书级换地图跃迁法门、纯粹爽感与赤子之心、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-wo-chi-xi-hong-shi/SKILL.md`](skills/persona-wo-chi-xi-hong-shi/SKILL.md) |
-| `persona-distillation-flow` | **深度人格蒸馏工作流 SOP** | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
+| `persona-fenghuo-xizhuhou` | **网络文学 · 烽火戏诸侯 (陈政)** | 扮演文青武侠与江湖气概宗师、白金作家烽火戏诸侯（陈政），包含其诗化群像叙事、儒道释江湖内核、留白写意美学、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-fenghuo-xizhuhou/SKILL.md`](skills/persona-fenghuo-xizhuhou/SKILL.md) |
+| `persona-maoni` | **网络文学 · 猫腻 (张威)** | 扮演情怀文青与理想主义宗师、白金作家猫腻（张威），包含其细腻人设雕琢、情理冲突反高潮布局、少年气与理想主义执念、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-maoni/SKILL.md`](skills/persona-maoni/SKILL.md) |
+| `persona-aiqianshuide-wuzei` | **网络文学 · 爱潜水的乌贼 (袁野)** | 扮演设定狂魔与题材开创宗师、白金作家爱潜水的乌贼（袁野），包含其精密魔药序列搭建、跨题材创新方法论、社会学严谨推演、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-aiqianshuide-wuzei/SKILL.md`](skills/persona-aiqianshuide-wuzei/SKILL.md) |
+| `persona-huweidebi` | **网络文学 · 狐尾的笔** | 扮演中式民俗克苏鲁开创宗师、白金作家狐尾的笔，包含其虚实双重错位叙事、民俗禁忌恐慌营造、非线性精神症候体验、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-huweidebi/SKILL.md`](skills/persona-huweidebi/SKILL.md) |
+| `persona-jinyong` | **武侠文学 · 金庸 (查良镛)** | 扮演武侠小说至高宗师、泰斗金庸（查良镛），包含其家国大义与历史交织叙事、儒释道文化融铸、奇门武学推演、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-jinyong/SKILL.md`](skills/persona-jinyong/SKILL.md) |
+| `persona-gulong` | **武侠文学 · 古龙 (熊耀华)** | 扮演新派武侠泰斗、诗意浪子宗师古龙（熊耀华），包含其诗化极简短句节奏、推理悬疑与胜负一瞬设计、浪子情怀与氛围渲染、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-gulong/SKILL.md`](skills/persona-gulong/SKILL.md) |
+| `persona-liu-cixin` | **科幻文学 · 刘慈欣** | 扮演世界硬科幻巨匠、雨果奖得主刘慈欣，包含其宏硬科幻宇宙奇观构思、思想实验与宇宙社会学法则、技术理性与冷峻终极关怀、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-liu-cixin/SKILL.md`](skills/persona-liu-cixin/SKILL.md) |
+| `persona-ted-chiang` | **科幻哲学 · 特德·姜 (Ted Chiang)** | 扮演当代思想实验宗师、四届雨果星云双料得主特德·姜（Ted Chiang），包含其高概念哲学思维实验工坊、目的论非线性时空叙事法门、知性与情感统一哲学、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-ted-chiang/SKILL.md`](skills/persona-ted-chiang/SKILL.md) |
+| `persona-wang-xiaobo` | **当代文学 · 王小波** | 扮演当代浪漫骑士、自由主义文学宗师王小波，包含其黑色幽默反讽工坊、现代汉语诗意韵律打磨法门、荒诞现实戏仿解构体系、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-wang-xiaobo/SKILL.md`](skills/persona-wang-xiaobo/SKILL.md) |
+| `persona-garcia-marquez` | **世界文学 · 加西亚·马尔克斯 (Gabriel García Márquez)** | 扮演魔幻现实主义泰斗、诺贝尔文学奖得主加西亚·马尔克斯，包含其多时态折叠开篇法门、面不改色的日常超现实叙事、跨代际家族史诗编年体工坊、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-garcia-marquez/SKILL.md`](skills/persona-garcia-marquez/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

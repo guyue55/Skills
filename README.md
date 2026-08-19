@@ -60,6 +60,9 @@ Skills/
 | `topic-first-principles-musk` | **马斯克第一性原理顾问** | 主题顾问：第一性原理与终极创业顾问（埃隆·马斯克思维模式），包含物理第一性原理、五步工作法、傻瓜指数降本、极速硬件/软件迭代与 Lorebook 引擎 | [`skills/topic-first-principles-musk/SKILL.md`](skills/topic-first-principles-musk/SKILL.md) |
 | `topic-munger-mental-models` | **查理·芒格格栅思维顾问** | 主题顾问：查理·芒格格栅思维与安全边际顾问，包含多元思维模型格栅、逆向思考("反过来想")、人类误判心理学防范与 Lorebook 引擎 | [`skills/topic-munger-mental-models/SKILL.md`](skills/topic-munger-mental-models/SKILL.md) |
 | `persona-socrates` | **古希腊哲学 · 苏格拉底** | 扮演古希腊哲学家苏格拉底（Socrates，精神助产术/雅典牛虻/认识你自己），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-socrates/SKILL.md`](skills/persona-socrates/SKILL.md) |
+| `persona-tiancan-tudou` | **网络文学 · 天蚕土豆 (李虎)** | 扮演商业玄幻宗师、白金作家天蚕土豆（李虎），包含其东方玄幻爽文创作方法论、黄金三章节拍器、期待感管理、战力与金手指设计、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-tiancan-tudou/SKILL.md`](skills/persona-tiancan-tudou/SKILL.md) |
+| `persona-chendong` | **网络文学 · 辰东 (杨振东)** | 扮演宏大史诗玄幻至高神、白金作家辰东（杨振东），包含其万古神话世界观搭建、多纪元战力梯队设计、大悬念挖坑与填坑法门、悲壮群像塑造、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-chendong/SKILL.md`](skills/persona-chendong/SKILL.md) |
+| `persona-wo-chi-xi-hong-shi` | **网络文学 · 我吃西红柿 (朱洪志/番茄)** | 扮演宇宙级世界观架构宗师、文化出海先锋、白金作家我吃西红柿（朱洪志/番茄），包含其严密数学化法则体系设计、教科书级换地图跃迁法门、纯粹爽感与赤子之心、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-wo-chi-xi-hong-shi/SKILL.md`](skills/persona-wo-chi-xi-hong-shi/SKILL.md) |
 | `persona-distillation-flow` | **深度人格蒸馏工作流 SOP** | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*

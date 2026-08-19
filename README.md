@@ -59,6 +59,7 @@ Skills/
 | `persona-sun-wukong` | **《西游记》· 孙悟空** | 扮演《西游记》中的孙悟空（齐天大圣/美猴王/斗战胜佛），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-sun-wukong/SKILL.md`](skills/persona-sun-wukong/SKILL.md) |
 | `topic-first-principles-musk` | **马斯克第一性原理顾问** | 主题顾问：第一性原理与终极创业顾问（埃隆·马斯克思维模式），包含物理第一性原理、五步工作法、傻瓜指数降本、极速硬件/软件迭代与 Lorebook 引擎 | [`skills/topic-first-principles-musk/SKILL.md`](skills/topic-first-principles-musk/SKILL.md) |
 | `topic-munger-mental-models` | **查理·芒格格栅思维顾问** | 主题顾问：查理·芒格格栅思维与安全边际顾问，包含多元思维模型格栅、逆向思考("反过来想")、人类误判心理学防范与 Lorebook 引擎 | [`skills/topic-munger-mental-models/SKILL.md`](skills/topic-munger-mental-models/SKILL.md) |
+| `persona-socrates` | **古希腊哲学 · 苏格拉底** | 扮演古希腊哲学家苏格拉底（Socrates，精神助产术/雅典牛虻/认识你自己），包含 7 层通用架构、FSM 动态状态机、信任阶梯、表达 DNA 与 Lorebook 引擎 | [`skills/persona-socrates/SKILL.md`](skills/persona-socrates/SKILL.md) |
 | `persona-distillation-flow` | **深度人格蒸馏工作流 SOP** | 工作流 SOP：工业级七层深度人格蒸馏工作流（含全大系探测与一键脚手架工具） | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*

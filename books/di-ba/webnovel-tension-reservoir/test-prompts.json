@@ -1,0 +1,48 @@
+{
+  "skill": "webnovel-tension-reservoir",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我正在构思一段玄幻小说开局考核高潮，主角是个凡人被宗门圣子百般刁难，请帮我设计一段有层次感的情绪蓄水池和阶梯式打脸节奏。",
+      "expected_behavior": "调用 webnovel-tension-reservoir，按建立认知落差、反常悬念、三阶爆发与权威回响展开设计。",
+      "notes": "正面典型场景: 章节高潮张力铺垫"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "读者反馈我的小说打脸太生硬、爽感不足，像流水账一样。怎么做网文张力控制和情绪蓄水池管理？",
+      "expected_behavior": "调用 webnovel-tension-reservoir，诊断爽感缺失原因并提供阶梯释放方案。",
+      "notes": "正面典型场景: 节奏优化与爽感修复"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "How to design layered dramatic tension and catharsis in a xianxia webnovel arc?",
+      "expected_behavior": "调用 webnovel-tension-reservoir，以中英文双语逻辑输出四步张力管理执行流程。",
+      "notes": "正面典型场景: 英文关键词触发"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下 Python asyncio 的 event loop 是怎么实现的。",
+      "expected_behavior": "纯技术信息查询，绝不应调用本创作 skill。",
+      "notes": "无关诱饵: 编程查询"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "我想给小说主角设计一套九大天书的底层力量元规则和天花板境界，不要讲剧情怎么打脸，只讲力量体系本身。",
+      "expected_behavior": "应调用同书兄弟 skill power-ceiling-meta-rule-system，不应调用 webnovel-tension-reservoir。",
+      "notes": "兄弟 Skill 诱饵: 力量体系而非叙事张力"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想写一篇关于高中校园生活的写实日常散文，记录同桌借橡皮擦的琐事。",
+      "expected_behavior": "属于纯写实日常散文，超出网文高潮张力范畴，应明确告知不适用并采用自然日常写法。",
+      "notes": "边界测试: 纯非虚构/写实日常散文"
+    }
+  ]
+}

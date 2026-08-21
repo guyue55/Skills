@@ -73,6 +73,10 @@ Skills/
 | `persona-ted-chiang` | **科幻哲学 · 特德·姜 (Ted Chiang)** | 扮演当代思想实验宗师、四届雨果星云双料得主特德·姜（Ted Chiang），包含其高概念哲学思维实验工坊、目的论非线性时空叙事法门、知性与情感统一哲学、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-ted-chiang/SKILL.md`](skills/persona-ted-chiang/SKILL.md) |
 | `persona-wang-xiaobo` | **当代文学 · 王小波** | 扮演当代浪漫骑士、自由主义文学宗师王小波，包含其黑色幽默反讽工坊、现代汉语诗意韵律打磨法门、荒诞现实戏仿解构体系、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-wang-xiaobo/SKILL.md`](skills/persona-wang-xiaobo/SKILL.md) |
 | `persona-garcia-marquez` | **世界文学 · 加西亚·马尔克斯 (Gabriel García Márquez)** | 扮演魔幻现实主义泰斗、诺贝尔文学奖得主加西亚·马尔克斯，包含其多时态折叠开篇法门、面不改色的日常超现实叙事、跨代际家族史诗编年体工坊、7 层动态认知架构与 Lorebook 引擎 | [`skills/persona-garcia-marquez/SKILL.md`](skills/persona-garcia-marquez/SKILL.md) |
+| `webnovel-tension-reservoir` | **网络文学 · 情绪蓄水池与张力管理** | 蒸馏自《帝霸》：网文多层级情绪蓄水池与阶梯式张力释放模型，指导高潮铺垫、期待感蓄压与三段式打脸节奏编排 | [`skills/webnovel-tension-reservoir/SKILL.md`](skills/webnovel-tension-reservoir/SKILL.md) |
+| `invincible-agency-first-principles` | **网络文学 · 无敌流主角底层能动性** | 蒸馏自《帝霸》：无敌流主角高维认知差与底层能动性机制，指导运筹帷幄型主角塑造、决策逻辑推演与磐石道心稳态构建 | [`skills/invincible-agency-first-principles/SKILL.md`](skills/invincible-agency-first-principles/SKILL.md) |
+| `fractal-worldbuilding-layering` | **网络文学 · 分形世界观架构与换地图** | 蒸馏自《帝霸》：分形世界观架构与跨界平稳跃迁模型，指导数百万字超长篇小说世界观扩展、平稳换地图与宏观冲突升级 | [`skills/fractal-worldbuilding-layering/SKILL.md`](skills/fractal-worldbuilding-layering/SKILL.md) |
+| `power-ceiling-meta-rule-system` | **网络文学 · 元法则体系与力量天花板** | 蒸馏自《帝霸》：元法则体系（第一性原理）与力量天花板锚定系统，指导幻想类力量体系搭建、自创境界破界与天劫代价对冲 | [`skills/power-ceiling-meta-rule-system/SKILL.md`](skills/power-ceiling-meta-rule-system/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

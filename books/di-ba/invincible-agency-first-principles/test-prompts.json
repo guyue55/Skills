@@ -1,0 +1,48 @@
+{
+  "skill": "invincible-agency-first-principles",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我想塑造一个无敌流修仙主角，要求逼格极高、运筹帷幄、道心如磐石，不要那种无脑开挂虐菜的俗套，请帮我设计主角的人设内核和行为决策模型。",
+      "expected_behavior": "调用 invincible-agency-first-principles，按元知识垄断、终极战略主线、从容仪态与付出代价四步展开。",
+      "notes": "正面典型场景: 高智商无敌流主角建模"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "如果主角开局修为全失、沦为凡人，如何依然让读者感受到他掌控全局的绝对无敌气场与能动性？",
+      "expected_behavior": "调用 invincible-agency-first-principles，通过信息差、底层解构与闲棋调动给出行为指南。",
+      "notes": "正面典型场景: 零修为状态下的无敌能动性推演"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "How to create an invincible protagonist with high strategic agency and unwavering Dao-heart?",
+      "expected_behavior": "调用 invincible-agency-first-principles，输出无敌流主角能动性架构。",
+      "notes": "正面典型场景: 英文人设指令"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一个快速排序算法的 Java 实现代码。",
+      "expected_behavior": "纯编程任务，不应调用本创作 skill。",
+      "notes": "无关诱饵: 算法编写"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "小说第一卷完结了，主角已经称霸下界，请帮我规划从修真界飞升到仙界的换地图世界观扩展与地缘社会形态。",
+      "expected_behavior": "应调用同书兄弟 skill fractal-worldbuilding-layering，不应调用 invincible-agency-first-principles。",
+      "notes": "兄弟 Skill 诱饵: 换地图与宏观世界观演进"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想设计一个开局极度懦弱胆小、遇到危险就痛哭流涕的底层废柴受虐流小人物成长故事。",
+      "expected_behavior": "属于废柴流/弱小成长型角色，与无敌流底层能动性相悖，应明确指出边界并建议采用常规成长流范式。",
+      "notes": "边界测试: 懦弱废柴流主角"
+    }
+  ]
+}

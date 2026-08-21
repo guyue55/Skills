@@ -1,0 +1,48 @@
+{
+  "skill": "fractal-worldbuilding-layering",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我的玄幻长篇写了200万字，主角在第一界已经横推无敌了，现在要换到第二界，如何设计世界观扩展和换地图跃迁，避免老读者觉得换汤不换药弃书？",
+      "expected_behavior": "调用 fractal-worldbuilding-layering，按元主线守恒、分形形态演化、主动大事件跃迁与环境约束四步展开规划。",
+      "notes": "正面典型场景: 百万字长篇换地图世界观扩展"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "怎么构建一个多层界域（人界、灵界、仙界、神界）的分形世界观架构，既能无限扩展又不会战力崩坏？",
+      "expected_behavior": "调用 fractal-worldbuilding-layering，提供分形世界观架构模型与地缘设计方案。",
+      "notes": "正面典型场景: 多层世界观分形设计"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "How to handle map transitions and narrative scaling in a multi-million-word webnovel without reader fatigue?",
+      "expected_behavior": "调用 fractal-worldbuilding-layering，输出长篇世界观分形跃迁方案。",
+      "notes": "正面典型场景: 英文宏观世界观指令"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "请帮我写一个网页前端使用的 CSS Flexbox 居中对齐样式。",
+      "expected_behavior": "前端技术问题，绝不应调用本创作 skill。",
+      "notes": "无关诱饵: CSS 开发"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "我需要给这一章设计一个反派跳出来嘲讽、主角故意示弱、最后三段式打脸的情节节奏大纲。",
+      "expected_behavior": "应调用同书兄弟 skill webnovel-tension-reservoir，不应调用 fractal-worldbuilding-layering。",
+      "notes": "兄弟 Skill 诱饵: 章节微观打脸节奏"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我要写一个发生在密闭太空舱内的10人暴风雪山庄模式剧本杀短篇，总字数两万字。",
+      "expected_behavior": "属于单一封闭微型叙事，无需分形世界观与换地图架构，应告知不适用并采用经典悬疑封闭剧本框架。",
+      "notes": "边界测试: 短篇封闭单场景故事"
+    }
+  ]
+}

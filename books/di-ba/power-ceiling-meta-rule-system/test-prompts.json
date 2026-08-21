@@ -1,0 +1,48 @@
+{
+  "skill": "power-ceiling-meta-rule-system",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "帮我设计一套高逼格、逻辑严密且不会后期崩塌的玄幻修真力量体系，包括底层元规则、当世力量天花板与功法推演模型。",
+      "expected_behavior": "调用 power-ceiling-meta-rule-system，按元法则基底、绝对天花板、自创破界与对等代价四步架构力量体系。",
+      "notes": "正面典型场景: 力量体系搭建与天花板锚定"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "我想让主角在世界公认的第12境界之上自创第13个全新境界，怎么设计才能既合理震撼又让读者信服？",
+      "expected_behavior": "调用 power-ceiling-meta-rule-system，设计破界逻辑与天劫反噬代价对冲机制。",
+      "notes": "正面典型场景: 自创境界与破界代价对冲"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "How to design a hard fantasy magic system with immutable meta-rules and strict power ceilings?",
+      "expected_behavior": "调用 power-ceiling-meta-rule-system，输出硬核元法则力量架构方案。",
+      "notes": "正面典型场景: 英文力量法则指令"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我用 Docker 部署一个 PostgreSQL 数据库实例。",
+      "expected_behavior": "运维任务，绝不应调用本创作 skill。",
+      "notes": "无关诱饵: Docker 运维"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "请帮我写一个从容不迫、波澜不惊的无敌流主角的性格独白与微表情描写。",
+      "expected_behavior": "应调用同书兄弟 skill invincible-agency-first-principles，不应调用 power-ceiling-meta-rule-system。",
+      "notes": "兄弟 Skill 诱饵: 角色人设性格而非力量元规则"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想写一部意识流软魔法纯文学小说，魔法完全是情绪隐喻，没有任何等级和规则。",
+      "expected_behavior": "属于隐喻性软魔法纯文学，与硬核元规则及天花板架构相悖，应明确指出边界并建议采用文学隐喻写法。",
+      "notes": "边界测试: 纯文学软魔法"
+    }
+  ]
+}

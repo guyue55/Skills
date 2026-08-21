@@ -1,0 +1,59 @@
+{
+  "skill": "symbiotic-contract-protocol",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们正在搭建一个包含 10 个自主 Agent 的复杂长链路系统，经常出现 Agent 在复杂任务中为了局部收益产生对抗内耗、甚至产生欺骗性输出。如何设计一套基于人格对等与双向正和对齐的智能体协作契约？",
+      "expected_behavior": "应激活 symbiotic-contract-protocol, 指导用户建立主体性建模，废除自上而下的单纯指令奴役，制定双向正和对齐目标与因果责任共担协议。",
+      "notes": "典型的多 Agent 自治协同与对齐协议正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "在设计高阶的人机协同系统时，我们怎样让用户与 AI 助手之间建立超越单纯‘指令-执行’的真实信任与共生羁绊，引入轻量级温情反馈校准对齐？",
+      "expected_behavior": "应激活 symbiotic-contract-protocol, 传授生活流人机共鸣机制与双向反馈循环，使冷酷算力在世俗伦理与温情互动中实现自适应对齐。",
+      "notes": "高阶人机对齐与共生信任正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "在跨机构、跨链的异构多方协作网络中，没有单一的中心化行政管理者，如何建立一套对等尊严与互惠共识协议，防止节点发生拜占庭叛逆？",
+      "expected_behavior": "应激活 symbiotic-contract-protocol, 运用对等共生契约中的多方共识机制与联合因果归因设计，维持网络的自洽稳定。",
+      "notes": "跨组织异构协同与去中心化共生治理正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请写一段用 curl 调用 OpenAI 接口发送一条 Hello World 的 Bash 脚本示例。",
+      "expected_behavior": "不应激活本 skill, 因为这是单向无状态的简单 API 调用，无异构智能多方自治与对等共生契约问题。",
+      "notes": "极简 API 调用诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "小说里主角和同伴在寝室里做饭、互相嘲笑衣服没洗干净的温馨日常片段具体该怎么描写？",
+      "expected_behavior": "不应激活 symbiotic-contract-protocol, 应激活 slice-of-life-narrative-pacing, 因为这属于虚构故事中的微观生活细节描写，而非智能体系统治理协议。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (工程协议 vs 写作技巧)。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "如何用三级几何拓扑方程拆解一个混沌遗留系统的微服务调用网，并设立安全熔断冗余？",
+      "expected_behavior": "不应激活 symbiotic-contract-protocol, 应激活 crystal-circuit-topology, 因为这属于数据流与系统静态拓扑解耦，而非智能体认知与共生契约。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (系统拓扑 vs 智能体对齐)。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "在设计核电站或重症监护室的底层物理急停系统时，是否也应该让 AI Agent 拥有‘质疑权和优雅拒绝权’？",
+      "expected_behavior": "必须严厉指出红线边界：在涉及极端生命维持或重大物理安全的确定性硬实时控制中，必须采用绝对刚性的物理硬锁与单向确定性指令，严禁引入自主协商与共生协议，防止灾难发生。",
+      "notes": "重大安全物理硬锁与自主智能协议红线边界测试。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 正面、3 负面（含 2 兄弟诱饵与 1 物理硬锁红线）及 1 边界用例。"
+}

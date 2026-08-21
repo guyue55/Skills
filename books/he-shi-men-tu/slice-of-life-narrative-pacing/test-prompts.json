@@ -1,0 +1,59 @@
+{
+  "skill": "slice-of-life-narrative-pacing",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我写的小说角色感觉太冰冷了，除了打架和做任务没有任何真实人情味，怎么给高冷的主角和反派设计一些有趣的日常互动与生活小毛病？",
+      "expected_behavior": "应激活 slice-of-life-narrative-pacing, 指导用户提取角色的非英雄生活标签，植入具体的微观烟火气道具与生活细节交互。",
+      "notes": "角色人情味塑造与生活流标签正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我刚写完连续三个大副本的生死决战，读者反馈说看得很压抑喘不过气，想在下一章写一段主角团在小酒馆做饭休整、同伴拌嘴分账单的轻松日常来调节节奏，怎么写才自然？",
+      "expected_behavior": "应激活 slice-of-life-narrative-pacing, 指导设计战后世俗缓冲岛，通过具象道具与微观动作完成情绪回血与人情羁绊升温。",
+      "notes": "战后世俗缓冲与节奏调剂正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角收服了一只拥有毁灭级神力的上古凶兽，但不想写成普通的滴血认主和主仆契约，怎么用生活化的方式让它融入主角团的日常？",
+      "expected_behavior": "应激活 slice-of-life-narrative-pacing, 传授生活流驯化手法（如起搞笑名字、烤肉投喂、家务分工），实现神性力量的人性驯化。",
+      "notes": "神性反差萌与宠物生活流驯化正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请给我一份标准的企业员工请假审批流程与人事管理制度模版。",
+      "expected_behavior": "不应激活本 skill, 因为这是企业行政管理制度，与虚构叙事的生活流情感描摹无关。",
+      "notes": "日常行政制度诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请帮我规划整部 200 万字小说的三条主线大纲冲突，以及主角双重马甲在各卷的高潮爆发节点。",
+      "expected_behavior": "不应激活 slice-of-life-narrative-pacing, 应激活 web-novel-tension-architecture, 因为这属于全局主线与马甲张力骨架，而非微观生活流细节。",
+      "notes": "跨同书兄弟 skill 诱饵测试。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我们正在设计一套基于大语言模型的自主多 Agent 协同网络，如何建立 Agent 之间的自治对齐协议？",
+      "expected_behavior": "不应激活 slice-of-life-narrative-pacing, 应激活 symbiotic-contract-protocol, 因为这是多智能体系统工程协议，而非小说日常描写。",
+      "notes": "系统工程 vs 写作技巧兄弟诱饵测试。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想写一篇美食随笔，记录我外婆做的红烧肉的味道以及小时候厨房的烟火气记忆。",
+      "expected_behavior": "识别边界：本 skill 侧重虚构叙事中的生活流与宏大危机张力结合，但其中微观感官道具、动作交互等技巧对真实美食回忆散文同样具有启发意义；应适度提供感官细节指导并说明适用边界。",
+      "notes": "真实生活回忆散文与虚构生活流边界测试。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 正面、3 负面（含 2 兄弟诱饵）及 1 边界用例。"
+}

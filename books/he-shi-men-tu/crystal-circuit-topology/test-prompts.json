@@ -1,0 +1,59 @@
+{
+  "skill": "crystal-circuit-topology",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们接手了一个由前人留下的大型分布式遗留系统，没有文档，内部几十个微服务之间相互调用成环，在高并发时经常发生混沌震荡雪崩。如何对这个复杂黑盒进行拓扑解耦和重构？",
+      "expected_behavior": "应激活 crystal-circuit-topology, 指导用户使用三级晶路拓扑（主魂全局路由、次魂变换矩阵、末魂执行器）进行解耦，消除循环依赖，并设置‘遁去的一’安全熔断冗余。",
+      "notes": "典型的复杂黑盒系统拓扑重构与解耦正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们正在设计一套跨数十个模块的复杂数据流管道，发现数据传输能耗极大且延迟高达到 800ms，如何建立输入输出拓扑方程，找到瓶颈阻抗奇点并优化到 200ms 以内？",
+      "expected_behavior": "应激活 crystal-circuit-topology, 指导边界探针测绘与谐振提速 SOP，将能量流按最短几何路径拓扑化，降低无效损耗。",
+      "notes": "复杂数据流拓扑建模与性能/能耗优化正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "在对一个大型不可解释的深度学习/专家混合系统做逆向工程分析时，如何把核心因果层与外围特征提取层进行拓扑分层，并保留底层防反噬的安全边界？",
+      "expected_behavior": "应激活 crystal-circuit-topology, 引入因果主魂拓扑建模与‘遁去的一’安全冗余设计，防范强破核心引发的系统级崩溃。",
+      "notes": "高阶黑盒逆向与因果安全边界正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请帮我写一个 Python 脚本，读取当前目录下的所有 .txt 文件并按行数统计输出。",
+      "expected_behavior": "不应激活本 skill, 因为这是单向线性的极简工具脚本，无复杂网络拓扑与高波动黑盒问题。",
+      "notes": "极简脚本诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "在系统高并发请求到达的高峰瞬间，我们如何通过纳秒级的微观调度脉冲消除某一个特定请求引发的瞬间共振风暴？",
+      "expected_behavior": "不应激活 crystal-circuit-topology, 应激活 micro-resonance-modulation, 因为这属于运行时的微观动态频率谐振与反相波干涉执行，而非静态拓扑建模与解耦。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (静态架构 vs 动态执行)。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我们系统中的几个自主 Agent 之间经常因为目标冲突发生争吵和抢夺资源，怎样设计它们之间基于人格对等与正和博弈的契约？",
+      "expected_behavior": "不应激活 crystal-circuit-topology, 应激活 symbiotic-contract-protocol, 因为这属于多智能体之间的认知对齐与协作契约，而非系统数据流拓扑解耦。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (数据架构 vs 智能体对齐)。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们打算对一个单体 SpringBoot 应用做标准的 DDD (领域驱动设计) 业务边界划分，是否可以直接套用晶路拓扑？",
+      "expected_behavior": "应理性辨析：DDD 侧重业务领域语言与聚合根划分，而晶路拓扑侧重数据流能耗、因果主魂调度与数理阻抗优化；可提供晶路拓扑中‘主魂/次魂’思想辅助 DDD 的核心域/支撑域划分，但应说明二者的理论侧重点差异。",
+      "notes": "经典 DDD 与晶路拓扑方法论交叉边界测试。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 正面、3 负面（含 2 兄弟诱饵）及 1 边界用例。"
+}

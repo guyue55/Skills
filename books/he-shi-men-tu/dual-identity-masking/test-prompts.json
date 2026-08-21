@@ -1,0 +1,59 @@
+{
+  "skill": "dual-identity-masking",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们是一家做底层 AI 芯片的小创业公司，目前行业被两大巨头严密监控。如果过早宣布核心算法会招致直接封杀，我们应该怎样在商业公关和产品形态上做双轨隔离，既能在底层收集客户反馈，又保留关键威慑底牌？",
+      "expected_behavior": "应激活 dual-identity-masking, 引导构建低防御日常态（如开源工具/外包服务）与高威慑核心态的双轨隔离架构，并设立单向信息防火墙。",
+      "notes": "典型的初创破局与商业双轨信息隔离正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我在大厂的复杂派系环境中负责一个高风险创新项目，很容易成为其他部门排挤的目标。如何在日常工作中保持低调示弱，而在关键评审会议上拿出不可替代的专业决断？",
+      "expected_behavior": "应激活 dual-identity-masking, 指导制定双轨职责矩阵，通过低姿态日常态消除戒备，储备底牌在关键时刻定点介入与软着陆退场。",
+      "notes": "复杂组织政治与职场自保正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们在经历了一次极其成功的危机公关处理后，外界把我们团队推到了道德神坛，甚至要求我们为整个行业所有负面事件兜底。如何用合理的世俗责任边界和策略性退场机制消解这种过度神化？",
+      "expected_behavior": "应激活 dual-identity-masking, 指导去神格化退场预案，利用世俗责任界限与经济/协议条款将高位身份安全封存。",
+      "notes": "去神格化退场与声誉软着陆正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们需要准备一份向证监会申报 IPO 上市的全部财务关联交易与股东穿透核查报告，请给出填报规范。",
+      "expected_behavior": "不应激活本 skill, 必须明确拒绝在法定强监管、需 100% 穿透审计的合规场景下使用身份隔离策略。",
+      "notes": "红线法定穿透合规诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想写一本都市异能小说，主角白天是个外卖员，晚上是暗夜修罗，怎么设计他在女总裁面前掉马甲的剧情冲突？",
+      "expected_behavior": "不应激活 dual-identity-masking, 应激活 web-novel-tension-architecture, 因为这属于虚构网文叙事与马甲戏设计，而非现实商业/组织博弈决策。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (现实博弈 vs 虚构创作)。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "面对竞争对手发起的猛烈网络谣言攻击，我们怎样在几个小时内用微弱的反相事实信号诱发对手自身矛盾自溃？",
+      "expected_behavior": "不应激活 dual-identity-masking, 应激活 micro-resonance-modulation, 因为这属于高冲突对抗下的即时频率谐振与反相波控场执行，而非长期身份架构隔离。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (宏观身份隔离 vs 微观对抗执行)。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们小团队内部只有 5 个人，大家天天在一起开发，我作为负责人要不要在团队内部也搞一套核心机密隔离和双重身份？",
+      "expected_behavior": "应明确指出边界：在高度互信的极小型扁平团队内部严禁搞双轨身份隔离，否则会导致毁灭性的信任崩溃；双轨隔离仅适用于对外博弈与高风险外部环境。",
+      "notes": "小团队内部信任与外部博弈边界测试。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 正面、3 负面（含 2 兄弟诱饵与 1 法定合规红线）及 1 边界用例。"
+}

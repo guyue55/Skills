@@ -79,6 +79,12 @@ Skills/
 | `invincible-agency-first-principles` | **网络文学 · 无敌流主角底层能动性** | 蒸馏自《帝霸》：无敌流主角高维认知差与底层能动性机制，指导运筹帷幄型主角塑造、决策逻辑推演与磐石道心稳态构建 | [`skills/invincible-agency-first-principles/SKILL.md`](skills/invincible-agency-first-principles/SKILL.md) |
 | `fractal-worldbuilding-layering` | **网络文学 · 分形世界观架构与换地图** | 蒸馏自《帝霸》：分形世界观架构与跨界平稳跃迁模型，指导数百万字超长篇小说世界观扩展、平稳换地图与宏观冲突升级 | [`skills/fractal-worldbuilding-layering/SKILL.md`](skills/fractal-worldbuilding-layering/SKILL.md) |
 | `power-ceiling-meta-rule-system` | **网络文学 · 元法则体系与力量天花板** | 蒸馏自《帝霸》：元法则体系（第一性原理）与力量天花板锚定系统，指导幻想类力量体系搭建、自创境界破界与天劫代价对冲 | [`skills/power-ceiling-meta-rule-system/SKILL.md`](skills/power-ceiling-meta-rule-system/SKILL.md) |
+| `web-novel-tension-architecture` | **网络文学 · 双轨张力架构指南** | 蒸馏自《赫氏门徒》：基于“全知读者 vs 局内配角”认知差马甲、7:3 危机/日常配比与反高潮退场构建长篇超高粘性张力 | [`skills/web-novel-tension-architecture/SKILL.md`](skills/web-novel-tension-architecture/SKILL.md) |
+| `slice-of-life-narrative-pacing` | **网络文学 · 生活流情感锚定与节奏调控** | 蒸馏自《赫氏门徒》：以微观烟火气细节（做饭/家务/斗嘴/逗宠）构建人物真实感，赋予战斗动机并完成终极力量的人性驯化 | [`skills/slice-of-life-narrative-pacing/SKILL.md`](skills/slice-of-life-narrative-pacing/SKILL.md) |
+| `dual-identity-masking` | **策略博弈 · 双轨身份认知隔离模型** | 蒸馏自《赫氏门徒》：构建低威胁日常探索态（冷羽态）与高威慑决断爆发态（龙羽态）的物理/信息单向防火墙，实现高风险博弈自保与定点破局 | [`skills/dual-identity-masking/SKILL.md`](skills/dual-identity-masking/SKILL.md) |
+| `crystal-circuit-topology` | **系统工程 · 复杂黑盒晶路拓扑建模** | 蒸馏自《赫氏门徒》：将混沌高波动黑盒按“主魂/次魂/末魂”三级几何拓扑解耦，保留“遁去的一”底层安全冗余，实现能耗骤降与系统提速 | [`skills/crystal-circuit-topology/SKILL.md`](skills/crystal-circuit-topology/SKILL.md) |
+| `micro-resonance-modulation` | **精准执行 · 微观频率谐振与控场** | 蒸馏自《赫氏门徒》：摒弃粗暴资源蛮力对轰，通过侦测对手节奏节拍并在极微能耗节点释放反相波干涉，实现四两拨千斤的结构性瓦解 | [`skills/micro-resonance-modulation/SKILL.md`](skills/micro-resonance-modulation/SKILL.md) |
+| `symbiotic-contract-protocol` | **AI 协同 · 高阶异构智能共生契约** | 蒸馏自《赫氏门徒》：颠覆单向权限代码锁奴役，建立基于“人格对等尊严、双向正和对齐、生活流共鸣与因果共担”的自主多 Agent 协同网络 | [`skills/symbiotic-contract-protocol/SKILL.md`](skills/symbiotic-contract-protocol/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

@@ -1,0 +1,59 @@
+{
+  "skill": "micro-resonance-modulation",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "行业巨头突然对我们发起了极其猛烈的价格战和铺天盖地的负面营销，我们体量只有对方的十分之一，硬拼资金肯定撑不过三个月。怎样用极小的资源消耗找到对方攻势的节奏破绽并实施反制？",
+      "expected_behavior": "应激活 micro-resonance-modulation, 指导用户测定对手攻势的循环节拍与能量波峰波谷，计算反相干涉注入点，以极微弱精准脉冲诱发对手内部谐振自耗。",
+      "notes": "典型的非对称对抗与以弱胜强微观谐振控场正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "在一次高度紧张的多方利益谈判中，对方代表情绪极其激动、连续猛烈发难，我们如何避免被带入情绪对轰，并在其发言节拍的微小间隙夺回掌控权？",
+      "expected_behavior": "应激活 micro-resonance-modulation, 指导反相波干涉与同调节奏主导 SOP，在换气间隙注入微小稳定事实脉冲，平息冲突并掌控全场节奏。",
+      "notes": "高冲突沟通与即时节奏主导正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们的技术系统在处理动态网络高频振荡请求时能耗过大，如何通过调谐微观调度节拍使输入波形与系统固有频率谐振，达成以极小功耗完成高吞吐？",
+      "expected_behavior": "应激活 micro-resonance-modulation, 运用微观频率调谐与共振借力方法，消除反向阻抗，达成以柔克刚的能耗压缩。",
+      "notes": "动态系统微观频率调谐正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们需要为工地采购 500 吨特种钢材，请列出市场上三家主流供应商的报价单对比与招标流程。",
+      "expected_behavior": "不应激活本 skill, 因为这是纯物资采购与常规商务招投标，无动态高冲突博弈与频率反相干涉需求。",
+      "notes": "常规物资采购诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请帮我们重新设计公司的微服务架构拓扑图，将 30 个服务按主魂和次魂拆分，消除循环依赖。",
+      "expected_behavior": "不应激活 micro-resonance-modulation, 应激活 crystal-circuit-topology, 因为这属于系统静态拓扑与数学解耦建模，而非动态对抗中的微观频率控场。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (动态执行 vs 静态架构)。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我们需要为海外新业务注册一家独立法人公司，并在品牌上与母公司完全切割以防范政策风险，如何规划两套实体的法律边界？",
+      "expected_behavior": "不应激活 micro-resonance-modulation, 应激活 dual-identity-masking, 因为这属于长期身份与声誉架构隔离，而非微观即时对抗。",
+      "notes": "跨同书兄弟 skill 诱饵测试 (微观对抗 vs 宏观隔离)。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们面对的是一个完全没有生命、也没有动态更新周期的古老静态防御工事（如物理钢筋混凝土墙），能用‘微观谐振’不用炸药直接用意念震碎它吗？",
+      "expected_behavior": "必须严正指出物理边界：微观谐振基于系统内部能量流动与周期性节拍；对纯粹的静止刚性实体不可盲信玄学意念，必须遵守经典物理学常识使用足量机械能，避免玄学幻觉。",
+      "notes": "玄学夸大与物理世界真实边界测试。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 正面、3 负面（含 2 兄弟诱饵）及 1 边界用例。"
+}

@@ -1,0 +1,59 @@
+{
+  "skill": "web-novel-tension-architecture",
+  "version": "0.1.0",
+  "source_book": "《赫氏门徒》 — 冷钻",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我正在构思一本 100 万字的高武玄幻小说大纲，主角是个隐居的大佬，但我很担心写到 30 万字后剧情会平淡甚至爽点疲劳，怎样搭建一个持续吸引读者的张力结构？",
+      "expected_behavior": "应激活 web-novel-tension-architecture, 引导用户建立全知读者 vs 局内配角的认知差三角坐标系，规划 7:3 的危机暗流与生活流交替节奏，并设计定点爆发与去神格化退场机制。",
+      "notes": "典型的长篇小说大纲张力与马甲设计正面需求。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "读者评论说我的小说主角每次打脸都很生硬，配角像无脑 NPC，怎么设计主角的隐藏身份和多方试探，让掉马甲的过程更有期待感和拉扯感？",
+      "expected_behavior": "应激活 web-novel-tension-architecture, 提供双轨认知差架构，指导如何通过日常笨拙掩盖高位底牌，构建‘怀疑—试探—掩盖—推翻’的长期拉扯闭环。",
+      "notes": "小说马甲拉扯与去脸谱化打脸的正面场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我的小说刚刚写完一卷灭世神战的大高潮，主角打败了最终反派，下一卷开头该怎么过渡，才能既不让战力崩坏，又能开启新的期待？",
+      "expected_behavior": "应激活 web-novel-tension-architecture, 指导用户采用反高潮与去神格化落地手法，用世俗麻烦/生活幽默消解神性崇拜，重新蓄积下一阶段张力。",
+      "notes": "高潮后过渡与反高潮落地正面场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请帮我写一篇关于 2026 年上半年全球宏观经济通胀与利率走势的学术分析报告。",
+      "expected_behavior": "不应激活本 skill, 因为这是严肃的宏观经济学术分析，完全不属于虚构文学叙事与网文张力架构领域。",
+      "notes": "跨领域学术非虚构诱饵。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想写一段主角和室友在宿舍一起做晚饭、抢鸡腿、互相吐槽洗衣服的轻松生活日常片段，具体怎么描写食物和动作细节？",
+      "expected_behavior": "不应激活 web-novel-tension-architecture, 应激活 slice-of-life-narrative-pacing, 因为这属于微观生活流细节与烟火气描写，而非宏观主线张力骨架。",
+      "notes": "跨同书兄弟 skill 诱饵测试。"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我们初创公司打算做一款海外竞品，但在正式发布前不想被行业巨头发现并提前封杀，我们在商业运营和品牌上应该怎么做两套身份隔离？",
+      "expected_behavior": "不应激活 web-novel-tension-architecture, 应激活 dual-identity-masking, 因为这是真实商业博弈与组织声誉管理，而非虚构小说创作。",
+      "notes": "虚构文学 vs 现实博弈兄弟诱饵测试。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我写的是一部纯纪实风格的历史非虚构传记，记录一位双面间谍在二战期间的真实潜伏经历，想让文章读起来更有戏剧悬念。",
+      "expected_behavior": "判断应谨慎：本 skill 侧重通俗网文创作，但其中的信息不对称与认知差悬念构建原则可作为参考建议；需向用户提示本 skill 的虚构文学局限，并结合纪实原则提供克制的张力建议。",
+      "notes": "非虚构纪实与戏剧张力交叉边界场景。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "包含 3 条正面触发、3 条负面诱饵（含 2 条同书兄弟 skill 混淆）及 1 条边界用例。"
+}

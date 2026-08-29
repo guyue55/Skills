@@ -2,30 +2,35 @@
 """
 领域引擎与心智模型蒸馏生成器 (Domain Engine Distiller CLI)
 
-功能：
-    根据输入的领域目标、底层技术与 5 大常识要素，一键自动生成：
-    1. 领域引擎架构设计白皮书 (ARCHITECTURE.md)
-    2. 10 行极简 Hello World 语法契约与 TypeScript 类型规范
-    3. 领域引擎 5 大卡槽元数据配置 (engine_blueprint.json)
-    4. 爆款 Demo 矩阵规划
+功能特性：
+    1. 预设驱动与定制化蒸馏：内置 8 大前沿领域标准模型（WebGPU、端侧AI、WebAudio、3DGS、生物计算、WebXR、量化金融、无限画布）。
+    2. 架构与规范全量产出：一键生成架构白皮书 (ARCHITECTURE.md)、10 行极简代码与元数据 (engine_blueprint.json)。
+    3. 工业级 TypeScript 项目脚手架 (--scaffold-ts)：一键搭建基于 Vite + TS 的完整引擎源码骨架。
+    4. 领域引擎统治力智能审计与评分 (--audit <file>)：评估 5 大卡槽完备度、DX 摩擦力与逃生舱设计，输出评分报告。
 
 用法示例：
-    # 1. 使用内置预设快速生成 WebGPU 计算引擎蓝图
+    # 1. 使用内置预设快速生成 WebGPU 计算引擎白皮书
     python3 scripts/distill_engine.py --preset webgpu --output-dir ./output/webgpu-engine
 
-    # 2. 自定义参数生成专属领域引擎
+    # 2. 生成完整的 TypeScript 引擎源码项目骨架
+    python3 scripts/distill_engine.py --preset webai --scaffold-ts --output-dir ./output/webai-project
+
+    # 3. 对已有引擎蓝图进行统治力评分审计
+    python3 scripts/distill_engine.py --audit ./output/webgpu-engine/engine_blueprint.json
+
+    # 4. 自定义参数生成专属领域引擎
     python3 scripts/distill_engine.py \
-        --name "QuantumSim.js" \
-        --domain "量子线路与量子态模拟" \
-        --substrate "WebAssembly + SIMD 向量化复数矩阵乘法" \
-        --container "QuantumCircuit (量子线路舞台)" \
-        --driver "QubitRegister (量子比特寄存器驱动)" \
-        --structure "GateTopology (量子门逻辑拓扑)" \
-        --property "UnitaryMatrix (酉矩阵演化算符)" \
-        --entity "QuantumGate (量子门操作实体)" \
-        --environment "NoiseChannel (退相干与量子噪声场)" \
-        --engine "StateVectorEngine (态矢量并行演化引擎)" \
-        --output-dir ./output/quantum-engine
+        --name "BioFoldMesh.js" \
+        --domain "端侧蛋白质折叠与分子动力学" \
+        --substrate "WebAssembly SIMD + WebGPU 力场计算" \
+        --container "ProteinStage (分子演化舞台)" \
+        --driver "DynamicsDriver (动力学演化驱动器)" \
+        --structure "ResidueSequence (氨基酸残基拓扑)" \
+        --property "ElectrostaticMaterial (静电势与范德华力材质)" \
+        --entity "ProteinMolecule (蛋白质大分子实体)" \
+        --environment "SolventEnvironment (水溶剂与离子热噪声场)" \
+        --engine "MolecularDynamicsEngine (分子动力学实时计算引擎)" \
+        --output-dir ./output/bio-engine
 """
 
 import argparse
@@ -33,9 +38,9 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List
 
-# 内置预设库：涵盖 4 大前沿领域的标准蒸馏模型
+# 8 大前沿领域内置预设库
 PRESETS: Dict[str, Dict[str, Any]] = {
     "webgpu": {
         "name": "ComputeFlow.js",
@@ -45,7 +50,7 @@ PRESETS: Dict[str, Dict[str, Any]] = {
         "driver": "DispatchController (GPU 工作组分派调度器)",
         "structure": "GridGeometry (空间网格/粒子数据拓扑)",
         "property": "ComputeKernel (WGSL 计算着色器材质/算子)",
-        "entity": "SimParticle/SimField (仿真粒子与连续物理场)",
+        "entity": "SimField (物理场具象化个体)",
         "environment": "PhysicalForce (重力场、风场与阻尼环境)",
         "engine": "ComputeEngine (WebGPU 设备管线与渲染互操作引擎)",
         "hello_world_code": """// 1. 初始化仿真舞台与引擎
@@ -140,6 +145,110 @@ scene.add(new ViewCamera({ fov: 60, position: [0, 5, 10] }));
 
 // 3. 启动实景渲染循环
 renderer.render(scene);"""
+    },
+    "biofold": {
+        "name": "BioFoldMesh.js",
+        "domain": "端侧生物大分子折叠与分子动力学",
+        "substrate": "WebAssembly SIMD + WebGPU 3D 空间力场计算",
+        "container": "ProteinStage (蛋白质分子演化舞台)",
+        "driver": "DynamicsDriver (动力学演化驱动器)",
+        "structure": "ResidueSequence (氨基酸残基拓扑骨架)",
+        "property": "ElectrostaticMaterial (静电势与范德华力材质)",
+        "entity": "ProteinMolecule (蛋白质大分子实体)",
+        "environment": "SolventEnvironment (水溶剂与离子热噪声场)",
+        "engine": "MolecularDynamicsEngine (分子动力学实时计算引擎)",
+        "hello_world_code": """// 1. 初始化分子舞台与引擎
+const stage = new ProteinStage();
+const engine = new MolecularDynamicsEngine();
+
+// 2. 组装蛋白质实体 (残基骨架 + 静电力场)
+const protein = new ProteinMolecule({
+  structure: new ResidueSequence({ pdb: './assets/hemoglobin.pdb' }),
+  property: new ElectrostaticMaterial({ dielectric: 78.5 })
+});
+stage.add(protein);
+stage.add(new SolventEnvironment({ temperature: 310 }));
+
+// 3. 启动分子动力学演化模拟
+engine.simulate(stage);"""
+    },
+    "webxr": {
+        "name": "SpatialCraft.js",
+        "domain": "WebXR 空间计算与 MR 手势交互",
+        "substrate": "WebXR Device API + Hand Tracking + Hit Test + Spatial Anchors",
+        "container": "SpatialStage (虚实共生空间上下文)",
+        "driver": "SpatialController (双手25骨节与视线凝视驱动)",
+        "structure": "SpatialAnchorGrid (空间锚点与房间几何拓扑)",
+        "property": "HolographicMaterial (全息光效与深度遮蔽材质)",
+        "entity": "SpatialWidget (悬浮空间 UI 与交互实体)",
+        "environment": "PassthroughLighting (真实环境光照估计场)",
+        "engine": "SpatialEngine (WebXR 立体双目渲染与触觉引擎)",
+        "hello_world_code": """// 1. 创建空间舞台与引擎
+const stage = new SpatialStage();
+const engine = new SpatialEngine({ referenceSpace: 'local-floor' });
+
+// 2. 创建空间全息交互面板
+const panel = new SpatialWidget({
+  structure: new SpatialAnchorGrid({ position: [0, 1.2, -1.0] }),
+  material: new HolographicMaterial({ blur: 16 })
+});
+stage.add(panel);
+stage.add(new SpatialController({ mode: 'hands-and-gaze' }));
+
+// 3. 启动 WebXR 会话循环
+engine.startSession(stage);"""
+    },
+    "quant": {
+        "name": "QuantFlow.js",
+        "domain": "量化金融高频行情流与策略回测",
+        "substrate": "WebSocket Binary Stream + Arrow/Parquet + WebAssembly SIMD",
+        "container": "MarketStage (多资产订单簿与行情舞台)",
+        "driver": "TickDriver (高频行情流与回放驱动器)",
+        "structure": "OrderBookSeries (密集深度图与K线拓扑)",
+        "property": "AlphaStrategy (量化因子与交易策略材质)",
+        "entity": "TradingPortfolio (策略投资组合实体)",
+        "environment": "MarketMicrostructure (流动性冲击与延迟波动场)",
+        "engine": "QuantEngine (超低延迟回测与流转引擎)",
+        "hello_world_code": """// 1. 创建行情舞台与回测引擎
+const stage = new MarketStage();
+const engine = new QuantEngine();
+
+// 2. 组装量化策略组合
+const portfolio = new TradingPortfolio({
+  structure: new OrderBookSeries({ symbol: 'BTC-USDT' }),
+  strategy: new AlphaStrategy({ fastEMA: 12, slowEMA: 26 })
+});
+stage.add(portfolio);
+stage.add(new TickDriver({ speed: 10.0 }));
+
+// 3. 启动毫秒级实时回测
+engine.backtest(stage);"""
+    },
+    "nodecanvas": {
+        "name": "NodeCanvas.js",
+        "domain": "无限画布与生成式节点图元引擎",
+        "substrate": "Canvas2D/WebGL 混合管线 + 空间四叉树索引 + DAG 拓扑流",
+        "container": "CanvasStage (无限空间画布舞台)",
+        "driver": "ViewportCamera (平移缩放与视口驱动器)",
+        "structure": "DAGGraphTopology (节点与端口连线网络)",
+        "property": "NodeSkinMaterial (节点外观主题与流光材质)",
+        "entity": "GraphNode (功能图元实体)",
+        "environment": "GridSnapField (磁吸对齐网格与碰撞力场)",
+        "engine": "CanvasEngine (四叉树视锥剔除与渲染引擎)",
+        "hello_world_code": """// 1. 创建画布舞台与引擎
+const stage = new CanvasStage();
+const engine = new CanvasEngine({ container: '#canvas-root' });
+
+// 2. 创建计算图元节点
+const node = new GraphNode({
+  structure: new DAGGraphTopology({ inputs: 2, outputs: 1 }),
+  material: new NodeSkinMaterial({ theme: 'dark-cyber' })
+});
+stage.add(node);
+stage.add(new ViewportCamera({ zoom: 1.0 }));
+
+// 3. 启动渲染与连线交互循环
+engine.render(stage);"""
     }
 }
 
@@ -237,7 +346,286 @@ def generate_architecture_doc(data: Dict[str, Any]) -> str:
 """
 
 
-def generate_blueprint(data: Dict[str, Any], output_dir: Path):
+def generate_typescript_scaffold(data: Dict[str, Any], output_dir: Path):
+    """一键生成基于 Vite + TypeScript 的完整引擎项目源码结构"""
+    src_dir = output_dir / "src"
+    core_dir = src_dir / "core"
+    types_dir = src_dir / "types"
+    examples_dir = output_dir / "examples"
+
+    for d in [core_dir, types_dir, examples_dir]:
+        d.mkdir(parents=True, exist_ok=True)
+
+    c_name = data['container'].split()[0]
+    d_name = data['driver'].split()[0]
+    s_name = data['structure'].split()[0]
+    p_name = data['property'].split()[0]
+    ent_name = data['entity'].split()[0]
+    env_name = data['environment'].split()[0]
+    eng_name = data['engine'].split()[0]
+
+    # package.json
+    pkg_json = {
+        "name": data["name"].lower().replace(".js", "").replace(" ", "-"),
+        "version": "0.1.0",
+        "description": data["domain"],
+        "main": "dist/index.js",
+        "module": "dist/index.mjs",
+        "types": "dist/index.d.ts",
+        "scripts": {
+            "dev": "vite",
+            "build": "vite build && tsc --emitDeclarationOnly",
+            "test": "vitest"
+        },
+        "devDependencies": {
+            "typescript": "^5.3.3",
+            "vite": "^5.1.4",
+            "vitest": "^1.3.1"
+        }
+    }
+    with open(output_dir / "package.json", "w", encoding="utf-8") as f:
+        json.dump(pkg_json, f, indent=2, ensure_ascii=False)
+
+    # tsconfig.json
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2022",
+            "module": "ESNext",
+            "moduleResolution": "bundler",
+            "declaration": True,
+            "strict": True,
+            "esModuleInterop": True,
+            "skipLibCheck": True,
+            "outDir": "dist"
+        },
+        "include": ["src/**/*"]
+    }
+    with open(output_dir / "tsconfig.json", "w", encoding="utf-8") as f:
+        json.dump(tsconfig, f, indent=2)
+
+    # src/types/index.ts
+    types_code = f"""/**
+ * {data['name']} 核心类型定义
+ */
+
+export interface Disposable {{
+  dispose(): void;
+}}
+
+export interface EngineConfig {{
+  target?: string | HTMLElement;
+  powerPreference?: 'high-performance' | 'low-power';
+  antialias?: boolean;
+}}
+
+export interface EntityOptions<TStructure, TProperty> {{
+  structure: TStructure;
+  property: TProperty;
+  name?: string;
+}}
+"""
+    with open(types_dir / "index.ts", "w", encoding="utf-8") as f:
+        f.write(types_code)
+
+    # src/core/container.ts
+    with open(core_dir / "container.ts", "w", encoding="utf-8") as f:
+        f.write(f"""import {{ Disposable }} from '../types';
+import {{ {ent_name} }} from './entity';
+
+/**
+ * {data['container']}
+ * 容纳所有实体与环境场的全局宇宙舞台
+ */
+export class {c_name} implements Disposable {{
+  public readonly children: {ent_name}[] = [];
+  public readonly environments: any[] = [];
+
+  public add(item: {ent_name} | any): this {{
+    if (item instanceof {ent_name}) {{
+      this.children.push(item);
+    }} else {{
+      this.environments.push(item);
+    }}
+    return this;
+  }}
+
+  public remove(item: {ent_name} | any): this {{
+    const idx = this.children.indexOf(item);
+    if (idx !== -1) this.children.splice(idx, 1);
+    return this;
+  }}
+
+  public dispose(): void {{
+    this.children.forEach(c => c.dispose());
+    this.children.length = 0;
+    this.environments.length = 0;
+  }}
+}}
+""")
+
+    # src/core/entity.ts
+    with open(core_dir / "entity.ts", "w", encoding="utf-8") as f:
+        f.write(f"""import {{ Disposable, EntityOptions }} from '../types';
+
+/**
+ * {data['entity']}
+ * 具象化操作个体 (Structure ⊗ Property)
+ */
+export class {ent_name} implements Disposable {{
+  public structure: any;
+  public property: any;
+  public name: string;
+
+  constructor(options: {{ structure: any; property: any; name?: string }}) {{
+    this.structure = options.structure;
+    this.property = options.property;
+    this.name = options.name || '{ent_name}';
+  }}
+
+  public dispose(): void {{
+    if (this.structure && typeof this.structure.dispose === 'function') {{
+      this.structure.dispose();
+    }}
+    if (this.property && typeof this.property.dispose === 'function') {{
+      this.property.dispose();
+    }}
+  }}
+}}
+""")
+
+    # src/core/engine.ts
+    with open(core_dir / "engine.ts", "w", encoding="utf-8") as f:
+        f.write(f"""import {{ EngineConfig, Disposable }} from '../types';
+import {{ {c_name} }} from './container';
+
+/**
+ * {data['engine']}
+ * 核心调度与管线输出引擎
+ */
+export class {eng_name} implements Disposable {{
+  private _config: EngineConfig;
+  private _isRunning: boolean = false;
+  private _nativeHandle: any = null;
+
+  constructor(config: EngineConfig = {{}}) {{
+    this._config = config;
+  }}
+
+  /**
+   * 专家逃生舱：获取底层硬件句柄
+   */
+  public getNativeHandle<T>(): T {{
+    return this._nativeHandle as T;
+  }}
+
+  public run(stage: {c_name}): void {{
+    this._isRunning = true;
+    console.log(`🚀 [{data['name']}] 引擎主循环已启动，当前管理实体数: ${{stage.children.length}}`);
+  }}
+
+  public stop(): void {{
+    this._isRunning = false;
+  }}
+
+  public dispose(): void {{
+    this.stop();
+  }}
+}}
+""")
+
+    # src/index.ts
+    with open(src_dir / "index.ts", "w", encoding="utf-8") as f:
+        f.write(f"""export * from './types';
+export * from './core/container';
+export * from './core/entity';
+export * from './core/engine';
+""")
+
+    # examples/index.html
+    html_demo = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{data['name']} - 10秒极简 Playground</title>
+  <style>
+    body {{ background: #0b0d19; color: #fff; font-family: system-ui; padding: 40px; }}
+    pre {{ background: #1a1e36; padding: 16px; border-radius: 8px; color: #00d2ff; }}
+  </style>
+</head>
+<body>
+  <h1>✨ {data['name']} 运行中</h1>
+  <p>领域：{data['domain']}</p>
+  <pre>{data['hello_world_code']}</pre>
+</body>
+</html>
+"""
+    with open(examples_dir / "index.html", "w", encoding="utf-8") as f:
+        f.write(html_demo)
+
+
+def audit_blueprint(blueprint_path: Path) -> bool:
+    """对领域引擎蓝图进行统治力指标评分与合规审计"""
+    if not blueprint_path.exists():
+        print(f"❌ 错误: 找不到蓝图文件: {blueprint_path}")
+        return False
+
+    with open(blueprint_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    print(f"\n🔬 [Three.js 统治力引擎审计报告: {data.get('name', 'Unknown')}]")
+    print("=" * 60)
+
+    score = 100
+    deductions: List[str] = []
+
+    # 1. 检查 5 大卡槽完备性
+    required_slots = ["container", "driver", "structure", "property", "entity", "environment", "engine"]
+    for slot in required_slots:
+        if not data.get(slot):
+            deductions.append(f"缺失五常识核心卡槽: {slot} (-15分)")
+            score -= 15
+
+    # 2. 检查名称直觉性（避免学术黑话）
+    complex_jargons = ["heterogeneous", "differentiable", "isomorphic", "tensorarray", "subroutine"]
+    for k, v in data.items():
+        if isinstance(v, str):
+            for jargon in complex_jargons:
+                if jargon in v.lower():
+                    deductions.append(f"发现概念学术黑话 '{jargon}' 于 {k}，违反低认知负荷准则 (-5分)")
+                    score -= 5
+
+    # 3. 检查 10 行极简契约行数
+    code = data.get("hello_world_code", "")
+    lines = [l for l in code.strip().splitlines() if l.strip() and not l.strip().startswith("//")]
+    if len(lines) > 15:
+        deductions.append(f"Hello World 代码量过长 ({len(lines)} 行 > 15 行)，破坏 180 秒多巴胺体验 (-10分)")
+        score -= 10
+
+    # 4. 检查底层痛点描述
+    if not data.get("substrate") or len(data.get("substrate", "")) < 10:
+        deductions.append("底层技术痛点描述过弱，缺乏足够的降维势能 (-10分)")
+        score -= 10
+
+    print(f"📊 统治力综合得分: {max(0, score)} / 100")
+    if score >= 90:
+        print("🏆 评级: S 级 (具备成为领域绝对统治标准的潜力)")
+    elif score >= 75:
+        print("🥇 评级: A 级 (设计优秀，稍作打磨即可引爆社区)")
+    else:
+        print("⚠️ 评级: B/C 级 (需进一步重构心智模型与代码契约)")
+
+    if deductions:
+        print("\n🔧 优化建议项:")
+        for d in deductions:
+            print(f"  • {d}")
+    else:
+        print("\n✨ 恭喜！各项指标全部符合顶级领域引擎设计规范！")
+
+    print("=" * 60 + "\n")
+    return score >= 75
+
+
+def generate_blueprint(data: Dict[str, Any], output_dir: Path, scaffold_ts: bool = False):
     """输出完整的领域引擎脚手架目录与文件"""
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -256,6 +644,10 @@ def generate_blueprint(data: Dict[str, Any], output_dir: Path):
     with open(example_js, "w", encoding="utf-8") as f:
         f.write(data["hello_world_code"] + "\n")
 
+    if scaffold_ts:
+        generate_typescript_scaffold(data, output_dir)
+        print(f"📦 已同步生成 TypeScript 完整工程骨架 (src/core, package.json, vite.config)")
+
     print(f"✨ 领域引擎蓝图已成功生成至: {output_dir}")
     print(f"   ├── 📄 {blueprint_json.name} (元数据配置)")
     print(f"   ├── 📘 {arch_md.name} (架构白皮书)")
@@ -264,7 +656,7 @@ def generate_blueprint(data: Dict[str, Any], output_dir: Path):
 
 def main():
     parser = argparse.ArgumentParser(description="领域引擎与心智模型蒸馏生成器 (Three.js of Any Domain)")
-    parser.add_argument("--preset", choices=list(PRESETS.keys()), help="使用内置领域预设 (webgpu / webai / webaudio / splatting)")
+    parser.add_argument("--preset", choices=list(PRESETS.keys()), help="使用内置 8 大领域预设")
     parser.add_argument("--name", help="引擎库名称 (例如: ComputeFlow.js)")
     parser.add_argument("--domain", help="领域方向说明 (例如: WebGPU 通用计算)")
     parser.add_argument("--substrate", help="底层地狱级技术 (例如: WebGPU WGSL)")
@@ -275,9 +667,15 @@ def main():
     parser.add_argument("--entity", help="实体个体概念 (对应 Mesh)")
     parser.add_argument("--environment", help="外部环境概念 (对应 Light)")
     parser.add_argument("--engine", help="管线引擎概念 (对应 Renderer)")
+    parser.add_argument("--scaffold-ts", action="store_true", help="一键生成完整 TypeScript 项目源码脚手架")
+    parser.add_argument("--audit", help="对指定 engine_blueprint.json 进行统治力指标审计与评分")
     parser.add_argument("-o", "--output-dir", default="./output/domain-engine", help="输出目录")
 
     args = parser.parse_args()
+
+    if args.audit:
+        audit_blueprint(Path(args.audit).resolve())
+        sys.exit(0)
 
     if args.preset:
         data = PRESETS[args.preset].copy()
@@ -310,7 +708,7 @@ def main():
         }
 
     out_path = Path(args.output_dir).resolve()
-    generate_blueprint(data, out_path)
+    generate_blueprint(data, out_path, scaffold_ts=args.scaffold_ts)
 
 
 if __name__ == "__main__":

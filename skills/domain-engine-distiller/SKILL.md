@@ -17,6 +17,7 @@ description: "用于将复杂、晦涩的底层技术（如 WebGPU、端侧 AI�
 2. **重构反人类 API**：现存工具链过于学术、底层、碎片化，需要将其重新封装为“符合人类直觉”的现代心智模型。
 3. **打造现象级开源项目**：规划一个具备高传播力、极速“10秒多巴胺反馈”、并能建立开发者生态垄断的领域级引擎。
 4. **技术选型与蓝图推演**：需要评估某个新技术赛道是否适合开发专属引擎，并推导其 5 大常识概念与 10 行 Hello World 语法契约。
+5. **审计与评估现有引擎架构**：对已有开源库的心智模型、DX 摩擦力、逃生舱完备性进行量化审计与打分。
 
 ---
 
@@ -32,7 +33,7 @@ $$\mathbf{World} = \mathbf{Container} + \mathbf{Driver} + \mathbf{Entity}(\mathb
 | **2. 观察/驱动 (Driver)** | 观测视角与交互动力 | `Camera` (相机) | 决定视点位置、交互输入源或事件驱动调度 |
 | **3. 结构体 (Structure)** | 对象的本质拓扑骨架 | `Geometry` (几何体) | 承载空间网格、张量维度、波形采样或数据拓扑 |
 | **4. 属性质感 (Property)** | 对象的演化算子与质感 | `Material` (材质) | 承载着色器逻辑、物理材质、AI 人格配置或 DSP 滤镜 |
-| **5. 实体合成 (Entity)** | 结构与属性的具象化单元 | `Mesh` (网格物体) | 独立可操作单元，`Entity = Structure ⊗ Property` |
+| **5. 实体合成 (Entity)** | 结构与属性的具象化单元 | `Mesh` (网格物体) | 独立可操作单元，$\text{Entity} = \text{Structure} \otimes \text{Property}$ |
 | **6. 环境场 (Environment)** | 全局外部影响与规则 | `Light` (灯光) | 影响实体的外部场（光照、重力、网络噪音、安全边界） |
 | **7. 管线引擎 (Engine)** | 硬件调度与输出中心 | `Renderer` (渲染器) | 消费容器拓扑，执行多线程/GPU 调度并输出最终结果 |
 
@@ -49,47 +50,48 @@ graph LR
 
 ### 阶段 1：底座断层诊断 (Substrate Gap Analysis)
 1. 识别底层技术的 **3 大地狱脏活**：状态机顺序依赖、内存/显存手动管理、复杂数学/硬件调度。
-2. 设定**痛点消除目标**：将原生 200 行以上的繁琐配置，压缩至 10 行以内（消除倍率 $\ge 20\times$）。
-3. 检查范式红利窗口，确保底层技术处于爆发前夕（如标准刚落地但工具链空缺）。
+2. 设定**痛点消除目标**：将原生 200 行以上的繁琐配置，压缩至 10 行以内（消除倍率 $\Delta \mathbf{P}_{\text{pain}} \ge 20\times$）。
+3. 检查范式红利窗口，确保底层技术处于爆发前夕（如硬件普及或 W3C 标准落地但生态空缺）。
 
 ### 阶段 2：灵魂常识投影 (Mental Model Distillation)
 1. 将目标领域的概念映射填入 **5 大常识卡槽**（容器、驱动、结构体、属性质感、管线引擎）。
 2. **严禁生造学术黑话**：概念名称必须让普通初学者在 5 秒内猜出用途。
-3. 保持实体与材质解耦，支持运行期热替换。
+3. 保持实体与材质解耦，支持运行期热替换与多重组合。
 
 ### 阶段 3：三层架构与 10 行极简契约 (Layering & Contract)
 1. **Layer 1 (常识声明层)**：提供开箱即用默认预设，5 分钟上手。
-2. **Layer 2 (组装流转层)**：支持自定义管线节点与多实体组合。
+2. **Layer 2 (组装流转层)**：支持自定义管线节点、链式构建器与多实体组合。
 3. **Layer 3 (专家逃生舱)**：提供 `getNativeHandle()` 与 `CustomOperator`，直通底层原生对象（详见 [`references/escape_hatch_patterns.md`](references/escape_hatch_patterns.md)）。
 4. 编写标准 10 行 Hello World 伪代码。
 
 ### 阶段 4：爆款 Demo 点火矩阵 (Showcase Ignition)
 1. **Level 1 (5秒看懂 Demo)**：单文件、零繁琐依赖、直接在浏览器中跑通的最小奇迹。
 2. **Level 2 (旗舰多巴胺 Demo)**：具备极强感官冲击力、支持实时调参的 Showcase。
-3. 建立 `Examples-as-Docs` 文档体系。
+3. 建立 `Examples-as-Docs` 文档体系与 Twitter/X-Viral 视觉自增殖飞轮。
 
 ---
 
 ## 辅助工具使用说明 (CLI Script Guide)
 
-本技能附带全自动蒸馏生成脚本 `scripts/distill_engine.py`，支持一键产出完整的架构白皮书与代码契约。
+本技能附带全自动蒸馏生成脚本 `scripts/distill_engine.py`，支持一键产出完整的架构白皮书、TypeScript 源码工程与统治力评分审计。
 
-### 1. 内置预设生成
+### 1. 内置 8 大前沿赛道预设生成
 ```bash
-# 生成 WebGPU 通用计算与流体引擎蓝图
+# 生成 WebGPU 通用计算与流体引擎白皮书
 python3 skills/domain-engine-distiller/scripts/distill_engine.py --preset webgpu -o ./output/webgpu-engine
 
-# 生成 Web 端侧多模态 AI 智能体引擎蓝图
-python3 skills/domain-engine-distiller/scripts/distill_engine.py --preset webai -o ./output/webai-engine
+# 生成 Web 端侧多模态 AI 智能体引擎 + 完整 TypeScript 工程骨架
+python3 skills/domain-engine-distiller/scripts/distill_engine.py --preset webai --scaffold-ts -o ./output/webai-project
 
-# 生成 Web 空间音频与 DSP 合成引擎蓝图
-python3 skills/domain-engine-distiller/scripts/distill_engine.py --preset webaudio -o ./output/webaudio-engine
-
-# 生成 3D 高斯溅射与神经实景引擎蓝图
-python3 skills/domain-engine-distiller/scripts/distill_engine.py --preset splatting -o ./output/splat-engine
+# 支持预设：webgpu, webai, webaudio, splatting, biofold, webxr, quant, nodecanvas
 ```
 
-### 2. 自定义领域引擎生成
+### 2. 统治力指标智能审计与打分 (--audit)
+```bash
+python3 skills/domain-engine-distiller/scripts/distill_engine.py --audit ./output/webgpu-engine/engine_blueprint.json
+```
+
+### 3. 自定义领域引擎生成
 ```bash
 python3 skills/domain-engine-distiller/scripts/distill_engine.py \
     --name "QuantumFlow.js" \
@@ -118,6 +120,9 @@ python3 skills/domain-engine-distiller/scripts/distill_engine.py \
 
 ## 深入参考文档 (References)
 
-- [通用公式与数学模型规范](references/formula_specification.md) —— 框架统治力方程与量化指标。
-- [前沿领域落地案例集](references/case_studies.md) —— WebGPU、端侧 AI、空间音频、3DGS 的全套推导蓝图。
-- [逃生舱与洋葱分层架构设计模式](references/escape_hatch_patterns.md) —— L0/L1/L2 接口模式与 GC 优化准则。
+- [通用主方程与动力学规范](references/formula_specification.md) —— 框架统治力动力学方程、DX 摩擦力模型与反熵增定律。
+- [8大前沿领域落地案例集](references/case_studies.md) —— WebGPU、端侧AI、空间音频、3DGS、生物大分子、WebXR、量化金融、无限画布全套蓝图。
+- [逃生舱与洋葱分层架构设计模式](references/escape_hatch_patterns.md) —— L0/L1/L2 接口模式与多孔抽象原则。
+- [高性能引擎 API 设计模式规范](references/api_design_patterns.md) —— 双模 API、原地复用、TypeScript 泛型推导与无头架构。
+- [内存工程与极限性能优化手册](references/memory_and_perf_optimization.md) —— 零 GC 热循环、SharedArrayBuffer 并发与 WebGPU 内存对齐。
+- [开发者布道、增长与 GTM 战役指南](references/developer_evangelism_and_gtm.md) —— 视觉多巴胺飞轮、Examples-as-Docs 与发布清单。

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DomainEngineBlueprintSchema",
+  "description": "领域引擎元数据与 5 大常识要素配置架构",
+  "type": "object",
+  "required": [
+    "name",
+    "domain",
+    "substrate",
+    "container",
+    "driver",
+    "structure",
+    "property",
+    "entity",
+    "environment",
+    "engine",
+    "hello_world_code"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "引擎库名称，如 ComputeFlow.js"
+    },
+    "domain": {
+      "type": "string",
+      "description": "领域方向简要描述"
+    },
+    "substrate": {
+      "type": "string",
+      "description": "被封装的底层地狱级技术栈"
+    },
+    "container": {
+      "type": "string",
+      "description": "全局容器概念 (对应 Scene)"
+    },
+    "driver": {
+      "type": "string",
+      "description": "观察/驱动概念 (对应 Camera)"
+    },
+    "structure": {
+      "type": "string",
+      "description": "结构拓扑概念 (对应 Geometry)"
+    },
+    "property": {
+      "type": "string",
+      "description": "属性材质概念 (对应 Material)"
+    },
+    "entity": {
+      "type": "string",
+      "description": "实体个体概念 (对应 Mesh)"
+    },
+    "environment": {
+      "type": "string",
+      "description": "外部环境概念 (对应 Light)"
+    },
+    "engine": {
+      "type": "string",
+      "description": "管线引擎概念 (对应 Renderer)"
+    },
+    "hello_world_code": {
+      "type": "string",
+      "description": "10 行极简 Hello World 代码演示"
+    }
+  }
+}

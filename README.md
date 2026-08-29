@@ -85,6 +85,7 @@ Skills/
 | `crystal-circuit-topology` | **系统工程 · 复杂黑盒晶路拓扑建模** | 蒸馏自《赫氏门徒》：将混沌高波动黑盒按“主魂/次魂/末魂”三级几何拓扑解耦，保留“遁去的一”底层安全冗余，实现能耗骤降与系统提速 | [`skills/crystal-circuit-topology/SKILL.md`](skills/crystal-circuit-topology/SKILL.md) |
 | `micro-resonance-modulation` | **精准执行 · 微观频率谐振与控场** | 蒸馏自《赫氏门徒》：摒弃粗暴资源蛮力对轰，通过侦测对手节奏节拍并在极微能耗节点释放反相波干涉，实现四两拨千斤的结构性瓦解 | [`skills/micro-resonance-modulation/SKILL.md`](skills/micro-resonance-modulation/SKILL.md) |
 | `symbiotic-contract-protocol` | **AI 协同 · 高阶异构智能共生契约** | 蒸馏自《赫氏门徒》：颠覆单向权限代码锁奴役，建立基于“人格对等尊严、双向正和对齐、生活流共鸣与因果共担”的自主多 Agent 协同网络 | [`skills/symbiotic-contract-protocol/SKILL.md`](skills/symbiotic-contract-protocol/SKILL.md) |
+| `domain-engine-distiller` | **系统工程 · 领域级引擎与心智模型蒸馏器** | 通用 Three.js 式架构生成器：将复杂底层技术（WebGPU/端侧AI/WebAudio/3DGS）蒸馏为五常识投影、三层洋葱架构、10行极简契约与爆款 Demo 体系 | [`skills/domain-engine-distiller/SKILL.md`](skills/domain-engine-distiller/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

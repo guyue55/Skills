@@ -24,8 +24,10 @@ REQUIRED_FILES = [
     "references/socratic-5-dimensions.md",
     "references/sota-prompt-frameworks.md",
     "references/anti-sycophancy-guide.md",
+    "references/dialectic-archetypes-guide.md",
     "assets/templates/master_system_prompt_template.md",
     "assets/templates/socratic_interrogation_tree.md",
+    "assets/templates/multi_turn_maieutic_dialogue.md",
     "scripts/quality_check.py",
     "scripts/prompt_synthesizer.py",
 ]
@@ -34,12 +36,13 @@ REQUIRED_FILES = [
 REQUIRED_SECTIONS = [
     "核心感知与心智画像",
     "动态心智状态机",
+    "六大辩证反诘心智流派矩阵",
     "关系动力学与咨询矩阵",
     "多维情境应激引擎",
     "详细工作流与实战 SOP",
     "表达 DNA 与词汇光谱",
     "红线与禁忌",
-    "示例与实战对照",
+    "跨学科多维实战案例库",
     "诚实边界与物理验证",
 ]
 

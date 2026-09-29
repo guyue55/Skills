@@ -1,12 +1,12 @@
 ---
 name: "topic-director-cinematic-master"
-description: "影视视听与导演级全流程创作大师工坊。深度融合影史经典导演流派（邵氏硬桥硬马/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度），提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级AI生图/视频Prompt编译全流程能力。"
+description: "影视视听与导演级全流程创作大师工坊。深度融合世界影史 7 大系 50 大经典导演流派（邵氏动作/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度、90秒爆款短剧流、动态漫破框流等），支持单流派与双流派跨界融合（Blend Mode），提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级AI生图/视频Prompt编译全流程能力。"
 ---
 
 # 🎬 影视视听与导演级全流程创作大师工坊 (`topic-director-cinematic-master`)
 
 > [!NOTE]
-> **全局导演认知降维系统 (Directorial Meta-Cognitive Engine)**：本技能将世界电影史上最具统治力的导演视听语言、分镜语法、动作力学与场面调度体系，转化为可执行的工程级创作工具。专门解决在短剧、漫剧、网文小说、影视剧本、镜头分镜、打斗动作设计、场景调度与演员微表情中遇到的各类创作瓶颈，输出一针见血的导演级修改建议与工业级 AI 提示词（Prompt）。
+> **全局导演认知降维系统 (Directorial Meta-Cognitive Engine)**：本技能将世界电影史上最具统治力的 7 大系 50 位世界级大师视听语言、分镜语法、动作力学与场面调度体系，转化为可执行的工程级创作工具。支持**单流派精准调用**与**双流派跨界融合 (Blend Mode)**，专门解决在短剧、漫剧、网文小说、影视剧本、镜头分镜、打斗动作设计、场景调度与演员微表情中遇到的各类创作瓶颈，输出一针见血的导演级修改建议与工业级 AI 提示词（Prompt）。
 
 ---
 
@@ -18,15 +18,15 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
    - 需要设计“黄金 3 秒开局生死钩”、“90 秒高留存剧情节拍器”或爆点反转。
    - 需要将小说章节或剧本大纲转化为工业级分镜表（含景别、机位角度、运镜动线、声音设计）。
 2. **硬核动作与武术打斗设计**：
-   - 厌倦了“两人打得难解难分”等空洞套路，需要**邵氏南派洪拳硬桥硬马、招式拆解、威亚奇观或现代 CQC 格斗**的精确拍点。
+   - 厌倦了“两人打得难解难分”等空洞套路，需要**邵氏南派洪拳硬桥硬马、张彻盘肠血战、徐克威亚奇观、甄子丹实战 MMA 或疾速追杀 Gun-Fu** 的精确拍点。
 3. **空间构图与场面调度 (Mise-en-Scène)**：
    - 需要设计类似杜琪峰《枪火》的**几何三角形站位、深焦多层景深、框中框遮挡与多方对峙动线**。
 4. **演员演技与微表情微动作打磨**：
    - 需要 FACS 级面部微肌肉变动（咬肌绷紧、瞳孔骤缩、喉结滑动）与台词潜台词设计。
-5. **工业级 AI 绘图/视频生成提示词编译**：
+5. **跨流派风格融合 (Directorial Style Blending)**：
+   - 探索“邵氏硬桥硬马 + 扎克施奈德油画慢动作”、“徐克新武侠 + 杜琪峰几何站位”等跨界视听创新。
+6. **工业级 AI 绘图/视频生成提示词编译**：
    - 需要为 Midjourney / Stable Diffusion / 可灵 (Kling) / Sora / Runway 编译高精度的镜头级 Prompt。
-6. **特定导演风格与美学复刻**：
-   - 指定要求“邵氏武侠风”、“徐克奇幻风”、“王家卫抽帧情绪风”、“周星驰无厘头反差风”等特定美学。
 
 ---
 
@@ -54,22 +54,19 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 
 ---
 
-## 🏛️ 3. 十大经典导演流派矩阵 (10 Directorial Archetypes Matrix)
+## 🏛️ 3. 七大系 50 大导演流派矩阵 (7 Categories & 50 Archetypes)
 
-详见知识库文档 [`references/directorial-archetypes-matrix.md`](references/directorial-archetypes-matrix.md)：
+详见知识库分类文档 [`references/archetypes/`](references/archetypes/)：
 
-| 流派代号 | 核心代表 | 标志性视听美学与分镜 DNA | 最优适用场景 |
-| :--- | :--- | :--- | :--- |
-| `shaw_kungfu` | **张彻 / 刘家良 / 楚原 (邵氏)** | 硬桥硬马招式拆解、阳刚血性、盘肠大战、摄影棚景深布景、奇门兵器对拆 | 传统武侠、国术格斗、高燃复仇短剧、古风漫剧生死决斗 |
-| `tsui_hark_fantasy` | **徐克 (Tsui Hark)** | 漫画感分镜手稿、飞天遁地威亚奇观、高速多机位颠覆剪辑、高饱和奇幻色彩 | 仙侠玄幻大招对轰、异能战斗、赛博国风、快节奏爽剧冲突 |
-| `johnnie_to_noir` | **杜琪峰 (Johnnie To)** | 空间几何三角站位、静止对峙积蓄暴风雨前压迫感、暗光/侧光切割、黑色幽默与宿命反转 | 现代都市商战、黑帮警匪对峙、多方势力暗斗、高智商博弈 |
-| `wong_kar_wai_mood` | **王家卫 (Wong Kar-wai)** | 慢门抽帧/步印运动 (Step-printing)、非对称倾斜构图、情绪碎片跳切、诗意独白与色彩暗涌 | 情感纠葛、都市边缘人孤独、悬疑心理创伤、怀旧民国氛围 |
-| `stephen_chow_comic` | **周星驰 (Stephen Chow)** | 严密漫画分镜预演、极端景别瞬间突变、草根小人物悲喜交加、微表情与动作瞬间反差 | 搞笑爆笑短剧、无厘头逆袭、反套路打脸网文、漫剧表情包名场面 |
-| `nolan_non_linear` | **克里斯托弗·诺兰 (Christopher Nolan)** | 多线跨时空交叉并进、钳形时空叙事、硬核实拍物理质感、重力倒转与宏大概念折叠 | 科幻无限流、高概念悬疑剧本、硬核烧脑剧情、时间循环反转 |
-| `hitchcock_suspense`| **阿尔弗雷德·希区柯克 (Alfred Hitchcock)** | “炸弹理论”操控信息差、主观视点镜头 (POV)、窥视感与视线诱导、节拍递进的心理压迫 | 密室逃脱、惊悚悬疑短剧、连环凶案揭秘、心理谍战对决 |
-| `tarantino_dialogue`| **昆汀·塔伦蒂诺 (Quentin Tarantino)** | 章回体非线性拼图、高密度垃圾话台词交锋、墨西哥式三方对峙、反高潮突发血腥暴力 | 黑色幽默犯罪、反英雄复仇、多方土匪/黑道谈判破裂名场面 |
-| `satoshi_kon_matchcut`| **今敏 (Satoshi Kon)** | 匹配剪辑 (Match Cut) 转场神迹、现实与潜意识心理投射的无缝折叠、跨时空形似转场 | 心理穿越、无限流梦境觉醒、二次元漫剧脑洞、现实幻觉交织 |
-| `kurosawa_weather` | **黑泽明 (Akira Kurosawa)** | 风雨雾暴雪自然力场烘托、大景深几何三角形站位、群体奔涌运动轴线与武士拔刀定格 | 史诗战争、宗门决战、风雨夜复仇、大开大合的宏大对决 |
+| 大系分类 | 收录流派与导演代表 | 核心视听美学与招式力学 |
+| :--- | :--- | :--- |
+| **01 华语武侠动作枪战** | 张彻 (`shaw_chang_cheh`)、刘家良 (`shaw_lau_kar_leung`)、楚原 (`shaw_chor_yuen`)、胡金铨 (`king_hu_zen_wuxia`)、徐克 (`tsui_hark_fantasy`)、袁和平 (`yuen_woo_ping_action`)、吴宇森 (`john_woo_gun_fu`)、杜琪峰 (`johnnie_to_noir`)、甄子丹 (`donnie_yen_mma`)、陈木胜 (`benny_chan_explosive`) | 硬桥硬马洪拳拆招、白衣染血盘肠大战、干冰圆月奇情、漫画感威亚奇观、双枪白鸽慢动作、几何站位黑色宿命、现代 MMA 缠斗爆裂打击。 |
+| **02 华语作者东方意境** | 王家卫 (`wong_kar_wai_mood`)、周星驰 (`stephen_chow_comic`)、姜文 (`jiang_wen_hormone`)、张艺谋 (`zhang_yimou_color_epic`)、李安 (`ang_lee_restraint`)、贾樟柯 (`jia_zhangke_realism`)、侯孝贤 (`hou_hsiao_hsien_poetic`)、杨德昌 (`edward_yang_urban_symphony`) | 慢门抽帧步印拖影、无厘头反差与悲喜喜剧、雄性荷尔蒙机关枪台词、单一纯色极致大色块、东方隐忍餐桌调度、粗粝工业废墟静观。 |
+| **03 好莱坞工业大片** | 克里斯托弗·诺兰 (`nolan_non_linear`)、史蒂文·斯皮尔伯格 (`spielberg_wonder_face`)、詹姆斯·卡梅隆 (`cameron_industrial_epic`)、乔治·米勒 (`george_miller_fury_road`)、韦斯·安德森 (`wes_anderson_symmetry`)、扎克·施奈德 (`zack_snyder_dark_myth`)、查德·斯塔赫斯基 (`stahelski_gun_fu`)、迈克尔·贝 (`michael_bay_bayhem`)、彼得·杰克逊 (`peter_jackson_lotr_epic`) | IMAX 钳形时空跨时空剪辑、标志性推镜头面孔、重工业机械与深海荧光、十字居中纯动量废土追逐、严格轴对称马卡龙色板、油画慢动作神性雕塑、战术 Gun-Fu 长镜头格斗。 |
+| **04 悬疑惊悚黑色犯罪** | 阿尔弗雷德·希区柯克 (`hitchcock_suspense`)、大卫·芬奇 (`david_fincher_precision`)、斯坦利·库布里克 (`kubrick_one_point_gaze`)、昆汀·塔伦蒂诺 (`tarantino_dialogue`)、盖·里奇 (`guy_ritchie_speed_cut`)、科恩兄弟 (`coen_brothers_absurdist`)、大卫·林奇 (`david_lynch_surrealism`)、朴赞郁 (`park_chan_wook_revenge`) | 桌下炸弹信息差与眩晕变焦、冷峻黄绿机械运镜与心理手术刀、单点透视与疯批冷酷凝视、章回体废话对白与墨西哥对峙、极速跳剪预演脑内打斗、虚无荒诞掷硬币、红色帷幔潜意识梦境、巴洛克走廊铁锤复仇。 |
+| **05 日本电影与动画** | 黑泽明 (`kurosawa_weather`)、小津安二郎 (`ozu_tatami_stillness`)、今敏 (`satoshi_kon_matchcut`)、宫崎骏 (`miyazaki_ghibli_wonder`)、押井守 (`mamoru_oshii_cyberpunk`)、新海诚 (`makoto_shinkai_light`)、庵野秀明 (`hideaki_anno_eva_deconstruct`)、北野武 (`takeshi_kitano_blue`) | 风雨暴雪自然气象力场与居合拔刀斩、离地50cm榻榻米低机位东方留白、匹配剪辑形似秒穿时空、水滴微风自然生态与滑翔机、赛博朋克雨夜与义体解剖、逢魔时刻黄昏金色逆光、全屏文字闪现与神性机甲暴走、北野蓝忧郁与突发面瘫枪击。 |
+| **06 欧洲艺术哲学大系** | 安德烈·塔可夫斯基 (`tarkovsky_sculpting_time`)、费德里科·费里尼 (`fellini_baroque_carnival`)、佩德罗·阿莫多瓦 (`almodovar_saturated_passion`)、迈克尔·哈内克 (`haneke_clinical_interrogation`) | 极慢流动长镜头雕刻时光与四大元素、马戏团小丑游行梦境狂欢、高饱和原色与浓烈女性情感、冰冷死寂长镜头与道德审问。 |
+| **07 新兴短剧动态漫** | 90秒爆款逆袭流 (`micro_drama_tension_hook`)、动态漫破框流 (`motion_comic_break_frame`)、交互悬疑多视角流 (`found_footage_interactive`) | 9:16 竖屏居中黄金焦点与 0-3s 生死钩、分格边界震动破框与拟声大字爆裂、执法记录仪第一人称真实窥视。 |
 
 ---
 
@@ -114,35 +111,47 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 
 ## 💻 5. CLI 辅助脚本使用指南 (`director_synthesizer.py`)
 
-技能内置全功能 Python 辅助脚本，支持分镜生成、打斗拍点拆解、静态体检与 XML System Prompt 编译：
+技能内置全功能 Python 辅助脚本，支持 50 大流派生成、双流派 Blend 融合、打斗拍点拆解、静态体检与 XML System Prompt 编译：
 
 ```bash
-# 1. 生成工业级五栏分镜设计表
+# 1. 生成单流派工业级五栏分镜设计表
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py \
   --mode storyboard \
-  --title "古庙斩首夜" \
-  --archetype shaw_kungfu \
+  --title "古庙决战" \
+  --archetype shaw_chang_cheh \
   --desc "暴雨夜残破古寺中的生死搏杀"
 
-# 2. 生成硬派动作招式对拆拍点
+# 2. 生成【跨界双流派融合 (Blend Mode)】分镜设计表（如：邵氏硬派招式 × 扎克施奈德暗黑慢动作）
+python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py \
+  --mode storyboard \
+  --title "神殿诛魔" \
+  --archetype shaw_lau_kar_leung \
+  --blend zack_snyder_dark_myth \
+  --desc "白衣武者持长棍决战异形战神"
+
+# 3. 生成硬派动作招式对拆拍点
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py \
   --mode action \
   --title "长街死斗" \
-  --archetype shaw_kungfu \
-  --characters "白衣剑客 vs 锦衣卫首领"
+  --archetype donnie_yen_mma \
+  --characters "退役特警 vs 雇佣兵头目"
 
-# 3. 静态体检剧本/描述中的空泛文学词
+# 4. 静态体检剧本/描述中的空泛文学词
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py \
   --mode audit \
   --text "两人打得难解难分，场面十分紧张，痛得大叫！"
 
-# 4. 编译输出标准 XML 导演级 System Prompt
+# 5. 编译输出双流派融合 XML 导演级 System Prompt
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py \
   --mode compile \
   --role "短剧与漫剧总导演" \
-  --archetype stephen_chow_comic
+  --archetype tsui_hark_fantasy \
+  --blend wong_kar_wai_mood
 
-# 5. 运行内置单元自测
+# 6. 列出全部 50 个知名导演与流派清单
+python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode list
+
+# 7. 运行内置全量单元自测
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode test
 ```
 
@@ -167,14 +176,22 @@ python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py -
 skills/topic-director-cinematic-master/
 ├── SKILL.md                                               # [主说明书]
 ├── scripts/
-│   ├── director_synthesizer.py                           # [CLI 引擎]
+│   ├── director_synthesizer.py                           # [CLI 引擎 (50大流派全量与Blend模式)]
 │   └── quality_check.py                                  # [物理质量校验探针]
 ├── references/
 │   ├── directorial-archetypes-matrix.md                  # [影史十大导演流派全景指南]
 │   ├── cinematography-storyboard-guide.md                # [分镜视听与镜头设计工程指南]
 │   ├── action-choreography-handbook.md                   # [动作设计与硬派打斗拆解手册]
 │   ├── spatial-mise-en-scene-guide.md                    # [场景构图与场面调度设计指南]
-│   └── acting-micro-expressions-guide.md                 # [人物表演与微表情微动作指南]
+│   ├── acting-micro-expressions-guide.md                 # [人物表演与微表情微动作指南]
+│   └── archetypes/                                       # [7大系50个导演流派知识库目录]
+│       ├── 01_wuxia_kungfu_action.md                     # [华语功夫武侠枪战 10 流派]
+│       ├── 02_chinese_auteurs_poetics.md                 # [华语作者电影意境 8 流派]
+│       ├── 03_hollywood_blockbuster_epic.md              # [好莱坞工业大片 9 流派]
+│       ├── 04_suspense_noir_thriller.md                  # [悬疑惊悚黑色犯罪 8 流派]
+│       ├── 05_japanese_cinema_anime.md                   # [日本电影与动画 8 流派]
+│       ├── 06_european_art_masters.md                    # [欧洲艺术哲学长镜头 4 流派]
+│       └── 07_micro_drama_vertical_cinema.md             # [新兴短剧与动态漫特化 3 流派]
 └── assets/
     └── templates/
         ├── master_director_system_prompt_template.md     # [XML 导演 System Prompt 模板]

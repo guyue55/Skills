@@ -88,7 +88,7 @@ Skills/
 | `symbiotic-contract-protocol` | **AI 协同 · 高阶异构智能共生契约** | 蒸馏自《赫氏门徒》：颠覆单向权限代码锁奴役，建立基于“人格对等尊严、双向正和对齐、生活流共鸣与因果共担”的自主多 Agent 协同网络 | [`skills/symbiotic-contract-protocol/SKILL.md`](skills/symbiotic-contract-protocol/SKILL.md) |
 | `domain-engine-distiller` | **系统工程 · 领域级引擎与心智模型蒸馏器** | 通用 Three.js 式架构生成器：将复杂底层技术（WebGPU/端侧AI/WebAudio/3DGS）蒸馏为五常识投影、三层洋葱架构、10行极简契约与爆款 Demo 体系 | [`skills/domain-engine-distiller/SKILL.md`](skills/domain-engine-distiller/SKILL.md) |
 | `topic-socratic-prompt-master` | **苏格拉底式提示词架构大师** | 基于李飞飞提示词哲学与苏格拉底精神助产术，提供双层提示词工程（需求精准定义+AI输出6维反诘：问定义/问假设/问依据/问反例/问推论/问边界）、六大辩证心智流派、逆讨好(Anti-Sycophancy)对抗、CoVe核验链与工业级 XML Master Prompt 架构编译 | [`skills/topic-socratic-prompt-master/SKILL.md`](skills/topic-socratic-prompt-master/SKILL.md) |
-| `topic-director-cinematic-master` | **影视视听与导演级全流程创作大师** | 融合影史 10 大经典导演流派（邵氏硬派功夫/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度），提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级 AI 生图/视频 Prompt 编译全流程能力 | [`skills/topic-director-cinematic-master/SKILL.md`](skills/topic-director-cinematic-master/SKILL.md) |
+| `topic-director-cinematic-master` | **影视视听与导演级全流程创作大师** | 融合世界影史 7 大系 50 大经典导演流派（邵氏动作/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度、90秒爆款短剧流、动态漫破框流等），支持单流派与双流派跨界融合 (Blend Mode)，提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级 AI 生图/视频 Prompt 编译全流程能力 | [`skills/topic-director-cinematic-master/SKILL.md`](skills/topic-director-cinematic-master/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

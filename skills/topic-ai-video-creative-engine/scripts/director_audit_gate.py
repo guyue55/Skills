@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-导演 Agent 7 维度全景质检探针 (Director Quality Gate & Audit Probe)
+导演 Agent 8 维度全景质检探针 (Director Quality Gate & Canonical Fidelity Probe)
 
 功能：
-1. 模拟资深电影导演与严苛制片人，对生成的逐镜提示词与分镜脚本进行自动化 7 维度审计。
-2. 扫描并拦截：
+1. 模拟资深电影导演与严苛制片人，对生成的逐镜提示词与分镜脚本进行自动化 8 维度审计。
+2. 重点执行【原著真值忠实度与防魔改门禁 (Canonical Fidelity Check)】：
+   - 拦截擅自篡改角色性格（如杀伐果断变圣母懦弱、下跪求饶等）
+   - 拦截战力跨境界违规失真与凭空捏造未授权神功
+   - 拦截未经用户授权的狗血魔改剧情
+3. 扫描并拦截：
    - 抽象情绪词（如“愤怒”、“悲伤”，未转化为 FACS 微肌肉指令）
    - 单镜多动作（单镜头塞入 >2 个复合动作导致的 AI 画面错乱）
    - 禁用工程参数（如 f/2.8、震屏 10% 等未脱敏词汇）
    - 缺失物理受力与形变描述
    - 缺失 180 度轴线与固定地标
-3. 输出加权质量分（0-100）与 Markdown 格式诊断优化建议。
+4. 输出加权质量分（0-100）与 Markdown 格式诊断优化建议。
 
 用法：
     python3 scripts/director_audit_gate.py --prompt "..." 
-    python3 scripts/director_audit_gate.py --file <shots.json>
+    python3 scripts/director_audit_gate.py --file <shots.json> --truth <truth_matrix.json>
 """
 
 import argparse
@@ -23,16 +27,23 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 class DirectorAuditGate:
-    """导演 Agent 7 维度全景质检探针"""
+    """导演 Agent 8 维度全景质检探针（含防魔改真值对账）"""
 
     # 抽象情绪词黑名单（必须转为 FACS 动作）
     ABSTRACT_EMOTIONS = [
         "很愤怒", "非常悲伤", "极度恐惧", "很开心", "得意洋洋", "咬牙切齿",
         "充满仇恨", "震惊", "吓傻了", "感觉很爽", "痛苦万分"
+    ]
+
+    # 违规魔改与人设漂移词汇黑名单（未经授权禁止出现）
+    DISTORTION_PATTERNS = [
+        (r"下跪求饶|痛哭流涕求放过", "主角人设发生严重圣母/软弱漂移，违背杀伐果断原著真值！"),
+        (r"突然爱上了|暗生情愫|深情对视并拥抱", "检测到疑似未经授权的狗血二创感情戏魔改！"),
+        (r"凭空获得神力|系统突然送大招", "检测到未经原著伏笔铺垫的战力机械降神违规！")
     ]
 
     # 禁用工程参数
@@ -41,19 +52,21 @@ class DirectorAuditGate:
         r"FOV\s*\d+", r"速度\s*\d+m/s"
     ]
 
-    def __init__(self):
+    def __init__(self, canonical_truth: Optional[Dict[str, Any]] = None):
+        self.canonical_truth = canonical_truth or {}
         self.weights = {
-            "spatial_readability": 0.15,      # 1. 空间可读性与轴线
-            "camera_comfort": 0.15,           # 2. 运镜舒适度与物理依托
+            "spatial_readability": 0.10,      # 1. 空间可读性与轴线
+            "camera_comfort": 0.10,           # 2. 运镜舒适度与物理依托
             "kinetic_impact": 0.15,           # 3. 动作力学与受力形变
             "facs_performance": 0.15,         # 4. FACS 微表情与眼神
-            "pacing_and_rest": 0.15,          # 5. 节奏留白与呼吸感
+            "pacing_and_rest": 0.10,          # 5. 节奏留白与呼吸感
             "visual_consistency": 0.15,       # 6. 视觉一致性与外貌锁
-            "technical_compliance": 0.10      # 7. 声画与技术合规
+            "canonical_fidelity": 0.15,       # 7. 原著忠实度与防魔改对账
+            "technical_compliance": 0.10      # 8. 声画与技术合规
         }
 
     def audit_single_prompt(self, prompt: str) -> Dict[str, Any]:
-        """对单段分镜提示词执行 7 维度体检"""
+        """对单段分镜提示词执行 8 维度体检"""
         scores = {}
         issues = []
         suggestions = []
@@ -124,7 +137,20 @@ class DirectorAuditGate:
             issues.append("主体角色缺乏固定外貌特征锁。")
             suggestions.append("在第 2 段注入角色的 50 字固定外貌描述段。")
 
-        # 7. 声画与技术合规 (禁用工程参数脱敏)
+        # 7. 原著忠实度与防魔改对账 (Canonical Fidelity Check)
+        distortion_found = False
+        for pattern, warning_msg in self.DISTORTION_PATTERNS:
+            if re.search(pattern, prompt):
+                distortion_found = True
+                issues.append(f"🚨 防魔改警报: {warning_msg}")
+
+        if distortion_found:
+            scores["canonical_fidelity"] = 40
+            suggestions.append("回退至原著真值矩阵，严格按原著设定的人设与事件因果推进剧情。")
+        else:
+            scores["canonical_fidelity"] = 98
+
+        # 8. 声画与技术合规 (禁用工程参数脱敏)
         found_params = []
         for p in self.FORBIDDEN_PARAMS:
             matches = re.findall(p, prompt, re.IGNORECASE)
@@ -154,7 +180,7 @@ class DirectorAuditGate:
     def generate_markdown_report(self, audit_result: Dict[str, Any]) -> str:
         """生成 Markdown 格式的审计诊断报告"""
         res = audit_result
-        md = f"""# 🎬 导演 Agent 7 维度全景质检审计报告
+        md = f"""# 🎬 导演 Agent 8 维度全景质检审计报告 (含防魔改真值对账)
 
 **综合评定**: `{res['status']}`  
 **最终加权得分**: `{res['total_score']} / 100`
@@ -162,13 +188,14 @@ class DirectorAuditGate:
 ### 📊 维度得分明细表
 | 审计维度 | 权重 | 得分 | 状态 |
 | :--- | :--- | :--- | :--- |
-| 1. 空间可读性 (地标与轴线) | 15% | {res['dimension_scores'].get('spatial_readability', 0)} | {'✅' if res['dimension_scores'].get('spatial_readability', 0) >= 85 else '⚠️'} |
-| 2. 运镜舒适度 (物理运动依托) | 15% | {res['dimension_scores'].get('camera_comfort', 0)} | {'✅' if res['dimension_scores'].get('camera_comfort', 0) >= 85 else '⚠️'} |
+| 1. 空间可读性 (地标与轴线) | 10% | {res['dimension_scores'].get('spatial_readability', 0)} | {'✅' if res['dimension_scores'].get('spatial_readability', 0) >= 85 else '⚠️'} |
+| 2. 运镜舒适度 (物理运动依托) | 10% | {res['dimension_scores'].get('camera_comfort', 0)} | {'✅' if res['dimension_scores'].get('camera_comfort', 0) >= 85 else '⚠️'} |
 | 3. 动作力学直觉 (受力与形变) | 15% | {res['dimension_scores'].get('kinetic_impact', 0)} | {'✅' if res['dimension_scores'].get('kinetic_impact', 0) >= 85 else '⚠️'} |
 | 4. FACS 微表情 (微肌肉与眼神) | 15% | {res['dimension_scores'].get('facs_performance', 0)} | {'✅' if res['dimension_scores'].get('facs_performance', 0) >= 85 else '⚠️'} |
-| 5. 节奏留存与呼吸感 (气口余韵) | 15% | {res['dimension_scores'].get('pacing_and_rest', 0)} | {'✅' if res['dimension_scores'].get('pacing_and_rest', 0) >= 85 else '⚠️'} |
+| 5. 节奏留存与呼吸感 (气口余韵) | 10% | {res['dimension_scores'].get('pacing_and_rest', 0)} | {'✅' if res['dimension_scores'].get('pacing_and_rest', 0) >= 85 else '⚠️'} |
 | 6. 视觉一致性 (外貌特征锁) | 15% | {res['dimension_scores'].get('visual_consistency', 0)} | {'✅' if res['dimension_scores'].get('visual_consistency', 0) >= 85 else '⚠️'} |
-| 7. 声画与技术合规 (参数脱敏) | 10% | {res['dimension_scores'].get('technical_compliance', 0)} | {'✅' if res['dimension_scores'].get('technical_compliance', 0) >= 85 else '⚠️'} |
+| 7. 原著忠实度 (防无授权魔改) | 15% | {res['dimension_scores'].get('canonical_fidelity', 0)} | {'✅' if res['dimension_scores'].get('canonical_fidelity', 0) >= 85 else '⚠️'} |
+| 8. 声画与技术合规 (参数脱敏) | 10% | {res['dimension_scores'].get('technical_compliance', 0)} | {'✅' if res['dimension_scores'].get('technical_compliance', 0) >= 85 else '⚠️'} |
 """
         if res["issues"]:
             md += "\n### 🚨 拦截的问题 (Issues Found)\n"
@@ -184,20 +211,25 @@ class DirectorAuditGate:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="导演 Agent 7 维度全景质检探针 (Director Quality Gate)")
+    parser = argparse.ArgumentParser(description="导演 Agent 8 维度全景质检探针 (Director Quality Gate)")
     parser.add_argument("--prompt", "-p", help="待质检的单镜头提示词文本")
     parser.add_argument("--file", "-f", help="待质检的分镜文件路径")
+    parser.add_argument("--truth", "-t", help="原著真值矩阵 JSON 文件路径")
 
     args = parser.parse_args()
 
-    probe = DirectorAuditGate()
+    canonical_data = None
+    if args.truth and Path(args.truth).exists():
+        canonical_data = json.loads(Path(args.truth).read_text(encoding="utf-8"))
+
+    probe = DirectorAuditGate(canonical_truth=canonical_data)
 
     if args.prompt:
         target_prompt = args.prompt
     elif args.file and Path(args.file).exists():
         target_prompt = Path(args.file).read_text(encoding="utf-8")
     else:
-        # 默认测试提示词（故意包含一个工程参数和一个抽象情绪词以测试探针灵敏度）
+        # 默认测试提示词（故意包含一个工程参数以测试探针灵敏度）
         target_prompt = (
             "8K IMAX, 35mm film stock, 徐克新武侠风格。\n"
             "【主体】主角林风，20岁剑客，身着玄黑锦袍，目光凌厉。\n"

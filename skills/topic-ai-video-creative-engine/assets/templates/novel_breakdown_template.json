@@ -60,5 +60,25 @@
       "episode_range": "EP_001 - EP_010",
       "core_conflict": "林风被宗门剥夺圣子之位并遭退婚，绝境中唤醒丹田混沌剑胚反杀执法堂"
     }
-  ]
+  ],
+  "canonical_truth_matrix": {
+    "adaptation_mode": "STRICT_CANONICAL (严格忠实原著模式)",
+    "unalterable_core_facts": [
+      "林风核心性格为冷峻谨慎、杀伐决断，绝不可改为圣母心泛滥或犹豫求饶",
+      "大殿对峙必须由顾少炎主动羞辱退婚触发，胜负结局必须为林风凭借混沌剑胚一招破局",
+      "混沌断剑在觉醒前外表必须为生锈铁剑，严禁提前展示神级光效"
+    ],
+    "forbidden_distortions": [
+      "严禁擅自给林风或顾少炎增加原著不存在的狗血恋爱分支",
+      "严禁弱化宗门大殿的包围压迫感",
+      "严禁在无用户显式授权下篡改原著境界战力强弱对比"
+    ],
+    "iconic_quotes_and_gestures": [
+      {
+        "character": "林风",
+        "exact_quote": "今日，我便斩断这不公天道！",
+        "canonical_gesture": "右臂沉桥横挥断剑，单膝微弓，眼神如利刃锁定前方"
+      }
+    ]
+  }
 }

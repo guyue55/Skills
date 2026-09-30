@@ -1,0 +1,64 @@
+{
+  "project_metadata": {
+    "novel_title": "万古剑尊：开局退婚我自创仙门",
+    "total_chapters": 120,
+    "adapted_episodes": 80,
+    "genre": "东方玄幻 / 修真短剧",
+    "target_platform": "抖音 / 快手 / 微信视频号 / 海外 ReelShort"
+  },
+  "world_bible": {
+    "power_hierarchy": [
+      {
+        "realm_name": "炼气境 (Qi Refining)",
+        "vfx_scale": "气流微光，半径 0.5 米，吹动落叶，剑风撕裂衣袖"
+      },
+      {
+        "realm_name": "筑基境 (Foundation Building)",
+        "vfx_scale": "凝练真气如实质剑芒，长 3 米，地面斩出 10cm 深痕"
+      },
+      {
+        "realm_name": "金丹境 (Golden Core)",
+        "vfx_scale": "等离子炽白天火与青色剑气，半径 20 米，震碎殿宇立柱"
+      }
+    ],
+    "major_factions": [
+      {
+        "faction_id": "FAC_KUNLUN",
+        "name": "昆仑剑宗",
+        "aesthetic": "巍峨白玉仙宫、云海翻腾、青铜古剑阵、冷峻肃杀"
+      },
+      {
+        "faction_id": "FAC_BLOOD_NETHER",
+        "name": "血冥魔宗",
+        "aesthetic": "黑石悬崖、血色瀑布、骷髅火盆、高对比暗黑阴影"
+      }
+    ]
+  },
+  "master_characters": [
+    {
+      "character_id": "CHAR_HERO_LIN",
+      "name": "林风",
+      "role": "男主角 (无敌流/隐忍狠辣)",
+      "fixed_description": "20岁青年剑客，冷峻坚毅面容，右眉尾有一道细微浅白伤疤，漆黑如墨的散乱束发，身着玄黑缎面紧袖劲装配暗金护腕，目光沉静深邃",
+      "voice_id": "zh-CN-YunxiNeural-Custom_Hero_01",
+      "default_weapon": "PROP_BROKEN_SWORD"
+    },
+    {
+      "character_id": "CHAR_VILLAIN_GU",
+      "name": "顾少炎",
+      "role": "反派少主 (傲慢残忍/跳梁小丑)",
+      "fixed_description": "22岁青年贵族，面容阴柔苍白，双眼细长带讥诮冷笑，身着华丽刺绣紫金锦袍，腰挂翡翠玉佩，神态骄横跋扈",
+      "voice_id": "zh-CN-YunyangNeural-Custom_Villain_02",
+      "default_weapon": "PROP_GOLDEN_FAN"
+    }
+  ],
+  "major_story_arcs": [
+    {
+      "arc_id": "ARC_01",
+      "title": "大殿退婚与天道神剑苏醒",
+      "chapter_range": "1 - 15 章",
+      "episode_range": "EP_001 - EP_010",
+      "core_conflict": "林风被宗门剥夺圣子之位并遭退婚，绝境中唤醒丹田混沌剑胚反杀执法堂"
+    }
+  ]
+}

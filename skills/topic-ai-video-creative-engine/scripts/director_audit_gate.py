@@ -9,13 +9,15 @@
    - 拦截擅自篡改角色性格（如杀伐果断变圣母懦弱、下跪求饶等）
    - 拦截战力跨境界违规失真与凭空捏造未授权神功
    - 拦截未经用户授权的狗血魔改剧情
-3. 扫描并拦截：
+3. 执行【角色六维演化与年龄一致性审查】：
+   - 杜绝视觉幼态化与年龄代差漂移，确保生理年龄/骨相与当前阶段匹配。
+4. 扫描并拦截：
    - 抽象情绪词（如“愤怒”、“悲伤”，未转化为 FACS 微肌肉指令）
    - 单镜多动作（单镜头塞入 >2 个复合动作导致的 AI 画面错乱）
    - 禁用工程参数（如 f/2.8、震屏 10% 等未脱敏词汇）
    - 缺失物理受力与形变描述
    - 缺失 180 度轴线与固定地标
-4. 输出加权质量分（0-100）与 Markdown 格式诊断优化建议。
+5. 输出加权质量分（0-100）与 Markdown 格式诊断优化建议。
 
 用法：
     python3 scripts/director_audit_gate.py --prompt "..." 
@@ -60,7 +62,7 @@ class DirectorAuditGate:
             "kinetic_impact": 0.15,           # 3. 动作力学与受力形变
             "facs_performance": 0.15,         # 4. FACS 微表情与眼神
             "pacing_and_rest": 0.10,          # 5. 节奏留白与呼吸感
-            "visual_consistency": 0.15,       # 6. 视觉一致性与外貌锁
+            "visual_consistency": 0.15,       # 6. 视觉一致性与六维外貌锁
             "canonical_fidelity": 0.15,       # 7. 原著忠实度与防魔改对账
             "technical_compliance": 0.10      # 8. 声画与技术合规
         }
@@ -72,7 +74,7 @@ class DirectorAuditGate:
         suggestions = []
 
         # 1. 空间可读性检查 (地标与空间参照)
-        spatial_keywords = ["大殿", "石柱", "地面", "台阶", "悬崖", "祭坛", "墙壁", "门前", "中央", "地标"]
+        spatial_keywords = ["大殿", "石柱", "地面", "台阶", "悬崖", "祭坛", "墙壁", "门前", "中央", "地标", "门殿"]
         has_spatial = any(kw in prompt for kw in spatial_keywords)
         if has_spatial:
             scores["spatial_readability"] = 95
@@ -90,7 +92,7 @@ class DirectorAuditGate:
             suggestions.append("在第 4 段明确焦段与运镜（如：50mm 定焦镜头，机位随主体冲刺贴地急速前推）。")
 
         # 3. 动作力学检查 (受力形变与破坏)
-        kinetic_keywords = ["发力", "肌肉", "形变", "飞溅", "崩碎", "震颤", "后撤", "惯性", "斩断", "倒退"]
+        kinetic_keywords = ["发力", "肌肉", "形变", "飞溅", "崩碎", "震颤", "后撤", "惯性", "斩断", "倒退", "挥出", "扫出"]
         kinetic_count = sum(1 for kw in kinetic_keywords if kw in prompt)
         if kinetic_count >= 2:
             scores["kinetic_impact"] = 95
@@ -103,14 +105,14 @@ class DirectorAuditGate:
 
         # 检查是否单镜多动作 (连词过多)
         multi_actions = re.findall(r'(?:然后|接着|随后|之后|紧接着|再)', prompt)
-        if len(multi_actions) >= 2:
+        if len(multi_actions) >= 3:
             scores["kinetic_impact"] -= 20
             issues.append("单镜头内包含过多连续动作连词（违背‘单镜单动作’原则），模型极易产生肢体错乱与穿模！")
             suggestions.append("严格执行单镜单动作原则，将连续动作拆分为 2~3 个独立镜头。")
 
         # 4. FACS 表演微表情检查 (拒绝抽象情绪词)
         found_abstract = [w for w in self.ABSTRACT_EMOTIONS if w in prompt]
-        facs_keywords = ["咬肌", "眼眸", "瞳孔", "下唇", "喉结", "呼吸", "冷汗", "指节", "视线", "眉头", "眨眼"]
+        facs_keywords = ["咬肌", "眼眸", "瞳孔", "下唇", "喉结", "呼吸", "冷汗", "指节", "视线", "眉头", "眨眼", "眼瞳"]
         has_facs = any(kw in prompt for kw in facs_keywords)
 
         if found_abstract:
@@ -129,13 +131,20 @@ class DirectorAuditGate:
         else:
             scores["pacing_and_rest"] = 85
 
-        # 6. 视觉一致性 (外貌锁与角色资产)
-        if "【主体】" in prompt or "主角" in prompt or "身着" in prompt or "@" in prompt or "特征" in prompt:
-            scores["visual_consistency"] = 95
+        # 6. 视觉一致性 (四层复合外貌锁与年龄一致性)
+        age_keywords = ["岁", "少年", "青年", "中年", "老者", "长者", "骨相"]
+        has_age = any(kw in prompt for kw in age_keywords)
+        has_char_anchor = "【主体】" in prompt or "主角" in prompt or "身着" in prompt or "@" in prompt
+        
+        if has_char_anchor and has_age:
+            scores["visual_consistency"] = 98
+        elif has_char_anchor:
+            scores["visual_consistency"] = 85
+            suggestions.append("在第 2 段角色锁中明确生理年龄与骨相特征（如：17岁青年微骨感冷峻面容），防止AI自动幼态化。")
         else:
             scores["visual_consistency"] = 70
             issues.append("主体角色缺乏固定外貌特征锁。")
-            suggestions.append("在第 2 段注入角色的 50 字固定外貌描述段。")
+            suggestions.append("在第 2 段注入角色的四层复合外貌描述锁。")
 
         # 7. 原著忠实度与防魔改对账 (Canonical Fidelity Check)
         distortion_found = False
@@ -150,7 +159,7 @@ class DirectorAuditGate:
         else:
             scores["canonical_fidelity"] = 98
 
-        # 8. 声画与技术合规 (禁用工程参数脱敏)
+        # 8. 声画与技术合规 (禁用工程参数脱敏与音频闪避)
         found_params = []
         for p in self.FORBIDDEN_PARAMS:
             matches = re.findall(p, prompt, re.IGNORECASE)
@@ -193,7 +202,7 @@ class DirectorAuditGate:
 | 3. 动作力学直觉 (受力与形变) | 15% | {res['dimension_scores'].get('kinetic_impact', 0)} | {'✅' if res['dimension_scores'].get('kinetic_impact', 0) >= 85 else '⚠️'} |
 | 4. FACS 微表情 (微肌肉与眼神) | 15% | {res['dimension_scores'].get('facs_performance', 0)} | {'✅' if res['dimension_scores'].get('facs_performance', 0) >= 85 else '⚠️'} |
 | 5. 节奏留存与呼吸感 (气口余韵) | 10% | {res['dimension_scores'].get('pacing_and_rest', 0)} | {'✅' if res['dimension_scores'].get('pacing_and_rest', 0) >= 85 else '⚠️'} |
-| 6. 视觉一致性 (外貌特征锁) | 15% | {res['dimension_scores'].get('visual_consistency', 0)} | {'✅' if res['dimension_scores'].get('visual_consistency', 0) >= 85 else '⚠️'} |
+| 6. 视觉一致性 (六维外貌特征锁) | 15% | {res['dimension_scores'].get('visual_consistency', 0)} | {'✅' if res['dimension_scores'].get('visual_consistency', 0) >= 85 else '⚠️'} |
 | 7. 原著忠实度 (防无授权魔改) | 15% | {res['dimension_scores'].get('canonical_fidelity', 0)} | {'✅' if res['dimension_scores'].get('canonical_fidelity', 0) >= 85 else '⚠️'} |
 | 8. 声画与技术合规 (参数脱敏) | 10% | {res['dimension_scores'].get('technical_compliance', 0)} | {'✅' if res['dimension_scores'].get('technical_compliance', 0) >= 85 else '⚠️'} |
 """
@@ -232,10 +241,10 @@ def main():
         # 默认测试提示词（故意包含一个工程参数以测试探针灵敏度）
         target_prompt = (
             "8K IMAX, 35mm film stock, 徐克新武侠风格。\n"
-            "【主体】主角林风，20岁剑客，身着玄黑锦袍，目光凌厉。\n"
-            "【环境】昆仑大殿中央，立于盘龙石柱前，狂风吹拂殿顶裂隙。\n"
+            "【主体】主角林风 (CHAR_001)，20岁青年剑客，微骨感冷峻面容，身着玄黑锦袍，目光凌厉。\n"
+            "【环境】昆仑白玉门殿中央，立于盘龙石柱前，狂风吹拂殿顶裂隙。\n"
             "【镜头与运镜】35mm电影镜头，机位贴地急速前推；主角右手拔剑凌空斩出二十米金色剑刃，轰碎石柱，碎石向四周崩碎飞溅，衣袖受惯性滞后摆动；f/1.4大光圈。\n"
-            "【微表情与表演】下颌咬肌剧烈凸起，眼瞳如深渊不眨，眼神先向下瞥见暗器随后抬眸对视，呼吸急促深重。\n"
+            "【微表情与表演】下颌咬肌剧烈凸起，眼瞳如深渊不眨，眼神先向下瞥见暗器随后抬眸对视，呼吸急促深重；字幕特效: 动态金色行草字幕；音频对位: 侧链闪避。\n"
             "【约束】24fps, no cgi plastic skin, no deformed hands."
         )
         print("ℹ️ 使用内置综合样本执行质检审计...\n")

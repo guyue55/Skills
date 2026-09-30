@@ -1,6 +1,6 @@
 # 确定性分镜提示词语法与焦段词典 (Cinematic Prompt Grammar)
 
-> 本文档规范了 AI 视频模型提示词的编译标准、七段式自包含公式、运镜动作同句融合句式、工程参数脱敏映射表以及全焦段镜头语法。
+> 本文档规范了 AI 视频模型提示词的编译标准、七段式自包含公式、四层复合角色资产锁、运镜动作同句融合句式、动态字幕语法、工程参数脱敏映射表以及全焦段镜头语法。
 
 ---
 
@@ -10,13 +10,13 @@ AI 视频模型是无状态概率预测引擎，**单个镜头提示词绝不能
 
 ```
 【第 1 段 · 画质基准与视觉风格】 (Visual Style & Quality Preset)
- ➔ 8K IMAX, 35mm film grain, 180° shutter motion blur, realistic skin pores, fine vellus hair, zero plastic sheen, cinematic lighting.
+ ➔ 8K IMAX, 35mm film grain, 180° shutter motion blur, realistic skin pores, fine vellus hair, zero plastic sheen, cinematic lighting, [美学流派与Blend融合比例].
 
-【第 2 段 · 角色资产固定外貌锁】 (Fixed Character Anchor)
- ➔ [角色名/@ID], [年龄/身材], [五官固定特征(鼻梁/眉骨伤疤/瞳色)], [固定发型], [固定服装材质与剪裁(如黑金刺绣劲装)].
+【第 2 段 · 角色资产四层复合外貌锁】 (4-Layer Character Anchor)
+ ➔ [主体角色名/@ID], [第1层: 视觉生理年龄段与骨相衰老特征], [第2层: 当前社会阶层身份与服饰剪裁], [第3层: 修为气场光流与神态心智], [第4层: 不可逆生理印记与专属信物].
 
 【第 3 段 · 场景空间与光学环境】 (Scene & Lighting Optics)
- ➔ [地理空间结构], [长期固定参照物(如破损石坛/长明灯)], [主光源方向(如右上方45度月光穿透云层)], [环境粒子(如横向暴雨/反重力悬浮碎石)].
+ ➔ [地理空间结构], [长期固定参照物(如破损石坛/长明灯)], [主光源方向(如右上方45度月光穿透云层)], [环境粒子(如横向暴雨/反重力悬浮碎石/破损持久化记录)].
 
 【第 4 段 · 摄影机焦段与空间运镜】 (Optics & Camera Movement)
  ➔ [镜头焦段与视场角描述], [机位高度与初始角度], [摄影机运动轨迹与物理依托(如低角度贴地急速侧推追踪)].
@@ -24,8 +24,8 @@ AI 视频模型是无状态概率预测引擎，**单个镜头提示词绝不能
 【第 5 段 · 核心动作与物理力学】 (Action Kinetics & Physical Impact)
  ➔ [动作力学六步分解], [肌肉发力与肢体位移], [碰撞受力形变与破坏反馈], [次级布料发丝惯性延迟].
 
-【第 6 段 · FACS 微表情与声画对位】 (FACS Acting & Audio-Visual Sync)
- ➔ [咬肌/下唇/瞳孔/喉结生理微动], [眼神生命轨迹(视线先到头后转)], [台词内容与说话嘴唇开合/或内心OS紧闭双唇].
+【第 6 段 · FACS 微表情、动态字幕与声画对位】 (FACS, Typography & Audio-Visual Sync)
+ ➔ [咬肌/下唇/瞳孔/喉结生理微动], [眼神生命轨迹(视线先到头后转)], [动态招式/标题字幕特效(三阶段动效)], [台词/旁白气口与多轨音频闪避标记].
 
 【第 7 段 · 负向约束与技术参数】 (Negative & Technical Bounds)
  ➔ 24fps smooth motion, no deformed hands, no floating props, no temporal flicker, no oversaturated cartoon colors.

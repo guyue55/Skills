@@ -4,11 +4,12 @@
 确定性分镜提示词编译器 (Cinematic Prompt Compiler)
 
 功能：
-1. 接收镜头分镜定义，按【七段式完全自包含公式】确定性编译为工业级视频生成提示词。
+1. 接收镜头分镜定义，按【七段式完全自包含公式】与【四层复合角色资产锁】确定性编译为工业级视频生成提示词。
 2. 自动注入 8 大系 80 种影史导演美学与双流派 Blend 融合模式（深度联动 topic-director-cinematic-master）。
-3. 执行【运镜与动作同句融合】算法，消除孤立运镜词。
-4. 自动脱敏并转化禁用工程参数（如 f/2.8 ➔ 极浅景深圆形光斑；5m/s ➔ 动态放射状模糊）。
-5. 针对 Kling 3.0 / Seedance 2.5 / Wan 2.6 / Veo 3.1 差异化定制格式。
+3. 支持动态字幕特效（三阶段动效：入场 ➔ 停留呼吸 ➔ 招式消散）与真人旁白解说声乐调度。
+4. 执行【运镜与动作同句融合】算法，消除孤立运镜词。
+5. 自动脱敏并转化禁用工程参数（如 f/2.8 ➔ 极浅景深圆形光斑；5m/s ➔ 动态放射状模糊）。
+6. 针对 Kling 3.0 / Seedance 2.5 / Wan 2.6 / Veo 3.1 差异化定制格式。
 
 用法：
     python3 scripts/cinematic_prompt_compiler.py --shot-text "拔剑出鞘" --director "徐克新武侠" --blend "杜琪峰几何站位" --model "Seedance 2.5"
@@ -88,34 +89,42 @@ class CinematicPromptCompiler:
         return f"【导演风格: {p_desc}】"
 
     def compile_shot(self, shot_data: Dict[str, Any]) -> str:
-        """按七段式完全自包含公式编译单镜头"""
+        """按七段式完全自包含公式与四层复合资产锁编译单镜头"""
         # 段 1: 画质与风格基准
         seg1_quality = f"8K IMAX, 35mm film stock, organic film grain, realistic skin texture, {self.blend_director_styles()}"
 
-        # 段 2: 角色固定外貌锚点
-        char_desc = shot_data.get("character_desc", "主角林风，20岁青年剑客，冷峻坚毅，右眉尾浅白伤疤，玄黑缎面锦袍配暗金护腕")
-        seg2_character = f"【主体】{char_desc}"
+        # 段 2: 角色资产四层复合外貌锚点 (四层锁: 基础标识 + 生理年龄/骨相 + 身份服饰 + 气场/印记)
+        char_name = shot_data.get("character_name", "冷羽 (CHAR_001)")
+        age_tier = shot_data.get("age_tier", "17岁青年微骨感冷峻面容")
+        costume = shot_data.get("costume", "洗至发白的赫氏学院粗布学员制服配浅青粗布笑脸面具")
+        power_aura = shot_data.get("power_aura", "周身隐现0.5米微波透明热浪折射，眼神冷静沉寂")
+        relic_marks = shot_data.get("relic_marks", "右手握持锈迹斑斑的三尺无锋铁剑")
+        
+        seg2_character = f"【主体】{char_name}, {age_tier}, 身着{costume}, {power_aura}, {relic_marks}"
 
         # 段 3: 场景空间与光学环境
-        scene_desc = shot_data.get("scene_desc", "昆仑正殿内，大理石地面留存3米剑气斩痕，正午强光穿透破损殿顶，尘埃浮动")
+        scene_desc = shot_data.get("scene_desc", "赫氏学院白玉正门殿堂内，大理石地面留存3米剑气斩痕，正午强光穿透破损殿顶，尘埃浮动")
         seg3_scene = f"【环境】{scene_desc}"
 
         # 段 4: 摄影机焦段与运镜 (执行同句融合)
         lens = shot_data.get("lens", "50mm")
-        camera_move = shot_data.get("camera_movement", "机位贴地急速前推随后微仰")
+        camera_move = shot_data.get("camera_movement", "机位贴地急速前推随后微仰锁定主体")
         seg4_optics = f"【镜头与运镜】{lens} 电影定焦镜头，{camera_move}"
 
         # 段 5: 核心动作力学与物理形变 (六步闭环)
-        raw_action = shot_data.get("action", "主角拔剑横扫，剑气轰碎石柱，碎石受冲击向四周飞溅，衣袖受惯性滞后摆动")
+        raw_action = shot_data.get("action", "主角拔剑横扫，剑气微波振动震碎石柱，碎石受冲击向四周飞溅，衣摆受惯性自然摆动")
         action_sanitized = self.sanitize_forbidden_parameters(raw_action)
         seg5_action = f"【动作力学】{action_sanitized}"
 
-        # 段 6: FACS 表演微表情与声画
-        facs_acting = shot_data.get("facs_acting", "下颌咬肌硬块状收紧，眼眸黑曜石般深邃不眨，眼神先动后转头，双唇紧闭")
-        seg6_acting = f"【微表情与表演】FACS微动: {facs_acting}"
+        # 段 6: FACS 表演微表情、动态字幕与声画对位
+        facs_acting = shot_data.get("facs_acting", "下颌咬肌硬块状收紧，眼眸深邃不眨，眼神先动后转头")
+        subtitle_fx = shot_data.get("subtitle_fx", "动态金色行草字幕 '落羽神恋曲 · 微波震颤' (0.8s金光凝聚入场 ➔ 1.5s高光流光脉冲 ➔ 0.6s散作光羽)")
+        voice_audio = shot_data.get("voice_audio", "配乐 A3 轨道自动触发侧链闪避下潜 -10dB，台词与呼吸清晰入耳")
+        
+        seg6_acting = f"【微表情、字幕与声画】FACS微动: {facs_acting}；字幕特效: {subtitle_fx}；音频对位: {voice_audio}"
 
         # 段 7: 负向约束
-        seg7_negative = "【约束】24fps smooth, no CGI plastic skin, no deformed hands, no floating props, no temporal flicker"
+        seg7_negative = "【约束】24fps smooth, no CGI plastic skin, no deformed hands, no floating props, no temporal flicker, no oversaturated colors"
 
         # 针对不同模型定制装配
         if "Seedance" in self.target_model:
@@ -134,6 +143,9 @@ def main():
     parser.add_argument("--director", "-d", default="徐克新武侠", help="主导导演流派 (支持 80 大流派别名或全称)")
     parser.add_argument("--blend", "-b", default="杜琪峰几何站位", help="辅助融合导演流派")
     parser.add_argument("--model", "-m", default="Seedance 2.5", help="目标渲染模型 (Kling 3.0 / Seedance 2.5 / Wan 2.6 / Veo 3.1)")
+    parser.add_argument("--age-tier", "-a", default="17岁青年微骨感冷峻面容", help="角色生理年龄与骨相特征")
+    parser.add_argument("--subtitle-fx", help="动态字幕特效描述 (入场/停留/消散)")
+    parser.add_argument("--voiceover", help="旁白与台词气口描述")
 
     args = parser.parse_args()
 
@@ -144,12 +156,18 @@ def main():
     )
 
     sample_shot = {
-        "character_desc": "林风，20岁剑客，右眉浅白伤疤，玄黑紧袖劲装，目光如电",
-        "scene_desc": "破败古庙内，暴雨倾盆顺着破瓦倾泻，中央长明铜灯摇曳",
+        "character_name": "冷羽 (CHAR_001)",
+        "age_tier": args.age_tier,
+        "costume": "洗至发白的赫氏学院粗布学员制服配浅青粗布笑脸面具",
+        "power_aura": "周身隐现0.5米微波透明热浪折射，眼神冷静沉寂",
+        "relic_marks": "右手握持锈迹斑斑的三尺无锋铁剑",
+        "scene_desc": "赫氏学院白玉正门殿堂内，大理石地面留存3米剑气斩痕，正午强光穿透破损殿顶，尘埃浮动",
         "lens": "35mm 广角电影镜头",
         "camera_movement": "摄影机自低机位贴地急速前推，穿过雨幕撞入眼眸",
         "action": args.shot_text if args.shot_text else "主角右手沉桥拔剑，剑身在空中划出半月气刃，将袭来的三根长枪斩断；震屏 10%，大光圈 f/1.4",
-        "facs_acting": "下唇紧咬渗出一丝白痕，咬肌剧烈收紧，视线先向下瞥见暗器随后抬眸锁定对手"
+        "facs_acting": "下唇紧咬渗出一丝白痕，咬肌剧烈收紧，视线先向下瞥见暗器随后抬眸锁定对手",
+        "subtitle_fx": args.subtitle_fx if args.subtitle_fx else "动态金色行草字幕 '落羽神恋曲 · 微波震颤' (0.8s金光凝聚入场 ➔ 1.5s高光流光脉冲 ➔ 0.6s散作光羽)",
+        "voice_audio": args.voiceover if args.voiceover else "配乐 A3 轨道自动触发侧链闪避下潜 -10dB，台词与呼吸清晰入耳"
     }
 
     compiled_prompt = compiler.compile_shot(sample_shot)

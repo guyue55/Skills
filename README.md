@@ -89,7 +89,7 @@ Skills/
 | `domain-engine-distiller` | **系统工程 · 领域级引擎与心智模型蒸馏器** | 通用 Three.js 式架构生成器：将复杂底层技术（WebGPU/端侧AI/WebAudio/3DGS）蒸馏为五常识投影、三层洋葱架构、10行极简契约与爆款 Demo 体系 | [`skills/domain-engine-distiller/SKILL.md`](skills/domain-engine-distiller/SKILL.md) |
 | `topic-socratic-prompt-master` | **苏格拉底式提示词架构大师** | 基于李飞飞提示词哲学与苏格拉底精神助产术，提供双层提示词工程（需求精准定义+AI输出6维反诘：问定义/问假设/问依据/问反例/问推论/问边界）、六大辩证心智流派、逆讨好(Anti-Sycophancy)对抗、CoVe核验链与工业级 XML Master Prompt 架构编译 | [`skills/topic-socratic-prompt-master/SKILL.md`](skills/topic-socratic-prompt-master/SKILL.md) |
 | `topic-director-cinematic-master` | **影视视听与导演级全流程创作大师** | 融合世界影史 8 大系 80 大经典导演流派（邵氏动作/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度、雷德利斯科特赛博神光、维伦纽瓦巨物沉思、大友克洋废墟核爆、90秒爆款短剧流、动态漫破框流、国漫3D御剑空战、虚幻引擎超写实CG等），支持单流派与双流派跨界融合 (Blend Mode)，提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级 AI 生图/视频 Prompt 编译全流程能力 | [`skills/topic-director-cinematic-master/SKILL.md`](skills/topic-director-cinematic-master/SKILL.md) |
-| `topic-ai-video-creative-engine` | **AI 视频全流程工业级创作引擎** | 全流程 AI 视频与短剧/漫剧工业级创作中枢，涵盖长篇小说/剧本智能解构、90s 节拍重构、角色/场景/道具资产定妆与跨集一致性状态机、世界影史 50 大导演视听调度、七段式自包含 Prompt 确定性编译、异构模型路由（Kling/Seedance/Wan/Veo）、四轨音频动态闪避与 EBU R128 混音、导演 Agent 7 维全景质检自审 | [`skills/topic-ai-video-creative-engine/SKILL.md`](skills/topic-ai-video-creative-engine/SKILL.md) |
+| `topic-ai-video-creative-engine` | **AI 视频全流程工业级创作引擎** | 全流程 AI 视频与短剧/漫剧工业级创作中枢，涵盖长篇小说/剧本智能解构、原著真值锁定与严防魔改门禁、90s 节拍重构、角色六维演化坐标系与四层复合资产锁、电影级动态招式/标题字幕特效、大片真人旁白解说调度系统、绝世武学与视效对冲矩阵、长篇小说解耦拓扑、世界影史 80 大导演视听调度、七段式自包含 Prompt 确定性编译、异构模型路由（Kling/Seedance/Wan/Veo）、四轨音频动态闪避与 EBU R128 混音、导演 Agent 8 维全景质检自审 | [`skills/topic-ai-video-creative-engine/SKILL.md`](skills/topic-ai-video-creative-engine/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

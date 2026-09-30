@@ -1,6 +1,6 @@
-# 🥋 流派大系 01：华语动作、武侠、功夫与枪战江湖大系 (Wuxia & Kung Fu Action)
+# 🥋 流派大系 01：华语动作、武侠、功夫与亚洲极限肉搏大系 (Wuxia & Kung Fu Action - 15 流派)
 
-本卷系统收录华语电影史上最具代表性的 10 大硬核动作与视听流派，为短剧、漫剧、网文、剧本与动作分镜提供招式拆解、力学反馈与视听指纹。
+本卷系统收录华语及亚洲动作电影史上最具代表性的 15 大硬核动作与视听流派，为短剧、漫剧、网文、剧本与动作分镜提供招式拆解、力学反馈与视听指纹。
 
 ---
 
@@ -91,3 +91,48 @@
 - **动作力学**：天台亡命跳跃、碎玻璃与铁栏杆肉搏、汽车对撞翻滚、亡命徒不要命打法。
 - **微表情与表演**：眼球充血暴突、嘶吼咆哮、青筋在额头狂跳的绝望疯狂。
 - **AI Prompt 核心词**：`Benny Chan action cinema, massive street explosion with fireball, police shootout amidst shattered glass, gritty Hong Kong urban street, high-octane vehicular destruction.`
+
+---
+
+## 11. 灵动杂耍道具动作喜剧派 · 洪金宝 & 成龙 (成家班) (Sammo Hung & Jackie Chan)
+- **标识代号**：`sammo_jackie_action_comedy`
+- **美学与分镜 DNA**：利用环境道具（梯子/长凳/雨伞/自行车）进行高敏捷攻防；中景完整展示特技动作与受力；节奏滑稽与硬核实打完美结合。
+- **动作力学**：闪转腾挪借力打力、滑铲穿裆、受重击后真实的甩手甩脚痛感生理反应、连续多重受击反弹。
+- **微表情与表演**：被打中后五官扭曲倒吸冷气、偷袭得逞后狡黠一笑、面临绝境时滑稽的慌乱求生。
+- **AI Prompt 核心词**：`Jackie Chan style action comedy, clever prop fighting with wooden ladder and bench, agile tumbling and dodging, bright daylight Hong Kong alley, dynamic kinetic choreography.`
+
+---
+
+## 12. 飘逸唯美神仙威亚与丝绸狂想派 · 程小东 (Ching Siu-tung)
+- **标识代号**：`ching_siu_tung_wire_wuxia`
+- **美学与分镜 DNA**：红蓝漫天飞舞长丝绸、月夜屋顶斜飞御剑、倒挂金钩凌空连环射箭、唯美浪漫与残酷血腥的极致反差。
+- **动作力学**：反重力长距离滑翔、旋转剑气撕裂竹林、丝绸如长枪般贯穿实木梁柱。
+- **微表情与表演**：长发漫卷遮面、红唇含血、眼神幽怨中带有凌厉杀意。
+- **AI Prompt 核心词**：`Ching Siu-tung wuxia aesthetic, flowing red and cyan silk ribbons flying across night sky, weightless wire-fu aerial sword duel on rooftop, poetic moonlight, 1990s Hong Kong fantasy cinema.`
+
+---
+
+## 13. 史诗现实主义与战场微表情大师 · 陈可辛 (Peter Chan)
+- **标识代号**：`peter_chan_epic_realism`
+- **美学与分镜 DNA**：写实残酷历史泥泞感、三兄弟战场结拜与反目、特写镜头捕捉复杂人物微表情与心理暗涌。
+- **动作力学**：泥潭重甲肉搏、长枪穿胸与近身拔刀肉体切割、千军万马冲锋时的混乱窒息感。
+- **微表情与表演**：眼眶含泪但下颌如铁石般坚硬、兄弟相残时手指的轻微痉挛。
+- **AI Prompt 核心词**：`Peter Chan The Warlords cinematography, gritty muddy battlefield, desaturated earthy tones, intense historical melee with spears, raw emotional facial close-up, dramatic side lighting.`
+
+---
+
+## 14. 印尼班卡西拉爆裂密闭格斗派 · 加雷斯·埃文斯 (Gareth Evans)
+- **标识代号**：`gareth_evans_silat_brutal`
+- **美学与分镜 DNA**：极度狭窄走廊/密闭电梯长镜头跟踪、手持摄影剧烈震动、无配乐的骨肉碰撞死寂。
+- **动作力学**：印尼班卡西拉（Pencak Silat）近身短刀割喉、头部反复重撞水泥墙壁、体力衰竭下的绝命撕咬搏杀。
+- **微表情与表演**：面部血汗交融、瞳孔放大散发濒死兽性、喉咙发出野兽般的低沉粗重喘息。
+- **AI Prompt 核心词**：`Gareth Evans The Raid style, brutal Pencak Silat combat in narrow claustrophobic corridor, hyper-kinetic handheld camera, raw blood and sweat on cracked concrete, bone-shattering melee.`
+
+---
+
+## 15. 泰拳零威亚极限物理破坏派 · 托尼·贾 / 普拉奇亚·平克尧 (Tony Jaa / Prachya Pinkaew)
+- **标识代号**：`tony_jaa_muay_thai`
+- **美学与分镜 DNA**：一镜到底百人斩楼梯长镜头、多角度三重慢动作回放致命打击点、零威亚纯人体极限。
+- **动作力学**：飞身下劈霸王肘（Elbow Smash）、凌空双膝冲撞碎颅（Flying Knee）、反关节折断、踏人身腾空旋转踢。
+- **微表情与表演**：神情冷峻坚毅如佛雕、进攻瞬间面部肌肉爆发性紧绷、受创后一声不吭的钢铁意志。
+- **AI Prompt 核心词**：`Tony Jaa Ong-Bak Muay Thai, explosive flying knee strike in mid-air, shattering wooden scaffolding, authentic raw full-contact martial arts, low angle dynamic shot, sweaty tropical heat.`

@@ -4,9 +4,9 @@
 quality_check.py - topic-director-cinematic-master 物理质量校验脚本
 校验内容：
 1. SKILL.md Frontmatter 与目录名一致性
-2. 所有核心资产与 7 大流派知识库引用文档完整性
+2. 所有核心资产与 8 大流派知识库引用文档完整性
 3. 扫描绝对路径与 TODO 占位符
-4. 物理执行 director_synthesizer.py 自测与 50 大流派遍历
+4. 物理执行 director_synthesizer.py 自测与 80 大流派遍历
 """
 
 import os
@@ -22,7 +22,7 @@ def run_check():
     skill_md = os.path.join(base_dir, "SKILL.md")
 
     # 1. 检查文件完整性
-    print("🔍 [1/4] 检查必要文件与 7 大系 50 个导演流派知识库引用完整性...")
+    print("🔍 [1/4] 检查必要文件与 8 大系 80 个导演流派知识库引用完整性...")
     required_files = [
         "SKILL.md",
         "scripts/director_synthesizer.py",
@@ -38,6 +38,7 @@ def run_check():
         "references/archetypes/05_japanese_cinema_anime.md",
         "references/archetypes/06_european_art_masters.md",
         "references/archetypes/07_micro_drama_vertical_cinema.md",
+        "references/archetypes/08_digital_donghua_emerging.md",
         "assets/templates/master_director_system_prompt_template.md",
         "assets/templates/storyboard_shot_sheet_template.md",
         "assets/templates/action_beat_breakdown_template.md",
@@ -49,7 +50,7 @@ def run_check():
         if not os.path.exists(full_path):
             print(f"❌ 缺失必要文件: {rel_path}")
             sys.exit(1)
-    print("✅ 所有 18 项必要文件与知识库引用均完整存在。")
+    print("✅ 所有 19 项必要文件与知识库引用均完整存在。")
 
     # 2. 校验 SKILL.md
     print("🔍 [2/4] 校验 SKILL.md 结构与 Frontmatter 规范...")
@@ -79,7 +80,7 @@ def run_check():
     print("✅ 环境脱敏与防偷懒扫描全部通过，无硬编码路径与未完成标记。")
 
     # 4. 物理执行 CLI 自测
-    print("🔍 [4/4] 物理执行 director_synthesizer.py 功能自测 (50大流派全量遍历)...")
+    print("🔍 [4/4] 物理执行 director_synthesizer.py 功能自测 (80大流派全量遍历)...")
     res = subprocess.run([sys.executable, os.path.join(base_dir, "scripts", "director_synthesizer.py"), "--mode", "test"], capture_output=True, text=True)
     if res.returncode != 0:
         print(f"❌ director_synthesizer 自测失败:\n{res.stderr}")

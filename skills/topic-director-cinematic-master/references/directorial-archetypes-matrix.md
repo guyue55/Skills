@@ -1,62 +1,38 @@
-# 🎬 影史十大经典导演与视听流派全景指南 (Directorial Archetypes Matrix)
+# 🎬 影史 8 大大系 80 大经典导演与视听流派全景指南 (Directorial Archetypes Matrix)
 
 > [!NOTE]
-> 本参考指南深度解构世界电影史上最具代表性、视觉风格最鲜明的 10 大导演流派。为短剧、漫剧、网文、剧本与 AI 视频/绘图生成提供精确到机位、运镜、灯光、动作与剪辑节奏的导演级美学引擎。
+> 本参考指南深度解构世界电影史上最具代表性、视觉风格最鲜明的 8 大系 80 大导演与视听流派。为短剧、漫剧、网文、剧本与 AI 视频/绘图生成提供精确到机位、运镜、灯光、动作与剪辑节奏的导演级美学引擎。
 
 ---
 
-## 🏛️ 十大导演流派速查与适用场景矩阵
+## 🏛️ 八大流派大系索引与分类导航
 
-| 流派编号 & 标识 | 核心导演代表 | 核心视听美学与分镜 DNA | 最优适用场景 (短剧/漫剧/小说) | 标志性机位与运镜 |
-| :--- | :--- | :--- | :--- | :--- |
-| **01. `shaw_kungfu` (邵氏硬派功夫派)** | **张彻 / 刘家良 / 楚原** | 硬桥硬马招式拆解、阳刚血性、盘肠大战、摄影棚景深布景、奇门兵器对拆 | 传统武侠、国术格斗、高燃复仇短剧、古风漫剧生死决斗 | 固定机位中全景展示招式套路 + 致命一击急推面部/兵器特写 |
-| **02. `tsui_hark_fantasy` (新武侠奇幻狂想派)** | **徐克 (Tsui Hark)** | 漫画感分镜手稿、飞天遁地威亚奇观、高速多机位颠覆剪辑、高饱和奇幻色彩 | 仙侠玄幻大招对轰、异能战斗、赛博国风、快节奏爽剧冲突 | 狂飙大范围倾斜跟拍、极速旋转俯冲、漫画式夸张神态定格 |
-| **03. `johnnie_to_noir` (银河映像站位宿命派)** | **杜琪峰 (Johnnie To)** | 空间几何三角站位、静止对峙积蓄暴风雨前压迫感、暗光/侧光切割、黑色幽默与宿命反转 | 现代都市商战、黑帮警匪对峙、多方势力暗斗、高智商博弈 | 静止长镜头、多人物深焦构图、百叶窗/街灯阴影切割 |
-| **04. `wong_kar_wai_mood` (光影情绪与抽帧流派)** | **王家卫 (Wong Kar-wai)** | 慢门抽帧/步印运动 (Step-printing)、非对称倾斜构图、情绪碎片跳切、诗意独白与色彩暗涌 | 情感纠葛、都市边缘人孤独、悬疑心理创伤、怀旧民国氛围 | 慢速手持晃动微特写、抽帧拖影运镜、门框/玻璃反光遮挡 |
-| **05. `stephen_chow_comic` (无厘头反差喜剧派)** | **周星驰 (Stephen Chow)** | 严密漫画分镜预演、极端景别瞬间突变、草根小人物悲喜交加、微表情与动作瞬间反差 | 搞笑爆笑短剧、无厘头逆袭、反套路打脸网文、漫剧表情包名场面 | 极宽全景瞬间推至瞳孔地震特写、升格慢动作放大滑稽与悲怆 |
-| **06. `nolan_non_linear` (非线性钳形时空派)** | **克里斯托弗·诺兰 (Christopher Nolan)** | 多线跨时空交叉并进、钳形时空叙事、硬核实拍物理质感、重力倒转与宏大概念折叠 | 科幻无限流、高概念悬疑剧本、硬核烧脑剧情、时间循环反转 | 宏大全景 IMAX 构图、主观 Dutch Angle 倾斜镜头、精密交叉剪辑 |
-| **07. `hitchcock_suspense` (视线诱导与信息差悬念派)** | **阿尔弗雷德·希区柯克 (Alfred Hitchcock)** | “炸弹理论”操控信息差、主观视点镜头 (POV)、窥视感与视线诱导、节拍递进的心理压迫 | 密室逃脱、惊悚悬疑短剧、连环凶案揭秘、心理谍战对决 | 希区柯克变焦 (Dolly Zoom)、门缝/钥匙孔窥视主观镜头 |
-| **08. `tarantino_dialogue` (章回体对白暴力美学派)** | **昆汀·塔伦蒂诺 (Quentin Tarantino)** | 章回体非线性拼图、高密度垃圾话台词交锋、墨西哥式三方对峙、反高潮突发血腥暴力 | 黑色幽默犯罪、反英雄复仇、多方土匪/黑道谈判破裂名场面 | 后备箱主观视角 (Trunk Shot)、环形慢速摇镜头、对射极速切镜 |
-| **09. `satoshi_kon_matchcut` (匹配剪辑虚实折叠派)** | **今敏 (Satoshi Kon)** | 匹配剪辑 (Match Cut) 转场神迹、现实与潜意识心理投射的无缝折叠、跨时空形似转场 | 心理穿越、无限流梦境觉醒、二次元漫剧脑洞、现实幻觉交织 | 动作/物体/颜色匹配转场、镜面破碎反射穿梭、画面无缝变形 |
-| **10. `kurosawa_weather` (自然气象与宏大轴线派)** | **黑泽明 (Akira Kurosawa)** | 风雨雾暴雪自然力场烘托、大景深几何三角形站位、群体奔涌运动轴线与武士拔刀定格 | 史诗战争、宗门决战、风雨夜复仇、大开大合的宏大对决 | 超远景纵深长镜头、多机位平行侧拍、暴雨/烈火中极度克制定格 |
+完整知识库已按大系解耦为 8 个深度参考文档：
 
----
-
-## 🥋 重点深剖：邵氏兄弟电影（Shaw Brothers）美学 DNA
-
-### 1. 张彻派：阳刚野兽派与残酷暴力美学
-- **核心叙事动力**：男儿热血、同仇敌忾、背水一战与惨烈牺牲。
-- **动作标志**：
-  - **盘肠大战**：腹部或身躯遭受重创后，以布缠身或单手封伤口，爆发极限潜能决死冲杀。
-  - **白衣染血**：主角常身着一尘不染的白衣入场，随战斗层层深入逐渐浸满鲜红血浆，形成极度强烈的视觉对比。
-  - **局部受击特写**：兵器刺入、骨骼断裂、肌肉痉挛配合刺目的喷血特效，用快速剪辑强化痛感。
-- **分镜指令示范**：
-  > `[机位] 极近特写 (Extreme Close-up) -> [对象] 刀尖贯穿肩胛，鲜血自白衣撕裂处激射 -> [运镜] 镜头伴随打击声骤然震动 (Camera Shake) -> [表情] 咬碎钢牙、双目赤红的愤怒狞笑`
-
-### 2. 刘家良派：南派正宗洪拳与写实功夫传承
-- **核心叙事动力**：武德修行、草根成长、苦练绝技、尊师重道与克制用武。
-- **动作标志**：
-  - **有板有眼、招式拆解**：起势、进桥、圈手、封膀、日字冲拳、标指、扫腿，招招清晰，交代攻防因果。
-  - **练功趣味化**：将挑水、打桩、接碗、顶缸等日常苦练转化为充满智趣与力学美感的修行仪式。
-  - **克制剪辑**：坚决摒弃碎切，给足全景与中景空间，让武者在完整镜头内打完 4~8 动套路。
-- **分镜指令示范**：
-  > `[机位] 固定中景 (Static Medium Shot) -> [对象] 两人沉稳落马步对拆 -> [动作] 左手沉桥封住对方直拳，右掌化伏手直切肋下，步法寸进碾压泥尘 -> [运镜] 零晃动全画幅记录完整攻防发力链条`
-
-### 3. 楚原派：古龙式悬疑布景与浪漫唯美武侠
-- **核心叙事动力**：杀手孤独、红颜祸水、美酒毒药、深宅阴谋与无可奈何的江湖宿命。
-- **动作标志**：
-  - **厂景摄影棚美学**：人造枫树、干冰烟雾、朱红雕栏、幽暗烛火，构成极其精致的戏剧化封闭舞台。
-  - **奇门兵器对决**：旋转飞刀、机括孔雀翎、伞中剑、锁链双钩，讲求一击必杀的意境而非冗长缠斗。
-  - **多层景深遮挡**：镜头经常穿过轻纱、珠帘、窗棂、盆景，营造窥视感与危机四伏的深闺杀机。
-- **分镜指令示范**：
-  > `[机位] 景深穿透镜头 (Deep Focus with Foreground Framing) -> [前景] 红色枫叶与雕花窗棂虚化遮挡 -> [中景] 烛台摇曳、酒壶倒扣 -> [后景] 黑衣剑客拔剑三寸，寒光倒映在冷艳女子含泪的双眸`
+1. 🥋 **[01 华语武侠动作枪战大系 (15 流派)](archetypes/01_wuxia_kungfu_action.md)**
+   - 张彻 (`shaw_chang_cheh`)、刘家良 (`shaw_lau_kar_leung`)、楚原 (`shaw_chor_yuen`)、胡金铨 (`king_hu_zen_wuxia`)、徐克 (`tsui_hark_fantasy`)、袁和平 (`yuen_woo_ping_action`)、吴宇森 (`john_woo_gun_fu`)、杜琪峰 (`johnnie_to_noir`)、甄子丹 (`donnie_yen_mma`)、陈木胜 (`benny_chan_explosive`)、洪金宝/成龙 (`sammo_jackie_action_comedy`)、程小东 (`ching_siu_tung_wire_wuxia`)、陈可辛 (`peter_chan_epic_realism`)、加雷斯·埃文斯 (`gareth_evans_silat_brutal`)、托尼·贾 (`tony_jaa_muay_thai`)。
+2. 🎭 **[02 华语作者电影、东方意境与现实主义大系 (10 流派)](archetypes/02_chinese_auteurs_poetics.md)**
+   - 王家卫 (`wong_kar_wai_mood`)、周星驰 (`stephen_chow_comedy`)、姜文 (`jiang_wen_hormone`)、张艺谋 (`zhang_yimou_color_grandeur`)、李安 (`ang_lee_restraint`)、贾樟柯 (`jia_zhangke_realism`)、侯孝贤 (`hou_hsiao_hsien_long_take`)、杨德昌 (`edward_yang_urban_dissection`)、奉俊昊 (`bong_joon_ho_spatial_class`)、罗宏镇 (`na_hong_jin_desperate_noir`)。
+3. 🚀 **[03 好莱坞视效工业、科幻与史诗大系 (15 流派)](archetypes/03_hollywood_blockbuster_epic.md)**
+   - 克里斯托弗·诺兰 (`christopher_nolan_structure`)、史蒂文·斯皮尔伯格 (`steven_spielberg_adventure`)、詹姆斯·卡梅隆 (`james_cameron_industrial_titan`)、乔治·米勒 (`george_miller_wasteland`)、韦斯·安德森 (`wes_anderson_symmetry`)、扎克·施奈德 (`zack_snyder_dark_myth`)、查德·斯塔赫斯基 (`john_wick_gun_fu`)、迈克尔·贝 (`michael_bay_kinetic`)、彼得·杰克逊 (`peter_jackson_epic_fantasy`)、雷德利·斯科特 (`ridley_scott_epic_light`)、丹尼斯·维伦纽瓦 (`villeneuve_monumental_minimalism`)、沃卓斯基姐妹 (`wachowskis_matrix_cyber`)、吉尔莫·德尔·托罗 (`del_toro_gothic_fairy`)、保罗·范霍文 (`verhoeven_cyber_satire`)、约翰·卡朋特 (`carpenter_synth_horror`)。
+4. 🕵️ **[04 悬疑、惊悚、黑色犯罪与心理大系 (12 流派)](archetypes/04_suspense_noir_thriller.md)**
+   - 阿尔弗雷德·希区柯克 (`alfred_hitchcock_suspense`)、大卫·芬奇 (`david_fincher_perfection`)、斯坦利·库布里克 (`stanley_kubrick_gaze`)、昆汀·塔伦蒂诺 (`quentin_tarantino_dialogue`)、盖·里奇 (`guy_ritchie_speed_cut`)、科恩兄弟 (`coen_brothers_absurdist`)、大卫·林奇 (`david_lynch_surreal`)、朴赞郁 (`park_chan_wook_baroque`)、马丁·斯科塞斯 (`scorsese_furious_energy`)、保罗·托马斯·安德森 (`pta_steadicam_epic`)、达伦·阿伦诺夫斯基 (`aronofsky_hip_hop_montage`)、埃德加·赖特 (`edgar_wright_rhythm_cut`)。
+5. 🌸 **[05 日本电影大师、殿堂动画与视听狂想大系 (12 流派)](archetypes/05_japanese_cinema_anime.md)**
+   - 黑泽明 (`akira_kurosawa_weather`)、小津安二郎 (`yasujiro_ozu_tatami`)、今敏 (`satoshi_kon_match_cut`)、宫崎骏 (`hayao_miyazaki_ghibli`)、押井守 (`mamoru_oshii_cyber_philosophy`)、新海诚 (`makoto_shinkai_light_particles`)、庵野秀明 (`hideaki_anno_eva_psychology`)、北野武 (`takeshi_kitano_violence_blues`)、大友克洋 (`otomo_akira_cyberpunk`)、汤浅政明 (`yuasa_fluid_expressionism`)、细田守 (`hosoda_cyber_warmth`)、高畑勋 (`takahata_ink_sketch`)。
+6. 🏛️ **[06 欧洲艺术电影、哲学长镜头与自然沉思大系 (6 流派)](archetypes/06_european_art_masters.md)**
+   - 安德烈·塔可夫斯基 (`andrei_tarkovsky_time`)、费德里科·费里尼 (`federico_fellini_carnival`)、佩德罗·阿莫多瓦 (`pedro_almodovar_passion`)、迈克尔·哈内克 (`michael_haneke_cold_gaze`)、阿方索·卡隆 (`cuaron_immersive_long_take`)、泰伦斯·马力克 (`malick_golden_hour_whisper`)。
+7. 📱 **[07 竖屏短剧、微短剧与新型网生叙事特化大系 (5 流派)](archetypes/07_micro_drama_vertical_cinema.md)**
+   - 90秒竖屏黄金三秒逆袭流 (`micro_drama_hook_reversal`)、动态漫破框流 (`dynamic_comic_frame_break`)、互动中式民俗微恐流 (`found_footage_chinese_horror`)、模拟信号规则怪谈流 (`analog_horror_mandela_effect`)、剧本杀密室回溯流 (`time_loop_deduction_noir`)。
+8. 🎮 **[08 数字国漫、次世代引擎视效与实验先锋大系 (5 流派)](archetypes/08_digital_donghua_emerging.md)**
+   - 国漫 3D 玄幻御剑空战流 (`donghua_3d_xianxia_aerial`)、虚幻引擎超写实 CG 流 (`unreal_engine_hyper_cg`)、第一人称极限跑酷视点流 (`hardcore_fpv_parkour`)、赛博故障艺术流 (`cyber_glitch_datamosh`)、微缩微距模型定格流 (`claymation_dark_stop_motion`)。
 
 ---
 
-## 💡 多导演流派融合与混搭实战指南
+## 💡 多导演流派融合与混搭实战指南 (Blend Mode)
 
 在创作短剧、漫剧、网文及影视脚本时，**单一流派往往不足以覆盖全片起伏**。推荐以下黄金混搭范式：
 
 1. **【高概念短剧破局】**：`诺兰 (非线性开篇悬念 Hook)` ➔ `周星驰 (中段小人物反差爽点)` ➔ `张彻 (高潮背水一战盘肠反击)`。
 2. **【都市修仙/悬疑漫剧】**：`杜琪峰 (冷峻多方对峙站位)` ➔ `希区柯克 (底牌倒计时炸弹悬念)` ➔ `徐克 (奇门道法大招爆发)`。
-3. **【古风虐恋与刺客传奇】**：`楚原 (枫林夜宴景深布景)` ➔ `王家卫 (慢门抽帧眼神交锋)` ➔ `刘家良 (近身贴身兵器死斗)`。
+3. **【赛博仙侠/次时代空战】**：`国漫 3D 御剑空战` ➔ `雷德利·斯科特 (赛博神光与冷雨)` ➔ `沃卓斯基 (子弹时间矩阵)`。
+4. **【古风虐恋与刺客传奇】**：`楚原 (枫林夜宴景深布景)` ➔ `王家卫 (慢门抽帧眼神交锋)` ➔ `加雷斯·埃文斯 (近身窄巷残忍死斗)`。

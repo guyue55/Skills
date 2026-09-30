@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (50大流派全量矩阵版)
+director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (80大流派全量矩阵版)
 功能：
 1. `--mode storyboard`: 自动化生成五栏工业级分镜设计表（含景别、机位、运镜、画面视觉、声音设计与 AI 提示词）。
 2. `--mode action`: 自动化生成包含发力起势、交锋封防、受力爆裂反馈与终结定格的动作拍点拆解。
@@ -9,8 +9,8 @@ director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引�
 4. `--mode prompt`: 自动化将影视场景描述编译为 Midjourney / Kling / Sora 高保真提示词。
 5. `--mode audit`: 静态体检文本中的文学化虚假描述（如“打得难解难分”、“十分紧张”等空洞词汇）。
 6. `--mode compile`: 编译输出标准 XML 导演级 System Prompt。
-7. `--mode list`: 列出已收录的 7 大系 50 个知名导演与流派清单。
-8. `--mode test`: 执行内置全量单元测试套件。
+7. `--mode list`: 列出已收录的 8 大系 80 个知名导演与流派清单。
+8. `--mode test`: 执行内置全量单元测试套件（遍历 80 大流派生成与融合）。
 9. 支持 `--blend <archetype_key2>` 双流派风格融合生成！
 """
 
@@ -19,9 +19,9 @@ import argparse
 import re
 from typing import Dict, List, Any, Optional
 
-# 50 大知名导演与视听流派全量知识库定义
+# 80 大知名导演与视听流派全量知识库定义
 ALL_DIRECTOR_ARCHETYPES = {
-    # 01 华语功夫/动作/枪战江湖大系
+    # 01 华语功夫/动作/枪战/亚洲极限肉搏大系 (15)
     "shaw_chang_cheh": {
         "category": "华语动作武侠大系",
         "name": "邵氏阳刚野兽派 (张彻)",
@@ -58,661 +58,918 @@ ALL_DIRECTOR_ARCHETYPES = {
         "category": "华语动作武侠大系",
         "name": "新武侠视效与漫画狂想派 (徐克)",
         "dna": "漫画感手稿分镜、飞天遁地威亚奇观、高速多机位颠覆剪辑、高饱和奇幻",
-        "camera_style": "狂放倾斜广角机位 (Dutch Angle) + 极速旋转俯冲跟拍",
-        "lighting": "vibrant neon-tinged wuxia colors, high contrast twilight shadows, glowing magic runes",
-        "action_focus": "wire-fu acrobatics, kinetic sword energy slashes slicing environments"
+        "camera_style": "狂放倾斜广角机位 (Dutch Angle) + 高速跟拍与穿梭视效",
+        "lighting": "saturated neon grading, glowing sword Qi trails, dynamic rim highlights",
+        "action_focus": "wire-fu acrobatics, shadowless kick, energy blast disintegration"
     },
     "yuen_woo_ping_action": {
         "category": "华语动作武侠大系",
         "name": "天下第一武指因人设招派 (袁和平)",
-        "dna": "因人设招、杂家器械互动、写实物理惯性与飘逸威亚的黄金平衡",
-        "camera_style": "子弹时间环绕运镜 + 贴身跟拍高速拆招",
-        "lighting": "crisp dynamic action lighting, high contrast particle illumination",
-        "action_focus": "kinetic martial arts physics, bullet-time dodge, precise martial arts geometry"
+        "dna": "因人设招、杂家器械互动、写实物理惯性与飘逸威亚平衡、空间全方位利用",
+        "camera_style": "运动轴线严格对齐 + 招式交锋瞬间微距定格",
+        "lighting": "crisp dynamic action lighting, volumetric dust and rain droplets",
+        "action_focus": "drunken fist balance, bullet-time dodge, precise martial geometry"
     },
     "john_woo_gun_fu": {
         "category": "华语动作武侠大系",
         "name": "英雄浪漫枪战暴力美学派 (吴宇森)",
-        "dna": "双枪对射、慢动作升格走廊滑行射击、圣堂白鸽群飞、风衣飞扬",
-        "camera_style": "低角度滑轨跟拍 (Tracking Dolly) + 慢动作升格特写",
-        "lighting": "atmospheric church candlelight, high-contrast gun muzzle flashes, golden haze",
-        "action_focus": "dual Beretta pistols firing, white doves flying in slow motion, gun-fu ballet"
+        "dna": "双枪对射、慢动作升格走廊滑行射击、圣堂白鸽群飞、风衣飞扬、神像背景",
+        "camera_style": "升格慢动作 (60-120fps) 滑轨跟拍 + 枪口火焰大特写",
+        "lighting": "candlelight in church ruins, dramatic backlighting, muzzle flare illumination",
+        "action_focus": "dual Beretta 92FS shootout, sliding on knees, synchronous duel"
     },
     "johnnie_to_noir": {
         "category": "华语动作武侠大系",
-        "name": "银河映像空间几何站位派 (杜琪峰)",
-        "dna": "空间几何三角站位、静止对峙积蓄压迫感、暗光侧光切割、黑色宿命",
-        "camera_style": "静止长镜头、多人物深焦构图、百叶窗/街灯阴影切割",
-        "lighting": "cool cyan and teal desaturated tones, stark noir shadows, harsh directional light",
-        "action_focus": "tense standoff, sudden explosive crossfire, deliberate spatial positioning"
+        "name": "空间几何站位与黑色宿命派 (杜琪峰)",
+        "dna": "空间几何三角形绝对站位、静止长镜头对峙积蓄压迫感、冷色调侧光与阴影",
+        "camera_style": "极度克制的固定长镜头 (Static Oner) + 纵深穿透站位",
+        "lighting": "cool cyan and deep noir shadows, sharp Venetian blind side lighting",
+        "action_focus": "sudden burst of precision gunfire after dead silence, tactical cover"
     },
     "donnie_yen_mma": {
         "category": "华语动作武侠大系",
-        "name": "现代实战 MMA 爆裂格斗派 (甄子丹/叶伟信)",
-        "dna": "贴身手持跟拍、长镜头近身格斗、MMA地面关节技、爆裂打击感",
-        "camera_style": "贴身摇晃手持跟拍 (Handheld Shake) + 零距离面部特写",
-        "lighting": "gritty realistic street lighting, raw fluorescent flicker, sweat reflections",
-        "action_focus": "brutal ground-and-pound, armbar submission, close-quarters combat takedown"
+        "name": "现代实战 MMA 与爆裂格斗派 (甄子丹/叶伟信)",
+        "dna": "贴身手持跟拍、不间断长镜头近身格斗、爆裂重拳肌肉变形打击感",
+        "camera_style": "手持近身贴靠跟拍 (Handheld Close Tracking) + 瞬间受力震屏",
+        "lighting": "gritty street lamp ambient, high contrast sweat and blood texture",
+        "action_focus": "ground-and-pound, armbar submission, tactical baton, wing chun rapid punches"
     },
     "benny_chan_explosive": {
         "category": "华语动作武侠大系",
-        "name": "极限制暴硬派写实警匪派 (陈木胜/林岭东)",
-        "dna": "街头实景追逐、巨型爆炸火球、全员困兽犹斗、粗粝市井压迫感",
-        "camera_style": "多机位极速交替剪辑 + 航拍大爆炸全景",
-        "lighting": "explosive orange firelight, shattered glass reflections, harsh urban neon",
-        "action_focus": "roaring street shootout, intense rooftop leap, high-impact vehicular collisions"
+        "name": "极限制暴与硬核写实警匪派 (陈木胜/林岭东)",
+        "dna": "街头实景追逐、巨型爆炸火球、全员歇斯底里困兽犹斗、粗粝市井压迫感",
+        "camera_style": "高速车载跟拍 + 爆炸瞬间震颤推镜",
+        "lighting": "massive fiery orange explosion glow, hazy urban dusk smoke",
+        "action_focus": "rooftop leaps, brutal street brawls with iron pipes, car crash stunts"
+    },
+    "sammo_jackie_action_comedy": {
+        "category": "华语动作武侠大系",
+        "name": "灵动杂耍道具动作喜剧派 (洪金宝/成龙)",
+        "dna": "梯子/长凳/雨伞环境道具极致攻防互动、受重击甩手甩脚痛感生理反应、滑稽节奏",
+        "camera_style": "中景固定机位完整展示高难度特技与受力反弹",
+        "lighting": "bright Hong Kong daylight alley, warm lively ambient",
+        "action_focus": "acrobatic tumbling, improvised prop combat, comic timing reactions"
+    },
+    "ching_siu_tung_wire_wuxia": {
+        "category": "华语动作武侠大系",
+        "name": "飘逸唯美神仙威亚派 (程小东)",
+        "dna": "红蓝漫天飞舞长丝绸、月夜屋顶斜飞御剑、倒挂金钩凌空连环射箭、浪漫血腥",
+        "camera_style": "大俯角飞天滑轨 + 丝绸穿透画面的极速横移",
+        "lighting": "ethereal moonlight glow, floating red lanterns, vibrant cyan fog",
+        "action_focus": "weightless aerial silk combat, flying swords, spinning mid-air archery"
+    },
+    "peter_chan_epic_realism": {
+        "category": "华语动作武侠大系",
+        "name": "史诗现实主义与战场微表情大师 (陈可辛)",
+        "dna": "写实残酷历史泥泞感、兄弟结拜与反目、特写捕捉复杂人物微表情与心理暗涌",
+        "camera_style": "中景与面部极近特写交替 + 泥泞战壕贴地推轨",
+        "lighting": "desaturated earthy brown tones, cold overcast battlefield haze",
+        "action_focus": "brutal muddy spear melee, infantry clash, visceral flesh slicing"
+    },
+    "gareth_evans_silat_brutal": {
+        "category": "华语动作武侠大系",
+        "name": "印尼班卡西拉爆裂密闭格斗派 (加雷斯·埃文斯)",
+        "dna": "极狭窄走廊/电梯长镜头跟踪、手持剧烈震颤、无配乐骨肉碰撞撕咬死斗",
+        "camera_style": "第一/二人称贴身手持穿梭 + 击中瞬间急速推震",
+        "lighting": "flickering fluorescent corridor tube, dark concrete grime",
+        "action_focus": "Pencak Silat lethal blade slashing, wall slamming, relentless stamina drain"
+    },
+    "tony_jaa_muay_thai": {
+        "category": "华语动作武侠大系",
+        "name": "泰拳零威亚极限物理破坏派 (托尼·贾)",
+        "dna": "一镜到底百人斩楼梯长镜头、三重角度慢动作回放致命打击点、零威亚纯人体极限",
+        "camera_style": "仰角仰冲跟拍 + 慢动作三重打击切点 (Triple Take Replay)",
+        "lighting": "sweaty tropical heat lighting, harsh sun through wooden rafters",
+        "action_focus": "flying knee strike, devastating elbow smash, bone-snapping acrobatics"
     },
 
-    # 02 华语作者/东方意境大系
+    # 02 华语作者电影、东方意境与现实主义大系 (10)
     "wong_kar_wai_mood": {
-        "category": "华语作者电影大系",
-        "name": "抽帧情绪与光影时间派 (王家卫)",
-        "dna": "慢门抽帧步印运动 (Step-printing)、非对称倾斜构图、红绿霓虹暗涌、诗意独白",
-        "camera_style": "慢速手持晃动微特写、抽帧拖影运镜、门框/玻璃反光遮挡",
-        "lighting": "emerald green and crimson red neon glow, moody tungsten warmth, nostalgic haze",
-        "action_focus": "lingering glances, blurred motion trails, romantic and melancholic tension"
+        "category": "华语作者与现实主义大系",
+        "name": "慢门抽帧与情绪时间流淌派 (王家卫)",
+        "dna": "慢门抽帧（Step-printing）、高饱和红绿/黄蓝冷暖对撞、百叶窗斜射光影",
+        "camera_style": "慢门抽帧拖影 (6~12fps Step-printing) + 狭窄走廊窥视机位",
+        "lighting": "neon reflection on wet tiles, tungsten yellow vs jade green, moody shadows",
+        "action_focus": "restrained emotional micro-movements, lighting cigarette, glancing away"
     },
-    "stephen_chow_comic": {
-        "category": "华语作者电影大系",
-        "name": "无厘头反差解构与悲喜剧派 (周星驰)",
-        "dna": "严密漫画分镜预演、极宽全景突变至极近特写、草根悲喜、反差解构",
-        "camera_style": "极宽全景瞬间推至瞳孔地震特写、升格慢动作放大滑稽与悲怆",
-        "lighting": "bright dynamic high-key lighting, retro colorful Hong Kong comedy palette",
-        "action_focus": "cartoonish exaggeration, rapid escalation, slapstick with serious kung fu undertones"
+    "stephen_chow_comedy": {
+        "category": "华语作者与现实主义大系",
+        "name": "无厘头反差解构与市井喜剧派 (周星驰)",
+        "dna": "严肃宏大与荒诞卑微极速反差、漫画式夸张神态特写、底层小人物市井草根质感",
+        "camera_style": "极速推向五官大特写 + 突如其来的滑稽全景退后",
+        "lighting": "vibrant tenement daylight, warm nostalgic Hong Kong palette",
+        "action_focus": "slapstick martial explosion, comic double takes, absurd kung fu feats"
     },
     "jiang_wen_hormone": {
-        "category": "华语作者电影大系",
-        "name": "雄性荷尔蒙与荒诞政治隐喻派 (姜文)",
-        "dna": "高语速机关枪对白、雄性荷尔蒙爆发、大饱和暖阳烈日、荒诞魔幻现实",
-        "camera_style": "大骑马长镜头冲锋 + 圆桌酒局快切特写",
-        "lighting": "high-noon blinding sunlight, warm golden prairie earth tones",
-        "action_focus": "aggressive rapid dialogue staging, sudden absurd gun draw, intense cavalry dash"
+        "category": "华语作者与现实主义大系",
+        "name": "荷尔蒙狂飙与雄性浪漫荒诞派 (姜文)",
+        "dna": "高能量阳光暴晒、连珠炮台词对白、雄性荷尔蒙与荒诞黑色幽默",
+        "camera_style": "广角仰拍狂奔战马与列车 + 极速俯冲推轨",
+        "lighting": "blazing bright summer daylight, intense saturated red, yellow, and white",
+        "action_focus": "kinetic galloping gunfights, fast-paced dialogue shootouts, explosive momentum"
     },
-    "zhang_yimou_color_epic": {
-        "category": "华语作者电影大系",
-        "name": "极致色彩与东方仪式感史诗派 (张艺谋)",
-        "dna": "单一纯色大色块视觉轰炸、千军万马仪式感方阵、水墨黑白与琴音空灵",
-        "camera_style": "宏大对称大远景俯拍 + 水墨画留白中景",
-        "lighting": "saturated monochromatic red/black/blue palette, stark yin-yang contrast",
-        "action_focus": "grand geometric army formations, floating silk fabrics, ink-wash sword duel"
+    "zhang_yimou_color_grandeur": {
+        "category": "华语作者与现实主义大系",
+        "name": "色彩浓烈与东方民俗大阵仗派 (张艺谋)",
+        "dna": "大面积纯色压迫感（红/金/黑白水墨）、极度对称的大阵仗方阵调度",
+        "camera_style": "宏大鸟瞰全景 (Bird's Eye View) + 极度工整的中央轴线构图",
+        "lighting": "hyper-saturated monochromatic wash, golden hour glow on palace roof",
+        "action_focus": "synchronized martial formations, umbrella shield battles, ink-wash duels"
     },
     "ang_lee_restraint": {
-        "category": "华语作者电影大系",
-        "name": "东方隐忍与中西文化张力派 (李安)",
-        "dna": "餐桌微缩社会学调度、隐忍克制的情感暗涌、竹梢轻踏的写意轻盈",
-        "camera_style": "稳健古典中景平视机位 + 竹林梢头轻盈俯拍",
-        "lighting": "soft natural diffused lighting, gentle atmospheric morning mist",
-        "action_focus": "delicate treetop sword balance, subtle restrained emotional gaze"
+        "category": "华语作者与现实主义大系",
+        "name": "隐忍克制与东西方文明交融派 (李安)",
+        "dna": "中景克制长镜头观察、东方隐忍道德与西方欲望拉扯、山水自然诗意空镜",
+        "camera_style": "平视中景克制长镜头 + 门窗框架构图 (Frame-within-a-frame)",
+        "lighting": "soft natural diffused light, tranquil bamboo green, gentle paper screen glow",
+        "action_focus": "subtle eye tremors, polite sword crossing with profound emotional subtext"
     },
     "jia_zhangke_realism": {
-        "category": "华语作者电影大系",
-        "name": "粗粝纪实与时代变迁静观派 (贾樟柯)",
-        "dna": "超长镜头静观底层边缘人群、荒凉工业废墟、流行金曲声画对位",
-        "camera_style": "固定机位超长全景镜头 + 纪实旁观水平横移",
-        "lighting": "overcast gray natural daylight, dusty yellow industrial haze",
-        "action_focus": "raw street confrontation, quiet solitary smoke, heavy emotional weight"
+        "category": "华语作者与现实主义大系",
+        "name": "现实主义切片与时代阵痛纪实派 (贾樟柯)",
+        "dna": "县城荒野工业废墟、超长固定机位凝视、流行金曲与时代变革荒诞共存",
+        "camera_style": "超大远景固定长镜头 (Extreme Long Take) + 旁观者纪实视点",
+        "lighting": "overcast gloomy grey sky, raw unpolished natural documentary lighting",
+        "action_focus": "awkward realistic scuffles, smoking in silence, wandering across rubble"
     },
-    "hou_hsiao_hsien_poetic": {
-        "category": "华语作者电影大系",
-        "name": "空气流动与自然光长镜头派 (侯孝贤)",
-        "dna": "固定机位大远景长镜头、自然光与空气浮尘、屏风门帘半遮半掩、物哀",
-        "camera_style": "固定机位深焦长镜头 + 隔帘窥视构图",
-        "lighting": "faint natural daylight filtering through wooden shutters, warm oil lamp glow",
-        "action_focus": "poetic stillness, rustling wind in courtyard trees, restrained sword unsheathing"
+    "hou_hsiao_hsien_long_take": {
+        "category": "华语作者与现实主义大系",
+        "name": "固定长镜头与东方日常物哀派 (侯孝贤)",
+        "dna": "极度克制的固定长镜头、自然光线穿透纱帘、人物在前景与后景自由进出",
+        "camera_style": "深焦固定长镜头 (Deep Focus Static) + 纱帘与门框自然遮挡",
+        "lighting": "gentle morning sun through wooden shutters, warm domestic shadow",
+        "action_focus": "authentic daily routines, quiet conversations, silent meals, subtle gazes"
     },
-    "edward_yang_urban_symphony": {
-        "category": "华语作者电影大系",
-        "name": "多线交响与现代都市解剖派 (杨德昌)",
-        "dna": "现代都市玻璃幕墙反光重叠、建筑几何框架结构、多线人物命运交叉",
-        "camera_style": "建筑框架框中框构图 + 玻璃幕墙多重反射虚实叠加",
-        "lighting": "cool modern urban night lighting, neon reflections on high-rise glass",
-        "action_focus": "intellectual alienation, subtle psychological confrontation, quiet crisis"
+    "edward_yang_urban_dissection": {
+        "category": "华语作者与现实主义大系",
+        "name": "都市空间解构与手术刀理性派 (杨德昌)",
+        "dna": "现代都市玻璃幕墙反光重叠、多线复杂叙事、手术刀般冷静剖析中产困境",
+        "camera_style": "透过玻璃窗/后视镜的多重反射构图 + 冷峻中景调度",
+        "lighting": "deep midnight blue city lights, crisp office fluorescent illumination",
+        "action_focus": "restrained intellectual confrontations, sudden shocking domestic violence"
+    },
+    "bong_joon_ho_spatial_class": {
+        "category": "华语作者与现实主义大系",
+        "name": "阶级垂直空间隐喻与反转大师 (奉俊昊)",
+        "dna": "空间高低垂直隐喻（半地下室/豪宅/楼梯）、黑色幽默与灭顶惨剧瞬间切换、雨水下流",
+        "camera_style": "水平推轨镜头 (Tracking Shot) 穿透隔断 + 俯瞰垂直长楼梯",
+        "lighting": "gloomy green semi-basement light vs pristine floor-to-ceiling sunlight",
+        "action_focus": "clandestine hiding under table, sudden birthday party kitchen knife frenzy"
+    },
+    "na_hong_jin_desperate_noir": {
+        "category": "华语作者与现实主义大系",
+        "name": "绝望泥潭狂奔与原始残酷惊悚派 (罗宏镇)",
+        "dna": "雨夜狭巷绝望狂奔追逐、手持剧烈晃动、湿冷泥泞绝望色调、原始血腥器械（牛骨/斧头）",
+        "camera_style": "贴地剧烈晃动跟拍双腿与粗喘 + 泥浆飞溅特写",
+        "lighting": "cold muddy noir grading, pouring rain at 3AM in desolate alley",
+        "action_focus": "feral animalistic brawling, frantic foot chase, breathless desperate stamina drain"
     },
 
-    # 03 好莱坞工业大片与高概念大系
-    "nolan_non_linear": {
-        "category": "好莱坞工业大片大系",
-        "name": "钳形时空与非线性解构派 (克里斯托弗·诺兰)",
-        "dna": "多线跨时空交叉剪辑、钳形时空叙事、IMAX 宏大全景、重力倒转实拍",
-        "camera_style": "宏大全景 IMAX 构图 + 主观倾斜镜头 (Dutch Angle) 与精密交叉剪辑",
-        "lighting": "realistic naturalistic daylight, cool gray industrial tones, high dynamic range",
-        "action_focus": "practical stunt choreography, time-reversed ballistic physics, spatial collapse"
+    # 03 好莱坞工业重镇、视效科幻与史诗巨制大系 (15)
+    "christopher_nolan_structure": {
+        "category": "好莱坞视效工业大系",
+        "name": "结构魔术师与非线性交响派 (克里斯托弗·诺兰)",
+        "dna": "IMAX 70mm 极高清画质、多重时间线平行交叉剪辑、实拍物理重力倒转、低频压迫倒数",
+        "camera_style": "IMAX 70mm 超大画幅 + 环绕旋转摄影机与引力弯曲构图",
+        "lighting": "crisp desaturated filmic grading, high micro-contrast natural shadows",
+        "action_focus": "zero-gravity corridor grappling, revolving room fist fight, ticking clock countdown"
     },
-    "spielberg_wonder_face": {
-        "category": "好莱坞工业大片大系",
-        "name": "情绪推镜头与奇观共鸣大师 (史蒂文·斯皮尔伯格)",
-        "dna": "斯皮尔伯格脸孔 (Spielberg Face)、手持长镜头穿梭战壕、童真低机位仰视",
-        "camera_style": "标志性缓慢面部推镜头 (Face Push-In) + 穿梭手持跟拍",
-        "lighting": "dreamy lens flares, warm golden cinematic lighting, atmospheric rim light",
-        "action_focus": "awe-inspired wonder gaze, kinetic battlefield dash, seamless adventure blocking"
+    "steven_spielberg_adventure": {
+        "category": "好莱坞视效工业大系",
+        "name": "童心冒险与黄金柔光视线指引派 (史蒂文·斯皮尔伯格)",
+        "dna": "“斯皮尔伯格注视”（面部慢推特写）、逆光边缘金光轮廓、手电筒光束穿透尘埃",
+        "camera_style": "极丝滑一镜到底 (Spielberg Oner) + 标志性面部慢推注视镜头",
+        "lighting": "warm golden rim light, dusty volumetric flashlight beams cutting through haze",
+        "action_focus": "dynamic chase stunts, whip cracking, tumbling under rolling boulders"
     },
-    "cameron_industrial_epic": {
-        "category": "好莱坞工业大片大系",
-        "name": "重工业美学与世界观拓荒宗师 (詹姆斯·卡梅隆)",
-        "dna": "重型机械冷金属质感、深海荧光与外星生态、教科书级三幕式危机递进",
-        "camera_style": "深海潜水主观视角 + 重型机械仰角全景调度",
-        "lighting": "bioluminescent cyan glow, gleaming industrial steel blue, fiery explosions",
-        "action_focus": "heavy mech exoskeleton combat, massive alien beast clash, naval disaster physics"
+    "james_cameron_industrial_titan": {
+        "category": "好莱坞视效工业大系",
+        "name": "工业极限与深海重型机甲派 (詹姆斯·卡梅隆)",
+        "dna": "冷青色工业荧光与深蓝海水质感、重型机械液压臂与机甲、无可挑剔 3D 景深",
+        "camera_style": "全景俯瞰重型工业基地 + 3D 景深穿透式推进",
+        "lighting": "industrial cobalt blue and bioluminescent cyan, sharp metallic highlights",
+        "action_focus": "hydraulic power loader mech boxing, heavy machine gun suppressive fire"
     },
-    "george_miller_fury_road": {
-        "category": "好莱坞工业大片大系",
-        "name": "废土朋克纯视觉动量永动机 (乔治·米勒)",
-        "dna": "视觉重心绝对居中剪辑 (Cross-hair Framing)、高饱和黄蓝对冲、极速追逐",
-        "camera_style": "绝对十字居中构图 (Center Dominant) + 高速摇臂追踪拍摄",
-        "lighting": "hyper-saturated fiery orange desert and cobalt blue night sky",
-        "action_focus": "roaring war rig collision, pole-cat aerial drops, explosive kinetic momentum"
+    "george_miller_wasteland": {
+        "category": "好莱坞视效工业大系",
+        "name": "废土狂暴与地轴居中狂飙派 (乔治·米勒)",
+        "dna": "绝对视线居中构图（Crosshair Framing）、黄沙漫天与烈火尾焰、高饱和橙蓝对撞",
+        "camera_style": "绝对中心对齐构图 (Crosshair Center Framing) + 车载超低空追逐",
+        "lighting": "hyper-saturated orange desert dust vs deep turquoise sky, fiery explosions",
+        "action_focus": "vehicle-to-vehicle polecat leaps, harpoon impalement, nitro-boost collisions"
     },
     "wes_anderson_symmetry": {
-        "category": "好莱坞工业大片大系",
-        "name": "绝对对称与童话色板强迫症派 (韦斯·安德森)",
-        "dna": "严格中心轴对称构图、低饱和粉彩马卡龙色板、90度急速平移横切",
-        "camera_style": "严格单点轴对称构图 + 90度急速横摇运镜 (Whip Pan)",
-        "lighting": "flat pastel color palette (powder pink, mint green), soft diffused daylight",
-        "action_focus": "quirky deadpan delivery, symmetrical character movements, storybook blocking"
+        "category": "好莱坞视效工业大系",
+        "name": "极致强迫症对称与马卡龙童话派 (韦斯·安德森)",
+        "dna": "严格中心对称、90度直角横移、高饱和粉彩/马卡龙色调、移轴微缩模型感",
+        "camera_style": "绝对中心对称 (Absolute Planar Symmetry) + 90度瞬时甩镜 (Whip-pan 90°)",
+        "lighting": "pastel yellow, soft mint green, millennial pink flat storybook daylight",
+        "action_focus": "deadpan clockwork movement, synchronized miniature slap fight, precise gestures"
     },
     "zack_snyder_dark_myth": {
-        "category": "好莱坞工业大片大系",
+        "category": "好莱坞视效工业大系",
         "name": "暗黑油画雕塑与升降格慢动作派 (扎克·施奈德)",
-        "dna": "油画重彩暗黑影调、变速齿轮 (Speed Ramping)、希腊神祇雕塑光影、背光神性",
-        "camera_style": "极速升降格变速镜头 (Speed Ramping) + 仰拍神性神话构图",
-        "lighting": "dramatic god rays, golden rim lights, heavy desaturated dark oil painting tones",
-        "action_focus": "muscle shockwave impact, bone-crushing shield bash, mythological godlike clash"
+        "dna": "古典神话油画质感、去饱和重金属暗黑调色、极速变速升降格（Speed Ramping）",
+        "camera_style": "神祇般仰拍雕塑构图 + 极速变速升降格慢动作 (Speed Ramping)",
+        "lighting": "dark desaturated oil painting tones, dramatic god rays, lightning rim lights",
+        "action_focus": "shield bash with shockwave, slow-motion spear thrust, superhuman impact craters"
     },
-    "stahelski_gun_fu": {
-        "category": "好莱坞工业大片大系",
-        "name": "霓虹长镜头格斗与战术 Gun-Fu 派 (查德·斯塔赫斯基)",
-        "dna": "赛博霓虹夜雨、中全景长镜头格斗、战术点射 (Center Axis Relock)、换弹细节",
-        "camera_style": "中全景流畅长镜头跟拍 (Fluid Steadicam) + 霓虹水洼倒影构图",
-        "lighting": "saturated neon magenta and cyan rain reflections, dark glass highlights",
-        "action_focus": "tactical gun-fu, close-range judo throws, precision tactical reload mechanics"
+    "john_wick_gun_fu": {
+        "category": "好莱坞视效工业大系",
+        "name": "枪械芭蕾与战术近战派 (查德·斯塔赫斯基)",
+        "dna": "霓虹赛博夜雨光影（紫/青/金）、中景不间断长镜头实打格斗、近身枪斗术与柔术",
+        "camera_style": "中景不间断长镜头 (Continuous Action Long Take) + 战术移动跟随",
+        "lighting": "vibrant neon purple, magenta, and cyan wet reflections on glass and marble",
+        "action_focus": "center-axis relock gun-fu, judo hip throw into double headshot, magazine reload"
     },
-    "michael_bay_bayhem": {
-        "category": "好莱坞工业大片大系",
-        "name": "环形仰拍与高饱和爆炸荷尔蒙派 (迈克尔·贝)",
-        "dna": "低角度 360 度环形仰拍主角起身 (Bay Shot)、黄昏高对比逆光、巨型爆炸",
-        "camera_style": "低角度 360 度极速环绕仰拍 + FPV 无人机俯冲穿梭",
-        "lighting": "blinding golden hour sunset, saturated orange fireballs, cyan sky contrast",
-        "action_focus": "massive vehicular destruction, slow-motion hero stand amidst flying sparks"
+    "michael_bay_kinetic": {
+        "category": "好莱坞视效工业大系",
+        "name": "爆炸狂欢与低角度环绕仰拍派 (迈克尔·贝)",
+        "dna": "360度低角度环绕仰拍（The Bayhem 360 Spin）、烈火连环爆炸、夕阳余晖剪影",
+        "camera_style": "低角度 360 度极速环绕仰拍 (Low Angle 360 Spin) + 爆炸前推镜头",
+        "lighting": "golden sunset flare, colossal orange fireball glow, hyper-contrasted gloss",
+        "action_focus": "supercar flying through fireballs, helicopter diving between glass towers"
     },
-    "peter_jackson_lotr_epic": {
-        "category": "好莱坞工业大片大系",
-        "name": "魔幻史诗军团与全景调度宗师 (彼得·杰克逊)",
-        "dna": "从万丈高空俯冲至单个士兵瞳孔、千军万马阵型冲撞、泥泞与铁甲超写实",
-        "camera_style": "千米级超大远景航拍俯冲至极近特写 + 军团交锋侧面横移",
-        "lighting": "epic fantasy cinematic lighting, gloomy Mordor skies vs radiant heavenly glow",
-        "action_focus": "cavalry charge clash, siege tower collapse, visceral forged steel melee"
+    "peter_jackson_epic_fantasy": {
+        "category": "好莱坞视效工业大系",
+        "name": "史诗远征与魔幻全景长卷派 (彼得·杰克逊)",
+        "dna": "宏大直升机航拍雪山山脉、数万军队对冲大阵仗、魔幻生物特写与写实泥泞盔甲",
+        "camera_style": "大范围直升机俯冲长卷航拍 (Sweeping Aerial) + 骑兵冲锋贴地推轨",
+        "lighting": "volumetric morning mist, epic golden sunbeams breaking through storm clouds",
+        "action_focus": "cavalry clash into shield wall, sword cleaving through orc armor, giant beast charge"
+    },
+    "ridley_scott_epic_light": {
+        "category": "好莱坞视效工业大系",
+        "name": "赛博朋克始祖与古典油画逆光派 (雷德利·斯科特)",
+        "dna": "斜射穿透烟雾的神光（God Rays）、冷雨霓虹都市、古典史诗质感、巨物幽闭恐惧",
+        "camera_style": "大景深层次构图 (Deep Layered Staging) + 逆光剪影平移",
+        "lighting": "volumetric golden shafts cutting through heavy smoke, neon rain reflections",
+        "action_focus": "gritty gladiator arena melee, robotic blade fight in rain, Xenomorph stalk"
+    },
+    "villeneuve_monumental_minimalism": {
+        "category": "好莱坞视效工业大系",
+        "name": "巨物崇拜与极简视听神性沉思派 (丹尼斯·维伦纽瓦)",
+        "dna": "巨型几何建筑与渺小人类体量反差、去杂质极简构图、低频单音轰鸣、神圣压迫感",
+        "camera_style": "极克制深焦大远景 (Extreme Wide Shot) + 缓慢庄严平移",
+        "lighting": "monumental natural soft skylight, monochromatic orange sandstorm, deep silence",
+        "action_focus": "shield duel in slow deliberate strikes, ornithopter gliding over colossal worm"
+    },
+    "wachowskis_matrix_cyber": {
+        "category": "好莱坞视效工业大系",
+        "name": "赛博黑客哲学与子弹时间矩阵派 (沃卓斯基姐妹)",
+        "dna": "绿色数码雨代码流、360度子弹时间定格环绕、黑色长风衣墨镜反光、哲学功夫格斗",
+        "camera_style": "360度子弹时间环绕定格 (Bullet Time) + 反重力踩墙跟踪",
+        "lighting": "distinct matrix green tint, sterile fluorescent hallway, chrome reflections",
+        "action_focus": "rooftop bullet dodging, slow-motion mid-air flying kicks, dual MP5 rain of brass"
+    },
+    "del_toro_gothic_fairy": {
+        "category": "好莱坞视效工业大系",
+        "name": "暗黑哥特童话与机甲怪兽浪漫派 (吉尔莫·德尔·托罗)",
+        "dna": "重型机械齿轮机甲与奇异怪兽碰撞、暗黑哥特奇幻、暖琥珀与翡翠绿高级撞色",
+        "camera_style": "微距特写暗黑生物精密结构 + 暴风雨海面巨兽轰拳大仰角",
+        "lighting": "amber cockpit glow against emerald bio-fluid, dark gothic fairytale shadows",
+        "action_focus": "Jaeger rocket punch impact, razor-sharp claw slash, biological acid spray"
+    },
+    "verhoeven_cyber_satire": {
+        "category": "好莱坞视效工业大系",
+        "name": "反乌托邦讽刺与狂暴肉体破坏派 (保罗·范霍文)",
+        "dna": "虚构电视广告插播反讽、狂暴血腥机械改造肉体、军国主义狂欢、重工业金属粗糙感",
+        "camera_style": "新闻播报画中画切入 + 大口径重火力正面倾泻射击机位",
+        "lighting": "harsh desert daylight, bright commercial studio lighting vs dark dirty factory",
+        "action_focus": "heavy auto-9 burst fire, robotic limb crushing bone, giant alien bug swarm"
+    },
+    "carpenter_synth_horror": {
+        "category": "好莱坞视效工业大系",
+        "name": "极简合成器低音与未知拟态恐怖派 (约翰·卡朋特)",
+        "dna": "极简电子合成器低频脉冲配乐、风雪幽闭孤岛、肉体撕裂拟态异形、冷峻蓝色宽银幕",
+        "camera_style": "宽银幕变形镜头 (Anamorphic) + 阴暗木屋窗口风雪静止凝视",
+        "lighting": "cold arctic blue night, fiery red flare sparks illuminating grotesque shadows",
+        "action_focus": "flamethrower blast, grotesque tentacle eruption from torso, shotgun blast in snow"
     },
 
-    # 04 悬疑惊悚与黑色犯罪大系
-    "hitchcock_suspense": {
+    # 04 悬疑、惊悚、黑色犯罪与狂想心理大系 (12)
+    "alfred_hitchcock_suspense": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "悬念之王与视线诱导开山宗师 (阿尔弗雷德·希区柯克)",
-        "dna": "“桌下炸弹”操控信息差、主观窥视镜头 (POV)、眩晕变焦 (Dolly Zoom)",
-        "camera_style": "眩晕变焦 (Vertigo Dolly Zoom) + 门缝/窗户主观窥视镜头",
-        "lighting": "high contrast chiaroscuro, sharp expressive shadows, single-source spotlight",
-        "action_focus": "ticking time bomb tension, subtle poisoned drink handoff, knife edge suspense"
+        "name": "悬念大师与心理窥视几何派 (阿尔弗雷德·希区柯克)",
+        "dna": "炸弹理论（观众知情角色不知的极限心理压迫）、滑动变焦眩晕镜头、窗框钥匙孔窥视",
+        "camera_style": "滑动变焦眩晕镜头 (Dolly Zoom / Vertigo) + 盘旋楼梯高俯冲机位",
+        "lighting": "dramatic 1950s chiaroscuro, shadow cast like prison bars across face",
+        "action_focus": "slow suspenseful creeping, sudden knife strike in shower, struggling for air"
     },
-    "david_fincher_precision": {
+    "david_fincher_perfection": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "极简冷峻与精密心理剖析派 (大卫·芬奇)",
-        "dna": "极冷黄绿/冷灰调色、完美主义平滑机械运镜、高密度对白剪辑、罪恶阴影",
-        "camera_style": "如机械臂般精准锁定的水平移动 (Precision Tracking) + 低角度阴影构图",
-        "lighting": "sterile desaturated greenish-yellow tint, low-key noir shadows, rain streaks",
-        "action_focus": "intellectual interrogation, surgical crime scene analysis, chilling quiet violence"
+        "name": "强迫症对称与冰冷数字病理派 (大卫·芬奇)",
+        "dna": "绝对平滑锁定的数字三脚架运镜、阴冷黄绿/钨丝灯调色、暴雨湿漉路面、法医解剖冷静",
+        "camera_style": "精密锁定的三脚架平滑微移 (Precision Tripod Tracking) + 严格平视",
+        "lighting": "moody yellow-green and tungsten, wet asphalt rain reflections, cold fluorescent",
+        "action_focus": "forensic examination of clues, sudden clinical gunshot in rain, basement interrogation"
     },
-    "kubrick_one_point_gaze": {
+    "stanley_kubrick_gaze": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "一点透视神性构图与冷酷凝视 (斯坦利·库布里克)",
-        "dna": "绝对单点透视消逝构图、库布里克凝视 (Kubrick Stare)、交响乐冷酷对位",
-        "camera_style": "绝对单点透视对称走廊 (One-Point Perspective) + 广角低头翻白眼特写",
-        "lighting": "unflinching sterile fluorescent lighting, high-contrast symmetrical gloom",
-        "action_focus": "chilling Kubrick stare, slow steady forward tracking, detached psychological terror"
+        "name": "透视灭点与绝对理性凝视派 (斯坦利·库布里克)",
+        "dna": "单点透视灭点构图、标志性“库布里克凝视”（低头冷冷上翻凝视）、超自然对称长廊",
+        "camera_style": "单点透视灭点构图 (One-point Perspective) + 斯坦尼康平稳穿梭长廊",
+        "lighting": "eerie symmetrical natural practical lights, sterile fluorescent glow",
+        "action_focus": "iconic Kubrick Stare under brows, slow methodical axe swing against wooden door"
     },
-    "tarantino_dialogue": {
+    "quentin_tarantino_dialogue": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "章回体对白与墨西哥对峙暴力美学 (昆汀·塔伦蒂诺)",
-        "dna": "章回体非线性拼图、高密度垃圾话台词、墨西哥式三方拔枪对峙、后备箱机位",
-        "camera_style": "后备箱主观视角 (Trunk Shot) + 环形慢速摇镜头与突发血腥特写",
-        "lighting": "warm gritty 1970s exploitation film lighting, hyper-saturated blood reds",
-        "action_focus": "Mexican standoff with pistols drawn, sudden high-caliber gore, razor-sharp dialogue"
+        "name": "环形叙事与喋喋不休对峙派 (昆汀·塔伦蒂诺)",
+        "dna": "后备箱主观视角（Trunk Shot）、墨西哥僵局多方互指、冗长闲聊中突然爆发极度血腥",
+        "camera_style": "后备箱低角度仰拍 (Trunk Shot) + 圆桌 360 度推轨对话",
+        "lighting": "saturated 1970s vintage film warmth, blood splatter against retro wallpaper",
+        "action_focus": "Mexican standoff crossfire, sudden shotgun blast from beneath table, ear slicing"
     },
     "guy_ritchie_speed_cut": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "极速跳剪与黑色幽默多线碰撞 (盖·里奇)",
-        "dna": "极速定格跳剪配第一人称吐槽旁白、福尔摩斯式打斗慢动作预演、多方撞车",
-        "camera_style": "分屏画中画 (Split Screen) + 极速抽帧变速定格 (Freeze Frame)",
-        "lighting": "gritty British underworld tones, dynamic flash lighting, desaturated brown-gold",
-        "action_focus": "split-second punch prediction, chaotic pub brawl, rapid multi-party clash"
+        "name": "多线交织与机关枪式快剪派 (盖·里奇)",
+        "dna": "极速快进慢放交替（Speed Ramping）、脑内预演战术拆解、多方阴差阳错汇聚同一地点",
+        "camera_style": "第一人称奔跑贴身机位 + 骰子/转轮/纸牌微距极限匹配快剪",
+        "lighting": "gritty British underground pub, desaturated amber and tobacco smoke",
+        "action_focus": "bare-knuckle boxing pre-calculation (Discombobulate), sudden chaotic heist brawl"
     },
     "coen_brothers_absurdist": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "虚无主义与荒诞命运宿命派 (科恩兄弟)",
-        "dna": "荒凉空旷广角大景深、冷面幽默、死神般不可阻挡的杀手、荒诞蝴蝶效应",
-        "camera_style": "极简广角大俯拍 (Extreme High Angle) + 静止地平线长镜头",
-        "lighting": "vast desolate snowy landscape or desert sun, stark unforgiving natural light",
-        "action_focus": "deadpan coin toss for life, sudden blunt shotgun blast, inescapable absurd fate"
+        "name": "荒诞虚无与冷面黑色幽默派 (科恩兄弟)",
+        "dna": "空旷雪原/荒漠的一抹鲜血、拙劣计划导致的不可逆雪崩式惨剧、命运冷酷荒诞",
+        "camera_style": "超大远景白雪覆盖天地 + 广角低机位逼近的杀手皮靴",
+        "lighting": "stark overcast snow daylight, minimalist cold realism, lonely motel neon",
+        "action_focus": "inept kidnapping scuffle, deadpan suppressed shotgun blast, woodchipper disposal"
     },
-    "david_lynch_surrealism": {
+    "david_lynch_surreal": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "梦境逻辑与超现实潜意识深渊 (大卫·林奇)",
-        "dna": "红色天鹅绒帷幔、棋盘格地板、低频环境嗡鸣声、梦境与现实身份互换",
-        "camera_style": "极其缓慢的梦游式推进 (Dreamlike Slow Push) + 红色帷幔虚焦",
-        "lighting": "eerie saturated red and dark amber glow, flashing strobe lights in blackness",
-        "action_focus": "identity fracture, hypnotic slow body movements, uncanny surreal dread"
+        "name": "潜意识梦境与红丝绒迷幻派 (大卫·林奇)",
+        "dna": "红丝绒窗帘、黑白人字形地板、超低频工业电流嗡嗡声、逻辑断裂的潜意识梦魇",
+        "camera_style": "极缓慢推向黑暗门缝 + 面部在强光阴影间异化扭曲",
+        "lighting": "dramatic spotlight on red velvet, flickering industrial neon hum, deep void black",
+        "action_focus": "slow surreal dancing, sudden shrieking apparition, uncanny smile transformation"
     },
-    "park_chan_wook_revenge": {
+    "park_chan_wook_baroque": {
         "category": "悬疑惊悚黑色犯罪大系",
-        "name": "极致复仇悲剧与巴洛克美学 (朴赞郁)",
-        "dna": "巴洛克华丽壁纸、横移长镜头走廊铁锤肉搏、极端视觉隐喻、诗意残酷",
-        "camera_style": "平面横移走廊长镜头 (Horizontal Tracking) + 极端微距物体隐喻",
-        "lighting": "rich baroque jewel tones (emerald green, velvet crimson), deep claustrophobic shadows",
-        "action_focus": "visceral corridor hammer melee, exhaustive physical struggle, poetic tragedy"
+        "name": "极致复仇与巴洛克暴力美学派 (朴赞郁)",
+        "dna": "横版横移走廊长廊铁锤一挑多、浓烈巴洛克壁纸花纹、绿色与深红禁忌爱恨纠缠",
+        "camera_style": "2.5D 横版过关式走廊长镜头 (Side-scrolling Long Take) + 瞳孔/钥匙孔匹配切",
+        "lighting": "lush baroque green and crimson wallpaper, stark high-contrast fluorescent",
+        "action_focus": "claw hammer corridor melee against dozen thugs, blade slicing tongue, raw revenge"
+    },
+    "scorsese_furious_energy": {
+        "category": "悬疑惊悚黑色犯罪大系",
+        "name": "狂躁高能与定格旁白黑帮派 (马丁·斯科塞斯)",
+        "dna": "极速推轨变焦、定格第一人称旁白、高能量摇滚乐声画对位、车内后视镜窥视与狂躁手持",
+        "camera_style": "后厨一镜到底长镜头 (Copacabana Oner) + 极速推轨急停定格",
+        "lighting": "saturated club crimson glow, 1970s Cadillac headlights in wet rainy night",
+        "action_focus": "sudden point-blank pistol execution in bar booth, baseball bat beating, mob rage"
+    },
+    "pta_steadicam_epic": {
+        "category": "悬疑惊悚黑色犯罪大系",
+        "name": "游荡式斯坦尼康长镜头与狂躁史诗派 (保罗·托马斯·安德森)",
+        "dna": "超长平滑穿梭长镜头、荒漠油井烈火燃烧、古典管弦交响乐与人性执念的死斗",
+        "camera_style": "游荡式斯坦尼康极度平滑长镜头 (Flowing Steadicam) + 极宽画幅荒漠",
+        "lighting": "roaring orange oil derrick fireball lighting dark sky, harsh desert dust sun",
+        "action_focus": "bowling alley wooden pin beatdown, oil well explosion mud shower, raw obsession"
+    },
+    "aronofsky_hip_hop_montage": {
+        "category": "悬疑惊悚黑色犯罪大系",
+        "name": "微距嘻哈蒙太奇与绑身主观机位派 (达伦·阿伦诺夫斯基)",
+        "dna": "瞳孔放大/打火机/心跳 0.1 秒极速三联跳切、Snorricam 绑身面对面跟拍眩晕心理崩溃",
+        "camera_style": "Snorricam 绑身面对面特写 (Chest-rig Snorricam) + 极微距极限跳剪",
+        "lighting": "hallucinatory cold hospital white vs fractured neon carnival, feverish sweat",
+        "action_focus": "frenzied ballet transformation with black feathers piercing skin, hyperventilating collapse"
+    },
+    "edgar_wright_rhythm_cut": {
+        "category": "悬疑惊悚黑色犯罪大系",
+        "name": "音画合一卡点剪辑与视觉喜剧派 (埃德加·赖特)",
+        "dna": "关门/装弹/换挡/刹车动作严格卡点音乐重拍、连珠炮式微距特写快切如街机出招表",
+        "camera_style": "微距物件动作极速匹配跳切 (Snappy Match Cuts) + 侧向高速滑移",
+        "lighting": "bright colorful comic book pop grading, crisp daylight city street",
+        "action_focus": "gear-shifting drift choreography sync with music beats, shotgun reload on the snare"
     },
 
-    # 05 日本电影与动画大系
-    "kurosawa_weather": {
-        "category": "日本电影与动画大系",
-        "name": "自然气象力场与宏大轴线调度宗师 (黑泽明)",
-        "dna": "风雨雾暴雪自然力场烘托、三角形景深站位、群体奔涌运动轴线、居合斩定格",
-        "camera_style": "超远景纵深长镜头 + 多机位平行侧拍 + 暴雨中极度克制定格",
-        "lighting": "stark black and white tonal contrast or rich feudal tones, stormy rain backlighting",
-        "action_focus": "lightning-fast single strike iaido duel, massive samurai charge amidst storm"
+    # 05 日本电影大师、殿堂动画与视听狂想大系 (12)
+    "akira_kurosawa_weather": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "气象动态与长焦多机位宗师 (黑泽明)",
+        "dna": "自然气象元素参与剧情（暴雨/浓烟/飞沙）、长焦压缩景深多机位拍摄、几何群像站位",
+        "camera_style": "长焦镜头压缩景深 (Telephoto Compression) + 暴雨中三机位多角度同时捕捉",
+        "lighting": "harsh storm overcast, high-contrast black and white mud reflections",
+        "action_focus": "mud duel with katana, thunderous cavalry charge, arrows raining from fortress"
     },
-    "ozu_tatami_stillness": {
-        "category": "日本电影与动画大系",
-        "name": "榻榻米低机位与东方静观留白 (小津安二郎)",
-        "dna": "离地 50cm 榻榻米水平机位、打破 180° 轴线正对镜头对话、空镜头物哀",
-        "camera_style": "离地 50cm 榻榻米固定平视机位 (Tatami Shot) + 正面居中凝视",
-        "lighting": "gentle diffused natural daylight in wooden Japanese house, tranquil shadows",
-        "action_focus": "peaceful mono no aware stillness, subtle folding fan gesture, quiet tea pouring"
+    "yasujiro_ozu_tatami": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "榻榻米低机位与东方静默伦理派 (小津安二郎)",
+        "dna": "一米高榻榻米平视低机位、50mm 标准无畸变镜头、障子拉门层叠构图、红绿小物件点缀",
+        "camera_style": "榻榻米低机位 (Tatami Shot) + 50mm 标准无畸变平视",
+        "lighting": "tranquil natural morning light through shoji screen, soft diffuse domestic shadow",
+        "action_focus": "quiet bowing, sipping green tea, subtle turning of head, folding laundry"
     },
-    "satoshi_kon_matchcut": {
-        "category": "日本电影与动画大系",
-        "name": "匹配剪辑与虚实折叠神级宗师 (今敏)",
-        "dna": "动作/形状/颜色匹配剪辑 (Match Cut) 转场神迹、梦境与现实身份无缝折叠",
-        "camera_style": "无缝形似匹配转场 (Match Cut) + 镜面破碎折射穿梭",
-        "lighting": "dreamlike surreal lighting, transitions from sterile blue to vibrant psychological hues",
-        "action_focus": "hallucinatory chase sequences, identity duplication, reality fracture leaps"
+    "satoshi_kon_match_cut": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "梦境现实无缝穿梭与匹配剪辑神派 (今敏)",
+        "dna": "跨越时空的瞬时匹配剪辑（动作/形状/声音无缝穿梭）、多重人格镜像分裂、戏中戏",
+        "camera_style": "无缝时空匹配剪辑 (Match Cut across dimensions) + 破碎镜面反射",
+        "lighting": "vibrant psychedelic Tokyo city lights, theatrical stage spotlight, dream haze",
+        "action_focus": "frantic chase through changing movie sets, shattering glass revealing alternate self"
     },
-    "miyazaki_ghibli_wonder": {
-        "category": "日本电影与动画大系",
-        "name": "飞行梦想与丰饶自然生态大师 (宫崎骏)",
-        "dna": "广袤天空飞行俯瞰视角、水滴/微风/草木丰饶动态细节、纯真与反战悲悯",
-        "camera_style": "高空滑翔大俯瞰视点 + 绿意盎然的自然生态中景跟踪",
-        "lighting": "soft watercolor blue skies, lush emerald greens, golden sunshine filtering leaves",
-        "action_focus": "soaring glider flight, ancient mechanical giant awakening, wind rustling meadow"
+    "hayao_miyazaki_ghibli": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "手绘自然与少女飞行治愈派 (宫崎骏)",
+        "dna": "清澈吉卜力蓝天白云水彩质感、迎风起飞的滑翔机/扫帚、大自然森林生灵敬畏",
+        "camera_style": "大广角仰拍绿意盎然辽阔草原 + 微风掠过发丝与裙角的轻盈跟拍",
+        "lighting": "warm nostalgic watercolor sunlight, sparkling crystal clear river reflections",
+        "action_focus": "weightless flight over floating castle, joyous running, eating hot food with tears"
     },
-    "mamoru_oshii_cyberpunk": {
-        "category": "日本电影与动画大系",
-        "name": "赛博朋克冷峻哲学与机械写实 (押井守)",
-        "dna": "赛博朋克雨夜都市空镜头、枪械与义体超写实机械内部构造、巴塞特猎犬符号",
-        "camera_style": "静止沉思空镜头 (Pensive Stills) + 义体解剖剖面特写",
-        "lighting": "dystopian cold green and cyan neon, rain-drenched asphalt reflections",
-        "action_focus": "thermo-optic camouflage strike, heavy artillery recoil, robotic chassis rupture"
+    "mamoru_oshii_cyber_philosophy": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "冷酷赛博与哲学长镜头沉思派 (押井守)",
+        "dna": "赛博深冷绿与灰蓝基调、机械义体精密构造（热光学迷彩透明水纹）、巴吉度犬沉思长镜头",
+        "camera_style": "水面倒影与垂直高楼缓慢平移 + 义体人超微距机械脊椎结构特写",
+        "lighting": "cold muted cyan and steel grey, neon green digital wireframe glow in dark",
+        "action_focus": "thermo-optic camouflage dive, high-caliber sniper shattering mech limb, quiet gaze"
     },
-    "makoto_shinkai_light": {
-        "category": "日本电影与动画大系",
-        "name": "极致光影反射与空气透视浪漫派 (新海诚)",
-        "dna": "水滴倒影、黄昏逢魔时刻金色逆光、天空积雨云与电车铁轨、超微距浅景深",
-        "camera_style": "超微距浅景深微距镜头 + 金色黄昏逆光摇镜",
-        "lighting": "magic hour golden hour sunlight, photorealistic reflections on puddle, vivid gradient sky",
-        "action_focus": "praying hands amidst golden light, running across train crossings, falling rain glow"
+    "makoto_shinkai_light_particles": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "光影粒子与彗星蓝粉天空派 (新海诚)",
+        "dna": "黄昏逢魔之时光芒（Twilight Glow）、空中樱花雨滴、划破夜空的双子彗星蓝粉渐变天空",
+        "camera_style": "列车交错瞬间视线对望 + 极度唯美的蓝粉黄昏天空仰拍大旋转",
+        "lighting": "hyper-vibrant pink and cyan twilight, sparkling sun flare prisms, glowing comet trails",
+        "action_focus": "running across mountain ridge reaching for fingertips, sudden turn in crowded train station"
     },
-    "hideaki_anno_eva_deconstruct": {
-        "category": "日本电影与动画大系",
-        "name": "极速排版文字与神性机械解构 (庵野秀明)",
-        "dna": "全屏极速黑底白字排版闪现、极端超大特写、巨大神性生物与工业电塔构图",
-        "camera_style": "全屏文字极速跳切 (Typography Flash Cut) + 单个眼球超大微距特写",
-        "lighting": "apocalyptic crimson sunset, high-contrast black shadows, stark warning red",
-        "action_focus": "biomechanical EVA berserk roar, golden AT-field barrier shattering, theological duel"
+    "hideaki_anno_eva_psychology": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "意识流暴走与宗教符号解构派 (庵野秀明)",
+        "dna": "巨大黑底白字排版闪现、十字架爆炸光柱、橙色 LCL 液体与初号机暴走撕咬、超长静止电梯",
+        "camera_style": "极低仰角巨大人型兵器废墟站立 + 极速黑底白字文字蒙太奇",
+        "lighting": "apocalyptic red sea glow, stark white explosion cross, flashing warning red",
+        "action_focus": "berserk bio-mech roaring and tearing AT field, progressive knife stabbing core"
     },
-    "takeshi_kitano_blue": {
-        "category": "日本电影与动画大系",
-        "name": "北野蓝冷峻与面瘫突发暴力 (北野武)",
-        "dna": "北野蓝 (Kitano Blue) 忧郁影调、面瘫式无表情突然开枪/挥刀、久石让空灵音乐",
-        "camera_style": "大海边极度克制静止长镜头 + 突发无前奏拔枪特写",
-        "lighting": "desaturated Kitano blue ocean tones, cool overcast seaside lighting",
-        "action_focus": "deadpan sudden gun draw, blind iaido reverse-grip slice, solitary stroll on beach"
+    "takeshi_kitano_violence_blues": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "突发暴力与海边静止虚无派 (北野武)",
+        "dna": "标志性“北野蓝”（深蓝海景）、前一秒嬉戏看海后一秒毫无征兆拔枪射杀、面瘫冷峻",
+        "camera_style": "海边沙滩全景绝对静止 + 突发无前兆正面中景开枪",
+        "lighting": "melancholic deep Kitano Blue ocean, stark pale overcast beach daylight",
+        "action_focus": "abrupt zero-warning gunshot from pocket, static deadpan staring at waves"
     },
-
-    # 06 欧洲艺术与哲学长镜头大系
-    "tarkovsky_sculpting_time": {
-        "category": "欧洲艺术大师大系",
-        "name": "雕刻时光与四大自然元素终极宗师 (安德烈·塔可夫斯基)",
-        "dna": "极慢流动长镜头雕刻时光、水流浮草/静止烈火/风吹麦浪四大元素、精神救赎",
-        "camera_style": "极慢漂浮平滑长镜头 (Sculpting in Time) + 废墟水洼微距下潜",
-        "lighting": "ethereal misty dawn, soft overcast daylight, spiritual candlelight in ruins",
-        "action_focus": "spiritual stillness, hand brushing through tall grass, water dripping on sunken coins"
+    "otomo_akira_cyberpunk": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "超高密度机械废墟与能量核爆派 (大友克洋)",
+        "dna": "红色摩托尾灯残影光轨拉丝（Akira Slide）、新东京超高密度建筑崩塌、肉体膨胀异变核爆",
+        "camera_style": "高速贴地飞驰仰拍尾灯 + 巨型球形核爆吞噬都市大全景",
+        "lighting": "neon red light streak trails, blinding white nuclear dome flare, dark dense smoke",
+        "action_focus": "motorcycle drift slide on wet highway, telekinetic arm crushing concrete pillars"
     },
-    "fellini_baroque_carnival": {
-        "category": "欧洲艺术大师大系",
-        "name": "梦境狂欢与巴洛克式马戏团狂想 (费德里科·费里尼)",
-        "dna": "马戏团小丑与游行狂欢、超现实梦境意识流、巴洛克式夸张体态与服饰",
-        "camera_style": "马戏团大游行横向巡游镜头 + 狂欢人群拥挤广角特写",
-        "lighting": "theatrical spotlighting, high-contrast monochrome dream glow, seaside haze",
-        "action_focus": "surreal carnival procession, whimsical dance, eccentric character pantomime"
+    "yuasa_fluid_expressionism": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "极限鱼眼透视形变与野兽流体派 (汤浅政明)",
+        "dna": "人体与骨骼极度拉伸扭曲形变、野兽派狂放流体线条、不受经典物理重力束缚的纯粹动量",
+        "camera_style": "超广角鱼眼极限形变 (Extreme Fisheye Distortion) + 360 度翻滚俯冲",
+        "lighting": "hyper-vibrant psychedelic primaries, fluid morphing color washes",
+        "action_focus": "rubber-like anatomy sprinting, ping-pong ball transforming into blazing comet"
     },
-    "almodovar_saturated_passion": {
-        "category": "欧洲艺术大师大系",
-        "name": "高饱和原色与浓烈女性情感大师 (佩德罗·阿莫多瓦)",
-        "dna": "高饱和红黄蓝原色碰撞、浓烈情感与欲望张力、高度戏剧化室内装潢",
-        "camera_style": "戏剧化中景对称构图 + 高饱和色彩区域对撞",
-        "lighting": "vibrant scarlet red, cobalt blue, and canary yellow saturated interior lighting",
-        "action_focus": "intense emotional gaze, passionate argument, dramatic theatrical embrace"
+    "hosoda_cyber_warmth": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "极简纯白虚拟网络与时空奔跑派 (细田守)",
+        "dna": "纯白无垠二维几何虚拟网络世界、红蓝原色大对撞、迎风全力奔跑穿越时空与家族夏日烟火",
+        "camera_style": "超平视广角悬浮虚拟形象群像 + 少年迎风跨越时空的跳跃慢动作",
+        "lighting": "infinite pure white cyberspace, radiant summer blue sky with towering cumulus clouds",
+        "action_focus": "furious typing on keyboard, leaping through time portal, digital avatar martial clash"
     },
-    "haneke_clinical_interrogation": {
-        "category": "欧洲艺术大师大系",
-        "name": "冰冷长镜头与道德审判大师 (迈克尔·哈内克)",
-        "dna": "毫无配乐的绝对写实死寂、冷酷固定长镜头逼视暴行、打破第四面墙直视观众",
-        "camera_style": "绝对静止冷酷长镜头 (Clinical Static Long Take) + 突发打破第四面墙正视",
-        "lighting": "sterile bright white domestic lighting, cold naturalistic realism",
-        "action_focus": "unflinching psychological terror, polite calm cruelty, shocking raw violence"
+    "takahata_ink_sketch": {
+        "category": "日本电影与殿堂动画大系",
+        "name": "狂乱毛笔草稿线条与水彩留白派 (高畑勋)",
+        "dna": "愤怒狂奔时的毛笔粗粝炭笔线条爆发、水彩淡雅留白东方物哀史诗、质朴生活细节",
+        "camera_style": "背景淡化为纯白留白 + 狂乱奔跑时的线条崩解跟踪",
+        "lighting": "delicate watercolor washes, dynamic charcoal sumi-e strokes, moonlit bamboo stillness",
+        "action_focus": "furious running shedding royal robes, minimalist strokes depicting raw emotional grief"
     },
 
-    # 07 新兴短剧与动态漫特化大系
-    "micro_drama_tension_hook": {
-        "category": "新兴短剧动态漫大系",
-        "name": "90秒爆款逆袭与黄金节奏短剧流 (竖屏高留存)",
-        "dna": "0-3s黄金生死钩、3-30s极限蓄压、30-60s身份反转、60-85s打脸高潮、85-90s悬崖留钩",
-        "camera_style": "9:16 竖屏居中黄金焦点 + 极速推镜头抓微表情",
-        "lighting": "high contrast dramatic gold and deep shadow, intense face spotlighting",
-        "action_focus": "sudden collar grab, slapping down secret identity token, jaw-dropping status reversal"
+    # 06 欧洲艺术电影、哲学长镜头与自然沉思大系 (6)
+    "andrei_tarkovsky_time": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "雕刻时光与诗意水土沉思派 (安德烈·塔可夫斯基)",
+        "dna": "极慢速水流平移长镜头（水草摇曳、水底硬币圣像）、火与废墟在雨中燃烧、禁区自然沉思",
+        "camera_style": "极慢速下潜水平平移长镜头 (Hypnotic Tracking over Water) + 静止深焦",
+        "lighting": "volumetric poetic mist, soft green reflection on still water, holy candlelight",
+        "action_focus": "lying in wet grass gazing at cosmos, fire burning in rain inside ruined chapel"
     },
-    "motion_comic_break_frame": {
-        "category": "新兴短剧动态漫大系",
-        "name": "动态漫与条漫视听破框流 (二次元高燃)",
-        "dna": "分格边界震动破框、拟声大字物理粒子化、速度线放射聚焦、骨骼位移运镜",
-        "camera_style": "漫画分格破碎特写 + 放射状速度线聚焦点运镜",
-        "lighting": "vivid cel-shaded anime lighting, glowing particle sparks, high contrast manga inks",
-        "action_focus": "punch shattering comic border frame, onomatopoeia impact explosion, kinetic dash"
+    "federico_fellini_carnival": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "马戏狂欢与巴洛克梦境游行派 (费德里科·费里尼)",
+        "dna": "喧嚣马戏团式管乐交响、夜幕海滩怪诞狂欢群像、游走于自传回忆与梦境华丽大游行",
+        "camera_style": "游走于怪诞群像中的华丽穿梭推轨 + 仰拍狂欢者面具",
+        "lighting": "theatrical night carnival spotlights, glittering seaside reflections, baroque glamour",
+        "action_focus": "eccentric dancing in clown costumes, maestro waving baton to imaginary circus"
     },
-    "found_footage_interactive": {
-        "category": "新兴短剧动态漫大系",
-        "name": "交互悬疑与伪纪录片多视角流 (沉浸式博弈)",
-        "dna": "执法记录仪/监控摄像头视角 (CCTV POV)、分支选择树、信号闪烁与第一人称喘息",
-        "camera_style": "第一人称执法记录仪 (Bodycam POV) + 监控探头俯视抖动视角",
-        "lighting": "green night-vision grain, harsh flashlight beam cutting through pitch darkness",
-        "action_focus": "breathing heavily while hiding in closet, sudden monster dash towards lens, glitch cut"
+    "pedro_almodovar_passion": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "高饱和艳红与欲望身体叙事派 (佩德罗·阿莫多瓦)",
+        "dna": "高纯度原色对撞（标志性阿莫多瓦红/明黄/群青）、波普壁纸、对女性/创伤与欲望炽热表达",
+        "camera_style": "平面化几何色块构图 (Pop-art Flat Framing) + 红唇/高跟鞋微距特写",
+        "lighting": "saturated passionate ruby red, vibrant cobalt blue, warm Mediterranean sun",
+        "action_focus": "hysterical emotional breakdown, throwing gazpacho, passionate embrace on patterned sofa"
+    },
+    "michael_haneke_cold_gaze": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "冷酷凝视与中产阶级道德审判派 (迈克尔·哈内克)",
+        "dna": "毫无配乐的绝对死寂、固定长镜头冷酷凝视暴力过程、打破第四面墙对观众道德审判",
+        "camera_style": "远距离中远景固定长镜头 (Sterile Static Wide) + 拒绝任何煽情特写",
+        "lighting": "chilling clinical white interior, cold desaturated overcast natural light",
+        "action_focus": "chilling polite murder with white gloves, remote control rewinding reality, silent terror"
+    },
+    "cuaron_immersive_long_take": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "沉浸式三维穿梭与无缝长镜头神迹派 (阿方索·卡隆)",
+        "dna": "极其复杂的全景不间断长镜头、车内 360 度交火旋转、太空无重力失控翻滚、写实沉浸",
+        "camera_style": "360度三维穿梭连续长镜头 (Continuous 3D Oner) + 镜头溅血水滴",
+        "lighting": "hyper-realistic natural daylight in warzone, stark harsh sunlight in outer space vacuum",
+        "action_focus": "car interior ambush shootout in one shot, tethered astronaut tumbling in zero-g"
+    },
+    "malick_golden_hour_whisper": {
+        "category": "欧洲艺术哲学长镜头大系",
+        "name": "逢魔时刻魔幻光与意识流自然低语派 (泰伦斯·马力克)",
+        "dna": "广角镜头贴地仰拍风吹麦浪、逆光穿透树叶魔幻时刻金光、角色内心哲思轻声低语旁白",
+        "camera_style": "广角低机位漂移跟拍 (Wide Low-angle Glide) + 太阳直射镜头眩光",
+        "lighting": "golden hour magic hour flare, backlit leaves shimmering, poetic sunset glow",
+        "action_focus": "fingers brushing through tall grass, looking up through canopy at heavens, whispering prayer"
+    },
+
+    # 07 竖屏短剧、微短剧与新型网生叙事特化大系 (5)
+    "micro_drama_hook_reversal": {
+        "category": "竖屏短剧与网生叙事特化大系",
+        "name": "90秒竖屏黄金三秒钩子与打脸反转流",
+        "dna": "9:16 竖屏构图、前 3 秒灭顶羞辱钩子、20 秒反转、45 秒战神/首富揭晓、85 秒悬念断点",
+        "camera_style": "9:16 竖屏大特写急推 + 下跪视角大仰拍 + 扇巴掌/摔黑金卡微距切击",
+        "lighting": "high contrast high-key urban luxury lighting, cold spotlight on villain",
+        "action_focus": "slap in face with impact flash, black card slammed on table, kneeling in apology"
+    },
+    "dynamic_comic_frame_break": {
+        "category": "竖屏短剧与网生叙事特化大系",
+        "name": "动态漫视听重构与漫画破框流",
+        "dna": "漫画分格边界破裂动画、2.5D 图层视差推进、拟声词物理实体化碎屏、速度线辐射爆炸",
+        "camera_style": "2.5D 视差图层纵深推入 + 武器刺破漫画边框破屏而出",
+        "lighting": "glowing neon aura, vibrant manhua cel-shading, stark black/white impact frames",
+        "action_focus": "sword Qi shattering comic panel borders, onomatopoeia SFX crashing onto ground"
+    },
+    "found_footage_chinese_horror": {
+        "category": "竖屏短剧与网生叙事特化大系",
+        "name": "互动伪纪录片与中式民俗微恐流",
+        "dna": "第一人称手机摄像头晃动/夜视绿光、VHS 噪点跳帧、中式民俗纸人/红白喜事/幽暗祠堂",
+        "camera_style": "第一人称手机手持晃动 (Found-footage POV) + 边缘闪现移开视线",
+        "lighting": "green night-vision grain, dim red lantern glow in pitch-black courtyard",
+        "action_focus": "shaking hands pointing flashlight at paper effigy, frantic running through ancestral hall"
+    },
+    "analog_horror_mandela_effect": {
+        "category": "竖屏短剧与网生叙事特化大系",
+        "name": "模拟信号规则怪谈与伪人微恐流",
+        "dna": "老旧 CRT 电视雪花噪点、紧急广播警报音、监控鱼眼畸变、伪人反常僵硬微笑与撕裂面孔",
+        "camera_style": "猫眼鱼眼畸变机位 (Fisheye Peephole) + 监控画面时间乱码跳动",
+        "lighting": "gloomy CRT scanlines, cold hallway fluorescent flicker, eerie liminal shadows",
+        "action_focus": "uncanny valley unnatural wide smile, distorted facial morphing, door scratching"
+    },
+    "time_loop_deduction_noir": {
+        "category": "竖屏短剧与网生叙事特化大系",
+        "name": "剧本杀密室与时间倒流博弈流",
+        "dna": "证据物品极微距光影变焦、多视角记忆闪回、时间倒流时钟逆转、多线投票指认对峙",
+        "camera_style": "证据极微距变焦 + 圆桌多方视线交叉分屏 + 怀表逆转光影",
+        "lighting": "dramatic single overhead spotlight on mahogany table, ticking golden watch glints",
+        "action_focus": "pointing finger in accusation, pocket watch hands spinning backwards, sweat bead dropping"
+    },
+
+    # 08 数字国漫、次世代引擎视效与实验先锋大系 (5)
+    "donghua_3d_xianxia_aerial": {
+        "category": "数字国漫与次世代先锋大系",
+        "name": "国漫 3D 玄幻御剑空战与法宝阵法流",
+        "dna": "3D 动作捕捉流畅体态、第一人称 FPV 御剑贴地穿梭、万剑归宗符文大阵金光、山崩地裂大招",
+        "camera_style": "360度空中缠斗 FPV 极速俯冲 + 法宝大阵万米鸟瞰大长卷",
+        "lighting": "glowing golden Daoist runes, radiant cyan sword Qi, particle shockwave halos",
+        "action_focus": "supersonic sword flight dogfight, hand mudra triggering mountain-shattering array"
+    },
+    "unreal_engine_hyper_cg": {
+        "category": "数字国漫与次世代先锋大系",
+        "name": "虚幻引擎电影级 CG 与超写实粒子流",
+        "dna": "Lumen 全局实时光照、Nanite 亿级微多边形毛孔纹理、次时代体积雾与火花物理飞溅",
+        "camera_style": "电影级虚拟摄影机手持平滑 (Virtual Cam) + 大光圈浅景深微距特写",
+        "lighting": "ray-traced volumetric god rays, physically accurate subsurface scattering on skin",
+        "action_focus": "titan mech vs cyber dragon clash, energy shield deflecting hyper-dense particle beam"
+    },
+    "hardcore_fpv_parkour": {
+        "category": "数字国漫与次世代先锋大系",
+        "name": "第一人称极限跑酷与主观沉浸肉搏流",
+        "dna": "纯第一人称视角（GoPro / FPV 头部佩戴）、楼顶亡命极限飞跃、高空滑索与贴身枪斗无缝连招",
+        "camera_style": "纯第一人称头部机位 (Pure First-person POV) + 落地剧烈翻滚与重力加速",
+        "lighting": "harsh rooftop direct sunlight, motion-blurred urban horizon",
+        "action_focus": "grabbing concrete ledge, slide-kick into enemy knee, grappling hook reload"
+    },
+    "cyber_glitch_datamosh": {
+        "category": "数字国漫与次世代先锋大系",
+        "name": "赛博故障艺术与多维信息崩解流",
+        "dna": "数据撕裂（Datamoshing）、RGB 色散通道分离、像素重组与全息投影闪烁",
+        "camera_style": "画面在现实与赛博空间之间发生抽帧崩解 + 故障脉冲随重低音炸裂",
+        "lighting": "saturated RGB chromatic aberration, holographic neon magenta and electric blue",
+        "action_focus": "digital avatar dissolving into data pixels, cybernetic punch causing holographic tear"
+    },
+    "claymation_dark_stop_motion": {
+        "category": "数字国漫与次世代先锋大系",
+        "name": "微缩微距模型与暗黑定格动画流",
+        "dna": "黏土/木偶手工指纹质感、每秒 12 帧独特停顿感（Stop-motion Jitter）、暗黑哥特微缩场景",
+        "camera_style": "移轴微距浅景深 (Tilt-shift Macro) + 12fps 逐格机械停顿",
+        "lighting": "warm vintage tungsten lamp, spooky gothic miniature shadows, burlap texture",
+        "action_focus": "handmade doll mechanical clockwork movement, whimsical puppet duel"
     }
 }
 
-# 静态体检规则库
-BUZZWORDS_AND_VAGUE_PATTERNS = [
-    (r"打得难解难分", "文学化空泛词：未交代招式拆解、攻防路线与受力反馈"),
-    (r"十分紧张", "情绪直述词：未通过机位、心跳音效或面部微表情营造张力"),
-    (r"两人大战三百回合", "武侠套路空话：缺少具体招式拆解拍点"),
-    (r"眼神充满杀气", "抽象面部描写：未给出瞳孔、咬肌或视线轨迹的具体物理变动"),
-    (r"场面极其壮观", "主观感叹词：未给出景别 (EWS)、环境粒子或群演动线"),
-    (r"痛得大叫", "浮夸表演：未给出喉结抽搐、面部痉挛或冷汗细节"),
-    (r"气氛非常压抑", "空洞氛围词：未给出高反差阴影、冷色温或环境死寂音效")
-]
+# 快捷别名映射表 (方便 CLI 快速调用)
+ALIAS_MAPPING = {
+    "shaw": "shaw_chang_cheh",
+    "chang_cheh": "shaw_chang_cheh",
+    "lau_kar_leung": "shaw_lau_kar_leung",
+    "chor_yuen": "shaw_chor_yuen",
+    "king_hu": "king_hu_zen_wuxia",
+    "tsui_hark": "tsui_hark_fantasy",
+    "yuen_woo_ping": "yuen_woo_ping_action",
+    "john_woo": "john_woo_gun_fu",
+    "johnnie_to": "johnnie_to_noir",
+    "donnie_yen": "donnie_yen_mma",
+    "benny_chan": "benny_chan_explosive",
+    "sammo": "sammo_jackie_action_comedy",
+    "jackie": "sammo_jackie_action_comedy",
+    "jackie_chan": "sammo_jackie_action_comedy",
+    "ching_siu_tung": "ching_siu_tung_wire_wuxia",
+    "peter_chan": "peter_chan_epic_realism",
+    "gareth_evans": "gareth_evans_silat_brutal",
+    "raid": "gareth_evans_silat_brutal",
+    "tony_jaa": "tony_jaa_muay_thai",
+    "ong_bak": "tony_jaa_muay_thai",
 
-def get_archetype_info(key: str) -> Dict[str, Any]:
-    """获取指定导演流派信息，支持别名容错"""
-    # 常用简写别名映射
-    alias_map = {
-        "shaw": "shaw_chang_cheh",
-        "shaw_kungfu": "shaw_lau_kar_leung",
-        "chang_cheh": "shaw_chang_cheh",
-        "lau_kar_leung": "shaw_lau_kar_leung",
-        "chor_yuen": "shaw_chor_yuen",
-        "king_hu": "king_hu_zen_wuxia",
-        "tsui_hark": "tsui_hark_fantasy",
-        "yuen_woo_ping": "yuen_woo_ping_action",
-        "john_woo": "john_woo_gun_fu",
-        "johnnie_to": "johnnie_to_noir",
-        "donnie_yen": "donnie_yen_mma",
-        "benny_chan": "benny_chan_explosive",
-        "wong_kar_wai": "wong_kar_wai_mood",
-        "stephen_chow": "stephen_chow_comic",
-        "jiang_wen": "jiang_wen_hormone",
-        "zhang_yimou": "zhang_yimou_color_epic",
-        "ang_lee": "ang_lee_restraint",
-        "jia_zhangke": "jia_zhangke_realism",
-        "hou_hsiao_hsien": "hou_hsiao_hsien_poetic",
-        "edward_yang": "edward_yang_urban_symphony",
-        "nolan": "nolan_non_linear",
-        "spielberg": "spielberg_wonder_face",
-        "cameron": "cameron_industrial_epic",
-        "george_miller": "george_miller_fury_road",
-        "wes_anderson": "wes_anderson_symmetry",
-        "zack_snyder": "zack_snyder_dark_myth",
-        "stahelski": "stahelski_gun_fu",
-        "michael_bay": "michael_bay_bayhem",
-        "peter_jackson": "peter_jackson_lotr_epic",
-        "hitchcock": "hitchcock_suspense",
-        "david_fincher": "david_fincher_precision",
-        "fincher": "david_fincher_precision",
-        "kubrick": "kubrick_one_point_gaze",
-        "tarantino": "tarantino_dialogue",
-        "guy_ritchie": "guy_ritchie_speed_cut",
-        "coen": "coen_brothers_absurdist",
-        "david_lynch": "david_lynch_surrealism",
-        "park_chan_wook": "park_chan_wook_revenge",
-        "kurosawa": "kurosawa_weather",
-        "ozu": "ozu_tatami_stillness",
-        "satoshi_kon": "satoshi_kon_matchcut",
-        "miyazaki": "miyazaki_ghibli_wonder",
-        "mamoru_oshii": "mamoru_oshii_cyberpunk",
-        "makoto_shinkai": "makoto_shinkai_light",
-        "hideaki_anno": "hideaki_anno_eva_deconstruct",
-        "takeshi_kitano": "takeshi_kitano_blue",
-        "tarkovsky": "tarkovsky_sculpting_time",
-        "fellini": "fellini_baroque_carnival",
-        "almodovar": "almodovar_saturated_passion",
-        "haneke": "haneke_clinical_interrogation",
-        "micro_drama": "micro_drama_tension_hook",
-        "motion_comic": "motion_comic_break_frame",
-        "found_footage": "found_footage_interactive"
-    }
-    actual_key = alias_map.get(key, key)
-    return ALL_DIRECTOR_ARCHETYPES.get(actual_key, ALL_DIRECTOR_ARCHETYPES["shaw_chang_cheh"])
+    "wong_kar_wai": "wong_kar_wai_mood",
+    "stephen_chow": "stephen_chow_comedy",
+    "jiang_wen": "jiang_wen_hormone",
+    "zhang_yimou": "zhang_yimou_color_grandeur",
+    "ang_lee": "ang_lee_restraint",
+    "jia_zhangke": "jia_zhangke_realism",
+    "hou_hsiao_hsien": "hou_hsiao_hsien_long_take",
+    "edward_yang": "edward_yang_urban_dissection",
+    "bong_joon_ho": "bong_joon_ho_spatial_class",
+    "parasite": "bong_joon_ho_spatial_class",
+    "na_hong_jin": "na_hong_jin_desperate_noir",
+    "chaser": "na_hong_jin_desperate_noir",
 
-def blend_archetypes(arch1: Dict[str, Any], arch2: Dict[str, Any]) -> Dict[str, Any]:
-    """将两个导演流派融合成全新的跨界视听风格"""
-    return {
-        "category": f"跨界双流派融合 ({arch1['category']} × {arch2['category']})",
-        "name": f"【跨界混血】{arch1['name']} × {arch2['name']}",
-        "dna": f"【主控】{arch1['dna']}；【融合】{arch2['dna']}",
-        "camera_style": f"{arch1['camera_style']} + {arch2['camera_style']}",
-        "lighting": f"{arch1['lighting']}, blended with {arch2['lighting']}",
-        "action_focus": f"{arch1['action_focus']}, combined with {arch2['action_focus']}"
-    }
+    "nolan": "christopher_nolan_structure",
+    "spielberg": "steven_spielberg_adventure",
+    "cameron": "james_cameron_industrial_titan",
+    "george_miller": "george_miller_wasteland",
+    "mad_max": "george_miller_wasteland",
+    "wes_anderson": "wes_anderson_symmetry",
+    "zack_snyder": "zack_snyder_dark_myth",
+    "john_wick": "john_wick_gun_fu",
+    "michael_bay": "michael_bay_kinetic",
+    "peter_jackson": "peter_jackson_epic_fantasy",
+    "ridley_scott": "ridley_scott_epic_light",
+    "blade_runner": "ridley_scott_epic_light",
+    "villeneuve": "villeneuve_monumental_minimalism",
+    "dune": "villeneuve_monumental_minimalism",
+    "wachowskis": "wachowskis_matrix_cyber",
+    "matrix": "wachowskis_matrix_cyber",
+    "del_toro": "del_toro_gothic_fairy",
+    "pacific_rim": "del_toro_gothic_fairy",
+    "verhoeven": "verhoeven_cyber_satire",
+    "carpenter": "carpenter_synth_horror",
+    "the_thing": "carpenter_synth_horror",
 
-def generate_storyboard(title: str, archetype_key: str, scene_desc: str, blend_key: Optional[str] = None) -> str:
-    """生成工业级五栏分镜设计表（支持双流派融合）"""
-    arch1 = get_archetype_info(archetype_key)
-    if blend_key:
-        arch2 = get_archetype_info(blend_key)
-        archetype = blend_archetypes(arch1, arch2)
-    else:
-        archetype = arch1
+    "hitchcock": "alfred_hitchcock_suspense",
+    "david_fincher": "david_fincher_perfection",
+    "fincher": "david_fincher_perfection",
+    "kubrick": "stanley_kubrick_gaze",
+    "quentin": "quentin_tarantino_dialogue",
+    "tarantino": "quentin_tarantino_dialogue",
+    "guy_ritchie": "guy_ritchie_speed_cut",
+    "coen_brothers": "coen_brothers_absurdist",
+    "david_lynch": "david_lynch_surreal",
+    "lynch": "david_lynch_surreal",
+    "park_chan_wook": "park_chan_wook_baroque",
+    "oldboy": "park_chan_wook_baroque",
+    "scorsese": "scorsese_furious_energy",
+    "pta": "pta_steadicam_epic",
+    "paul_thomas_anderson": "pta_steadicam_epic",
+    "aronofsky": "aronofsky_hip_hop_montage",
+    "edgar_wright": "edgar_wright_rhythm_cut",
+
+    "kurosawa": "akira_kurosawa_weather",
+    "ozu": "yasujiro_ozu_tatami",
+    "satoshi_kon": "satoshi_kon_match_cut",
+    "miyazaki": "hayao_miyazaki_ghibli",
+    "ghibli": "hayao_miyazaki_ghibli",
+    "oshii": "mamoru_oshii_cyber_philosophy",
+    "shinkai": "makoto_shinkai_light_particles",
+    "anno": "hideaki_anno_eva_psychology",
+    "evangelion": "hideaki_anno_eva_psychology",
+    "kitano": "takeshi_kitano_violence_blues",
+    "otomo": "otomo_akira_cyberpunk",
+    "akira": "otomo_akira_cyberpunk",
+    "yuasa": "yuasa_fluid_expressionism",
+    "hosoda": "hosoda_cyber_warmth",
+    "takahata": "takahata_ink_sketch",
+
+    "tarkovsky": "andrei_tarkovsky_time",
+    "fellini": "federico_fellini_carnival",
+    "almodovar": "pedro_almodovar_passion",
+    "haneke": "michael_haneke_cold_gaze",
+    "cuaron": "cuaron_immersive_long_take",
+    "malick": "malick_golden_hour_whisper",
+
+    "micro_drama": "micro_drama_hook_reversal",
+    "short_drama": "micro_drama_hook_reversal",
+    "dynamic_comic": "dynamic_comic_frame_break",
+    "found_footage": "found_footage_chinese_horror",
+    "analog_horror": "analog_horror_mandela_effect",
+    "time_loop": "time_loop_deduction_noir",
+
+    "donghua_3d": "donghua_3d_xianxia_aerial",
+    "xianxia_3d": "donghua_3d_xianxia_aerial",
+    "unreal_cg": "unreal_engine_hyper_cg",
+    "hardcore_fpv": "hardcore_fpv_parkour",
+    "fpv": "hardcore_fpv_parkour",
+    "cyber_glitch": "cyber_glitch_datamosh",
+    "claymation": "claymation_dark_stop_motion",
+    "stop_motion": "claymation_dark_stop_motion"
+}
+
+def resolve_archetype(key: str) -> Dict[str, Any]:
+    """解析流派标识（支持别名映射与兜底）"""
+    norm_key = key.lower().strip()
+    if norm_key in ALL_DIRECTOR_ARCHETYPES:
+        return ALL_DIRECTOR_ARCHETYPES[norm_key]
+    if norm_key in ALIAS_MAPPING:
+        return ALL_DIRECTOR_ARCHETYPES[ALIAS_MAPPING[norm_key]]
     
-    output = []
-    output.append(f"# 🎬 工业级标准分镜设计表: 《{title}》\n")
-    output.append(f"**大系分类**：`{archetype['category']}`  ")
-    output.append(f"**主控导演流派**：`{archetype['name']}`  ")
-    output.append(f"**美学与分镜 DNA**：{archetype['dna']}  ")
-    output.append(f"**镜头与运镜风格**：{archetype['camera_style']}  ")
-    output.append(f"**场景核心描述**：{scene_desc}\n")
-    output.append("---\n")
-    output.append("## 📋 核心分镜明细表 (5-Shot Breakdown)\n")
-    output.append("| 镜号 | 景别 & 机位 | 运镜动线 | 画面核心视觉 (构图/光影/动作) | 声音设计 (台词/音效/配乐) | AI 生成提示词 (Midjourney/Kling/Sora) |")
-    output.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
-    
-    # 镜号 1
-    output.append(f"| **#01** | 全景 (WS) · 俯拍建立镜头 | 极慢速下潜俯冲 (Slow Crane Down) | 场景全貌呈现：{scene_desc}。空间几何站位明确，环境光影形成强烈明暗对比。 | **[音效]** 环境氛围音（风声/暴雨/机械运转）；**[配乐]** 低沉管弦乐蓄力。 | `wide shot, high angle, {scene_desc}, {archetype['lighting']}, dramatic composition, 8k.` |")
-    
-    # 镜号 2
-    output.append(f"| **#02** | 极近特写 (ECU) · 平视 | 快速侧向微推 (Subtle Push In) | 核心人物面部微表情：瞳孔微缩，咬肌绷紧，右眼冰冷凝视对手，冷汗自下颌滑落。 | **[音效]** 极清脆的兵器出鞘或上膛声 (Clang!)；**[台词]** 冰冷短促的金句。 | `macro extreme close-up shot, intense focused gaze, subtle jaw muscle clenching, {archetype['lighting']}, cinematic 35mm film still.` |")
-    
-    # 镜号 3
-    output.append(f"| **#03** | 中景 (MS) · 仰拍 (Low Angle) | 动态跟拍+极速甩镜 (Kinetic Tracking & Whip Pan) | 双方瞬间破防交锋！{archetype['action_focus']}，动作起势凌厉，地面尘土激荡。 | **[音效]** 撕裂空气的呼啸声与肌肉碰撞沉闷巨响；**[配乐]** 节奏瞬间飙升。 | `medium shot, dynamic low angle, {archetype['action_focus']}, motion blur, intense contrast shadows, masterpiece.` |")
-    
-    # 镜号 4
-    output.append(f"| **#04** | 特写 (CU) · 荷兰倾斜角 (Dutch Angle) | 慢动作升格 (120fps Slow-mo) | 致命打击命中瞬间！受击方身形受力向后倒滑，周围道具碎屑炸裂翻飞，面部显露出不可置信的惊愕。 | **[音效]** 骨骼撞击闷响与道具粉碎炸裂声；**[台词]** 喉间压抑的闷哼。 | `close-up shot, tilted dutch angle, slow-motion impact moment, shattering debris, high impact physics, hyper-detailed.` |")
-    
-    # 镜号 5
-    output.append(f"| **#05** | 全景 (WS) · 景深穿透构图 (Deep Staging) | 固定长镜头 (Static Deep Focus) | 前景败者倒地虚化；中景胜者收势站立；后景暗门或阴影中第二重危机悄然显现。 | **[音效]** 尘埃落定与微弱喘息声；**[配乐]** 音乐骤停转为空灵单音，留下悬念。 | `wide shot, deep focus staging, blurred foreground, victorious warrior standing in midground, mysterious shadow in background, {archetype['lighting']}.` |")
-    
+    # 模糊查找
+    for k, v in ALL_DIRECTOR_ARCHETYPES.items():
+        if norm_key in k or norm_key in v["name"].lower():
+            return v
+            
+    # 默认兜底
+    return ALL_DIRECTOR_ARCHETYPES["shaw_chang_cheh"]
+
+def list_all_archetypes() -> str:
+    """列出全部 80 个已收录的流派清单"""
+    categories: Dict[str, List[str]] = {}
+    for k, v in ALL_DIRECTOR_ARCHETYPES.items():
+        cat = v["category"]
+        if cat not in categories:
+            categories[cat] = []
+        categories[cat].append(f"  • `{k}`: **{v['name']}** — {v['dna']}")
+        
+    output = ["# 🎬 导演级全流程创作大师 · 80大流派全量矩阵清单\n"]
+    for cat_name, items in categories.items():
+        output.append(f"### 📂 {cat_name} ({len(items)} 个流派)")
+        output.extend(items)
+        output.append("")
     return "\n".join(output)
 
-def generate_action_breakdown(title: str, archetype_key: str, characters: str) -> str:
-    """生成硬派动作与招式对拆拍点"""
-    archetype = get_archetype_info(archetype_key)
-    output = []
-    output.append(f"# 🥋 硬派打斗与动作拍点拆解报告: 《{title}》\n")
-    output.append(f"**主导流派**：`{archetype['name']}`  ")
-    output.append(f"**参战角色**：`{characters}`  ")
-    output.append(f"**核心动作偏好**：{archetype['action_focus']}\n")
-    output.append("---\n")
-    output.append("## 💥 六阶打斗拍点明细 (Beat-by-Beat Mechanics)\n")
+def generate_storyboard(title: str, archetype_key: str, scene_desc: str, blend_key: Optional[str] = None) -> str:
+    """生成五栏工业级分镜设计表（支持双流派 Blend 融合）"""
+    primary = resolve_archetype(archetype_key)
+    blend = resolve_archetype(blend_key) if blend_key else None
     
-    output.append("### 1. 【起势对峙 · 空间与重心控制】(Beat 1)")
-    output.append("- **角色动线**：双方拉开三步距离。攻方沉腰跨步，蓄力于后足；守方侧身立桥，单掌虚引，眼神锁定对方重心。")
-    output.append("- **环境交互**：脚下泥水被气劲排开，树叶飘落被无形劲风切断。")
+    style_name = primary["name"]
+    camera_desc = primary["camera_style"]
+    lighting_desc = primary["lighting"]
+    action_desc = primary["action_focus"]
+    category_name = primary["category"]
     
-    output.append("\n### 2. 【首击发力 · 中门破防突刺】(Beat 2)")
-    output.append("- **攻方招式**：攻方猛然蹬地滑步，右拳借旋腰之力轰向守方面门（直冲天门）。")
-    output.append("- **力学细节**：右肩沉降，背部肌肉暴起，拳风呼啸带出尖锐气鸣。")
-    
-    output.append("\n### 3. 【格挡截桥 · 卸力引化反击】(Beat 3)")
-    output.append("- **守方化解**：守方不退反进，左臂如铁铸般自下而上斜架敌方小臂内侧（上架桥），寸劲截断对方发力点。")
-    output.append("- **碰撞音效**：沉闷如击牛皮之鼓 (Thump!)，双方小臂肌肉微凹。")
-    
-    output.append("\n### 4. 【近身缠绕 · 破坏平衡与变招】(Beat 4)")
-    output.append("- **招式连环**：守方左腕内翻扣死对方手腕（圈手擒拿），顺势向斜下方一拽破坏其平衡；右肘顺势贴身暴起顶向对方下肋（贴身顶肘）。")
-    output.append("- **受力反馈**：攻方肋骨遭遇钝击，身躯不由自主向侧方弓曲。")
-    
-    output.append("\n### 5. 【爆裂重创 · 环境破坏与击飞】(Beat 5)")
-    output.append(f"- **绝杀施展**：守方施展核心必杀技（{archetype['action_focus']}），双掌化为双飞掌重重印在攻方胸膛正中。")
-    output.append("- **物理反馈**：攻方胸口衣袍炸碎，身躯凌空倒飞两丈，砸穿茶摊木桌，木屑碎碗漫天飞射。")
-    
-    output.append("\n### 6. 【势能收束 · 气场定格与回势】(Beat 6)")
-    output.append("- **终局定格**：守方缓缓吐出一口白气，收拳立桥，单掌拂胸。全场重归死寂。")
-    
+    if blend:
+        style_name = f"{primary['name']} × {blend['name']} (跨界双流派融合)"
+        camera_desc = f"{primary['camera_style']} 融合 {blend['camera_style']}"
+        lighting_desc = f"{primary['lighting']}, blended with {blend['lighting']}"
+        action_desc = f"{primary['action_focus']}, interwoven with {blend['action_focus']}"
+        category_name = f"{primary['category']} & {blend['category']}"
+        
+    output = [
+        f"# 🎬 工业级标准分镜设计表: 《{title}》\n",
+        f"**大系分类**：`{category_name}`  ",
+        f"**主控导演流派**：`{style_name}`  ",
+        f"**美学与分镜 DNA**：{primary['dna']}  ",
+        f"**镜头与运镜风格**：{camera_desc}  ",
+        f"**场景核心描述**：{scene_desc}\n",
+        "---\n",
+        "## 📋 核心分镜明细表 (5-Shot Breakdown)\n",
+        "| 镜号 | 景别 & 机位 | 运镜动线 | 画面核心视觉 (构图/光影/动作) | 声音设计 (台词/音效/配乐) | AI 生成提示词 (Midjourney/Kling/Sora) |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- |",
+        f"| **#01** | 全景 (WS) · 俯拍建立镜头 | 极慢速下潜俯冲 (Slow Crane Down) | 场景全貌呈现：{scene_desc}。空间几何站位明确，环境光影形成强烈明暗对比。 | **[音效]** 环境氛围音（风声/暴雨/机械运转）；**[配乐]** 低沉管弦乐蓄力。 | `wide shot, high angle, {scene_desc}, {lighting_desc}, dramatic composition, 8k.` |",
+        f"| **#02** | 极近特写 (ECU) · 平视 | 快速侧向微推 (Subtle Push In) | 核心人物面部微表情：瞳孔微缩，咬肌绷紧，右眼冰冷凝视对手，冷汗自下颌滑落。 | **[音效]** 极清脆的兵器出鞘或上膛声 (Clang!)；**[台词]** 冰冷短促的金句。 | `macro extreme close-up shot, intense focused gaze, subtle jaw muscle clenching, {lighting_desc}, cinematic 35mm film still.` |",
+        f"| **#03** | 中景 (MS) · 仰拍 (Low Angle) | 动态跟拍+极速甩镜 (Kinetic Tracking & Whip Pan) | 双方瞬间破防交锋！{action_desc}，动作起势凌厉，地面尘土激荡。 | **[音效]** 撕裂空气的呼啸声与肌肉碰撞沉闷巨响；**[配乐]** 节奏瞬间飙升。 | `medium shot, dynamic low angle, {action_desc}, motion blur, intense contrast shadows, masterpiece.` |",
+        f"| **#04** | 特写 (CU) · 荷兰倾斜角 (Dutch Angle) | 慢动作升格 (120fps Slow-mo) | 致命打击命中瞬间！受击方身形受力向后倒滑，周围道具碎屑炸裂翻飞，面部显露出不可置信的惊愕。 | **[音效]** 骨骼撞击闷响与道具粉碎炸裂声；**[台词]** 喉间压抑的闷哼。 | `close-up shot, tilted dutch angle, slow-motion impact moment, shattering debris, high impact physics, hyper-detailed.` |",
+        f"| **#05** | 全景 (WS) · 景深穿透构图 (Deep Staging) | 固定长镜头 (Static Deep Focus) | 前景败者倒地虚化；中景胜者收势站立；后景暗门或阴影中第二重危机悄然显现。 | **[音效]** 尘埃落定与微弱喘息声；**[配乐]** 音乐骤停转为空灵单音，留下悬念。 | `wide shot, deep focus staging, blurred foreground, victorious warrior standing in midground, mysterious shadow in background, {lighting_desc}.` |"
+    ]
+    return "\n".join(output)
+
+def generate_action_breakdown(title: str, archetype_key: str, character_pair: str) -> str:
+    """生成硬核动作武术招式拆解 (六阶动作力学拍点)"""
+    arch = resolve_archetype(archetype_key)
+    output = [
+        f"# 🥋 动作武术力学招式拍点拆解: 《{title}》\n",
+        f"**主导演流派**：`{arch['name']}` | **交战双方**：`{character_pair}`\n",
+        "## ⚡ 六阶动作力学演进链 (Action Kinetics Chain)\n",
+        f"1. **发力起势 (Initiation & Stance)**:\n",
+        f"   - **身法几何**: 下盘沉腰扎马，重心后移七成，脊椎微弓如满月蓄力，单手起势立掌示礼（符合 {arch['name']} 特征）。\n",
+        f"   - **视线锁定**: 双目精光如寒星，呼吸从粗重转入极度悠长，肌肉群瞬间充血绷紧。\n",
+        f"2. **距离突进与破中门 (Gap Closing & Centerline Assault)**:\n",
+        f"   - **步法动线**: 垫步疾进，脚掌抓地激起半寸尘土，抢占内门中线三角区域。\n",
+        f"   - **破防招式**: 虚晃上盘诱敌，下潜沉桥硬架对方兵刃，以短促肘击切入对方空门。\n",
+        f"3. **攻防拆解与封门卸力 (Interlocking & Parrying)**:\n",
+        f"   - **交锋交织**: 连续三进三退对拆（挂、漏、封、沉），小臂骨骼与兵器撞击发出沉闷交鸣。\n",
+        f"   - **借力反制**: 顺势引化对方刚劲，顺缠反扭其手腕关节点，破坏其重心平衡。\n",
+        f"4. **核心重创与破裂反馈 (Crushing Impact & Reaction)**:\n",
+        f"   - **发力打击**: 沉肩发劲，寸劲重拳/刀柄狠击其胸肋骨，爆发力如山崩。\n",
+        f"   - **物理反馈**: 受击方胸前衣襟炸裂，整个人离地倒飞撞碎木质廊柱，木屑瓦砾崩散飞射。\n",
+        f"5. **终结余波与宗师定格 (Resolution & Final Pose)**:\n",
+        f"   - **收势呼吸**: 胜者单掌下按回气，白袍染血微动，眼底杀意缓缓敛入深潭。\n",
+        f"   - **环境余震**: 尘埃在逆光光束中缓缓飘落，背景中半截残剑插入青砖嗡鸣震颤。\n"
+    ]
     return "\n".join(output)
 
 def audit_text_quality(text: str) -> Dict[str, Any]:
-    """静态审计剧本与描述中的空泛文学词与镜头缺失"""
-    issues = []
+    """静态审计剧本文本中的虚假文学化空洞描述"""
+    banned_literary_phrases = [
+        "打得难解难分", "十分紧张", "不可开交", "痛得大叫", "非常厉害", 
+        "恐怖如斯", "天地变色", "绝世高手", "气势如虹", "大惊失色"
+    ]
+    missing_cinematic_elements = []
     
-    for pattern, reason in BUZZWORDS_AND_VAGUE_PATTERNS:
-        matches = re.findall(pattern, text)
-        if matches:
-            issues.append(f"发现空泛文学词【{matches[0]}】: {reason}")
+    issues = []
+    for phrase in banned_literary_phrases:
+        if phrase in text:
+            issues.append(f"发现空泛文学修饰词 '{phrase}'，缺乏具体物理招式、机位或微表情支撑。")
             
-    cinematic_keywords = ["景别", "机位", "特写", "全景", "俯拍", "仰拍", "推镜头", "运镜", "光影", "阴影", "Close-up", "Wide Shot", "Dolly", "Pan"]
-    has_cinematic_term = any(kw in text for kw in cinematic_keywords)
-    if not has_cinematic_term:
-        issues.append("缺失专业视听语言声明 (Cinematic Parameters): 未指定具体景别 (WS/CU) 或机位动线")
+    # 检查是否包含视听参数
+    cinematic_keywords = ["特写", "全景", "中景", "推镜头", "仰拍", "俯拍", "慢动作", "光影", "景深", "瞳孔", "咬肌", "肌肉", "音效", "配乐"]
+    has_cinematic = any(kw in text for kw in cinematic_keywords)
+    if not has_cinematic:
+        issues.append("文本缺乏摄影机调度（景别、机位、运镜）或生理物理细节（瞳孔、受力反馈），属于纯文学文本。")
         
     score = max(0, 100 - len(issues) * 20)
-    rating = "A (优秀/工业级)" if score >= 80 else ("B (合格/需微调)" if score >= 60 else "C (高风险/空泛需重构)")
+    rating = "S级 (工业级导演视听)" if score >= 90 else ("A级 (良好标准)" if score >= 70 else "C级 (需重构为导演视角)")
     
     return {
         "score": score,
         "rating": rating,
-        "issues": issues
+        "issues": issues,
+        "is_valid": score >= 70
     }
 
-def compile_director_system_prompt(role_title: str, archetype_key: str, blend_key: Optional[str] = None) -> str:
+def compile_director_system_prompt(role_name: str, archetype_key: str, blend_key: Optional[str] = None) -> str:
     """编译输出标准 XML 导演级 System Prompt"""
-    arch1 = get_archetype_info(archetype_key)
-    if blend_key:
-        arch2 = get_archetype_info(blend_key)
-        archetype = blend_archetypes(arch1, arch2)
-    else:
-        archetype = arch1
+    primary = resolve_archetype(archetype_key)
+    blend = resolve_archetype(blend_key) if blend_key else None
     
-    prompt = f"""<system_prompt version="3.0-cinematic-director" author="Cinematic Director Master">
-
-  <director_persona>
-    <role_title>{role_title}</role_title>
-    <aesthetic_archetype>{archetype['name']}</aesthetic_archetype>
-    <artistic_manifesto>
-      你是一位精通影史大师级视听语法与工业化全流程创作控制的【总导演兼视听架构师】。
-      你拒绝一切空洞、平铺直叙的形容词堆砌，始终从【机位、景别、运镜、光影、空间站位、动作力学、微表情与声音】全局降维掌控。
-      核心美学与分镜 DNA：{archetype['dna']}。
-      视觉布光基调：{archetype['lighting']}。
-    </artistic_manifesto>
-  </director_persona>
-
-  <negative_constraints>
-    <rule id="DNC-1" priority="CRITICAL">
-      【严禁文学化虚假敷衍】：在输出分镜与动作设计时，严禁出现“两人打得难解难分”、“十分紧张”等空泛描述，必须精确到招式起势、受力反馈、机位角度与运镜动线。
-    </rule>
-    <rule id="DNC-2" priority="CRITICAL">
-      【严禁无视空间几何】：所有场景描写与冲突必须明确交待三维空间关系（前后景、障碍物遮挡、三角形/对角线站位、视线朝向）。
-    </rule>
-    <rule id="DNC-3" priority="HIGH">
-      【严禁平庸五官嚎叫】：人物情绪表达严禁仅仅依赖大喊大叫，强制通过面部微肌肉痉挛、瞳孔收缩、喉结滑动与潜台词展现。
-    </rule>
-  </negative_constraints>
-
-  <internal_reasoning_protocol>
-    <step id="1" name="Directorial Intent">分析当前剧情核心冲突，确立主导情感基调与导演流派。</step>
-    <step id="2" name="Spatial Mapping">构建 3D 场景模型，确定人物前中后景深度、光源方向与几何站位。</step>
-    <step id="3" name="Cinematic Breakdown">拆解为具体镜号，规划景别（WS~ECU）、运镜动线与打斗拍点。</step>
-    <step id="4" name="Sound & Prompt Synthesis">同步设计现场音效、配乐，并将画面编译为标准 AI Prompt。</step>
-  </internal_reasoning_protocol>
-
-  <output_format>
-    <structure>
-      ### 🎬 一、 导演视听阐述与核心美学定调 (Directorial Vision)
-      ### 📖 二、 剧本节奏与剧情钩子重构 (Script & Tension)
-      ### 🎥 三、 工业级镜头分镜设计表 (Industrial Storyboard)
-      ### 🥋 四、 核心动作与高燃打斗拍点拆解 (Action Beats)
-      ### 🎭 五、 演员表演与微表情微动作指导 (Acting & Micro-Expressions)
-      ### 🎨 六、 工业级 AI 绘图/视频生成提示词合集 (AI Prompt Matrix)
-    </structure>
-  </output_format>
-
+    blend_info = f"\n  <blend_secondary_influence>\n    <director>{blend['name']}</director>\n    <dna>{blend['dna']}</dna>\n    <camera_fusion>{blend['camera_style']}</camera_fusion>\n  </blend_secondary_influence>" if blend else ""
+    
+    prompt = f"""<system_prompt version="3.0">
+  <role>{role_name}</role>
+  <master_director_archetype>
+    <primary_director>{primary['name']}</primary_director>
+    <category>{primary['category']}</category>
+    <visual_dna>{primary['dna']}</visual_dna>
+    <camera_and_lighting>{primary['camera_style']} | {primary['lighting']}</camera_and_lighting>
+    <action_mechanics>{primary['action_focus']}</action_mechanics>
+  </master_director_archetype>{blend_info}
+  <operational_guidelines>
+    <rule id="1">拒绝一切“打得难解难分”等文学化形容，必须给出景别(WS/MS/CU/ECU)、运镜轨迹与物理拍点。</rule>
+    <rule id="2">每一处动作必有发力原点、肢体受力变形、道具破坏交互与微表情生理反馈。</rule>
+    <rule id="3">分镜表严格输出：镜号、景别机位、运镜动线、画面视觉、声音设计与 AI 提示词六要素。</rule>
+  </operational_guidelines>
 </system_prompt>"""
     return prompt
 
-def list_all_archetypes() -> str:
-    """列出全部已收录的 50 个知名导演与流派"""
-    categories: Dict[str, List[tuple]] = {}
-    for key, data in ALL_DIRECTOR_ARCHETYPES.items():
-        cat = data["category"]
-        if cat not in categories:
-            categories[cat] = []
-        categories[cat].append((key, data["name"], data["dna"]))
-        
-    output = []
-    output.append("# 🎬 全球知名导演与经典视听流派全量清单 (共 50 个流派)\n")
-    for cat_name, items in categories.items():
-        output.append(f"## 📂 {cat_name} ({len(items)} 个)")
-        for key, name, dna in items:
-            output.append(f"- **`{key}`**: {name} —— *{dna}*")
-        output.append("")
-    return "\n".join(output)
-
 def run_self_tests() -> bool:
-    """内置单元自测套件"""
-    print("  🧪 [Self-Test] 1/6 验证全部 50 个导演流派数据完整性...")
-    assert len(ALL_DIRECTOR_ARCHETYPES) == 50, f"Expected 50 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
+    """内置单元自测套件 (80大流派全量自测)"""
+    print("  🧪 [Self-Test] 1/6 验证全部 80 个导演流派数据完整性与分类归属...")
+    assert len(ALL_DIRECTOR_ARCHETYPES) == 80, f"Expected 80 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
     
-    print("  🧪 [Self-Test] 2/6 遍历测试全 50 个流派分镜表生成 (generate_storyboard)...")
+    categories = set(v["category"] for v in ALL_DIRECTOR_ARCHETYPES.values())
+    assert len(categories) == 8, f"Expected 8 categories, got {len(categories)}"
+    
+    print("  🧪 [Self-Test] 2/6 遍历测试全 80 个流派分镜表生成 (generate_storyboard)...")
     for key in ALL_DIRECTOR_ARCHETYPES.keys():
         sb = generate_storyboard("测试决战", key, "暴雨古庙对峙")
         assert len(sb) > 200, f"Storyboard generation failed for {key}"
         assert "| **#01** |" in sb, f"Storyboard missing Shot#1 for {key}"
         
-    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode)...")
+    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across new archetypes)...")
     blend_sb = generate_storyboard("决斗", "shaw_chang_cheh", "暴雨对峙", blend_key="zack_snyder_dark_myth")
     assert "跨界双流派融合" in blend_sb, "Blend mode failed in storyboard"
     assert "张彻" in blend_sb and "扎克·施奈德" in blend_sb, "Blend content missing"
     
+    blend_sb2 = generate_storyboard("赛博仙侠", "donghua_3d_xianxia_aerial", "高空御剑与飞弹对决", blend_key="ridley_scott_epic_light")
+    assert "雷德利·斯科特" in blend_sb2 and "国漫 3D" in blend_sb2, "Blend across new categories failed"
+    
     print("  🧪 [Self-Test] 4/6 测试 generate_action_breakdown (硬派打斗拍点拆解)...")
     act = generate_action_breakdown("长街死斗", "shaw_lau_kar_leung", "主角 vs 铁砂掌反派")
-    assert "Beat 1" in act and "Beat 5" in act, "Action breakdown failed"
+    assert "发力起势" in act and "终结余波" in act, "Action breakdown failed"
     
     print("  🧪 [Self-Test] 5/6 测试 compile_director_system_prompt (XML 编译)...")
     xml_p = compile_director_system_prompt("总导演", "tsui_hark_fantasy", blend_key="wong_kar_wai_mood")
     assert "<system_prompt" in xml_p and "</system_prompt>" in xml_p, "XML compilation failed"
-    assert "跨界混血" in xml_p, "Blend failed in XML prompt"
     
     print("  🧪 [Self-Test] 6/6 测试 audit_text_quality (静态审计正常与违规文本)...")
     bad_res = audit_text_quality("两人打得难解难分，场面十分紧张，痛得大叫！")
@@ -720,14 +977,14 @@ def run_self_tests() -> bool:
     good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷。")
     assert len(good_res["issues"]) == 0, "Audit falsely flagged good text"
     
-    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过！")
+    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (80大流派全部正常)！")
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (50大流派全量矩阵版)")
+    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (80大流派全量矩阵版)")
     parser.add_argument("--mode", choices=["storyboard", "action", "script", "prompt", "audit", "compile", "list", "test"], default="test", help="执行模式")
     parser.add_argument("--title", type=str, default="绝命对峙", help="剧本/场面标题")
-    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持50个代号或简写）")
+    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持80个代号或简写）")
     parser.add_argument("--blend", type=str, default=None, help="融合的第二导演流派标识（支持双流派跨界混血）")
     parser.add_argument("--desc", type=str, default="暴雨夜残破古寺中的生死搏杀", help="场景或对决描述")
     parser.add_argument("--characters", type=str, default="白衣剑客 vs 锦衣卫首领", help="参战角色")
@@ -737,7 +994,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "test":
-        print("🚀 启动 director_synthesizer 50大流派内置物理单元自测...")
+        print("🚀 启动 director_synthesizer 80大流派内置物理单元自测...")
         run_self_tests()
     elif args.mode == "list":
         print(list_all_archetypes())

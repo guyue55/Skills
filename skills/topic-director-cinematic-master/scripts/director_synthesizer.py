@@ -675,6 +675,88 @@ ALL_DIRECTOR_ARCHETYPES = {
         "camera_style": "移轴微距浅景深 (Tilt-shift Macro) + 12fps 逐格机械停顿",
         "lighting": "warm vintage tungsten lamp, spooky gothic miniature shadows, burlap texture",
         "action_focus": "handmade doll mechanical clockwork movement, whimsical puppet duel"
+    },
+
+    # 09 超级英雄宇宙、漫威大片与美漫视效大系 (10)
+    "jon_favreau_iron_man": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "重工业写实机甲与全息 HUD 第一人称流 (乔恩·费儒)",
+        "dna": "纳米/钛合金装甲微米级咬合、伺服电机高频啸叫、头盔内 HUD 全息 UI 倒映面部特写、战损金属刮痕",
+        "camera_style": "后坐力震颤机位 + 低空音爆追随 + 头盔内暗光 HUD 极近特写 (Helmet Cam)",
+        "lighting": "glowing blue Arc Reactor fill, floating holographic HUD overlay, titanium metal reflections",
+        "action_focus": "mechanical armor transformation, micro-repulsor beam blast recoil, supersonic flight maneuver"
+    },
+    "russo_brothers_synergy": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "近身战术格斗与英雄协同连招流 (罗素兄弟)",
+        "dna": "近身军警格斗 (CQC)、手持肩扛紧贴躯干、英雄异能协同合体技 (Synergy Combos)、360度集结环绕",
+        "camera_style": "高速横移跟拍 CQC 短促切镜 + 360 度圆周全员英雄集结长镜头",
+        "lighting": "gritty desaturated battlefield realism, dynamic muzzle flashes and energy sparks",
+        "action_focus": "tactical shield-throw and laser ricochet combo, intense close-quarters hand-to-hand combat"
+    },
+    "james_gunn_cosmic_rock": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "太空歌剧复古摇滚与异彩霓虹长镜头流 (詹姆斯·古恩)",
+        "dna": "70/80年代复古磁带流行金曲卡点音画同步、高饱和霓虹荧光太空云海、走廊群像一镜到底",
+        "camera_style": "横移穿梭走廊一镜到底 (One-Take Hallway Fight) + 广角异星全景",
+        "lighting": "vibrant neon magenta and cyan cosmic space nebula, warm retro cassette-punk glow",
+        "action_focus": "multi-character coordinated hallway brawling, whimsical gadget detonation synced to music beat"
+    },
+    "doctor_strange_kaleidoscope": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "多维分形折叠与曼陀罗法阵流 (奇异博士/德瑞克森/雷米)",
+        "dna": "城市镜像分形万花筒折叠、橙金色火花曼陀罗几何符文盘、星体投射、山姆·雷米极速变焦贴脸",
+        "camera_style": "穿越多元宇宙碎片的极速俯冲穿梭 + 极速变焦贴脸 (Snap Zoom) 灵魂透视",
+        "lighting": "glowing orange-gold sparking mandala magic runes, portal sparks flying, dimensional rift purple",
+        "action_focus": "hand mudra conjuring spinning magical mandala shield, mirror dimension gravity folding"
+    },
+    "taika_waititi_mythic_neon": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "重金属神话与高饱和迪斯科神性流 (塔伊加·维迪提)",
+        "dna": "狂暴雷电缠绕纯白炽电神性觉醒、80年代高饱和迪斯科神话狂欢、1000fps古典油画慢动作壁画",
+        "camera_style": "彩虹桥尽头大全景神祇俯冲 + 1000fps 超慢动作神魔交锋定格壁画",
+        "lighting": "electric neon cyan lightning crackling across body, vibrant saturated yellow and magenta tones",
+        "action_focus": "god of thunder awakening, leaping into horde with circular lightning shockwave blast"
+    },
+    "spiderman_fpv_swinging": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "城市天际线 FPV 极限摆荡与蜘蛛感应流 (蜘蛛侠真人系列)",
+        "dna": "第一人称与贴身楼宇峡谷极限俯冲摆荡、蜘蛛感应超慢动作瞳孔收缩、高空反重力柔韧体操定格",
+        "camera_style": "第一人称 (FPV) 贴身穿梭俯冲 + 广角捕捉纽约黄昏天际线与玻璃幕墙倒影",
+        "lighting": "golden sunset reflections on glass skyscraper towers, warm city rim lighting",
+        "action_focus": "acrobatic web-slinging dive, fluid mid-air 360 flip, shooting double webs to brake"
+    },
+    "spider_verse_comic_multiverse": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "跨次元波普波点与抽帧美漫破框流 (索尼动画 Spider-Verse)",
+        "dna": "12fps/24fps 混合帧率对冲、半色调印刷网点 (Halftone Dots)、RGB 色散通道分离、美漫拟声词破框爆裂",
+        "camera_style": "漫画分格撕裂破框运镜 + 城市倒立坠落跃入云海大逆转视角",
+        "lighting": "vibrant pop art neon colors, chromatic aberration edge split, halftone printing textures",
+        "action_focus": "stepped 12fps dynamic leap, breaking through comic panel borders with bold sound-effect text"
+    },
+    "zack_snyder_superman_epic": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "超音速音爆与暗黑十字神话史诗流 (扎克·施奈德超级英雄)",
+        "dna": "变速抽格 (Speed Ramping)、超音速环状音爆云与柏油路面掀翻、十字神性仰拍雕塑、低饱和高反差",
+        "camera_style": "神祇仰拍雕塑构图 + 极速爆发到极限慢动作的变速抽格 (Speed Ramping)",
+        "lighting": "dark desaturated gritty tones, dramatic golden god-rays cutting through heavy storm clouds",
+        "action_focus": "supersonic punch creating conical sonic boom shockwave, shattering concrete pavement"
+    },
+    "ryan_coogler_afrofuturism": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "非洲未来主义与振金高科奇观流 (瑞恩·库格勒)",
+        "dna": "传统部族图腾与超高科技流线型振金飞船融合、振金战衣吸收动能紫色脉冲发光、夕阳悬崖决斗",
+        "camera_style": "宽银幕大远景展示隐秘黄金城天际线 + 贴身长矛冷兵器肉搏跟拍",
+        "lighting": "vibrant purple kinetic energy glow along suit weaves, rich warm sunset over African waterfalls",
+        "action_focus": "vibranium kinetic energy discharge shockwave, agile feline leap and claw strike"
+    },
+    "matt_reeves_gothic_detective": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "雨夜哥特侦探与红色信号弹暗黑流 (马特·里夫斯)",
+        "dna": "黑色电影侦探质感、暴雨连绵哥特罪恶都市、红色信号弹划破死寂全黑走廊、重金属战靴沉闷踏步",
+        "camera_style": "窥视感后视镜构图 + 模糊雨滴挡风玻璃穿透聚焦 + 重型肌肉车破墙平视跟拍",
+        "lighting": "pitch black darkness illuminated by single crimson red flare, wet asphalt sodium streetlamp reflections",
+        "action_focus": "brutal heavy fist strikes echoing in dark hallway, heavy combat armor deflecting close-range gunfire"
     }
 }
 
@@ -791,7 +873,32 @@ ALIAS_MAPPING = {
     "fpv": "hardcore_fpv_parkour",
     "cyber_glitch": "cyber_glitch_datamosh",
     "claymation": "claymation_dark_stop_motion",
-    "stop_motion": "claymation_dark_stop_motion"
+    "stop_motion": "claymation_dark_stop_motion",
+
+    "iron_man": "jon_favreau_iron_man",
+    "favreau": "jon_favreau_iron_man",
+    "russo_brothers": "russo_brothers_synergy",
+    "avengers": "russo_brothers_synergy",
+    "avengers_endgame": "russo_brothers_synergy",
+    "captain_america": "russo_brothers_synergy",
+    "james_gunn": "james_gunn_cosmic_rock",
+    "guardians": "james_gunn_cosmic_rock",
+    "guardians_of_the_galaxy": "james_gunn_cosmic_rock",
+    "doctor_strange": "doctor_strange_kaleidoscope",
+    "strange": "doctor_strange_kaleidoscope",
+    "thor_ragnarok": "taika_waititi_mythic_neon",
+    "taika": "taika_waititi_mythic_neon",
+    "spiderman": "spiderman_fpv_swinging",
+    "spider_man": "spiderman_fpv_swinging",
+    "spider_verse": "spider_verse_comic_multiverse",
+    "spiderverse": "spider_verse_comic_multiverse",
+    "snyder_superman": "zack_snyder_superman_epic",
+    "man_of_steel": "zack_snyder_superman_epic",
+    "black_panther": "ryan_coogler_afrofuturism",
+    "coogler": "ryan_coogler_afrofuturism",
+    "the_batman": "matt_reeves_gothic_detective",
+    "matt_reeves": "matt_reeves_gothic_detective",
+    "batman_noir": "matt_reeves_gothic_detective"
 }
 
 def resolve_archetype(key: str) -> Dict[str, Any]:
@@ -942,33 +1049,33 @@ def compile_director_system_prompt(role_name: str, archetype_key: str, blend_key
     return prompt
 
 def run_self_tests() -> bool:
-    """内置单元自测套件 (80大流派全量自测)"""
-    print("  🧪 [Self-Test] 1/6 验证全部 80 个导演流派数据完整性与分类归属...")
-    assert len(ALL_DIRECTOR_ARCHETYPES) == 80, f"Expected 80 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
+    """内置单元自测套件 (90大流派全量自测)"""
+    print("  🧪 [Self-Test] 1/6 验证全部 90 个导演流派数据完整性与分类归属...")
+    assert len(ALL_DIRECTOR_ARCHETYPES) == 90, f"Expected 90 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
     
     categories = set(v["category"] for v in ALL_DIRECTOR_ARCHETYPES.values())
-    assert len(categories) == 8, f"Expected 8 categories, got {len(categories)}"
+    assert len(categories) == 9, f"Expected 9 categories, got {len(categories)}"
     
-    print("  🧪 [Self-Test] 2/6 遍历测试全 80 个流派分镜表生成 (generate_storyboard)...")
+    print("  🧪 [Self-Test] 2/6 遍历测试全 90 个流派分镜表生成 (generate_storyboard)...")
     for key in ALL_DIRECTOR_ARCHETYPES.keys():
         sb = generate_storyboard("测试决战", key, "暴雨古庙对峙")
         assert len(sb) > 200, f"Storyboard generation failed for {key}"
         assert "| **#01** |" in sb, f"Storyboard missing Shot#1 for {key}"
         
-    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across new archetypes)...")
+    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across superhero & classical archetypes)...")
     blend_sb = generate_storyboard("决斗", "shaw_chang_cheh", "暴雨对峙", blend_key="zack_snyder_dark_myth")
     assert "跨界双流派融合" in blend_sb, "Blend mode failed in storyboard"
     assert "张彻" in blend_sb and "扎克·施奈德" in blend_sb, "Blend content missing"
     
-    blend_sb2 = generate_storyboard("赛博仙侠", "donghua_3d_xianxia_aerial", "高空御剑与飞弹对决", blend_key="ridley_scott_epic_light")
-    assert "雷德利·斯科特" in blend_sb2 and "国漫 3D" in blend_sb2, "Blend across new categories failed"
+    blend_sb2 = generate_storyboard("赛博机甲仙侠", "jon_favreau_iron_man", "重工战甲结印与万剑对决", blend_key="donghua_3d_xianxia_aerial")
+    assert "乔恩·费儒" in blend_sb2 and "国漫 3D" in blend_sb2, "Blend across superhero categories failed"
     
     print("  🧪 [Self-Test] 4/6 测试 generate_action_breakdown (硬派打斗拍点拆解)...")
-    act = generate_action_breakdown("长街死斗", "shaw_lau_kar_leung", "主角 vs 铁砂掌反派")
+    act = generate_action_breakdown("长街死斗", "russo_brothers_synergy", "美队 vs 冬兵 CQC 格斗")
     assert "发力起势" in act and "终结余波" in act, "Action breakdown failed"
     
     print("  🧪 [Self-Test] 5/6 测试 compile_director_system_prompt (XML 编译)...")
-    xml_p = compile_director_system_prompt("总导演", "tsui_hark_fantasy", blend_key="wong_kar_wai_mood")
+    xml_p = compile_director_system_prompt("总导演", "doctor_strange_kaleidoscope", blend_key="wong_kar_wai_mood")
     assert "<system_prompt" in xml_p and "</system_prompt>" in xml_p, "XML compilation failed"
     
     print("  🧪 [Self-Test] 6/6 测试 audit_text_quality (静态审计正常与违规文本)...")
@@ -977,14 +1084,14 @@ def run_self_tests() -> bool:
     good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷。")
     assert len(good_res["issues"]) == 0, "Audit falsely flagged good text"
     
-    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (80大流派全部正常)！")
+    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (90大流派全部正常)！")
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (80大流派全量矩阵版)")
+    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (90大流派全量矩阵版)")
     parser.add_argument("--mode", choices=["storyboard", "action", "script", "prompt", "audit", "compile", "list", "test"], default="test", help="执行模式")
     parser.add_argument("--title", type=str, default="绝命对峙", help="剧本/场面标题")
-    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持80个代号或简写）")
+    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持90个代号或简写）")
     parser.add_argument("--blend", type=str, default=None, help="融合的第二导演流派标识（支持双流派跨界混血）")
     parser.add_argument("--desc", type=str, default="暴雨夜残破古寺中的生死搏杀", help="场景或对决描述")
     parser.add_argument("--characters", type=str, default="白衣剑客 vs 锦衣卫首领", help="参战角色")
@@ -994,7 +1101,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "test":
-        print("🚀 启动 director_synthesizer 80大流派内置物理单元自测...")
+        print("🚀 启动 director_synthesizer 90大流派内置物理单元自测...")
         run_self_tests()
     elif args.mode == "list":
         print(list_all_archetypes())

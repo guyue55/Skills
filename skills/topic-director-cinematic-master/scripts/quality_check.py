@@ -22,7 +22,7 @@ def run_check():
     skill_md = os.path.join(base_dir, "SKILL.md")
 
     # 1. 检查文件完整性
-    print("🔍 [1/4] 检查必要文件与 9 大系 90 个导演流派知识库引用完整性...")
+    print("🔍 [1/4] 检查必要文件与 9 大系 96 个导演流派知识库引用完整性...")
     required_files = [
         "SKILL.md",
         "scripts/director_synthesizer.py",
@@ -81,7 +81,7 @@ def run_check():
     print("✅ 环境脱敏与防偷懒扫描全部通过，无硬编码路径与未完成标记。")
 
     # 4. 物理执行 CLI 自测
-    print("🔍 [4/4] 物理执行 director_synthesizer.py 功能自测 (90大流派全量遍历)...")
+    print("🔍 [4/4] 物理执行 director_synthesizer.py 功能自测 (96大流派全量遍历)...")
     res = subprocess.run([sys.executable, os.path.join(base_dir, "scripts", "director_synthesizer.py"), "--mode", "test"], capture_output=True, text=True)
     if res.returncode != 0:
         print(f"❌ director_synthesizer 自测失败:\n{res.stderr}")

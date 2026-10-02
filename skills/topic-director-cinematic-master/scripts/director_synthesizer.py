@@ -757,6 +757,54 @@ ALL_DIRECTOR_ARCHETYPES = {
         "camera_style": "窥视感后视镜构图 + 模糊雨滴挡风玻璃穿透聚焦 + 重型肌肉车破墙平视跟拍",
         "lighting": "pitch black darkness illuminated by single crimson red flare, wet asphalt sodium streetlamp reflections",
         "action_focus": "brutal heavy fist strikes echoing in dark hallway, heavy combat armor deflecting close-range gunfire"
+    },
+    "peyton_reed_ant_man": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "微观微缩视界与量子分形流 (佩顿·里德)",
+        "dna": "宏观与微观瞬间动量守恒切换、日常玩具与微观昆虫巨物化反差、次原子量子领域分形几何晶体云海",
+        "camera_style": "极速微距推进运镜 (Probe Lens Dive) 穿透机械锁孔 + 亚毫米微距与广角巨物视角切换",
+        "lighting": "sub-atomic luminous quantum particle clouds, macro surface refraction glints, saturated rainbow fractal glow",
+        "action_focus": "instantaneous shrink-and-grow momentum punch launching enemies, high-speed insect-mount aerial maneuvering"
+    },
+    "deadpool_meta_fourth_wall": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "打破第四面墙与 R 级荒诞动作流 (蒂姆·米勒/大卫·雷奇)",
+        "dna": "直接直视镜头打破第四面墙吐槽、Freeze-Frame 静态环绕超慢动作开场、流行金曲卡点荒诞暴力美学",
+        "camera_style": "贴脸大广角自拍视点 + 360度环绕冻结子弹时间 (Bullet-Time Freeze-Frame) + 极速反差拉远",
+        "lighting": "bright daylight commercial pop grading, contrasting with bloody tactical combat sparks and explosions",
+        "action_focus": "acrobatic dual katana slashing with synchronized pop music beats, comedic limb dislocation and instant healing"
+    },
+    "logan_gritty_western_noir": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "暮狼废土公路与血色悲怆流 (詹姆斯·曼高德)",
+        "dna": "新西部公路片影调、风蚀沙尘与残阳暮色、无防具肉身爪刃撕裂与沉重苦痛撕扯、英雄迟暮挽歌",
+        "camera_style": "长焦压缩黄昏残阳剪影 + 中远景固定机位静观苍凉废土 + 贴身生猛手摇肉搏",
+        "lighting": "dusty harsh desert sunlight, warm setting orange sun rim lights, deep gritty shadows with natural film grain",
+        "action_focus": "visceral adamantium claws piercing through heavy bone, agonizing heavy breathing and limping stagger"
+    },
+    "quicksilver_time_freeze": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "微秒级时间静止与极速流 (布莱恩·辛格)",
+        "dna": "微秒级时间冻结 (1/1000s)、悬浮水滴与出膛子弹微观漂浮、极速者从容悠闲游走与幽默物理互动、超音速光轨",
+        "camera_style": "1000fps+ 极高帧率超慢动作摄影 (Phantom 4K) + 微距捕捉悬浮水珠折射 + 穿梭凝固空间",
+        "lighting": "crisp daylight macro reflections on suspended glass shards and water droplets, silver streak ionization aura",
+        "action_focus": "effortlessly flicking frozen bullet trajectories in mid-air, running along vertical walls leaving sonic ripples"
+    },
+    "shangchi_mystic_rings": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "东方武术神韵与十戒灵能流 (德斯汀·克里顿/成家班)",
+        "dna": "成家班狭窄空间借力打斗、卧虎藏龙式太极竹林水流气场、十戒环形灵能轨道打击与凌空踏板",
+        "camera_style": "横移长镜头无缝跟随行云流水招式拆解 + 灵能神环 360 度俯冲穿梭环绕机位",
+        "lighting": "radiant orange-gold and fiery cyan energy arcs, diffused natural bamboo forest sunlight, ethereal water ripples",
+        "action_focus": "ten rings orbiting arms like kinetic blasters, fluid Tai Chi redirecting enemy force with graceful leaf vortex"
+    },
+    "venom_symbiote_fluidity": {
+        "category": "超级英雄与美漫视效大系",
+        "name": "生物共生体与流体形变流 (索尼/漫威)",
+        "dna": "黑色高光黏液流体形变、多触手暴风式抓取抛掷、巨口利齿重型撕咬碾压、双重人格同体共生对峙",
+        "camera_style": "低角度仰拍展现肌肉巨兽压迫感 + 触手暴风横扫时的高速广角环拍 + 双头分裂近景对视",
+        "lighting": "glossy specular highlights on jet-black bio-liquid skin, moody rainy city night with neon reflections",
+        "action_focus": "heavy symbiote tentacles whipping and smashing vehicles, jaw unhinging with dripping viscous slime"
     }
 }
 
@@ -898,7 +946,21 @@ ALIAS_MAPPING = {
     "coogler": "ryan_coogler_afrofuturism",
     "the_batman": "matt_reeves_gothic_detective",
     "matt_reeves": "matt_reeves_gothic_detective",
-    "batman_noir": "matt_reeves_gothic_detective"
+    "batman_noir": "matt_reeves_gothic_detective",
+
+    "ant_man": "peyton_reed_ant_man",
+    "quantum_realm": "peyton_reed_ant_man",
+    "deadpool": "deadpool_meta_fourth_wall",
+    "david_leitch_meta_action": "deadpool_meta_fourth_wall",
+    "logan": "logan_gritty_western_noir",
+    "james_mangold_wolverine": "logan_gritty_western_noir",
+    "quicksilver": "quicksilver_time_freeze",
+    "time_freeze_speedster": "quicksilver_time_freeze",
+    "shang_chi": "shangchi_mystic_rings",
+    "shangchi": "shangchi_mystic_rings",
+    "ten_rings_martial_arts": "shangchi_mystic_rings",
+    "venom": "venom_symbiote_fluidity",
+    "symbiote_action": "venom_symbiote_fluidity"
 }
 
 def resolve_archetype(key: str) -> Dict[str, Any]:
@@ -918,7 +980,7 @@ def resolve_archetype(key: str) -> Dict[str, Any]:
     return ALL_DIRECTOR_ARCHETYPES["shaw_chang_cheh"]
 
 def list_all_archetypes() -> str:
-    """列出全部 80 个已收录的流派清单"""
+    """列出全部 96 个已收录的流派清单"""
     categories: Dict[str, List[str]] = {}
     for k, v in ALL_DIRECTOR_ARCHETYPES.items():
         cat = v["category"]
@@ -926,7 +988,7 @@ def list_all_archetypes() -> str:
             categories[cat] = []
         categories[cat].append(f"  • `{k}`: **{v['name']}** — {v['dna']}")
         
-    output = ["# 🎬 导演级全流程创作大师 · 80大流派全量矩阵清单\n"]
+    output = ["# 🎬 导演级全流程创作大师 · 96大流派全量矩阵清单\n"]
     for cat_name, items in categories.items():
         output.append(f"### 📂 {cat_name} ({len(items)} 个流派)")
         output.extend(items)
@@ -1049,14 +1111,14 @@ def compile_director_system_prompt(role_name: str, archetype_key: str, blend_key
     return prompt
 
 def run_self_tests() -> bool:
-    """内置单元自测套件 (90大流派全量自测)"""
-    print("  🧪 [Self-Test] 1/6 验证全部 90 个导演流派数据完整性与分类归属...")
-    assert len(ALL_DIRECTOR_ARCHETYPES) == 90, f"Expected 90 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
+    """内置单元自测套件 (96大流派全量自测)"""
+    print("  🧪 [Self-Test] 1/6 验证全部 96 个导演流派数据完整性与分类归属...")
+    assert len(ALL_DIRECTOR_ARCHETYPES) == 96, f"Expected 96 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
     
     categories = set(v["category"] for v in ALL_DIRECTOR_ARCHETYPES.values())
     assert len(categories) == 9, f"Expected 9 categories, got {len(categories)}"
     
-    print("  🧪 [Self-Test] 2/6 遍历测试全 90 个流派分镜表生成 (generate_storyboard)...")
+    print("  🧪 [Self-Test] 2/6 遍历测试全 96 个流派分镜表生成 (generate_storyboard)...")
     for key in ALL_DIRECTOR_ARCHETYPES.keys():
         sb = generate_storyboard("测试决战", key, "暴雨古庙对峙")
         assert len(sb) > 200, f"Storyboard generation failed for {key}"
@@ -1084,14 +1146,14 @@ def run_self_tests() -> bool:
     good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷。")
     assert len(good_res["issues"]) == 0, "Audit falsely flagged good text"
     
-    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (90大流派全部正常)！")
+    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (96大流派全部正常)！")
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (90大流派全量矩阵版)")
+    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (96大流派全量矩阵版)")
     parser.add_argument("--mode", choices=["storyboard", "action", "script", "prompt", "audit", "compile", "list", "test"], default="test", help="执行模式")
     parser.add_argument("--title", type=str, default="绝命对峙", help="剧本/场面标题")
-    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持90个代号或简写）")
+    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持96个代号或简写）")
     parser.add_argument("--blend", type=str, default=None, help="融合的第二导演流派标识（支持双流派跨界混血）")
     parser.add_argument("--desc", type=str, default="暴雨夜残破古寺中的生死搏杀", help="场景或对决描述")
     parser.add_argument("--characters", type=str, default="白衣剑客 vs 锦衣卫首领", help="参战角色")
@@ -1101,7 +1163,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "test":
-        print("🚀 启动 director_synthesizer 90大流派内置物理单元自测...")
+        print("🚀 启动 director_synthesizer 96大流派内置物理单元自测...")
         run_self_tests()
     elif args.mode == "list":
         print(list_all_archetypes())

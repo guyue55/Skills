@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (80大流派全量矩阵版)
+director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (108大流派 10大系全量矩阵版)
 功能：
 1. `--mode storyboard`: 自动化生成五栏工业级分镜设计表（含景别、机位、运镜、画面视觉、声音设计与 AI 提示词）。
 2. `--mode action`: 自动化生成包含发力起势、交锋封防、受力爆裂反馈与终结定格的动作拍点拆解。
@@ -9,8 +9,8 @@ director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引�
 4. `--mode prompt`: 自动化将影视场景描述编译为 Midjourney / Kling / Sora 高保真提示词。
 5. `--mode audit`: 静态体检文本中的文学化虚假描述（如“打得难解难分”、“十分紧张”等空洞词汇）。
 6. `--mode compile`: 编译输出标准 XML 导演级 System Prompt。
-7. `--mode list`: 列出已收录的 8 大系 80 个知名导演与流派清单。
-8. `--mode test`: 执行内置全量单元测试套件（遍历 80 大流派生成与融合）。
+7. `--mode list`: 列出已收录的 10 大系 108 个知名导演与流派清单。
+8. `--mode test`: 执行内置全量单元测试套件（遍历 108 大流派生成与融合）。
 9. 支持 `--blend <archetype_key2>` 双流派风格融合生成！
 """
 
@@ -19,7 +19,7 @@ import argparse
 import re
 from typing import Dict, List, Any, Optional
 
-# 80 大知名导演与视听流派全量知识库定义
+# 108 大知名导演与视听流派全量知识库定义
 ALL_DIRECTOR_ARCHETYPES = {
     # 01 华语功夫/动作/枪战/亚洲极限肉搏大系 (15)
     "shaw_chang_cheh": {
@@ -805,6 +805,104 @@ ALL_DIRECTOR_ARCHETYPES = {
         "camera_style": "低角度仰拍展现肌肉巨兽压迫感 + 触手暴风横扫时的高速广角环拍 + 双头分裂近景对视",
         "lighting": "glossy specular highlights on jet-black bio-liquid skin, moody rainy city night with neon reflections",
         "action_focus": "heavy symbiote tentacles whipping and smashing vehicles, jaw unhinging with dripping viscous slime"
+    },
+
+    # 10 儿童家庭、日常温馨与治愈绘本动画大系 (12)
+    "joe_brumm_bluey_family": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "现代家庭游戏与日常共情流 (乔·布鲁姆/布鲁伊)",
+        "dna": "60cm 幼童膝高平视视点、纯净明朗马卡龙色调、角色扮演游戏化叙事、无说教自然家庭温情、轻快原声钢琴跳音",
+        "camera_style": "严格维持 60cm 幼童平视机位 (Knee-high Camera) + 室内地毯与沙发低角度平滑横移跟拍",
+        "lighting": "warm Brisbane morning sunlight, soft pastel pastel fills, clean flat shapes without harsh shadows",
+        "action_focus": "toddler waddling steps, bouncy sitting rebounds, imaginative role-playing games with parents"
+    },
+    "isao_takahata_yamadas_slice_of_life": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "水彩留白草稿与家庭俳句流 (高畑勋/山田君)",
+        "dna": "写意毛笔水墨勾线、边缘水彩自然晕染、画面 60% 呼吸留白、榻榻米超低机位、琐碎家庭生活的幽默哲思",
+        "camera_style": "小津安二郎式榻榻米超低固定长镜头 (Tatami Static Shot) + 宣纸大量呼吸留白构图",
+        "lighting": "minimalist organic watercolor wash, airy negative space, gentle diffused daylight on sketch paper",
+        "action_focus": "subtle domestic interactions, eating watermelon together, clumsy everyday family humor"
+    },
+    "tsutomu_shibayama_maruko_nostalgia": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "昭和复古童年与微吐槽流 (芝山努/樱桃子/小丸子)",
+        "dna": "昭和 70 年代暖黄色调水彩手绘、额头三道黑线尴尬微表情、全知旁白冷面幽默吐槽、祖孙三代市井温情",
+        "camera_style": "复古居室平视固定机位 + 尴尬时刻冷风特写 + 爷孙心之俳句全景框景",
+        "lighting": "1970s Showa retro warm watercolor palette, cozy kotatsu interior amber glow",
+        "action_focus": "sluggish homework procrastination, joyful grandpa-granddaughter moments, comedic deadpan sweat drop"
+    },
+    "mitsuru_hongo_shinchan_family": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "反套路童真与市井家庭流 (本乡满/臼井仪人/蜡笔小新)",
+        "dna": "扁平夸张形变、野原一家市井温情（32年房贷父亲/全职母亲/淘气幼童）、反向大人视角童趣、松弛生活烟火",
+        "camera_style": "歪曲透视扁平俯仰角 + 幼童贴地小碎步奔跑低机位追踪 + 全家围坐餐桌全景",
+        "lighting": "bright warm suburban daylight, saturated nostalgic 90s anime cel shading",
+        "action_focus": "quirky toddler butt dance, tugging blankets, wholesome evening dinner around steaming hotpot"
+    },
+    "hayao_miyazaki_totoro_childhood": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "自然手绘光影与童心神话流 (宫崎骏/龙猫/波妞)",
+        "dna": "纯手工水粉自然光影、林间微风吹拂草木与毛发受力形变、幼童蹒跚学步与踩水坑稚拙力学、纯善世界庇护",
+        "camera_style": "跟随幼童钻入草丛隧道的探险低机位跟拍 + 仰拍参天樟树与毛茸茸巨大生物腹部",
+        "lighting": "dappled summer canopy sunlight, crystal clear creek water reflections, lush emerald gouache greens",
+        "action_focus": "innocent toddler running with tiny wobbly strides, splashing in rain puddles, sinking into soft plush fur"
+    },
+    "peppa_pig_minimalist_storybook": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "极简平面绘本与秩序感流 (阿斯特利/贝克/小猪佩奇)",
+        "dna": "纯侧面 2D 透视几何绘本、蜡笔线条质感、固定机位平移长镜头、跳泥坑与全家四脚朝天大笑的安全感",
+        "camera_style": "剧场式纯 2D 固定横向平移长镜头 + 绝对平视无倾斜儿童绘本构图",
+        "lighting": "flat vibrant primary and pastel colors, crisp clean vector storybook daylight",
+        "action_focus": "jumping up and down in muddy puddles, falling backwards laughing hysterically with family"
+    },
+    "nick_park_aardman_claymation": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "手工粘土定格与默片肢体流 (尼克·帕克/阿德曼/小羊肖恩)",
+        "dna": "真实手工彩色黏土指纹肌理、无对白纯肢体喜剧、英式乡村田园闲适、极富弹性与童趣的发明日常",
+        "camera_style": "定格动画微缩景深跟拍 + 夸张 FACS 眉眼动作变焦特写 + 默片式肢体调度",
+        "lighting": "tactile golden hour sun over rolling British green hills, soft studio fill highlighting clay textures",
+        "action_focus": "expressive plasticine stop-motion physics, witty slapstick double-takes, playful farmyard contraptions"
+    },
+    "tomm_moore_celtic_folklore": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "几何装饰水彩与凯尔特治愈流 (汤姆·摩尔/海洋之歌)",
+        "dna": "黄金分割凯尔特螺旋几何构图、纯手绘水彩湿画法光斑、爱尔兰空灵竖琴与民谣、诗化家庭亲情与创伤治愈",
+        "camera_style": "对称平面装饰性大画幅 + 旋转同心圆螺旋推拉镜头 + 水彩发光微粒穿梭",
+        "lighting": "luminous watercolor wash, glowing blue ocean bioluminescence, ethereal misty coastal atmosphere",
+        "action_focus": "gentle seal transformation, poetic sibling hand-holding, ethereal floating spirit particles"
+    },
+    "benjamin_renner_french_watercolor": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "法式钢笔水彩插画与暖心寓言流 (本杰明·雷内/大坏狐狸)",
+        "dna": "灵动钢笔速写线描、透明轻盈水彩晕染、法式小品轻快戏剧节奏、反差萌跨物种家庭温情（狐狸当妈妈）",
+        "camera_style": "极简留白手绘插画框景 + 灵动滑稽的微距平移 + 戏剧性跨步停顿",
+        "lighting": "transparent loose watercolor washes, soft French countryside morning glow, paper texture grain",
+        "action_focus": "clumsy fox nervously mothering energetic baby chicks, dynamic fluid cartoon slapstick"
+    },
+    "mcdull_hongkong_warmth": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "市井草根温情与童真哲学流 (麦家碧/谢立文/麦兜)",
+        "dna": "蜡笔手绘小猪与香港旧街区照片拼贴、草根单亲母子相依为命、大智若愚小人物温情、平凡生活的诗意拥抱",
+        "camera_style": "香港唐楼与茶餐厅实景拼贴中的平视中景 + 缓慢推向小猪单纯眼眸的微距",
+        "lighting": "soft nostalgic pastel crayon grading, warm amber streetlamp glow over retro urban alleyways",
+        "action_focus": "mother and piglet eating simple meal together, naive daydreaming of seaside resorts, warm hugging"
+    },
+    "enrico_casarosa_luca_seaside": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "地中海阳光水彩与少年纯真流 (恩里克·卡萨罗萨/夏日友晴天)",
+        "dna": "3D 拟手绘水彩质感、地中海明媚夏日阳光、波光粼粼海浪、冰淇淋与复古踏板车、少年的夏日友谊与成长",
+        "camera_style": "低空掠海高速滑行机位 + 意大利海边悬崖小镇全景 + 少年阳光下追逐平视追踪",
+        "lighting": "dazzling turquoise sea sparkle, sun-drenched Italian Riviera golden hour, rich terracotta tones",
+        "action_focus": "diving into crystalline ocean, racing homemade wooden scooter downhill, joyful summertime camaraderie"
+    },
+    "mtjj_wood_healing_creatures": {
+        "category": "儿童家庭与治愈绘本动画大系",
+        "name": "极简灵动线条与现代神怪温馨流 (木头/MTJJ/罗小黑)",
+        "dna": "极简二值化灵动线条、淡彩水墨都市与森林背景、软萌动物神态微动作、现代都市慢生活松弛感与治愈力",
+        "camera_style": "极度干净的二次元平视框景 + 萌宠快速变身与跳跃的极简弧形轨迹跟随",
+        "lighting": "soft muted pastel watercolor gradients, clean flat ambient daylight without harsh contrast",
+        "action_focus": "kitten paw knead, twitching cat ears, relaxed suburban apartment cooking and tea drinking"
     }
 }
 
@@ -960,7 +1058,44 @@ ALIAS_MAPPING = {
     "shangchi": "shangchi_mystic_rings",
     "ten_rings_martial_arts": "shangchi_mystic_rings",
     "venom": "venom_symbiote_fluidity",
-    "symbiote_action": "venom_symbiote_fluidity"
+    "symbiote_action": "venom_symbiote_fluidity",
+
+    # 10 儿童家庭日常与治愈动画别名
+    "bluey": "joe_brumm_bluey_family",
+    "joe_brumm": "joe_brumm_bluey_family",
+    "yamada": "isao_takahata_yamadas_slice_of_life",
+    "yamadas": "isao_takahata_yamadas_slice_of_life",
+    "takahata_yamada": "isao_takahata_yamadas_slice_of_life",
+    "maruko": "tsutomu_shibayama_maruko_nostalgia",
+    "chibi_maruko": "tsutomu_shibayama_maruko_nostalgia",
+    "sakura_maruko": "tsutomu_shibayama_maruko_nostalgia",
+    "shinchan": "mitsuru_hongo_shinchan_family",
+    "crayon_shinchan": "mitsuru_hongo_shinchan_family",
+    "mitsuru_hongo": "mitsuru_hongo_shinchan_family",
+    "totoro": "hayao_miyazaki_totoro_childhood",
+    "ponyo": "hayao_miyazaki_totoro_childhood",
+    "miyazaki_totoro": "hayao_miyazaki_totoro_childhood",
+    "peppa": "peppa_pig_minimalist_storybook",
+    "peppa_pig": "peppa_pig_minimalist_storybook",
+    "astley_baker": "peppa_pig_minimalist_storybook",
+    "shaun_the_sheep": "nick_park_aardman_claymation",
+    "shaun": "nick_park_aardman_claymation",
+    "aardman": "nick_park_aardman_claymation",
+    "nick_park": "nick_park_aardman_claymation",
+    "song_of_the_sea": "tomm_moore_celtic_folklore",
+    "tomm_moore": "tomm_moore_celtic_folklore",
+    "cartoon_saloon": "tomm_moore_celtic_folklore",
+    "bad_fox": "benjamin_renner_french_watercolor",
+    "big_bad_fox": "benjamin_renner_french_watercolor",
+    "benjamin_renner": "benjamin_renner_french_watercolor",
+    "mcdull": "mcdull_hongkong_warmth",
+    "alice_mak": "mcdull_hongkong_warmth",
+    "luca": "enrico_casarosa_luca_seaside",
+    "enrico_casarosa": "enrico_casarosa_luca_seaside",
+    "luoxiaohei": "mtjj_wood_healing_creatures",
+    "hei": "mtjj_wood_healing_creatures",
+    "mtjj": "mtjj_wood_healing_creatures",
+    "non_human": "mtjj_wood_healing_creatures"
 }
 
 def resolve_archetype(key: str) -> Dict[str, Any]:
@@ -980,7 +1115,7 @@ def resolve_archetype(key: str) -> Dict[str, Any]:
     return ALL_DIRECTOR_ARCHETYPES["shaw_chang_cheh"]
 
 def list_all_archetypes() -> str:
-    """列出全部 96 个已收录的流派清单"""
+    """列出全部 108 个已收录的流派清单"""
     categories: Dict[str, List[str]] = {}
     for k, v in ALL_DIRECTOR_ARCHETYPES.items():
         cat = v["category"]
@@ -988,7 +1123,7 @@ def list_all_archetypes() -> str:
             categories[cat] = []
         categories[cat].append(f"  • `{k}`: **{v['name']}** — {v['dna']}")
         
-    output = ["# 🎬 导演级全流程创作大师 · 96大流派全量矩阵清单\n"]
+    output = ["# 🎬 导演级全流程创作大师 · 108大流派全量矩阵清单\n"]
     for cat_name, items in categories.items():
         output.append(f"### 📂 {cat_name} ({len(items)} 个流派)")
         output.extend(items)
@@ -1024,11 +1159,11 @@ def generate_storyboard(title: str, archetype_key: str, scene_desc: str, blend_k
         "## 📋 核心分镜明细表 (5-Shot Breakdown)\n",
         "| 镜号 | 景别 & 机位 | 运镜动线 | 画面核心视觉 (构图/光影/动作) | 声音设计 (台词/音效/配乐) | AI 生成提示词 (Midjourney/Kling/Sora) |",
         "| :--- | :--- | :--- | :--- | :--- | :--- |",
-        f"| **#01** | 全景 (WS) · 俯拍建立镜头 | 极慢速下潜俯冲 (Slow Crane Down) | 场景全貌呈现：{scene_desc}。空间几何站位明确，环境光影形成强烈明暗对比。 | **[音效]** 环境氛围音（风声/暴雨/机械运转）；**[配乐]** 低沉管弦乐蓄力。 | `wide shot, high angle, {scene_desc}, {lighting_desc}, dramatic composition, 8k.` |",
-        f"| **#02** | 极近特写 (ECU) · 平视 | 快速侧向微推 (Subtle Push In) | 核心人物面部微表情：瞳孔微缩，咬肌绷紧，右眼冰冷凝视对手，冷汗自下颌滑落。 | **[音效]** 极清脆的兵器出鞘或上膛声 (Clang!)；**[台词]** 冰冷短促的金句。 | `macro extreme close-up shot, intense focused gaze, subtle jaw muscle clenching, {lighting_desc}, cinematic 35mm film still.` |",
-        f"| **#03** | 中景 (MS) · 仰拍 (Low Angle) | 动态跟拍+极速甩镜 (Kinetic Tracking & Whip Pan) | 双方瞬间破防交锋！{action_desc}，动作起势凌厉，地面尘土激荡。 | **[音效]** 撕裂空气的呼啸声与肌肉碰撞沉闷巨响；**[配乐]** 节奏瞬间飙升。 | `medium shot, dynamic low angle, {action_desc}, motion blur, intense contrast shadows, masterpiece.` |",
-        f"| **#04** | 特写 (CU) · 荷兰倾斜角 (Dutch Angle) | 慢动作升格 (120fps Slow-mo) | 致命打击命中瞬间！受击方身形受力向后倒滑，周围道具碎屑炸裂翻飞，面部显露出不可置信的惊愕。 | **[音效]** 骨骼撞击闷响与道具粉碎炸裂声；**[台词]** 喉间压抑的闷哼。 | `close-up shot, tilted dutch angle, slow-motion impact moment, shattering debris, high impact physics, hyper-detailed.` |",
-        f"| **#05** | 全景 (WS) · 景深穿透构图 (Deep Staging) | 固定长镜头 (Static Deep Focus) | 前景败者倒地虚化；中景胜者收势站立；后景暗门或阴影中第二重危机悄然显现。 | **[音效]** 尘埃落定与微弱喘息声；**[配乐]** 音乐骤停转为空灵单音，留下悬念。 | `wide shot, deep focus staging, blurred foreground, victorious warrior standing in midground, mysterious shadow in background, {lighting_desc}.` |"
+        f"| **#01** | 全景 (WS) · 俯拍建立镜头 | 极慢速下潜俯冲 (Slow Crane Down) | 场景全貌呈现：{scene_desc}。空间几何站位明确，环境光影形成强烈明暗对比。 | **[音效]** 环境氛围音（风声/暴雨/机械运转/欢声笑语）；**[配乐]** 氛围乐蓄力。 | `wide shot, high angle, {scene_desc}, {lighting_desc}, dramatic composition, 8k.` |",
+        f"| **#02** | 极近特写 (ECU) · 平视 | 快速侧向微推 (Subtle Push In) | 核心人物面部微表情：瞳孔微缩或清澈纯真，咬肌紧绷或嘴角上扬，眼神充满情绪张力。 | **[音效]** 极清脆的道具声或清脆呼吸声；**[台词]** 短促有力金句或童真稚语。 | `macro extreme close-up shot, intense focused gaze, subtle emotion, {lighting_desc}, cinematic film still.` |",
+        f"| **#03** | 中景 (MS) · 仰拍/低平机位 | 动态跟拍+极速甩镜/平滑滑轨 (Kinetic Tracking / Smooth Slider) | 核心动作瞬间呈现！{action_desc}，动作起势生动，动感十足。 | **[音效]** 极富表现力的动作碰撞或欢快踏步声；**[配乐]** 节奏情绪达到高潮。 | `medium shot, dynamic angle, {action_desc}, cinematic motion, rich texture, masterpiece.` |",
+        f"| **#04** | 特写 (CU) · 构图特写 (Close-up Focus) | 升格慢动作或定格强调 (Slow-mo / Freeze-Frame) | 情感或打击高潮瞬间！周围环境细节翻飞，面部表情达到情绪顶点。 | **[音效]** 关键情绪音效或道具互动声；**[台词]** 核心台词。 | `close-up shot, emotional peak moment, high fidelity physics, hyper-detailed.` |",
+        f"| **#05** | 全景 (WS) · 景深穿透构图 (Deep Staging) | 固定长镜头 (Static Deep Focus) | 前景人物虚化或互动；中景核心人物站立；后景空间延伸，留下绵长余韵与悬念。 | **[音效]** 余韵渐止与环境氛围；**[配乐]** 音乐缓缓收尾转为空灵单音，留下回味。 | `wide shot, deep focus staging, blurred foreground, main subjects in midground, atmospheric background, {lighting_desc}.` |"
     ]
     return "\n".join(output)
 
@@ -1063,15 +1198,13 @@ def audit_text_quality(text: str) -> Dict[str, Any]:
         "打得难解难分", "十分紧张", "不可开交", "痛得大叫", "非常厉害", 
         "恐怖如斯", "天地变色", "绝世高手", "气势如虹", "大惊失色"
     ]
-    missing_cinematic_elements = []
-    
     issues = []
     for phrase in banned_literary_phrases:
         if phrase in text:
             issues.append(f"发现空泛文学修饰词 '{phrase}'，缺乏具体物理招式、机位或微表情支撑。")
             
     # 检查是否包含视听参数
-    cinematic_keywords = ["特写", "全景", "中景", "推镜头", "仰拍", "俯拍", "慢动作", "光影", "景深", "瞳孔", "咬肌", "肌肉", "音效", "配乐"]
+    cinematic_keywords = ["特写", "全景", "中景", "推镜头", "仰拍", "俯拍", "慢动作", "光影", "景深", "瞳孔", "咬肌", "肌肉", "音效", "配乐", "机位", "长镜头", "水彩", "绘本"]
     has_cinematic = any(kw in text for kw in cinematic_keywords)
     if not has_cinematic:
         issues.append("文本缺乏摄影机调度（景别、机位、运镜）或生理物理细节（瞳孔、受力反馈），属于纯文学文本。")
@@ -1111,23 +1244,23 @@ def compile_director_system_prompt(role_name: str, archetype_key: str, blend_key
     return prompt
 
 def run_self_tests() -> bool:
-    """内置单元自测套件 (96大流派全量自测)"""
-    print("  🧪 [Self-Test] 1/6 验证全部 96 个导演流派数据完整性与分类归属...")
-    assert len(ALL_DIRECTOR_ARCHETYPES) == 96, f"Expected 96 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
+    """内置单元自测套件 (108大流派全量自测)"""
+    print("  🧪 [Self-Test] 1/6 验证全部 108 个导演流派数据完整性与分类归属...")
+    assert len(ALL_DIRECTOR_ARCHETYPES) == 108, f"Expected 108 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
     
     categories = set(v["category"] for v in ALL_DIRECTOR_ARCHETYPES.values())
-    assert len(categories) == 9, f"Expected 9 categories, got {len(categories)}"
+    assert len(categories) == 10, f"Expected 10 categories, got {len(categories)}"
     
-    print("  🧪 [Self-Test] 2/6 遍历测试全 96 个流派分镜表生成 (generate_storyboard)...")
+    print("  🧪 [Self-Test] 2/6 遍历测试全 108 个流派分镜表生成 (generate_storyboard)...")
     for key in ALL_DIRECTOR_ARCHETYPES.keys():
-        sb = generate_storyboard("测试决战", key, "暴雨古庙对峙")
+        sb = generate_storyboard("测试决战与温馨日常", key, "场景对峙或家庭客厅游戏")
         assert len(sb) > 200, f"Storyboard generation failed for {key}"
         assert "| **#01** |" in sb, f"Storyboard missing Shot#1 for {key}"
         
-    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across superhero & classical archetypes)...")
-    blend_sb = generate_storyboard("决斗", "shaw_chang_cheh", "暴雨对峙", blend_key="zack_snyder_dark_myth")
+    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across superhero & kids animation)...")
+    blend_sb = generate_storyboard("布鲁伊夏日探险", "joe_brumm_bluey_family", "后院草坪寻宝游戏", blend_key="enrico_casarosa_luca_seaside")
     assert "跨界双流派融合" in blend_sb, "Blend mode failed in storyboard"
-    assert "张彻" in blend_sb and "扎克·施奈德" in blend_sb, "Blend content missing"
+    assert "乔·布鲁姆" in blend_sb and "恩里克·卡萨罗萨" in blend_sb, "Kids blend content missing"
     
     blend_sb2 = generate_storyboard("赛博机甲仙侠", "jon_favreau_iron_man", "重工战甲结印与万剑对决", blend_key="donghua_3d_xianxia_aerial")
     assert "乔恩·费儒" in blend_sb2 and "国漫 3D" in blend_sb2, "Blend across superhero categories failed"
@@ -1137,7 +1270,7 @@ def run_self_tests() -> bool:
     assert "发力起势" in act and "终结余波" in act, "Action breakdown failed"
     
     print("  🧪 [Self-Test] 5/6 测试 compile_director_system_prompt (XML 编译)...")
-    xml_p = compile_director_system_prompt("总导演", "doctor_strange_kaleidoscope", blend_key="wong_kar_wai_mood")
+    xml_p = compile_director_system_prompt("总导演", "tsutomu_shibayama_maruko_nostalgia", blend_key="isao_takahata_yamadas_slice_of_life")
     assert "<system_prompt" in xml_p and "</system_prompt>" in xml_p, "XML compilation failed"
     
     print("  🧪 [Self-Test] 6/6 测试 audit_text_quality (静态审计正常与违规文本)...")
@@ -1146,14 +1279,14 @@ def run_self_tests() -> bool:
     good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷。")
     assert len(good_res["issues"]) == 0, "Audit falsely flagged good text"
     
-    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (96大流派全部正常)！")
+    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (108大流派 10大系全部正常)！")
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (96大流派全量矩阵版)")
+    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (108大流派 10大系全量矩阵版)")
     parser.add_argument("--mode", choices=["storyboard", "action", "script", "prompt", "audit", "compile", "list", "test"], default="test", help="执行模式")
     parser.add_argument("--title", type=str, default="绝命对峙", help="剧本/场面标题")
-    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持96个代号或简写）")
+    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持108个代号或简写）")
     parser.add_argument("--blend", type=str, default=None, help="融合的第二导演流派标识（支持双流派跨界混血）")
     parser.add_argument("--desc", type=str, default="暴雨夜残破古寺中的生死搏杀", help="场景或对决描述")
     parser.add_argument("--characters", type=str, default="白衣剑客 vs 锦衣卫首领", help="参战角色")
@@ -1163,7 +1296,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "test":
-        print("🚀 启动 director_synthesizer 96大流派内置物理单元自测...")
+        print("🚀 启动 director_synthesizer 108大流派 10大系内置物理单元自测...")
         run_self_tests()
     elif args.mode == "list":
         print(list_all_archetypes())
@@ -1191,3 +1324,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

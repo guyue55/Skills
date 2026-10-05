@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (108大流派 10大系全量矩阵版)
+director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引擎 (120大流派 11大系全量矩阵版)
 功能：
 1. `--mode storyboard`: 自动化生成五栏工业级分镜设计表（含景别、机位、运镜、画面视觉、声音设计与 AI 提示词）。
 2. `--mode action`: 自动化生成包含发力起势、交锋封防、受力爆裂反馈与终结定格的动作拍点拆解。
@@ -9,8 +9,8 @@ director_synthesizer.py - 影视视听与导演级全流程创作大师 CLI 引�
 4. `--mode prompt`: 自动化将影视场景描述编译为 Midjourney / Kling / Sora 高保真提示词。
 5. `--mode audit`: 静态体检文本中的文学化虚假描述（如“打得难解难分”、“十分紧张”等空洞词汇）。
 6. `--mode compile`: 编译输出标准 XML 导演级 System Prompt。
-7. `--mode list`: 列出已收录的 10 大系 108 个知名导演与流派清单。
-8. `--mode test`: 执行内置全量单元测试套件（遍历 108 大流派生成与融合）。
+7. `--mode list`: 列出已收录的 11 大系 120 个知名导演与流派清单。
+8. `--mode test`: 执行内置全量单元测试套件（遍历 120 大流派生成与融合）。
 9. 支持 `--blend <archetype_key2>` 双流派风格融合生成！
 """
 
@@ -903,6 +903,104 @@ ALL_DIRECTOR_ARCHETYPES = {
         "camera_style": "极度干净的二次元平视框景 + 萌宠快速变身与跳跃的极简弧形轨迹跟随",
         "lighting": "soft muted pastel watercolor gradients, clean flat ambient daylight without harsh contrast",
         "action_focus": "kitten paw knead, twitching cat ears, relaxed suburban apartment cooking and tea drinking"
+    },
+
+    # 11 当代前沿动画新浪潮与非真实感渲染大系 (12)
+    "alberto_mielgo_stylized_realism": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "风格化写实与手持摄影流 (阿尔贝托·米尔戈/吉巴罗/证人)",
+        "dna": "油画厚涂笔触贴图、纪实手摇摄影颠簸、极端推拉拉焦 (Snap Zoom & Rack Focus)、无动捕全手Key真实力学、纯视觉节奏",
+        "camera_style": "剧烈手持纪实摇晃镜头 (Shaky Cam) + 快速拉焦 (Rack Focus) + 窥视者构图",
+        "lighting": "intense chiaroscuro, glistening wet skin and jewelry reflections, moody neon grading",
+        "action_focus": "frantic dance-like choreography, sudden violent collision, physical cloth tearing and water splashing"
+    },
+    "fortiche_arcane_painterly_2_5d": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "2.5D 手绘哑光厚涂流 (福蒂奇工作室/双城之战)",
+        "dna": "2.5D 手绘哑光厚涂贴图覆膜 3D 骨骼、赛博朋克与蒸汽朋克霓虹光影、电影级浅景深与实拍虚焦光斑、面部细腻排线",
+        "camera_style": "电影级大画幅浅景深虚化 + 3D 骨骼写实表演与 2D 手绘逐帧粒子特效融合",
+        "lighting": "striking neon steampunk contrast, glowing magical hextech energy, cinematic rim lighting",
+        "action_focus": "fluid kinetic martial arts, heavy gauntlet punch impact, dynamic camera tracking shots"
+    },
+    "chris_sanders_wild_robot_impressionism": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "莫奈印象派油画 3D 自然治愈流 (克里斯·桑德斯/荒野机器人)",
+        "dna": "印象派油画厚涂笔触 3D 渲染 (Painterly Impasto)、森林自然漫射柔光与冷硬机械对冲、跨物种母爱与生命温暖羁绊",
+        "camera_style": "大地全景与微距探针平滑推拉 + 贴近大自然的柔和跟随视角",
+        "lighting": "soft diffused forest daylight, volumetric god rays through autumn foliage, golden hour rim warmth",
+        "action_focus": "gentle animal grooming, baby goose imprinting run, protective mechanical shield stance"
+    },
+    "domee_shi_turning_red_fluffy_3d": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "Q 弹萌态 3D 现代家庭流 (石之予/青春变形记/包宝宝)",
+        "dna": "超写实毛发与 Q 弹挤压拉伸 (Squash & Stretch) 融合、日漫夸张表情包、现代都市家庭代际共情与抱抱治愈",
+        "camera_style": "现代家庭居室平视平机位 + 激动时快速推向表情包大特写",
+        "lighting": "warm vibrant pastel tones, cozy morning apartment sunlight, saturated playful grading",
+        "action_focus": "squishy red panda body roll, hilarious teenage panic pacing, warm affectionate bear hug"
+    },
+    "pete_docter_inside_out_luminescent": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "情绪粒子具象化心理流 (彼特·道格特/头脑特工队/心灵奇旅)",
+        "dna": "情绪与灵魂具象化发光微粒 (Luminescent Particles)、现代都市写实与内心抽象空间对撞、成年人心理和解哲学",
+        "camera_style": "大脑控制台微观视点与辽阔思维悬崖宏大推拉 + 半透明角色柔焦光芒",
+        "lighting": "ethereal internal bioluminescent glow, warm nostalgic amber memory core light",
+        "action_focus": "interacting with glowing memory spheres, floating across the Great Beyond, joyful emotional dance"
+    },
+    "naoko_yamada_kyoto_bokeh_intimacy": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "京阿尼极浅景深微动作流 (山田尚子/声之形/利兹与青鸟/你的颜色)",
+        "dna": "大光圈 85mm F1.4 奶油般焦外散景、山田特写 (聚焦脚尖与手指微动作)、通透空气感晨光、非言语细腻青春心理",
+        "camera_style": "极浅景深实拍长焦虚焦 + 身体局部微动作特写 (Yamada Cut) + 柔和缓慢推移",
+        "lighting": "airy pastel hues, delicate prism lens flare, soft morning window light filtering through sheer curtains",
+        "action_focus": "shyly shifting sneakers, fingers tightly gripping backpack strap, gentle emotional eye contact"
+    },
+    "makoto_shinkai_hdr_hyper_light": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "超高动态 HDR 现代光影流 (新海诚/你的名字/天气之子/铃芽之旅)",
+        "dna": "超高动态 HDR 晨昏天光 (Blue & Golden Hour)、雨滴倒影与微光闪烁、积雨云与彗星光斑粒子、现代大都市超广角",
+        "camera_style": "大广角都市全景俯拍 + 奔跑时动态倾斜跟拍 + 仰望浩瀚苍穹升降",
+        "lighting": "hyper-vibrant HDR ray-tracing light, golden hour purple sky gradient, glistening raindrops",
+        "action_focus": "running desperately across railway crossings, reaching out towards shooting stars, emotional embrace"
+    },
+    "kiyotaka_oshiyama_look_back_raw_lines": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "纯手绘原画笔触生命力流 (押山清高/藤本树/蓦然回首)",
+        "dna": "纯手绘原画铅笔草稿线条生命力、不加过度修饰的纸面肌理、电影实拍固定机位沉思长镜头、雨中肆意狂奔透视",
+        "camera_style": "极简电影固定长镜头凝视 + 大广角雨中狂奔动态透视扭曲",
+        "lighting": "natural overcast daylight, soft melancholic window fill, raw pencil paper grain",
+        "action_focus": "intense desk sketching with feverish pace, leaping and running in the rain, silent grief and creation"
+    },
+    "tian_xiaopeng_deep_sea_particle_ink": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "粒子水墨 3D 奇观流 (田晓鹏/深海)",
+        "dna": "全球首创粒子水墨 3D (数十亿微粒流体解算)、流光溢彩深海潜意识幻境、五彩斑斓的黑与生命视觉治愈",
+        "camera_style": "穿越万千发光色彩粒子的 3D 摄影机急速穿梭 + 深海巨兽全景环绕",
+        "lighting": "kaleidoscopic bioluminescent underwater particles, glowing psychedelic neon ink diffusion",
+        "action_focus": "swimming alongside glowing giant sea creatures, swirling ink whirlpool surge, tender embrace in storm"
+    },
+    "zhao_ji_light_chaser_myth_punk": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "追光东方新神话朋克流 (赵霁/新神榜杨戬/白蛇浮生)",
+        "dna": "东方神话朋克、太极图三维水墨画卷降维对决、敦煌飞天汉服超精细布料流体解算、古典仙境与机械木船融合",
+        "camera_style": "高速飞天御风俯冲 + 太极图二维水墨与三维空间无缝切换",
+        "lighting": "mystic Taoist rune glow, ethereal celestial moonlight, warm lantern reflections on ancient architecture",
+        "action_focus": "spinning heavenly ribbon aerial dance, precision broadsword duel slicing through ink waves"
+    },
+    "sergio_pablos_klaus_volumetric_2d": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "2D 体积光立体手绘流 (塞尔希奥·巴勃罗斯/克劳斯)",
+        "dna": "革命性 2D 手绘体积光与法线光影追踪、手绘二维灵魂与 3D 光照立体厚重感、古典油画与北欧童话温情",
+        "camera_style": "故事绘本式古典构图 + 温暖壁炉光影描摹下的三维感人物推镜",
+        "lighting": "revolutionary 2D volumetric light tracking, warm orange hearth glow contrasting icy Nordic night",
+        "action_focus": "handcrafting wooden toy in workshop, joyful gift delivery in snowstorm, heartfelt community laughter"
+    },
+    "ben_bocquelet_gumball_multimedia_hybrid": {
+        "category": "当代前沿动画与非真实感渲染大系",
+        "name": "多媒体拼贴荒诞流 (本·博克莱/阿甘妙世界)",
+        "dna": "2D 矢量卡通 + 3D 渲染多边形 + 实景拍摄照片背景 + 定格粘土终极混合、跨次元物理碰撞与现代爆笑日常",
+        "camera_style": "实拍高清照片背景中的动态平移与广角镜头 + 2D/3D 角色跨维度互动",
+        "lighting": "realistic photographic environmental ambient light matching flat cartoon shading",
+        "action_focus": "2D character flattening against 3D real door, chaotic living room runaway chase, absurd slapstick"
     }
 }
 
@@ -1095,7 +1193,45 @@ ALIAS_MAPPING = {
     "luoxiaohei": "mtjj_wood_healing_creatures",
     "hei": "mtjj_wood_healing_creatures",
     "mtjj": "mtjj_wood_healing_creatures",
-    "non_human": "mtjj_wood_healing_creatures"
+    "non_human": "mtjj_wood_healing_creatures",
+
+    # 11 当代前沿动画新浪潮别名
+    "mielgo": "alberto_mielgo_stylized_realism",
+    "alberto_mielgo": "alberto_mielgo_stylized_realism",
+    "jibaro": "alberto_mielgo_stylized_realism",
+    "the_witness": "alberto_mielgo_stylized_realism",
+    "fortiche": "fortiche_arcane_painterly_2_5d",
+    "arcane": "fortiche_arcane_painterly_2_5d",
+    "wild_robot": "chris_sanders_wild_robot_impressionism",
+    "the_wild_robot": "chris_sanders_wild_robot_impressionism",
+    "chris_sanders": "chris_sanders_wild_robot_impressionism",
+    "turning_red": "domee_shi_turning_red_fluffy_3d",
+    "domee_shi": "domee_shi_turning_red_fluffy_3d",
+    "bao": "domee_shi_turning_red_fluffy_3d",
+    "inside_out": "pete_docter_inside_out_luminescent",
+    "pete_docter": "pete_docter_inside_out_luminescent",
+    "soul": "pete_docter_inside_out_luminescent",
+    "naoko_yamada": "naoko_yamada_kyoto_bokeh_intimacy",
+    "yamada_naoko": "naoko_yamada_kyoto_bokeh_intimacy",
+    "silent_voice": "naoko_yamada_kyoto_bokeh_intimacy",
+    "colors_within": "naoko_yamada_kyoto_bokeh_intimacy",
+    "shinkai_hdr": "makoto_shinkai_hdr_hyper_light",
+    "your_name": "makoto_shinkai_hdr_hyper_light",
+    "suzume": "makoto_shinkai_hdr_hyper_light",
+    "weathering_with_you": "makoto_shinkai_hdr_hyper_light",
+    "look_back": "kiyotaka_oshiyama_look_back_raw_lines",
+    "oshiyama": "kiyotaka_oshiyama_look_back_raw_lines",
+    "fujimoto": "kiyotaka_oshiyama_look_back_raw_lines",
+    "deep_sea": "tian_xiaopeng_deep_sea_particle_ink",
+    "tian_xiaopeng": "tian_xiaopeng_deep_sea_particle_ink",
+    "particle_ink": "tian_xiaopeng_deep_sea_particle_ink",
+    "light_chaser": "zhao_ji_light_chaser_myth_punk",
+    "zhao_ji": "zhao_ji_light_chaser_myth_punk",
+    "yang_jian": "zhao_ji_light_chaser_myth_punk",
+    "klaus": "sergio_pablos_klaus_volumetric_2d",
+    "sergio_pablos": "sergio_pablos_klaus_volumetric_2d",
+    "gumball": "ben_bocquelet_gumball_multimedia_hybrid",
+    "ben_bocquelet": "ben_bocquelet_gumball_multimedia_hybrid"
 }
 
 def resolve_archetype(key: str) -> Dict[str, Any]:
@@ -1115,7 +1251,7 @@ def resolve_archetype(key: str) -> Dict[str, Any]:
     return ALL_DIRECTOR_ARCHETYPES["shaw_chang_cheh"]
 
 def list_all_archetypes() -> str:
-    """列出全部 108 个已收录的流派清单"""
+    """列出全部 120 个已收录的流派清单"""
     categories: Dict[str, List[str]] = {}
     for k, v in ALL_DIRECTOR_ARCHETYPES.items():
         cat = v["category"]
@@ -1123,7 +1259,7 @@ def list_all_archetypes() -> str:
             categories[cat] = []
         categories[cat].append(f"  • `{k}`: **{v['name']}** — {v['dna']}")
         
-    output = ["# 🎬 导演级全流程创作大师 · 108大流派全量矩阵清单\n"]
+    output = ["# 🎬 导演级全流程创作大师 · 120大流派全量矩阵清单\n"]
     for cat_name, items in categories.items():
         output.append(f"### 📂 {cat_name} ({len(items)} 个流派)")
         output.extend(items)
@@ -1204,7 +1340,7 @@ def audit_text_quality(text: str) -> Dict[str, Any]:
             issues.append(f"发现空泛文学修饰词 '{phrase}'，缺乏具体物理招式、机位或微表情支撑。")
             
     # 检查是否包含视听参数
-    cinematic_keywords = ["特写", "全景", "中景", "推镜头", "仰拍", "俯拍", "慢动作", "光影", "景深", "瞳孔", "咬肌", "肌肉", "音效", "配乐", "机位", "长镜头", "水彩", "绘本"]
+    cinematic_keywords = ["特写", "全景", "中景", "推镜头", "仰拍", "俯拍", "慢动作", "光影", "景深", "瞳孔", "咬肌", "肌肉", "音效", "配乐", "机位", "长镜头", "水彩", "绘本", "粒子", "油画", "2.5D", "HDR"]
     has_cinematic = any(kw in text for kw in cinematic_keywords)
     if not has_cinematic:
         issues.append("文本缺乏摄影机调度（景别、机位、运镜）或生理物理细节（瞳孔、受力反馈），属于纯文学文本。")
@@ -1244,49 +1380,49 @@ def compile_director_system_prompt(role_name: str, archetype_key: str, blend_key
     return prompt
 
 def run_self_tests() -> bool:
-    """内置单元自测套件 (108大流派全量自测)"""
-    print("  🧪 [Self-Test] 1/6 验证全部 108 个导演流派数据完整性与分类归属...")
-    assert len(ALL_DIRECTOR_ARCHETYPES) == 108, f"Expected 108 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
+    """内置单元自测套件 (120大流派全量自测)"""
+    print("  🧪 [Self-Test] 1/6 验证全部 120 个导演流派数据完整性与分类归属...")
+    assert len(ALL_DIRECTOR_ARCHETYPES) == 120, f"Expected 120 archetypes, got {len(ALL_DIRECTOR_ARCHETYPES)}"
     
     categories = set(v["category"] for v in ALL_DIRECTOR_ARCHETYPES.values())
-    assert len(categories) == 10, f"Expected 10 categories, got {len(categories)}"
+    assert len(categories) == 11, f"Expected 11 categories, got {len(categories)}"
     
-    print("  🧪 [Self-Test] 2/6 遍历测试全 108 个流派分镜表生成 (generate_storyboard)...")
+    print("  🧪 [Self-Test] 2/6 遍历测试全 120 个流派分镜表生成 (generate_storyboard)...")
     for key in ALL_DIRECTOR_ARCHETYPES.keys():
         sb = generate_storyboard("测试决战与温馨日常", key, "场景对峙或家庭客厅游戏")
         assert len(sb) > 200, f"Storyboard generation failed for {key}"
         assert "| **#01** |" in sb, f"Storyboard missing Shot#1 for {key}"
         
-    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across superhero & kids animation)...")
-    blend_sb = generate_storyboard("布鲁伊夏日探险", "joe_brumm_bluey_family", "后院草坪寻宝游戏", blend_key="enrico_casarosa_luca_seaside")
+    print("  🧪 [Self-Test] 3/6 测试双流派跨界融合 (Blend Mode across modern animation, superhero & kids animation)...")
+    blend_sb = generate_storyboard("荒野宝宝日常", "chris_sanders_wild_robot_impressionism", "秋日草甸爬行与小鹿接触", blend_key="naoko_yamada_kyoto_bokeh_intimacy")
     assert "跨界双流派融合" in blend_sb, "Blend mode failed in storyboard"
-    assert "乔·布鲁姆" in blend_sb and "恩里克·卡萨罗萨" in blend_sb, "Kids blend content missing"
+    assert "克里斯·桑德斯" in blend_sb and "山田尚子" in blend_sb, "Modern animation blend content missing"
     
-    blend_sb2 = generate_storyboard("赛博机甲仙侠", "jon_favreau_iron_man", "重工战甲结印与万剑对决", blend_key="donghua_3d_xianxia_aerial")
-    assert "乔恩·费儒" in blend_sb2 and "国漫 3D" in blend_sb2, "Blend across superhero categories failed"
+    blend_sb2 = generate_storyboard("双城狂暴雨夜", "fortiche_arcane_painterly_2_5d", "赛博朋克雨夜窄巷追逐", blend_key="alberto_mielgo_stylized_realism")
+    assert "福蒂奇" in blend_sb2 and "阿尔贝托·米尔戈" in blend_sb2, "Blend across modern stylized animation failed"
     
     print("  🧪 [Self-Test] 4/6 测试 generate_action_breakdown (硬派打斗拍点拆解)...")
     act = generate_action_breakdown("长街死斗", "russo_brothers_synergy", "美队 vs 冬兵 CQC 格斗")
     assert "发力起势" in act and "终结余波" in act, "Action breakdown failed"
     
     print("  🧪 [Self-Test] 5/6 测试 compile_director_system_prompt (XML 编译)...")
-    xml_p = compile_director_system_prompt("总导演", "tsutomu_shibayama_maruko_nostalgia", blend_key="isao_takahata_yamadas_slice_of_life")
+    xml_p = compile_director_system_prompt("总导演", "tian_xiaopeng_deep_sea_particle_ink", blend_key="makoto_shinkai_hdr_hyper_light")
     assert "<system_prompt" in xml_p and "</system_prompt>" in xml_p, "XML compilation failed"
     
     print("  🧪 [Self-Test] 6/6 测试 audit_text_quality (静态审计正常与违规文本)...")
     bad_res = audit_text_quality("两人打得难解难分，场面十分紧张，痛得大叫！")
     assert len(bad_res["issues"]) >= 3, "Audit failed to catch bad keywords"
-    good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷。")
+    good_res = audit_text_quality("全景 (WS) 俯拍，机位向下推镜头，主角瞳孔微缩咬肌紧绷，油画厚涂笔触光影。")
     assert len(good_res["issues"]) == 0, "Audit falsely flagged good text"
     
-    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (108大流派 10大系全部正常)！")
+    print("  ✅ [Self-Test] 内置所有 6 项单元自测试全部 100% 通过 (120大流派 11大系全部正常)！")
     return True
 
 def main():
-    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (108大流派 10大系全量矩阵版)")
+    parser = argparse.ArgumentParser(description="影视视听与导演级全流程创作大师 CLI 引擎 (120大流派 11大系全量矩阵版)")
     parser.add_argument("--mode", choices=["storyboard", "action", "script", "prompt", "audit", "compile", "list", "test"], default="test", help="执行模式")
     parser.add_argument("--title", type=str, default="绝命对峙", help="剧本/场面标题")
-    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持108个代号或简写）")
+    parser.add_argument("--archetype", type=str, default="shaw_chang_cheh", help="主导导演流派标识（支持120个代号或简写）")
     parser.add_argument("--blend", type=str, default=None, help="融合的第二导演流派标识（支持双流派跨界混血）")
     parser.add_argument("--desc", type=str, default="暴雨夜残破古寺中的生死搏杀", help="场景或对决描述")
     parser.add_argument("--characters", type=str, default="白衣剑客 vs 锦衣卫首领", help="参战角色")
@@ -1296,7 +1432,7 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "test":
-        print("🚀 启动 director_synthesizer 108大流派 10大系内置物理单元自测...")
+        print("🚀 启动 director_synthesizer 120大流派 11大系内置物理单元自测...")
         run_self_tests()
     elif args.mode == "list":
         print(list_all_archetypes())
@@ -1324,4 +1460,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

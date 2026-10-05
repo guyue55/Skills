@@ -1,12 +1,12 @@
 ---
 name: "topic-director-cinematic-master"
-description: "影视视听与导演级全流程创作大师工坊。深度融合世界影史 10 大系 108 大经典导演流派（邵氏动作/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度、雷德利斯科特赛博神光、维伦纽瓦巨物沉思、大友克洋废墟核爆、钢铁侠机甲HUD、复联协同连招、银河护卫队太空摇滚、奇异博士曼陀罗分形、蜘蛛侠FPV摆荡、平行宇宙抽帧美漫、扎导超音速神话、黑豹非洲未来主义、新蝙蝠侠哥特侦探、蚁人微观量子、死侍打破第四面墙、暮狼废土公路、快银时间冻结、尚气东方武术十戒、毒液生物共生体、布鲁伊幼童平视游戏、高畑勋山田君水彩留白、樱桃小丸子昭和复古吐槽、蜡笔小新反套路市井、龙猫波妞自然神话、小猪佩奇极简绘本、小羊肖恩阿德曼粘土定格、海洋之歌凯尔特水彩、大坏狐狸法式钢笔插画、麦兜草根温情、夏日友晴天地中海阳光水彩、罗小黑非人哉极简治愈、90秒爆款短剧流、国漫3D御剑空战、虚幻引擎超写实CG等），支持单流派与双流派跨界融合（Blend Mode），提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级AI生图/视频Prompt编译全流程能力。"
+description: "影视视听与导演级全流程创作大师工坊。深度融合世界影史 11 大系 120 大经典导演流派（邵氏动作/张彻/刘家良/楚原、徐克新武侠、杜琪峰银河站位、王家卫抽帧情绪、周星驰反差喜剧、诺兰非线性、希区柯克悬念、昆汀对峙、今敏匹配剪辑、黑泽明气象调度、雷德利斯科特赛博神光、维伦纽瓦巨物沉思、大友克洋废墟核爆、钢铁侠机甲HUD、复联协同连招、银河护卫队太空摇滚、奇异博士曼陀罗分形、蜘蛛侠FPV摆荡、平行宇宙抽帧美漫、扎导超音速神话、黑豹非洲未来主义、新蝙蝠侠哥特侦探、蚁人微观量子、死侍打破第四面墙、暮狼废土公路、快银时间冻结、尚气东方武术十戒、毒液生物共生体、布鲁伊幼童平视游戏、高畑勋山田君水彩留白、樱桃小丸子昭和复古吐槽、蜡笔小新反套路市井、龙猫波妞自然神话、小猪佩奇极简绘本、小羊肖恩阿德曼粘土定格、海洋之歌凯尔特水彩、大坏狐狸法式钢笔插画、麦兜草根温情、夏日友晴天地中海阳光水彩、罗小黑非人哉极简治愈、米尔戈爱死机风格化写实、双城之战2.5D厚涂、荒野机器人莫奈印象派、青春变形记Q弹萌态3D、头脑特工队情绪发光粒子、山田尚子京阿尼极浅景深微动作、新海诚HDR超动态光影、蓦然回首手绘原画生命力、深海粒子水墨3D、追光东方神话朋克、克劳斯2D体积光、阿甘妙世界多媒体混合、90秒爆款短剧流、国漫3D御剑空战、虚幻引擎超写实CG等），支持单流派与双流派跨界融合（Blend Mode），提供剧本故事架构、视听分镜设计、硬派武术与动作拆解、场景空间调度、人物微表情微动作及工业级AI生图/视频Prompt编译全流程能力。"
 ---
 
 # 🎬 影视视听与导演级全流程创作大师工坊 (`topic-director-cinematic-master`)
 
 > [!NOTE]
-> **全局导演认知降维系统 (Directorial Meta-Cognitive Engine)**：本技能将世界电影史上最具统治力的 10 大系 108 位世界级大师视听语言、分镜语法、动作力学与场面调度体系，转化为可执行的工程级创作工具。支持**单流派精准调用**与**双流派跨界融合 (Blend Mode)**，专门解决在短剧、漫剧、动画短片、网文小说、影视剧本、镜头分镜、打斗动作设计、场景调度与演员微表情中遇到的各类创作瓶颈，输出一针见血的导演级修改建议与工业级 AI 提示词（Prompt）。
+> **全局导演认知降维系统 (Directorial Meta-Cognitive Engine)**：本技能将世界电影史上最具统治力的 11 大系 120 位世界级大师视听语言、分镜语法、动作力学与场面调度体系，转化为可执行的工程级创作工具。支持**单流派精准调用**与**双流派跨界融合 (Blend Mode)**，专门解决在短剧、漫剧、动画短片、网文小说、影视剧本、镜头分镜、打斗动作设计、场景调度与演员微表情中遇到的各类创作瓶颈，输出一针见血的导演级修改建议与工业级 AI 提示词（Prompt）。
 
 ---
 
@@ -21,13 +21,15 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
    - 厌倦了“两人打得难解难分”等空洞套路，需要**邵氏南派洪拳硬桥硬马、张彻盘肠血战、徐克威亚奇观、甄子丹实战 MMA、印尼班卡西拉肉搏、漫威英雄战术协同、快银时间静止、成家班近身拆招或泰拳极限破坏**的精确拍点。
 3. **儿童家庭日常、治愈温馨与绘本动画创作**：
    - 需要拍摄/绘制围绕小宝宝或家庭温馨日常、亲子互动、治愈搞笑的生活剧或动画片，需要**布鲁伊 60cm 幼童平视机位、山田君水彩写意留白、小丸子昭和冷面吐槽、蜡笔小新市井童真、龙猫踩水坑步态、小羊肖恩默片粘土肢体、海洋之歌凯尔特水彩**等专业视听语言。
-4. **空间构图与场面调度 (Mise-en-Scène)**：
+4. **当代前沿动画与非真实感渲染 (NPR) 视觉革命**：
+   - 需要探索 2020 年代全球最顶尖的动画视听语言：**爱死机米尔戈风格化写实、双城之战 2.5D 手绘哑光覆膜、荒野机器人莫奈印象派油画厚涂、青春变形记 Q 弹 3D 表情包、头脑特工队情绪发光微粒、山田尚子京阿尼极浅景深 F1.4 微动作、新海诚 HDR 晨昏超动态、蓦然回首原画铅笔生命力、深海粒子水墨 3D、追光神话朋克太极水墨、克劳斯 2D 体积光、阿甘妙世界多媒体混合**。
+5. **空间构图与场面调度 (Mise-en-Scène)**：
    - 需要设计类似杜琪峰《枪火》的**几何三角形站位、深焦多层景深、框中框遮挡与多方对峙动线**。
-5. **演员演技与微表情微动作打磨**：
+6. **演员演技与微表情微动作打磨**：
    - 需要 FACS 级面部微肌肉变动（咬肌绷紧、瞳孔骤缩、喉结滑动）与台词潜台词设计。
-6. **跨流派风格融合 (Directorial Style Blending)**：
-   - 探索“邵氏硬桥硬马 + 扎克施奈德油画慢动作”、“徐克新武侠 + 沃卓斯基黑客矩阵”、“布鲁伊 + 皮克斯夏日阳光”、“死侍打破第四面墙 + 快银时间静止”等跨界视听创新。
-7. **工业级 AI 绘图/视频生成提示词编译**：
+7. **跨流派风格融合 (Directorial Style Blending)**：
+   - 探索“荒野机器人 + 山田尚子焦外微动作”、“双城之战 + 米尔戈写实手持”、“深海粒子水墨 + 新海诚超高动态 HDR”、“青春变形记 + 阿甘妙世界多媒体”等跨界视听创新。
+8. **工业级 AI 绘图/视频生成提示词编译**：
    - 需要为 Midjourney / Stable Diffusion / 可灵 (Kling) / Sora / 即梦 (Jimeng) / Runway 编译高精度的镜头级 Prompt。
 
 ---
@@ -56,7 +58,7 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 
 ---
 
-## 🏛️ 3. 十大系 108 大导演流派矩阵 (10 Categories & 108 Archetypes)
+## 🏛️ 3. 十一大系 120 大导演流派矩阵 (11 Categories & 120 Archetypes)
 
 详见知识库分类文档 [`references/archetypes/`](references/archetypes/)：
 
@@ -72,6 +74,7 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 | **08 数字国漫次世代先锋** | 5 | 国漫 3D 玄幻御剑空战流 (`donghua_3d_xianxia_aerial`)、虚幻引擎超写实 CG 流 (`unreal_engine_hyper_cg`)、第一人称极限跑酷视点流 (`hardcore_fpv_parkour`)、赛博故障艺术流 (`cyber_glitch_datamosh`)、微缩微距模型定格流 (`claymation_dark_stop_motion`) | 3D 动捕空中 FPV 缠斗与万剑大阵、Lumen/Nanite 亿级毛孔与物理粒子、纯主观头部跑酷与高空滑索、数据撕裂 RGB 色散通道重组、手工黏土指纹与 12fps 独特停顿感。 |
 | **09 超级英雄与美漫视效** | 16 | 乔恩·费儒·钢铁侠机甲 (`jon_favreau_iron_man`)、罗素兄弟·战术协同 (`russo_brothers_synergy`)、詹姆斯·古恩·太空摇滚 (`james_gunn_cosmic_rock`)、奇异博士·曼陀罗分形 (`doctor_strange_kaleidoscope`)、塔伊加·维迪提·重金属神话 (`taika_waititi_mythic_neon`)、蜘蛛侠真人·天际线FPV (`spiderman_fpv_swinging`)、Spider-Verse·跨次元抽帧美漫 (`spider_verse_comic_multiverse`)、扎导·超音速音爆神话 (`zack_snyder_superman_epic`)、黑豹·非洲未来主义 (`ryan_coogler_afrofuturism`)、新蝙蝠侠·雨夜哥特侦探 (`matt_reeves_gothic_detective`)、佩顿·里德·微观量子 (`peyton_reed_ant_man`)、死侍·打破第四面墙 (`deadpool_meta_fourth_wall`)、詹姆斯·曼高德·暮狼废土 (`logan_gritty_western_noir`)、布莱恩·辛格·快银时间静止 (`quicksilver_time_freeze`)、尚气·东方武术十戒 (`shangchi_mystic_rings`)、毒液·共生体生物流体 (`venom_symbiote_fluidity`) | 机械装甲微米咬合与头盔 HUD、CQC 军警格斗与 360°英雄合体技、70s磁带摇滚走廊长镜头、万花筒镜像折叠与符文法阵、1000fps油画慢动作与高饱和雷电、高空反重力极速摆荡、12/24fps抽帧对冲与半色调网点破框、超音速音爆云与十字神性、振金战衣动能紫光脉冲、单支红色信号弹破黑夜走廊、微距探针深入量子微缩分形世界、直视镜头打破第四面墙吐槽、暮狼新西部血肉爪刃撕裂、1/1000s微秒级水滴子弹悬浮极速漫步、成家班逼仄空间拆招与十戒灵能轨道、黑色高光黏液流体形变触手暴风。 |
 | **10 儿童家庭日常与治愈动画** | 12 | 乔·布鲁姆·布鲁伊 (`joe_brumm_bluey_family`)、高畑勋·山田君 (`isao_takahata_yamadas_slice_of_life`)、芝山努·樱桃小丸子 (`tsutomu_shibayama_maruko_nostalgia`)、本乡满·蜡笔小新 (`mitsuru_hongo_shinchan_family`)、宫崎骏·龙猫童真 (`hayao_miyazaki_totoro_childhood`)、阿斯特利·小猪佩奇 (`peppa_pig_minimalist_storybook`)、尼克·帕克·阿德曼 (`nick_park_aardman_claymation`)、汤姆·摩尔·海洋之歌 (`tomm_moore_celtic_folklore`)、本杰明·雷内·大坏狐狸 (`benjamin_renner_french_watercolor`)、麦家碧·麦兜故事 (`mcdull_hongkong_warmth`)、恩里克·夏日友晴天 (`enrico_casarosa_luca_seaside`)、木头·罗小黑非人哉 (`mtjj_wood_healing_creatures`) | 60cm 幼童平视机位与亲子角色扮演、留白 60% 粗草稿与家庭俳句日记、昭和水彩背景与冷面全知旁白吐槽、歪曲广角透视与市井烟火日常、水粉自然光与蹒跚学步重力反馈、纯侧面 2D 几何绘本与跳泥坑水花、指纹肌理手工粘土定格与默片肢体、凯尔特黄金螺旋水彩发光、灵动钢笔淡彩与反差萌跨物种母爱、蜡笔实景拼贴与大智若愚童真哲理、3D 拟手绘水彩夏日阳光与少年纯真、极简二值化线条与慢生活萌物神态。 |
+| **11 当代前沿动画与非真实感渲染** | 12 | 米尔戈·爱死机风格写实 (`alberto_mielgo_stylized_realism`)、福蒂奇·双城之战 (`fortiche_arcane_painterly_2_5d`)、桑德斯·荒野机器人 (`chris_sanders_wild_robot_impressionism`)、石之予·青春变形记 (`domee_shi_turning_red_fluffy_3d`)、道格特·头脑特工队 (`pete_docter_inside_out_luminescent`)、山田尚子·京阿尼微动作 (`naoko_yamada_kyoto_bokeh_intimacy`)、新海诚·超高动态光影 (`makoto_shinkai_hdr_hyper_light`)、押山清高·蓦然回首 (`kiyotaka_oshiyama_look_back_raw_lines`)、田晓鹏·深海粒子水墨 (`tian_xiaopeng_deep_sea_particle_ink`)、赵霁·追光神话朋克 (`zhao_ji_light_chaser_myth_punk`)、巴勃罗斯·克劳斯体积光 (`sergio_pablos_klaus_volumetric_2d`)、博克莱·阿甘妙世界 (`ben_bocquelet_gumball_multimedia_hybrid`) | 油画厚涂贴图与纪实手摇颠簸、2.5D 手绘哑光覆膜 3D 骨骼与电影大画幅虚焦、莫奈印象派油画笔触与森林漫射神光、超写实毛发与 Q 弹挤压拉伸、情绪灵魂具象化发光微粒、85mm F1.4 极浅景深与肢体微动作、超高动态 HDR 晨昏天光与彗星粒子、纯手绘原画铅笔生命力与狂奔透视、数十亿 3D 水墨粒子与潜意识深海幻境、东方神话朋克与太极图水墨降维、2D 手绘体积光与法线光影追踪、多媒体媒介跨维度碰撞与荒诞爆笑日常。 |
 
 ---
 
@@ -109,7 +112,7 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 - 参考指南：[`references/acting-micro-expressions-guide.md`](references/acting-micro-expressions-guide.md)。
 
 ### 4.6 跨流派双导演融合工坊 (Directorial Style Blending Mode)
-- 支持任意两个流派视听 DNA 深度交融（如张彻阳刚血战 × 扎克·施奈德暗黑神性慢动作，或布鲁伊 × 卡通沙龙水彩治愈）。
+- 支持任意两个流派视听 DNA 深度交融（如张彻阳刚血战 × 扎克·施奈德暗黑神性慢动作，或荒野机器人 × 京阿尼微动作，或布鲁伊 × 卡通沙龙水彩治愈）。
 
 ---
 
@@ -118,20 +121,20 @@ description: "影视视听与导演级全流程创作大师工坊。深度融合
 技能内置工业级生成引擎 [`scripts/director_synthesizer.py`](scripts/director_synthesizer.py)：
 
 ```bash
-# 1. 查看 10 大系 108 个流派清单
+# 1. 查看 11 大系 120 个流派清单
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode list
 
 # 2. 生成五栏工业级分镜表 (单流派)
-python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode storyboard --archetype joe_brumm_bluey_family --title "后院寻宝" --desc "小宝宝与爸爸在阳光草坪上玩捉迷藏"
+python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode storyboard --archetype chris_sanders_wild_robot_impressionism --title "森林漫步" --desc "机甲大个子小心翼翼护送初生小雁穿越秋日丛林"
 
-# 3. 跨界双流派融合分镜生成 (布鲁伊 × 夏日友晴天)
-python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode storyboard --archetype joe_brumm_bluey_family --blend enrico_casarosa_luca_seaside --title "海边夏日假日" --desc "宝宝第一次赤脚踩在浅水沙滩上的欢笑瞬间"
+# 3. 跨界双流派融合分镜生成 (荒野机器人 × 山田尚子京阿尼散景微动作)
+python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode storyboard --archetype chris_sanders_wild_robot_impressionism --blend naoko_yamada_kyoto_bokeh_intimacy --title "晨光中的第一步" --desc "小雁在晨光露珠中怯生生地挪动脚蹼并贴在机械手指上"
 
 # 4. 生成硬核武术动作六步拆解
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode action --archetype shaw_lau_kar_leung --title "客栈夺命棍" --characters "少林武僧 vs 蒙面刺客"
 
 # 5. 编译输出标准 XML 导演级 Agent Prompt
-python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode compile --archetype tsui_hark_fantasy --blend wong_kar_wai_mood --role "新武侠情绪总导演"
+python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode compile --archetype tian_xiaopeng_deep_sea_particle_ink --blend makoto_shinkai_hdr_hyper_light --role "光影粒子水墨总导演"
 
 # 6. 静态体检文本质量（揪出文学化虚假描述）
 python3 skills/topic-director-cinematic-master/scripts/director_synthesizer.py --mode audit --desc "主角和反派打得难解难分，场面十分紧张！"

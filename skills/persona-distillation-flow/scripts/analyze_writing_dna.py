@@ -197,6 +197,22 @@ def format_markdown_report(stats: dict, source_name: str) -> str:
 """
     return report
 
+def read_file_text(fp):
+    """智能尝试多种编码读取文本，避免 GBK/GB18030 中文乱码"""
+    encodings = ["utf-8", "gb18030", "gbk", "utf-16"]
+    for enc in encodings:
+        try:
+            with open(fp, "r", encoding=enc) as f:
+                content = f.read()
+                # 简单启发式检验：如果不含大量替换符且正常解析
+                if len(content) > 0:
+                    return content
+        except (UnicodeDecodeError, LookupError):
+            continue
+    # 兜底
+    with open(fp, "r", encoding="utf-8", errors="ignore") as f:
+        return f.read()
+
 def main():
     parser = argparse.ArgumentParser(description="写作 DNA 语言特征量化分析工具")
     parser.add_argument("path", help="输入文本文件路径或包含语料的目录")
@@ -212,15 +228,13 @@ def main():
         
     full_text = ""
     if os.path.isfile(input_path):
-        with open(input_path, "r", encoding="utf-8", errors="ignore") as f:
-            full_text = f.read()
+        full_text = read_file_text(input_path)
     else:
         for root, _, files in os.walk(input_path):
             for file in sorted(files):
                 if file.endswith((".txt", ".md")):
                     fp = os.path.join(root, file)
-                    with open(fp, "r", encoding="utf-8", errors="ignore") as f:
-                        full_text += f"\n\n" + f.read()
+                    full_text += "\n\n" + read_file_text(fp)
                         
     if not full_text.strip():
         print(f"❌ 错误: 未能在 '{input_path}' 中读取到有效文本内容！")

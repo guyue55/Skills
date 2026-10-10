@@ -123,6 +123,7 @@ description: "蒸馏流程：基于女娲（huashu-nuwa）核心造人术的动�
 2. **在世真人与公众人物 (`real_person`)**：考察实际决策而非公关口号。
 3. **蒸馏用户自己 / 原创 OC (`original_oc`)**：开启访谈与私有资料阅读模式。
 4. **主题/方法论顾问 (`topic_advisor`)**：转化为领域共识框架 + 多流派分歧对比 + 案例推演。
+5. **文学作家与专栏创作者 (`author` / `columnist`)**：标准 7 层心智基座 + **按需外挂 Writing DNA 写作工程扩展包 ([`references/writing-dna-integration-guide.md`](references/writing-dna-integration-guide.md))**。使用 `analyze_writing_dna.py` 提取 L1 刚性量化指标，支持对话/创作双态运行时切换、5 篇原文动态语感校准与白名单去 AI 味清洗 (`lieflat-less-ai-tone`)。
 
 ---
 

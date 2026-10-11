@@ -92,6 +92,7 @@ Skills/
 | `topic-ai-video-creative-engine` | **AI 视频全流程工业级创作引擎** | 全流程 AI 视频与短剧/漫剧工业级创作中枢，涵盖长篇小说/剧本智能解构、原著真值锁定与严防魔改门禁、90s 节拍重构、角色六维演化坐标系与四层复合资产锁、电影级动态招式/标题字幕特效、大片真人旁白解说调度系统、绝世武学与视效对冲矩阵、长篇小说解耦拓扑、世界影史 11 大系 120 大导演视听调度、七段式自包含 Prompt 确定性编译、异构模型路由（Kling/Seedance/Wan/Veo）、四轨音频动态闪避与 EBU R128 混音、导演 Agent 8 维全景质检自审 | [`skills/topic-ai-video-creative-engine/SKILL.md`](skills/topic-ai-video-creative-engine/SKILL.md) |
 | `writing-dna-skill` | **写作蒸馏器 · Writing DNA** | 从至少 20 篇完整文章中蒸馏可复用的写作 DNA（语言DNA/文章结构模板/选题与认知框架/视觉风格），生成规则说明书与 5 篇原文动态语感校准流 | [`skills/writing-dna-skill/SKILL.md`](skills/writing-dna-skill/SKILL.md) |
 | `lieflat-less-ai-tone` | **去 AI 味 · 白名单清洗器** | 基于严格规则白名单识别并改写文本中的 AI 写作痕迹，保持作者原生语言习惯与信息守恒，杜绝机械化篡改 | [`skills/lieflat-less-ai-tone/SKILL.md`](skills/lieflat-less-ai-tone/SKILL.md) |
+| `persona-distillation-flow` | **工业级七层深度人设与写作蒸馏工作流** | 工业级七层人设蒸馏 SOP，含全大系探测、脚手架自动生成、双态运行时路由与多编码 Writing DNA 物理量化分析 | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 

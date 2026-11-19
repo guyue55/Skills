@@ -93,6 +93,7 @@ Skills/
 | `writing-dna-skill` | **写作蒸馏器 · Writing DNA** | 从至少 20 篇完整文章中蒸馏可复用的写作 DNA（语言DNA/文章结构模板/选题与认知框架/视觉风格），生成规则说明书与 5 篇原文动态语感校准流 | [`skills/writing-dna-skill/SKILL.md`](skills/writing-dna-skill/SKILL.md) |
 | `lieflat-less-ai-tone` | **去 AI 味 · 白名单清洗器** | 基于严格规则白名单识别并改写文本中的 AI 写作痕迹，保持作者原生语言习惯与信息守恒，杜绝机械化篡改 | [`skills/lieflat-less-ai-tone/SKILL.md`](skills/lieflat-less-ai-tone/SKILL.md) |
 | `persona-distillation-flow` | **工业级七层深度人设与写作蒸馏工作流** | 工业级七层人设蒸馏 SOP，含全大系探测、脚手架自动生成、双态运行时路由与多编码 Writing DNA 物理量化分析 | [`skills/persona-distillation-flow/SKILL.md`](skills/persona-distillation-flow/SKILL.md) |
+| `google-course-automator` | **Google 课程自动化助手** | 复用已登录浏览器自动推进 Google Skills 课程/Quiz、只读诊断 GEAR/点数/续证；含 L2.5 全局进度总账与 DoD 完成判定、Skillshop 正式 Credential 考试辅助（本人授权+每题联网核实）；浏览器入口可探测复用，不购买点数、不伪造 Lab、不代考 | [`skills/google-course-automator/SKILL.md`](skills/google-course-automator/SKILL.md) |
 
 *(随着新增 Skill 的加入，请同步更新上表)*
 
